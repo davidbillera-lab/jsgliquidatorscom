@@ -72,18 +72,25 @@ export const Footer = () => {
             <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
             <div className="space-y-3">
               <a
-                href="tel:720-699-5715"
+                href="tel:805-444-4069"
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
               >
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <span className="text-sm">(720) 699-5715</span>
+                <span className="text-sm">David: (805) 444-4069</span>
               </a>
               <a
-                href="mailto:info@jsgliquidators.com"
+                href="tel:805-340-4817"
+                className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
+              >
+                <Phone className="w-5 h-5 flex-shrink-0" />
+                <span className="text-sm">Vincent: (805) 340-4817</span>
+              </a>
+              <a
+                href="mailto:jsgliquidators@gmail.com"
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span className="text-sm">info@jsgliquidators.com</span>
+                <span className="text-sm">jsgliquidators@gmail.com</span>
               </a>
             </div>
             <div className="mt-6">

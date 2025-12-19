@@ -97,7 +97,7 @@ const Contact = () => {
     <Layout>
       <SEOHead
         title="Contact Us"
-        description="Contact JSG Liquidators for a free estate liquidation consultation. Serving Denver, Highlands Ranch, Castle Rock, Englewood, and Littleton, CO. Call (720) 699-5715."
+        description="Contact JSG Liquidators for a free estate liquidation consultation. Serving Denver, Highlands Ranch, Castle Rock, Englewood, and Littleton, CO. Call David (805) 444-4069 or Vincent (805) 340-4817."
         canonical="/contact"
       />
 
@@ -260,21 +260,35 @@ const Contact = () => {
 
               <div className="space-y-6">
                 <a
-                  href="tel:720-699-5715"
+                  href="tel:805-444-4069"
                   className="flex items-start gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 >
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Phone</h3>
-                    <p className="text-lg text-primary font-medium">(720) 699-5715</p>
+                    <h3 className="font-semibold text-foreground">David</h3>
+                    <p className="text-lg text-primary font-medium">(805) 444-4069</p>
                     <p className="text-sm text-muted-foreground">Call or text anytime</p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:info@jsgliquidators.com"
+                  href="tel:805-340-4817"
+                  className="flex items-start gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Vincent</h3>
+                    <p className="text-lg text-primary font-medium">(805) 340-4817</p>
+                    <p className="text-sm text-muted-foreground">Call or text anytime</p>
+                  </div>
+                </a>
+
+                <a
+                  href="mailto:jsgliquidators@gmail.com"
                   className="flex items-start gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 >
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -282,7 +296,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-lg text-primary font-medium">info@jsgliquidators.com</p>
+                    <p className="text-lg text-primary font-medium">jsgliquidators@gmail.com</p>
                     <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
                   </div>
                 </a>
