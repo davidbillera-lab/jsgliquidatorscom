@@ -19,8 +19,8 @@ export const SEOHead = ({ title, description, canonical, type = "website" }: SEO
     "name": "JSG Liquidators",
     "description": "Professional estate liquidation services in Denver, Colorado. Estate sale auctions, consignment, business liquidation, and cleanout services.",
     "url": siteUrl,
-    "telephone": "+1-720-699-5715",
-    "email": "info@jsgliquidators.com",
+    "telephone": ["+1-805-444-4069", "+1-805-340-4817"],
+    "email": "jsgliquidators@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Denver",
