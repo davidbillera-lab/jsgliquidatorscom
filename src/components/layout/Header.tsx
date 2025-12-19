@@ -8,6 +8,8 @@ import logoLandscape from "@/assets/logo-landscape.png";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Testimonials", href: "/testimonials" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Blog", href: "https://blog.jsgliquidators.com", external: true },
