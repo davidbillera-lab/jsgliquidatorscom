@@ -151,11 +151,9 @@ const Services = () => {
                 viewport={{ once: true, margin: "-100px" }}
                 variants={fadeInUp}
                 transition={{ duration: 0.6 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+                className="max-w-3xl"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div>
                   <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                     <service.icon className="w-8 h-8 text-primary" />
                   </div>
@@ -195,42 +193,14 @@ const Services = () => {
                       </Button>
                     )}
                     <Button asChild variant="outline" size="lg">
-                      <a href="tel:720-699-5715">
+                      <a href="tel:805-444-4069">
                         <Phone className="w-4 h-4" />
-                        Call (720) 699-5715
+                        Call David (805) 444-4069
                       </a>
                     </Button>
                   </div>
                 </div>
 
-                <div className={`relative ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                  <div className="bg-secondary rounded-2xl p-8 lg:p-12">
-                    <div className="bg-card rounded-xl p-6 shadow-lg">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-                          <service.icon className="w-6 h-6 text-primary-foreground" />
-                        </div>
-                        <div>
-                          <h3 className="font-display font-semibold text-foreground">{service.title}</h3>
-                          <p className="text-sm text-muted-foreground">Professional Service</p>
-                        </div>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="h-2 bg-muted rounded-full w-full" />
-                        <div className="h-2 bg-muted rounded-full w-4/5" />
-                        <div className="h-2 bg-muted rounded-full w-3/5" />
-                      </div>
-                      <div className="mt-6 pt-4 border-t border-border">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm text-muted-foreground">No upfront costs</span>
-                          <span className="text-accent font-semibold">$0</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-2xl" />
-                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
-                </div>
               </motion.div>
             ))}
           </div>
@@ -263,9 +233,9 @@ const Services = () => {
                 </Link>
               </Button>
               <Button asChild variant="heroOutline" size="xl">
-                <a href="tel:720-699-5715">
+                <a href="tel:805-444-4069">
                   <Phone className="w-5 h-5" />
-                  (720) 699-5715
+                  David (805) 444-4069
                 </a>
               </Button>
             </div>
