@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logoLandscape from "@/assets/logo-landscape.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -21,14 +22,12 @@ export const Header = () => {
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-xl">JSG</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className="font-display font-semibold text-lg text-foreground leading-tight">JSG Liquidators</p>
-              <p className="text-xs text-muted-foreground">Estate Liquidation Experts</p>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={logoLandscape} 
+              alt="JSG Estate Liquidation" 
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
