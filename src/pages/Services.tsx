@@ -18,7 +18,7 @@ const services = [
       "Competitive bidding drives up prices",
       "Secure payment processing and buyer verification",
       "Complete transparency with detailed sales reports",
-      "Items sold within 2-4 weeks typically",
+      "Items sold within 7-10 days typically",
     ],
     cta: "View Our Auctions",
     ctaLink: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
