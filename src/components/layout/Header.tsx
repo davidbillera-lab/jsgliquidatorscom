@@ -12,7 +12,7 @@ const navLinks = [
   { name: "Testimonials", href: "/testimonials" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
-  { name: "Blog", href: "https://blog.jsgliquidators.com", external: true },
+  { name: "Blog", href: "/blog" },
 ];
 
 export const Header = () => {
@@ -35,29 +35,17 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              link.external ? (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className={`text-sm font-medium transition-colors ${
-                    location.pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              )
+              <Link
+                key={link.name}
+                to={link.href}
+                className={`text-sm font-medium transition-colors ${
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {link.name}
+              </Link>
             ))}
           </div>
 
@@ -94,31 +82,18 @@ export const Header = () => {
             >
               <div className="py-4 space-y-4 border-t border-border">
                 {navLinks.map((link) => (
-                  link.external ? (
-                    <a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-4 py-2 text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </a>
-                  ) : (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      className={`block px-4 py-2 text-base font-medium rounded-md transition-colors ${
-                        location.pathname === link.href
-                          ? "text-primary bg-secondary"
-                          : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                      }`}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  )
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={`block px-4 py-2 text-base font-medium rounded-md transition-colors ${
+                      location.pathname === link.href
+                        ? "text-primary bg-secondary"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
                 ))}
                 <div className="px-4 pt-4 space-y-3">
                   <a href="tel:805-444-4069" className="flex items-center gap-2 text-base font-medium text-foreground">
