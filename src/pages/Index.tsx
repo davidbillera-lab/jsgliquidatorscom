@@ -104,7 +104,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium mb-6 backdrop-blur-sm border border-accent/30">
+              <span className="inline-block px-4 py-2 bg-primary-foreground/90 text-primary rounded-full text-sm font-semibold mb-6 shadow-lg">
                 Colorado's Trusted Estate Liquidation Experts
               </span>
             </motion.div>
@@ -116,7 +116,7 @@ const Index = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
             >
               Turn Your Estate Into{" "}
-              <span className="text-accent">Maximum Value</span>
+              <span className="text-primary-foreground font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">Maximum Value</span>
             </motion.h1>
             
             <motion.p
@@ -129,15 +129,6 @@ const Index = () => {
               From estate sale auctions to complete cleanouts, we handle everything with care and expertise.
             </motion.p>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-lg font-semibold text-accent mb-8 flex items-center gap-2"
-            >
-              <CheckCircle2 className="w-5 h-5" />
-              No upfront costs — we only get paid when you do.
-            </motion.p>
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -152,9 +143,9 @@ const Index = () => {
                 </Link>
               </Button>
               <Button asChild variant="heroOutline" size="xl">
-                <a href="tel:720-699-5715">
+                <a href="tel:805-444-4069">
                   <Phone className="w-5 h-5" />
-                  (720) 699-5715
+                  David (805) 444-4069
                 </a>
               </Button>
             </motion.div>
@@ -309,11 +300,11 @@ const Index = () => {
                 </p>
                 <div className="space-y-4">
                   <a
-                    href="tel:720-699-5715"
+                    href="tel:805-444-4069"
                     className="flex items-center gap-3 text-lg font-semibold hover:text-accent transition-colors"
                   >
                     <Phone className="w-6 h-6" />
-                    (720) 699-5715
+                    David (805) 444-4069
                   </a>
                   <Button asChild variant="hero" size="lg" className="w-full">
                     <Link to="/contact">Request Free Consultation</Link>
