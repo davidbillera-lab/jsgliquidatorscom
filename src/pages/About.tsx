@@ -294,9 +294,9 @@ const About = () => {
                 </Link>
               </Button>
               <Button asChild variant="heroOutline" size="xl">
-                <a href="tel:720-699-5715">
+                <a href="tel:805-444-4069">
                   <Phone className="w-5 h-5" />
-                  (720) 699-5715
+                  (805) 444-4069
                 </a>
               </Button>
             </div>

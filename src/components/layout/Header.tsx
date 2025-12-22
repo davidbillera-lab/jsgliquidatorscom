@@ -63,9 +63,9 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:720-699-5715" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <a href="tel:805-444-4069" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              (720) 699-5715
+              (805) 444-4069
             </a>
             <Button asChild variant="accent" size="lg">
               <Link to="/contact">Get Free Quote</Link>
@@ -121,9 +121,9 @@ export const Header = () => {
                   )
                 ))}
                 <div className="px-4 pt-4 space-y-3">
-                  <a href="tel:720-699-5715" className="flex items-center gap-2 text-base font-medium text-foreground">
+                  <a href="tel:805-444-4069" className="flex items-center gap-2 text-base font-medium text-foreground">
                     <Phone className="w-5 h-5" />
-                    (720) 699-5715
+                    (805) 444-4069
                   </a>
                   <Button asChild variant="accent" size="lg" className="w-full">
                     <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Get Free Quote</Link>
