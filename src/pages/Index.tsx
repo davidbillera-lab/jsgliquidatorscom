@@ -82,7 +82,7 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="Home"
-        description="JSG Liquidators - Colorado's trusted estate liquidation experts. Estate sale auctions, consignment, business liquidation & cleanout services in Denver, Highlands Ranch, Castle Rock. No upfront costs."
+        description="JSG Liquidators - Colorado's trusted estate liquidation experts. Estate sale auctions, consignment, business liquidation & cleanout services in Denver, Highlands Ranch, Castle Rock. Auction proceeds can offset your costs."
         canonical="/"
       />
 
@@ -384,8 +384,8 @@ const Index = () => {
               Ready to Maximize Your Estate's Value?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
-              Get a free consultation and discover how we can help you achieve the best possible results 
-              with zero upfront costs.
+              Get a free consultation and discover how we can help you achieve the best possible results. 
+              Our auction services can help offset or even cover your service costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl">

@@ -106,7 +106,7 @@ const Services = () => {
     <Layout>
       <SEOHead
         title="Estate Liquidation Services"
-        description="Complete estate liquidation services in Denver, CO. Estate sale auctions, e-commerce consignment, business liquidation, estate cleanout, and junk removal. No upfront costs."
+        description="Complete estate liquidation services in Denver, CO. Estate sale auctions, e-commerce consignment, business liquidation, estate cleanout, and junk removal. Auction proceeds can offset your costs."
         canonical="/services"
       />
 
@@ -124,7 +124,7 @@ const Services = () => {
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
               From estate auctions to complete cleanouts, we offer comprehensive solutions 
-              tailored to your specific needs. No upfront costs — ever.
+              tailored to your specific needs. Our auction services can help offset or even cover your costs.
             </p>
             <Button asChild variant="hero" size="xl">
               <Link to="/contact">

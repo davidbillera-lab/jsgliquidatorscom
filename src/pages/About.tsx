@@ -109,7 +109,7 @@ const About = () => {
               
               <div className="mt-8 p-6 bg-secondary rounded-xl border-l-4 border-accent">
                 <p className="text-lg font-display font-semibold text-foreground mb-2">
-                  "No upfront costs — we only get paid when you do."
+                  "Our auction services can offset or even cover your service costs."
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Our commitment to you
@@ -129,7 +129,7 @@ const About = () => {
                 <h3 className="text-2xl font-display font-bold mb-8">Why Clients Choose Us</h3>
                 <div className="space-y-6">
                   {[
-                    "Zero upfront costs or hidden fees",
+                    "Auction proceeds can offset your costs",
                     "Complete transparency throughout the process",
                     "Nationwide buyer network through online auctions",
                     "Expert valuation of antiques and collectibles",

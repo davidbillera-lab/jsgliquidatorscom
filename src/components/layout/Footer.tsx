@@ -30,7 +30,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Colorado's trusted estate liquidation company. No upfront costs — we only get paid when you do.
+              Colorado's trusted estate liquidation company. Our auction services can help offset or cover your costs.
             </p>
             <div className="flex items-center gap-2 text-accent">
               <MapPin className="w-4 h-4 flex-shrink-0" />
