@@ -86,7 +86,7 @@ const services = [
     description: "Fast, efficient junk removal with a focus on responsible disposal. We identify items of value that can be auctioned off to potentially offset your upfront costs. We recycle and donate whenever possible, ensuring minimal environmental impact.",
     features: [
       "We identify valuable items to auction and offset costs",
-      "Upfront pricing with no hidden fees",
+      "Transparent pricing with no hidden fees",
       "Heavy item and appliance removal",
       "Recycling and donation coordination",
     ],

@@ -260,7 +260,7 @@ const Index = () => {
               
               <div className="space-y-4">
                 {[
-                  "No upfront fees — we only earn when you do",
+                  "Auction proceeds can offset or cover your costs",
                   "Free property evaluation and consultation",
                   "Professional handling of all items",
                   "Transparent pricing and reporting",
