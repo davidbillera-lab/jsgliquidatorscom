@@ -102,8 +102,8 @@ const About = () => {
                   our company around making this process as smooth as possible for our clients.
                 </p>
                 <p>
-                  Our no-upfront-cost model means you can trust that we're fully invested in getting 
-                  the best results for you. When you succeed, we succeed — it's that simple.
+                  Our auction services can help offset or even cover your service costs. We're fully 
+                  invested in maximizing value for you — the better your items sell, the more you save.
                 </p>
               </div>
               
