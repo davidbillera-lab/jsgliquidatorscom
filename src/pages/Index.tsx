@@ -115,8 +115,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
             >
-              Turn Your Estate Into{" "}
-              <span className="text-primary-foreground font-bold drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">Maximum Value</span>
+              Denver's Trusted Estate Sale &amp; Liquidation Experts
             </motion.h1>
             
             <motion.p
