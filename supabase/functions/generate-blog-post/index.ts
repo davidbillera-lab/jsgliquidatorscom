@@ -145,53 +145,52 @@ serve(async (req) => {
       throw new Error("Supabase environment variables not configured");
     }
 
-    // Verify the user is authenticated and is an admin
+    // Check if this is a cron job call (no auth required) or admin call (auth required)
     const authHeader = req.headers.get('Authorization');
-    if (!authHeader) {
-      console.log("No authorization header provided");
-      return new Response(JSON.stringify({ error: 'Unauthorized: No token provided' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    const token = authHeader.replace('Bearer ', '');
-    const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    const isCronCall = authHeader?.includes(Deno.env.get("SUPABASE_ANON_KEY") || '');
     
-    const { data: { user }, error: userError } = await supabaseAuth.auth.getUser(token);
-    if (userError || !user) {
-      console.log("Invalid token or user not found:", userError?.message);
-      return new Response(JSON.stringify({ error: 'Unauthorized: Invalid token' }), {
-        status: 401,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+    if (!isCronCall && authHeader) {
+      // Verify admin for manual calls
+      const token = authHeader.replace('Bearer ', '');
+      const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+      
+      const { data: { user }, error: userError } = await supabaseAuth.auth.getUser(token);
+      if (userError || !user) {
+        console.log("Invalid token or user not found:", userError?.message);
+        return new Response(JSON.stringify({ error: 'Unauthorized: Invalid token' }), {
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      // Check if user has admin role
+      const { data: adminRole, error: roleError } = await supabaseAuth
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', user.id)
+        .eq('role', 'admin')
+        .maybeSingle();
+
+      if (roleError) {
+        console.error("Error checking user role:", roleError);
+        return new Response(JSON.stringify({ error: 'Error verifying permissions' }), {
+          status: 500,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      if (!adminRole) {
+        console.log("User is not an admin:", user.id);
+        return new Response(JSON.stringify({ error: 'Forbidden: Admin access required' }), {
+          status: 403,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      console.log("Admin user verified:", user.email);
+    } else {
+      console.log("Cron job execution - auto-publishing enabled");
     }
-
-    // Check if user has admin role
-    const { data: adminRole, error: roleError } = await supabaseAuth
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', user.id)
-      .eq('role', 'admin')
-      .maybeSingle();
-
-    if (roleError) {
-      console.error("Error checking user role:", roleError);
-      return new Response(JSON.stringify({ error: 'Error verifying permissions' }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    if (!adminRole) {
-      console.log("User is not an admin:", user.id);
-      return new Response(JSON.stringify({ error: 'Forbidden: Admin access required' }), {
-        status: 403,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
-
-    console.log("Admin user verified:", user.email);
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
@@ -390,7 +389,8 @@ CONTENT:
 
     const slug = generateSlug(blogData.title) + "-" + Date.now();
 
-    // Insert the blog post as a draft
+    // Insert the blog post - auto-publish for cron, draft for manual
+    const shouldPublish = isCronCall;
     const { data: insertedPost, error: insertError } = await supabase
       .from("blog_posts")
       .insert({
@@ -399,9 +399,9 @@ CONTENT:
         excerpt: blogData.excerpt,
         content: blogData.content,
         author: "Penny",
-        published: false,
-        published_at: null,
-        featured_image_url: image1Url || null, // Use first generated image as featured
+        published: shouldPublish,
+        published_at: shouldPublish ? new Date().toISOString() : null,
+        featured_image_url: image1Url || null,
       })
       .select()
       .single();
