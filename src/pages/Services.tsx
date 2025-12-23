@@ -39,7 +39,7 @@ const services = [
       "Higher returns for valuable items",
     ],
     cta: "Visit Our eBay Store",
-    ctaLink: "https://www.ebay.com/str/dbilleraenterprises",
+    ctaLink: "https://ebay.us/m/tsG4b9",
     external: true,
   },
   {
