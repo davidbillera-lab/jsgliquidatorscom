@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -12,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { toast } from "sonner";
+import { User, Session } from "@supabase/supabase-js";
 import {
   Dialog,
   DialogContent,
@@ -53,7 +55,12 @@ const generateSlug = (title: string) => {
 };
 
 const BlogAdmin = () => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [formData, setFormData] = useState({
@@ -66,6 +73,68 @@ const BlogAdmin = () => {
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+
+      if (session?.user) {
+        setTimeout(async () => {
+          const { data: roles } = await supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", session.user.id)
+            .eq("role", "admin")
+            .single();
+
+          setIsAdmin(!!roles);
+          setAuthLoading(false);
+
+          if (!roles) {
+            toast.error("You don't have admin access");
+            navigate("/admin-auth");
+          }
+        }, 0);
+      } else {
+        setIsAdmin(false);
+        setAuthLoading(false);
+        navigate("/admin-auth");
+      }
+    });
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+
+      if (session?.user) {
+        supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", session.user.id)
+          .eq("role", "admin")
+          .single()
+          .then(({ data: roles }) => {
+            setIsAdmin(!!roles);
+            setAuthLoading(false);
+
+            if (!roles) {
+              navigate("/admin-auth");
+            }
+          });
+      } else {
+        setAuthLoading(false);
+        navigate("/admin-auth");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/admin-auth");
+  };
 
   const { data: posts, isLoading } = useQuery({
     queryKey: ["admin-blog-posts"],
@@ -252,6 +321,23 @@ const BlogAdmin = () => {
     }
   };
 
+  if (authLoading) {
+    return (
+      <Layout>
+        <SEOHead title="Blog Admin" description="Manage blog posts" canonical="/blog-admin" />
+        <section className="pt-32 pb-20 bg-background min-h-screen">
+          <div className="container mx-auto px-4 lg:px-8 text-center">
+            <p className="text-muted-foreground">Loading...</p>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  if (!isAdmin) {
+    return null;
+  }
+
   return (
     <Layout>
       <SEOHead
@@ -273,9 +359,14 @@ const BlogAdmin = () => {
                   Blog Admin
                 </h1>
                 <p className="text-muted-foreground mt-2">
-                  Create and manage blog posts
+                  Logged in as {user?.email}
                 </p>
               </div>
+              <div className="flex items-center gap-3">
+                <Button variant="outline" onClick={handleLogout}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Logout
+                </Button>
 
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
@@ -402,6 +493,7 @@ const BlogAdmin = () => {
                   </form>
                 </DialogContent>
               </Dialog>
+              </div>
             </div>
 
             {isLoading ? (
