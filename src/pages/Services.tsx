@@ -181,7 +181,7 @@ const Services = () => {
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                     {service.auctionLinks ? (
                       <div className="w-full flex flex-col gap-3">
-                        <span className="text-sm font-medium text-muted-foreground">View Our Auctions</span>
+                        <span className="text-base font-bold text-foreground">View Our Auctions</span>
                         <div className="flex flex-col sm:flex-row gap-4">
                           {service.auctionLinks.map((link) => (
                             <Button key={link.label} asChild variant="accent" size="lg">
