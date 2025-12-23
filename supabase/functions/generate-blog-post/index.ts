@@ -7,6 +7,17 @@ const corsHeaders = {
 };
 
 const topics = [
+  // Economy & Financial Topics
+  "How today's economy makes estate liquidation smarter than ever",
+  "Downsizing in a tough economy: Turning belongings into financial freedom",
+  "Why e-commerce consignment is booming in the current market",
+  "Estate auctions vs. traditional sales: Which wins in today's economy?",
+  "How inflation is driving more families to professional liquidation services",
+  "Turning clutter into cash: Smart strategies for uncertain economic times",
+  "The rise of online auctions: How the economy is changing how we sell",
+  "Financial benefits of professional estate cleanouts during economic uncertainty",
+  
+  // Traditional Estate Sale Topics
   "Tips for preparing your home for an estate sale",
   "How to price items at an estate sale for maximum value",
   "The benefits of professional estate liquidation services",
@@ -26,7 +37,13 @@ const topics = [
   "Tips for buyers: Getting the best deals at estate sales",
   "Seasonal considerations for estate sales and auctions",
   "How to work with an estate liquidator: A step-by-step guide",
-  "The value of transparency in estate sale pricing"
+  "The value of transparency in estate sale pricing",
+  
+  // Clean Out & Consignment Topics
+  "Complete home cleanouts: What to expect and how to prepare",
+  "E-commerce consignment explained: How your items reach buyers worldwide",
+  "From attic to auction: The journey of your consigned items",
+  "Why more sellers are choosing consignment over DIY selling"
 ];
 
 const generateSlug = (title: string) => {
@@ -135,13 +152,14 @@ serve(async (req) => {
     
     console.log(`Generating blog post about: ${topic}`);
 
-    // Generate 2 images in parallel with the blog content
+    // Generate 3 images in parallel with the blog content for better visual interest
     const imagePrompts = [
       `Professional photograph of an organized estate sale in a beautiful home, warm natural lighting, antique furniture and collectibles neatly displayed, welcoming atmosphere, high quality editorial style photo, 16:9 aspect ratio`,
-      `Professional photograph of a cozy living room with vintage furniture and family heirlooms, soft lighting, moving boxes in background suggesting downsizing, warm and inviting atmosphere, editorial style, 16:9 aspect ratio`
+      `Professional photograph of a cozy living room with vintage furniture and family heirlooms, soft lighting, moving boxes in background suggesting downsizing, warm and inviting atmosphere, editorial style, 16:9 aspect ratio`,
+      `Professional photograph of an online auction setup with laptop showing auction listings, beautiful antiques and collectibles arranged for photography, modern e-commerce meets traditional estate items, warm lighting, 16:9 aspect ratio`
     ];
 
-    const [contentResponse, image1Data, image2Data] = await Promise.all([
+    const [contentResponse, image1Data, image2Data, image3Data] = await Promise.all([
       fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
         method: "POST",
         headers: {
@@ -157,35 +175,53 @@ serve(async (req) => {
 
 The company offers:
 - Professional estate liquidation services
-- Auction services (including through LiveAuctioneers)
+- Auction services (including through LiveAuctioneers and Denver Online Auctions)
+- E-commerce consignment through eBay and other platforms
+- Complete home cleanouts
 - Compassionate service during difficult transitions
 - Services that can help offset or cover costs through auction proceeds
 
 Write in a warm, professional tone. Include practical tips and insights. The blog posts should be informative and helpful, not overly salesy.
 
-IMPORTANT: Structure the content with natural image placement markers. Use {{IMAGE_1}} after the first introductory paragraph and {{IMAGE_2}} between major sections.
+When relevant, tie in current economic conditions and how they affect:
+- The smart financial decision to liquidate unused belongings
+- The growing popularity of online auctions and e-commerce
+- How professional liquidation helps families during financial transitions
+- The value of turning unused items into cash
+
+IMPORTANT: Structure the content with natural image placement markers for EXACTLY 3 images:
+- {{IMAGE_1}} - Place after the first introductory paragraph (1-2 paragraphs in)
+- {{IMAGE_2}} - Place in the middle section, between major topic transitions
+- {{IMAGE_3}} - Place near the end, before the conclusion/CTA section
+
+Ensure proper spacing with clear paragraph breaks and section headings. Each section should be substantial (2-3 paragraphs minimum).
 
 Format your response EXACTLY like this, with no code blocks or extra formatting:
 TITLE: Your blog post title here
 EXCERPT: A 1-2 sentence summary for preview cards
 CONTENT:
-<p>Your HTML content starts here...</p>
+<p>Your HTML content starts here with engaging introduction...</p>
 {{IMAGE_1}}
-<h2>Section heading</h2>
-<p>More content...</p>
+<h2>First major section heading</h2>
+<p>Substantial content...</p>
+<p>More content with proper spacing...</p>
 {{IMAGE_2}}
-<h2>Another section</h2>
-<p>More content...</p>`
+<h2>Second major section heading</h2>
+<p>More substantial content...</p>
+{{IMAGE_3}}
+<h2>Conclusion or Call to Action</h2>
+<p>Final thoughts...</p>`
             },
             {
               role: "user",
-              content: `Write a blog post about: ${topic}. Make it approximately 600-800 words. Use HTML formatting for the content with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Remember to include {{IMAGE_1}} and {{IMAGE_2}} markers at natural break points in the content.`
+              content: `Write a blog post about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points. Ensure the content is well-spaced with clear section divisions.`
             }
           ],
         }),
       }),
       generateImage(imagePrompts[0], LOVABLE_API_KEY),
-      generateImage(imagePrompts[1], LOVABLE_API_KEY)
+      generateImage(imagePrompts[1], LOVABLE_API_KEY),
+      generateImage(imagePrompts[2], LOVABLE_API_KEY)
     ]);
 
     if (!contentResponse.ok) {
@@ -221,6 +257,7 @@ CONTENT:
     const timestamp = Date.now();
     let image1Url: string | null = null;
     let image2Url: string | null = null;
+    let image3Url: string | null = null;
 
     if (image1Data) {
       image1Url = await uploadImageToStorage(supabase, image1Data, `ai-blog-${timestamp}-1.png`);
@@ -228,8 +265,11 @@ CONTENT:
     if (image2Data) {
       image2Url = await uploadImageToStorage(supabase, image2Data, `ai-blog-${timestamp}-2.png`);
     }
+    if (image3Data) {
+      image3Url = await uploadImageToStorage(supabase, image3Data, `ai-blog-${timestamp}-3.png`);
+    }
 
-    console.log("Image URLs:", { image1Url, image2Url });
+    console.log("Image URLs:", { image1Url, image2Url, image3Url });
 
     // Parse the structured response
     let blogData;
@@ -242,13 +282,13 @@ CONTENT:
       if (titleMatch && excerptMatch && contentMatch) {
         let content = contentMatch[1].trim();
         
-        // Replace image placeholders with actual images
-        const imageStyle = 'width: 100%; border-radius: 0.75rem; margin: 2rem 0;';
+        // Replace image placeholders with actual images - improved styling for better spacing
+        const imageStyle = 'width: 100%; border-radius: 0.75rem; margin: 2.5rem 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);';
         
         if (image1Url) {
           content = content.replace(
             /\{\{IMAGE_1\}\}/g,
-            `<img src="${image1Url}" alt="Estate sale preparation" style="${imageStyle}" />`
+            `<img src="${image1Url}" alt="Estate sale preparation and organization" style="${imageStyle}" />`
           );
         } else {
           content = content.replace(/\{\{IMAGE_1\}\}/g, '');
@@ -257,10 +297,19 @@ CONTENT:
         if (image2Url) {
           content = content.replace(
             /\{\{IMAGE_2\}\}/g,
-            `<img src="${image2Url}" alt="Professional estate organization" style="${imageStyle}" />`
+            `<img src="${image2Url}" alt="Professional downsizing and estate services" style="${imageStyle}" />`
           );
         } else {
           content = content.replace(/\{\{IMAGE_2\}\}/g, '');
+        }
+
+        if (image3Url) {
+          content = content.replace(
+            /\{\{IMAGE_3\}\}/g,
+            `<img src="${image3Url}" alt="Online auctions and e-commerce consignment" style="${imageStyle}" />`
+          );
+        } else {
+          content = content.replace(/\{\{IMAGE_3\}\}/g, '');
         }
 
         blogData = {
