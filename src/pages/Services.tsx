@@ -23,6 +23,10 @@ const services = [
     cta: "View Our Auctions",
     ctaLink: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     external: true,
+    auctionLinks: [
+      { label: "LiveAuctioneers", url: "https://www.liveauctioneers.com/auctioneer/10647/jsg-estate-liquidation/" },
+      { label: "Denver Online Auctions", url: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation" },
+    ],
   },
   {
     id: "consignment",
@@ -174,8 +178,17 @@ const Services = () => {
                     ))}
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    {service.external ? (
+                  <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+                    {service.auctionLinks ? (
+                      service.auctionLinks.map((link) => (
+                        <Button key={link.label} asChild variant="accent" size="lg">
+                          <a href={link.url} target="_blank" rel="noopener noreferrer">
+                            {link.label}
+                            <ArrowRight className="w-4 h-4" />
+                          </a>
+                        </Button>
+                      ))
+                    ) : service.external ? (
                       <Button asChild variant="accent" size="lg">
                         <a href={service.ctaLink} target="_blank" rel="noopener noreferrer">
                           {service.cta}
