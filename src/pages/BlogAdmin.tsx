@@ -618,12 +618,19 @@ const BlogAdmin = () => {
                       {posts.map((post) => (
                         <tr key={post.id} className="hover:bg-muted/30">
                           <td className="px-6 py-4">
-                            <div className="font-medium text-foreground">
-                              {post.title}
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              /blog/{post.slug}
-                            </div>
+                            <a
+                              href={`/blog/${post.slug}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="block group"
+                            >
+                              <div className="font-medium text-foreground group-hover:text-primary transition-colors">
+                                {post.title}
+                              </div>
+                              <div className="text-sm text-muted-foreground group-hover:underline">
+                                /blog/{post.slug}
+                              </div>
+                            </a>
                           </td>
                           <td className="px-6 py-4 text-muted-foreground">
                             {post.author}
