@@ -8,7 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import DOMPurify from "dompurify";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -113,10 +114,20 @@ const BlogPost = () => {
               </div>
             )}
 
-            <div
-              className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            {(() => {
+              const sanitizedContent = DOMPurify.sanitize(post.content, {
+                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
+                               'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'],
+                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'class', 'id'],
+                ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+              });
+              return (
+                <div
+                  className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground"
+                  dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+                />
+              );
+            })()}
           </motion.div>
         </div>
       </article>
