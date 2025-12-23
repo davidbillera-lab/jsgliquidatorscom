@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -454,20 +454,77 @@ const BlogAdmin = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="image">Featured Image</Label>
-                      <Input
-                        id="image"
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) =>
-                          setImageFile(e.target.files?.[0] || null)
-                        }
-                      />
-                      {editingPost?.featured_image_url && !imageFile && (
-                        <p className="text-sm text-muted-foreground mt-1">
-                          Current image will be kept if no new image is selected
-                        </p>
-                      )}
+                      <Label>Featured Image</Label>
+                      <div
+                        className={`relative mt-2 border-2 border-dashed rounded-xl p-8 text-center transition-colors cursor-pointer ${
+                          imageFile || editingPost?.featured_image_url
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50 hover:bg-muted/50"
+                        }`}
+                        onDragOver={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const file = e.dataTransfer.files?.[0];
+                          if (file && file.type.startsWith("image/")) {
+                            setImageFile(file);
+                          }
+                        }}
+                        onClick={() => document.getElementById("image-upload")?.click()}
+                      >
+                        <input
+                          id="image-upload"
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={(e) =>
+                            setImageFile(e.target.files?.[0] || null)
+                          }
+                        />
+                        
+                        {imageFile ? (
+                          <div className="space-y-3">
+                            <img
+                              src={URL.createObjectURL(imageFile)}
+                              alt="Preview"
+                              className="max-h-48 mx-auto rounded-lg object-cover"
+                            />
+                            <p className="text-sm text-muted-foreground">{imageFile.name}</p>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setImageFile(null);
+                              }}
+                            >
+                              <X className="w-4 h-4 mr-1" />
+                              Remove
+                            </Button>
+                          </div>
+                        ) : editingPost?.featured_image_url ? (
+                          <div className="space-y-3">
+                            <img
+                              src={editingPost.featured_image_url}
+                              alt="Current"
+                              className="max-h-48 mx-auto rounded-lg object-cover"
+                            />
+                            <p className="text-sm text-muted-foreground">Current image (drop new image to replace)</p>
+                          </div>
+                        ) : (
+                          <div className="space-y-3">
+                            <ImagePlus className="w-12 h-12 mx-auto text-muted-foreground" />
+                            <div>
+                              <p className="text-foreground font-medium">Drop image here or click to upload</p>
+                              <p className="text-sm text-muted-foreground">PNG, JPG, GIF up to 10MB</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     <div>
