@@ -38,9 +38,9 @@ const services = [
       "Regular sales updates and reporting",
       "Higher returns for valuable items",
     ],
-    cta: "Learn More",
-    ctaLink: "/contact",
-    external: false,
+    cta: "Visit Our eBay Store",
+    ctaLink: "https://www.ebay.com/str/dbilleraenterprises",
+    external: true,
   },
   {
     id: "business",
