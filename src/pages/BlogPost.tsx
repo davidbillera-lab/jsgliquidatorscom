@@ -104,28 +104,37 @@ const BlogPost = () => {
               </div>
             </header>
 
-            {post.featured_image_url && (
-              <div className="rounded-xl overflow-hidden mb-8">
-                <img
-                  src={post.featured_image_url}
-                  alt={post.title}
-                  className="w-full h-auto"
-                />
-              </div>
-            )}
-
             {(() => {
+              // Check if content already contains the featured image to avoid duplicates
+              const contentHasFeaturedImage = post.featured_image_url && 
+                post.content.includes(post.featured_image_url);
+              
+              // Only show standalone featured image if it's not already in content
+              const showStandaloneFeaturedImage = post.featured_image_url && !contentHasFeaturedImage;
+              
               const sanitizedContent = DOMPurify.sanitize(post.content, {
                 ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
                                'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'],
-                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'class', 'id'],
+                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'class', 'id', 'style'],
                 ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
               });
+              
               return (
-                <div
-                  className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground"
-                  dangerouslySetInnerHTML={{ __html: sanitizedContent }}
-                />
+                <>
+                  {showStandaloneFeaturedImage && (
+                    <div className="rounded-xl overflow-hidden mb-8">
+                      <img
+                        src={post.featured_image_url}
+                        alt={post.title}
+                        className="w-full h-auto"
+                      />
+                    </div>
+                  )}
+                  <div
+                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-img:rounded-xl prose-img:my-8"
+                    dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+                  />
+                </>
               );
             })()}
           </motion.div>
