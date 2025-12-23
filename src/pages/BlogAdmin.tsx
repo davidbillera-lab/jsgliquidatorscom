@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -134,6 +134,32 @@ const BlogAdmin = () => {
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/admin-auth");
+  };
+
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleGeneratePost = async () => {
+    setIsGenerating(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-blog-post", {
+        body: {},
+      });
+
+      if (error) throw error;
+
+      if (data?.success) {
+        toast.success(`Draft created: "${data.post.title}"`);
+        queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
+      } else {
+        throw new Error(data?.error || "Failed to generate post");
+      }
+    } catch (error) {
+      console.error("Error generating post:", error);
+      const errorMessage = error instanceof Error ? error.message : "Failed to generate post";
+      toast.error(errorMessage);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const { data: posts, isLoading } = useQuery({
@@ -363,6 +389,14 @@ const BlogAdmin = () => {
                 </p>
               </div>
               <div className="flex items-center gap-3">
+                <Button 
+                  variant="secondary" 
+                  onClick={handleGeneratePost}
+                  disabled={isGenerating}
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  {isGenerating ? "Generating..." : "AI Generate"}
+                </Button>
                 <Button variant="outline" onClick={handleLogout}>
                   <LogOut className="w-4 h-4 mr-2" />
                   Logout
