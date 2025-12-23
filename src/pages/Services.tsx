@@ -180,14 +180,19 @@ const Services = () => {
 
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                     {service.auctionLinks ? (
-                      service.auctionLinks.map((link) => (
-                        <Button key={link.label} asChild variant="accent" size="lg">
-                          <a href={link.url} target="_blank" rel="noopener noreferrer">
-                            {link.label}
-                            <ArrowRight className="w-4 h-4" />
-                          </a>
-                        </Button>
-                      ))
+                      <div className="w-full flex flex-col gap-3">
+                        <span className="text-sm font-medium text-muted-foreground">View Our Auctions</span>
+                        <div className="flex flex-col sm:flex-row gap-4">
+                          {service.auctionLinks.map((link) => (
+                            <Button key={link.label} asChild variant="accent" size="lg">
+                              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                                {link.label}
+                                <ArrowRight className="w-4 h-4" />
+                              </a>
+                            </Button>
+                          ))}
+                        </div>
+                      </div>
                     ) : service.external ? (
                       <Button asChild variant="accent" size="lg">
                         <a href={service.ctaLink} target="_blank" rel="noopener noreferrer">
