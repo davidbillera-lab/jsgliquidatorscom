@@ -82,16 +82,17 @@ The company offers:
 
 Write in a warm, professional tone. Include practical tips and insights. The blog posts should be informative and helpful, not overly salesy.
 
-IMPORTANT: Return your response as valid JSON with exactly this structure:
-{
-  "title": "The blog post title",
-  "excerpt": "A 1-2 sentence summary for preview cards",
-  "content": "The full HTML content of the blog post with proper HTML tags like <p>, <h2>, <ul>, <li>, etc."
-}`
+Format your response EXACTLY like this, with no code blocks or extra formatting:
+TITLE: Your blog post title here
+EXCERPT: A 1-2 sentence summary for preview cards
+CONTENT:
+<p>Your HTML content starts here...</p>
+<h2>Section heading</h2>
+<p>More content...</p>`
           },
           {
             role: "user",
-            content: `Write a blog post about: ${topic}. Make it approximately 600-800 words. Use HTML formatting for the content with paragraphs, headings, and lists where appropriate.`
+            content: `Write a blog post about: ${topic}. Make it approximately 600-800 words. Use HTML formatting for the content with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate.`
           }
         ],
       }),
@@ -126,20 +127,47 @@ IMPORTANT: Return your response as valid JSON with exactly this structure:
 
     console.log("Raw AI response:", generatedText);
 
-    // Parse the JSON response
+    // Parse the structured response
     let blogData;
     try {
-      // Try to extract JSON from the response (handle potential markdown code blocks)
-      let jsonStr = generatedText;
-      if (generatedText.includes("```json")) {
-        jsonStr = generatedText.split("```json")[1].split("```")[0].trim();
-      } else if (generatedText.includes("```")) {
-        jsonStr = generatedText.split("```")[1].split("```")[0].trim();
+      // Parse the TITLE/EXCERPT/CONTENT format
+      const titleMatch = generatedText.match(/TITLE:\s*(.+?)(?:\n|EXCERPT:)/s);
+      const excerptMatch = generatedText.match(/EXCERPT:\s*(.+?)(?:\n|CONTENT:)/s);
+      const contentMatch = generatedText.match(/CONTENT:\s*([\s\S]+)$/);
+
+      if (titleMatch && excerptMatch && contentMatch) {
+        blogData = {
+          title: titleMatch[1].trim(),
+          excerpt: excerptMatch[1].trim(),
+          content: contentMatch[1].trim()
+        };
+      } else {
+        // Fallback: try to extract sensible content
+        console.log("Could not parse structured format, using fallback");
+        blogData = {
+          title: topic,
+          excerpt: `Learn about ${topic.toLowerCase()} from the experts at JSG Liquidators.`,
+          content: generatedText
+            .replace(/```json[\s\S]*?```/g, '') // Remove JSON code blocks
+            .replace(/```[\s\S]*?```/g, '') // Remove other code blocks
+            .replace(/^[\s\S]*?<p>/m, '<p>') // Start from first paragraph
+            .trim()
+        };
+        
+        // If content still looks like JSON, extract the actual content
+        if (blogData.content.includes('"content"')) {
+          try {
+            const jsonMatch = blogData.content.match(/"content"\s*:\s*"([\s\S]*?)"\s*[,}]/);
+            if (jsonMatch) {
+              blogData.content = jsonMatch[1].replace(/\\n/g, '\n').replace(/\\"/g, '"');
+            }
+          } catch (e) {
+            console.log("Could not extract content from JSON");
+          }
+        }
       }
-      blogData = JSON.parse(jsonStr);
     } catch (parseError) {
-      console.error("Failed to parse AI response as JSON:", parseError);
-      // Fallback: use the raw content
+      console.error("Failed to parse AI response:", parseError);
       blogData = {
         title: topic,
         excerpt: `Learn about ${topic.toLowerCase()} from the experts at JSG Liquidators.`,
