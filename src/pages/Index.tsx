@@ -147,6 +147,12 @@ const Index = () => {
                   David (805) 444-4069
                 </a>
               </Button>
+              <Button asChild variant="heroOutline" size="xl">
+                <a href="tel:805-340-4817">
+                  <Phone className="w-5 h-5" />
+                  Vinnie (805) 340-4817
+                </a>
+              </Button>
             </motion.div>
 
             <motion.div
@@ -304,6 +310,13 @@ const Index = () => {
                   >
                     <Phone className="w-6 h-6" />
                     David (805) 444-4069
+                  </a>
+                  <a
+                    href="tel:805-340-4817"
+                    className="flex items-center gap-3 text-lg font-semibold hover:text-accent transition-colors"
+                  >
+                    <Phone className="w-6 h-6" />
+                    Vinnie (805) 340-4817
                   </a>
                   <Button asChild variant="hero" size="lg" className="w-full">
                     <Link to="/contact">Request Free Consultation</Link>
