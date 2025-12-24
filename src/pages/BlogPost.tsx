@@ -126,12 +126,13 @@ const BlogPost = () => {
                       <img
                         src={post.featured_image_url}
                         alt={post.title}
-                        className="w-full h-auto"
+                        className="w-full h-auto max-w-full object-cover"
+                        loading="lazy"
                       />
                     </div>
                   )}
                   <div
-                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-img:rounded-xl prose-img:my-8"
+                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-img:rounded-xl prose-img:my-8 prose-img:w-full prose-img:max-w-full prose-img:h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:!h-auto [&_img]:object-cover"
                     dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                   />
                 </>
