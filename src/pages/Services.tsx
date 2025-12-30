@@ -24,7 +24,7 @@ const services = [
     ctaLink: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     external: true,
     auctionLinks: [
-      { label: "LiveAuctioneers", url: "https://www.liveauctioneers.com/auctioneer/10647/jsg-estate-liquidation/" },
+      { label: "LiveAuctioneers", url: "https://jsg-liquidators.liveauctioneers.com/" },
       { label: "Denver Online Auctions", url: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation" },
     ],
   },
