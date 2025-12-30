@@ -8,7 +8,7 @@ const auctionPlatforms = [
   {
     name: "LiveAuctioneers",
     description: "Browse our curated estate collections featuring antiques, fine art, jewelry, and collectibles. Bid from anywhere in the world with real-time online auctions.",
-    url: "https://jsg-liquidators.liveauctioneers.com/",
+    url: "https://www.liveauctioneers.com/en-gb/catalog/400388_eclectic-mix-of-collectibles-and-more/",
     features: ["Live bidding", "Worldwide shipping", "Buyer protection", "Expert authentication"],
     icon: Gavel,
   },
@@ -159,7 +159,7 @@ const Auctions = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="secondary" size="lg">
-                <a href="https://jsg-liquidators.liveauctioneers.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.liveauctioneers.com/en-gb/catalog/400388_eclectic-mix-of-collectibles-and-more/" target="_blank" rel="noopener noreferrer">
                   LiveAuctioneers
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </a>
