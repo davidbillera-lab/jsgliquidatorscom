@@ -14,8 +14,16 @@ import {
   Leaf,
   MapPin,
   Clock,
-  Star
+  Star,
+  Users,
+  HelpCircle
 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import whyWorkHero from "@/assets/why-work-hero.jpg";
 import whyWorkAppraisal from "@/assets/why-work-appraisal.jpg";
 import whyWorkAuction from "@/assets/why-work-auction.jpg";
@@ -93,6 +101,33 @@ const WhyWorkWithUs = () => {
     { quote: "I called six different junk removal companies. JSG was the only one that offered to auction valuable items instead of throwing everything away. Smart business model.", author: "Linda T.", location: "Westminster" }
   ];
 
+  const faqs = [
+    {
+      question: "Do you do hoarder clean outs in Denver?",
+      answer: "Yes, we specialize in hoarder clean outs throughout the Denver metro area. Our compassionate, non-judgmental team has experience handling extreme clutter situations with discretion. We systematically sort through all items, rescue valuables for auction, and coordinate proper disposal and cleaning services."
+    },
+    {
+      question: "What items are best for auction during an estate clean out?",
+      answer: "The best items for auction include antique furniture, vintage jewelry, fine art, collectibles (coins, stamps, sports memorabilia), mid-century modern pieces, sterling silver, quality tools, musical instruments, vintage electronics, designer items, and specialty sporting equipment. Our appraisers often find hidden value in items families overlook."
+    },
+    {
+      question: "How quickly can you schedule a Denver estate clean out?",
+      answer: "We offer same-day consultations and can often begin work within 48-72 hours for urgent situations. Emergency clean outs for real estate closings, evictions, or time-sensitive estates are accommodated whenever possible. Contact us to discuss your timeline."
+    },
+    {
+      question: "Do you serve areas outside of Denver?",
+      answer: "Absolutely! While Denver is our primary service area, we regularly serve the entire Front Range including Colorado Springs, Fort Collins, Boulder, and all surrounding communities. Travel accommodations are available for larger estates throughout Colorado."
+    },
+    {
+      question: "What happens to items that don't sell at auction?",
+      answer: "Items that don't sell or aren't suitable for auction are handled responsibly. We coordinate donations to local charities, arrange recycling for appropriate materials, and only dispose of items that truly have no remaining value. Our goal is to minimize landfill waste."
+    },
+    {
+      question: "Is there really no upfront cost for your junk removal service?",
+      answer: "Correct! Unlike traditional junk removal companies that charge flat fees upfront, our revenue-sharing model means you often pay nothing out-of-pocket. We identify valuable items during the clean out, auction them, and apply proceeds to your removal costs. Many clients end up with money back."
+    }
+  ];
+
   return (
     <Layout>
       <SEOHead
@@ -106,7 +141,7 @@ const WhyWorkWithUs = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={whyWorkHero} 
-            alt="Professional estate clean out team sorting valuable items in Denver Colorado home"
+            alt="Denver estate clean out and junk removal team sorting antiques and valuables for auction in Colorado home"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
@@ -174,7 +209,7 @@ const WhyWorkWithUs = () => {
       <section className="relative h-64 md:h-80 lg:h-96">
         <img 
           src={whyWorkAppraisal} 
-          alt="Estate appraisers examining valuable antiques and collectibles during Denver estate clean out"
+          alt="Professional estate liquidation appraisers evaluating antiques jewelry and collectibles during Denver junk removal service"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
@@ -291,7 +326,7 @@ const WhyWorkWithUs = () => {
       <section className="relative h-64 md:h-80 lg:h-96">
         <img 
           src={whyWorkAuction} 
-          alt="Online estate auction platform showing valuable items with professional photography"
+          alt="Colorado estate sale online auction platform displaying vintage furniture antiques and collectibles from Denver clean outs"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
@@ -336,7 +371,7 @@ const WhyWorkWithUs = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={whyWorkColorado} 
-            alt="Denver Colorado metro area homes and Rocky Mountain communities we serve"
+            alt="Estate clean out and junk removal service areas across Denver metro Boulder Fort Collins Colorado Springs and Front Range communities"
             className="w-full h-full object-cover opacity-20"
           />
         </div>
@@ -446,6 +481,88 @@ const WhyWorkWithUs = () => {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Meet Our Team Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              Meet the JSG Estate Liquidators Team
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              We're a Denver-based family business with deep roots in Colorado's estate sale and auction community. Our team combines decades of experience in antique appraisal, auction management, and compassionate customer service.
+            </p>
+            <p className="text-foreground/90 mb-4">
+              Every member of our crew understands that estate clean outs are more than just a job—they're about helping families through significant life transitions. Whether you're downsizing, handling a loved one's estate, or clearing a property for sale, we approach each project with respect, professionalism, and genuine care.
+            </p>
+            <p className="text-muted-foreground">
+              Our appraisers have handled everything from rare coin collections to vintage automobiles, and our removal teams are trained to protect both your property and the items we're cataloging. We're not just a junk removal company—we're your partners in turning overwhelming situations into positive outcomes.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <HelpCircle className="w-12 h-12 text-primary mx-auto mb-4" />
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Common questions about our Denver estate clean out, junk removal, and auction services
+            </p>
+          </motion.div>
+
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`faq-${index}`}>
+                  <AccordionTrigger className="text-left text-foreground hover:text-primary">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+
+        {/* FAQ Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqs.map(faq => ({
+                "@type": "Question",
+                "name": faq.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": faq.answer
+                }
+              }))
+            })
+          }}
+        />
       </section>
 
       {/* CTA Section */}
