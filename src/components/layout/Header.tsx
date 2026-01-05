@@ -7,6 +7,7 @@ import logoLandscape from "@/assets/logo-landscape.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
+  { name: "Why Us", href: "/why-work-with-us" },
   { name: "Services", href: "/services" },
   { name: "Auctions", href: "/auctions" },
   { name: "Testimonials", href: "/testimonials" },
