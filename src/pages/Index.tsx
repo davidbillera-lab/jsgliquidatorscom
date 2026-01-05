@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Star, CheckCircle2, Gavel, ShoppingCart, Building2, Trash2, Truck, MapPin, Quote } from "lucide-react";
+import { ArrowRight, Phone, Star, CheckCircle2, Gavel, ShoppingCart, Building2, Trash2, Truck, MapPin, Quote, Recycle, Home, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
@@ -82,7 +82,7 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="Home"
-        description="JSG Liquidators - Colorado's trusted estate liquidation experts. Estate sale auctions, consignment, business liquidation & cleanout services in Denver, Highlands Ranch, Castle Rock. Auction proceeds can offset your costs."
+        description="Denver's trusted estate sale company & junk removal service. Online estate auctions, estate cleanouts, and business liquidation in Highlands Ranch, Castle Rock & Colorado Front Range. Auction proceeds can offset your costs."
         canonical="/"
       />
 
@@ -91,7 +91,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
-            alt="Professional estate sale with antique furniture and collectibles in Colorado"
+            alt="Professional estate sale auction with antique furniture, collectibles, and valuables being liquidated in Denver Colorado"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
@@ -239,6 +239,249 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Estate Cleanout Section */}
+      <section className="py-20 lg:py-28 bg-muted">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-accent font-medium text-sm uppercase tracking-wider">Full-Service Property Clearing</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-6">
+                Estate Clean Out Services in Denver
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                When you're facing the overwhelming task of clearing out a loved one's home or preparing a property for sale, 
+                JSG Liquidators provides compassionate, efficient estate cleanout services throughout the Denver Metro Area and Colorado Front Range.
+              </p>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                Unlike traditional estate cleanout companies that charge flat fees regardless of item value, our unique 
+                auction-backed model means we first identify and sell valuable items—potentially offsetting or even covering 
+                your cleanout costs entirely. It's a smarter approach to estate transitions.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  { icon: Home, text: "Complete home clearing" },
+                  { icon: DollarSign, text: "Auction proceeds offset costs" },
+                  { icon: Recycle, text: "Eco-friendly disposal" },
+                  { icon: Truck, text: "Same-week service available" },
+                ].map((item) => (
+                  <div key={item.text} className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="text-foreground font-medium">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg">
+                  <Link to="/services#cleanout">
+                    Learn About Cleanouts
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link to="/blog/estate-liquidation-guide-everything-you-need-to-know">
+                    Read Our Complete Guide
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <img
+                src="/blog-images/estate-liquidation-workflow.webp"
+                alt="Professional estate cleanout service sorting items in a Denver Colorado home"
+                className="rounded-2xl shadow-xl w-full"
+              />
+              <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-6 shadow-lg border border-border max-w-xs">
+                <p className="text-sm text-muted-foreground mb-2">Serving Colorado</p>
+                <p className="font-display font-bold text-foreground">Highlands Ranch • Denver • Castle Rock • Littleton</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Junk Removal Section */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="order-2 lg:order-1 relative"
+            >
+              <img
+                src="/blog-images/estate-liquidation-sorting.webp"
+                alt="Junk removal and donation sorting services in Colorado - items being organized for recycling and charity"
+                className="rounded-2xl shadow-xl w-full"
+              />
+              <div className="absolute -top-6 -right-6 bg-accent rounded-xl p-6 shadow-lg max-w-xs">
+                <p className="font-display font-bold text-accent-foreground text-lg">Eco-Friendly Approach</p>
+                <p className="text-accent-foreground/80 text-sm">We donate usable items and recycle whenever possible</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+              className="order-1 lg:order-2"
+            >
+              <span className="text-accent font-medium text-sm uppercase tracking-wider">Responsible Disposal</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-6">
+                Junk Removal Company Colorado
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Need to clear out unwanted items quickly and responsibly? Our junk removal services handle everything from 
+                furniture and appliances to garage cleanouts and yard waste throughout the Denver metro area.
+              </p>
+              
+              <h3 className="text-xl font-display font-semibold text-foreground mb-4">
+                What Makes Our Junk Removal Different?
+              </h3>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                Before we haul anything away, we assess items for potential auction value. That vintage dresser you thought 
+                was junk? It might sell for hundreds at auction. Our process ensures you don't accidentally throw away money—and 
+                any proceeds help reduce your removal costs.
+              </p>
+              
+              <div className="space-y-3 mb-8">
+                {[
+                  "Same-day and next-day pickup available",
+                  "Furniture, appliances, electronics, and more",
+                  "Donation coordination with local charities",
+                  "Responsible recycling and disposal",
+                  "Competitive pricing with potential auction offsets",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Button asChild size="lg">
+                <Link to="/services#junk">
+                  Get Junk Removal Quote
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Auction-Backed Model Section */}
+      <section className="py-20 lg:py-28 bg-primary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">Our Unique Approach</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary-foreground mt-2 mb-6">
+              The Auction-Backed Liquidation Model
+            </h2>
+            <p className="text-xl text-primary-foreground/80 mb-12 leading-relaxed">
+              Most estate sale companies and junk removal services charge flat fees. We do things differently. 
+              By selling valuable items through our online auction platform first, the proceeds can significantly 
+              reduce—or even eliminate—your out-of-pocket costs.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            {[
+              {
+                step: "1",
+                title: "Free Evaluation",
+                description: "We visit your property and identify items with auction value—antiques, collectibles, furniture, and more.",
+              },
+              {
+                step: "2",
+                title: "Online Auction",
+                description: "Valuable items are professionally photographed and listed on our auction platforms, reaching buyers nationwide.",
+              },
+              {
+                step: "3",
+                title: "Cleanout & Offset",
+                description: "Auction proceeds are applied to your cleanout costs. Many clients end up paying little to nothing.",
+              },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                variants={fadeInUp}
+                transition={{ duration: 0.5 }}
+                className="bg-primary-foreground/10 backdrop-blur rounded-xl p-8 text-center"
+              >
+                <div className="w-12 h-12 rounded-full bg-accent text-accent-foreground font-bold text-xl flex items-center justify-center mx-auto mb-6">
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-display font-semibold text-primary-foreground mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-primary-foreground/70 leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center mt-12"
+          >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild variant="hero" size="lg">
+                <Link to="/contact">
+                  Get Your Free Evaluation
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="heroOutline" size="lg">
+                <Link to="/blog/colorado-downsizing-guide-simplify-your-transition">
+                  Read: Downsizing in Colorado
+                </Link>
+              </Button>
+            </div>
           </motion.div>
         </div>
       </section>
