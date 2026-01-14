@@ -82,8 +82,9 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="Home"
-        description="Denver's trusted estate sale company & junk removal service. Online estate auctions, estate cleanouts, and business liquidation in Highlands Ranch, Castle Rock & Colorado Front Range. Auction proceeds can offset your costs."
+        description="Denver's #1 estate sale company & estate liquidation experts. Professional estate sales, business liquidation, junk removal, and e-commerce consignment throughout Colorado. Online auctions offset your costs. Free consultations."
         canonical="/"
+        keywords="estate sales Denver, estate liquidation Denver CO, business liquidation Colorado, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout services, online auctions Denver, estate sale company Colorado"
       />
 
       {/* Hero Section */}

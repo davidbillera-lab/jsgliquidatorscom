@@ -9,18 +9,18 @@ const services = [
   {
     id: "auctions",
     icon: Gavel,
-    title: "Estate Sale Auctions",
-    tagline: "Reach thousands of buyers nationwide",
-    description: "Our online auction platform connects your estate with a vast network of collectors, dealers, and buyers from across the country. We handle everything from cataloging and photography to marketing and sales.",
+    title: "Estate Sales & Online Auctions",
+    tagline: "Denver's Premier Estate Sale Company",
+    description: "Looking for estate sales in Denver? Our professional online estate auction platform connects your estate with thousands of collectors, dealers, and buyers nationwide. We handle complete estate sales from cataloging and photography to marketing—maximizing your returns on antiques, collectibles, and household items.",
     features: [
-      "Professional photography and item descriptions",
+      "Professional estate sale photography and item descriptions",
       "Strategic marketing to targeted buyer groups",
-      "Competitive bidding drives up prices",
+      "Competitive bidding drives up estate sale prices",
       "Secure payment processing and buyer verification",
       "Complete transparency with detailed sales reports",
-      "Items sold within 7-10 days typically",
+      "Estate items sold within 7-10 days typically",
     ],
-    cta: "View Our Auctions",
+    cta: "View Our Estate Auctions",
     ctaLink: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     external: true,
     auctionLinks: [
@@ -31,16 +31,16 @@ const services = [
   {
     id: "consignment",
     icon: ShoppingCart,
-    title: "E-Commerce Consignment",
-    tagline: "Maximize value for high-end items",
-    description: "For valuable antiques, collectibles, and specialty items, our consignment service leverages major online marketplaces to reach the right buyers and achieve premium prices.",
+    title: "E-Commerce Consignment Services",
+    tagline: "Colorado's Trusted Online Consignment Partner",
+    description: "Our e-commerce consignment service turns your valuable antiques, collectibles, and specialty items into cash. We leverage major online marketplaces like eBay, Etsy, and specialty auction sites to reach buyers worldwide and achieve premium prices—with no upfront costs to you.",
     features: [
-      "Expert valuation and pricing strategy",
+      "Expert valuation and e-commerce pricing strategy",
       "Professional listings on eBay, Etsy, and specialty sites",
-      "Quality photography and detailed descriptions",
-      "Secure packaging and shipping handled",
-      "Regular sales updates and reporting",
-      "Higher returns for valuable items",
+      "High-quality photography and detailed descriptions",
+      "Secure packaging and worldwide shipping handled",
+      "Regular sales updates and transparent reporting",
+      "Higher returns for valuable consignment items",
     ],
     cta: "Visit Our eBay Store",
     ctaLink: "https://ebay.us/m/tsG4b9",
@@ -49,52 +49,54 @@ const services = [
   {
     id: "business",
     icon: Building2,
-    title: "Business Liquidation",
-    tagline: "Complete asset recovery solutions",
-    description: "Whether you're closing, relocating, or downsizing, we provide comprehensive business liquidation services that maximize asset recovery while minimizing your involvement.",
+    title: "Business Liquidation Services Denver",
+    tagline: "Complete Commercial Asset Recovery in Colorado",
+    description: "Need business liquidation in Denver or Colorado? Whether you're closing, relocating, or downsizing your business, we provide comprehensive business liquidation services that maximize asset recovery. From office furniture to industrial equipment, our auction platform reaches buyers who pay top dollar.",
     features: [
-      "Full inventory assessment and valuation",
+      "Full business inventory assessment and valuation",
       "Office furniture and equipment liquidation",
-      "Restaurant and retail fixture sales",
-      "Industrial equipment and machinery",
-      "Coordinated removal and site clearing",
-      "Tax documentation and asset tracking",
+      "Restaurant and retail fixture liquidation sales",
+      "Industrial equipment and machinery auctions",
+      "Coordinated removal and commercial site clearing",
+      "Tax documentation and business asset tracking",
     ],
-    cta: "Get Business Quote",
+    cta: "Get Business Liquidation Quote",
     ctaLink: "/contact",
     external: false,
   },
   {
     id: "cleanout",
     icon: Trash2,
-    title: "Estate Cleanout",
-    tagline: "Prepare properties for sale or transition",
-    description: "Our complete estate cleanout service handles everything from sorting and organizing to removal and cleaning, leaving properties ready for sale or the next chapter.",
+    title: "Estate Cleanout Services Denver",
+    tagline: "Full-Service Property Clearing in Colorado",
+    description: "Our complete estate cleanout service in Denver handles everything from sorting and organizing belongings to removal and cleaning. We prepare properties for sale or transition—and identify valuable items for auction to offset your cleanout costs.",
     features: [
-      "Complete property clearing",
-      "Sorting and organizing belongings",
-      "Donation coordination to local charities",
-      "Proper disposal of unwanted items",
-      "Deep cleaning available",
+      "Complete estate property clearing",
+      "Professional sorting and organizing belongings",
+      "Donation coordination to local Denver charities",
+      "Proper disposal of unwanted estate items",
+      "Deep cleaning services available",
       "Quick turnaround to meet your timeline",
     ],
-    cta: "Schedule Cleanout",
+    cta: "Schedule Estate Cleanout",
     ctaLink: "/contact",
     external: false,
   },
   {
     id: "junk",
     icon: Truck,
-    title: "Junk Removal",
-    tagline: "Eco-friendly removal services",
-    description: "Fast, efficient junk removal with a focus on responsible disposal. We identify items of value that can be auctioned off to potentially offset your upfront costs. We recycle and donate whenever possible, ensuring minimal environmental impact.",
+    title: "Junk Removal Company Denver Colorado",
+    tagline: "Eco-Friendly Junk Removal with Revenue Recovery",
+    description: "Looking for junk removal in Denver? Unlike typical junk haulers, we identify valuable items during removal and auction them—often covering your junk removal costs entirely. Fast, eco-friendly junk removal with donation coordination and responsible recycling throughout the Denver metro area.",
     features: [
-      "We identify valuable items to auction and offset costs",
-      "Transparent pricing with no hidden fees",
-      "Heavy item and appliance removal",
+      "Auction valuable items to offset junk removal costs",
+      "Transparent junk removal pricing with no hidden fees",
+      "Heavy item, furniture, and appliance removal",
       "Recycling and donation coordination",
+      "Same-day and next-day junk pickup available",
+      "Serving Denver, Aurora, Lakewood, and all of Colorado",
     ],
-    cta: "Get Removal Quote",
+    cta: "Get Junk Removal Quote",
     ctaLink: "/contact",
     external: false,
   },
@@ -109,9 +111,10 @@ const Services = () => {
   return (
     <Layout>
       <SEOHead
-        title="Estate Liquidation Services"
-        description="Complete estate liquidation services in Denver, CO. Estate sale auctions, e-commerce consignment, business liquidation, estate cleanout, and junk removal. Auction proceeds can offset your costs."
+        title="Estate Sales & Liquidation Services Denver"
+        description="Professional estate sales, estate liquidation, business liquidation, junk removal & e-commerce consignment in Denver CO. Online auction platform reaches thousands of buyers. Free consultations available."
         canonical="/services"
+        keywords="estate sales Denver, estate liquidation services Colorado, business liquidation Denver, junk removal company Denver, e-commerce consignment Colorado, estate sale auctions, online estate auctions"
       />
 
       {/* Hero */}
@@ -124,11 +127,11 @@ const Services = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6">
-              Our Liquidation Services
+              Estate Sales &amp; Liquidation Services in Denver, Colorado
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
-              From estate auctions to complete cleanouts, we offer comprehensive solutions 
-              tailored to your specific needs. Our auction services can help offset or even cover your costs.
+              Professional estate sales, estate liquidation, business liquidation, junk removal, and e-commerce consignment 
+              throughout Denver and Colorado. Our online auction platform reaches thousands of buyers—often offsetting or covering your costs entirely.
             </p>
             <Button asChild variant="hero" size="xl">
               <Link to="/contact">
