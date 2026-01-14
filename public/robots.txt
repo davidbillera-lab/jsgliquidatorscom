@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://jsgliquidatorscom.lovable.app/sitemap.xml
+Sitemap: https://jsgliquidators.com/sitemap.xml
