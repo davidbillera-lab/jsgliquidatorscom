@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Gavel, ShoppingCart, Building2, Trash2, Truck, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Phone, Gavel, ShoppingCart, Building2, Trash2, Truck, Home, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
@@ -61,6 +61,24 @@ const services = [
       "Tax documentation and business asset tracking",
     ],
     cta: "Get Business Liquidation Quote",
+    ctaLink: "/contact",
+    external: false,
+  },
+  {
+    id: "estate-cleanouts",
+    icon: Home,
+    title: "Estate Clean Outs",
+    tagline: "Comprehensive Estate Clearing Services in Colorado",
+    description: "When a loved one passes or you're managing a major life transition, dealing with an entire household can feel overwhelming. Our estate clean out service in Denver handles everything—from sorting through decades of belongings to coordinating auctions for valuable items. We treat every estate with respect and help you recoup costs through our auction platform.",
+    features: [
+      "Complete home and property clearing",
+      "Valuable item identification for auction",
+      "Sensitive handling of personal belongings",
+      "Coordination with family members and executors",
+      "Donation drop-off to local Colorado charities",
+      "Broom-clean property ready for sale or transition",
+    ],
+    cta: "Schedule Estate Clean Out",
     ctaLink: "/contact",
     external: false,
   },
