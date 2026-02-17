@@ -1,5 +1,18 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import DOMPurify from "https://esm.sh/isomorphic-dompurify@2.16.0";
+
+const ALLOWED_TAGS = ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+  'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'];
+const ALLOWED_ATTR = ['href', 'src', 'alt', 'title', 'target', 'class', 'id', 'style'];
+
+function sanitizeHtml(html: string): string {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS,
+    ALLOWED_ATTR,
+    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+  });
+}
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -397,7 +410,7 @@ CONTENT:
         title: blogData.title,
         slug: slug,
         excerpt: blogData.excerpt,
-        content: blogData.content,
+        content: sanitizeHtml(blogData.content),
         author: "Penny",
         published: shouldPublish,
         published_at: shouldPublish ? new Date().toISOString() : null,
