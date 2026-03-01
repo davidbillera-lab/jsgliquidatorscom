@@ -41,9 +41,10 @@ const Blog = () => {
   return (
     <Layout>
       <SEOHead
-        title="Blog"
-        description="Estate liquidation tips, auction insights, and helpful guides from JSG Liquidators. Learn about estate sales, antiques, and maximizing value in Colorado."
+        title="Blog - Estate Liquidation Tips & Insights"
+        description="Estate liquidation tips, auction insights, and helpful guides from JSG Liquidators Denver. Learn about estate sales, antiques, downsizing, and maximizing value in Colorado."
         canonical="/blog"
+        keywords="estate sale blog, estate liquidation tips Denver, auction guide Colorado, downsizing tips, antique valuation, estate sale advice, consignment tips"
       />
 
       {/* Hero Section */}

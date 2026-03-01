@@ -25,8 +25,11 @@ const Auctions = () => {
   return (
     <Layout>
       <SEOHead
-        title="Online Auctions | JSG Estate Liquidation"
-        description="Shop our online auctions for antiques, collectibles, furniture, and estate treasures. Bid on LiveAuctioneers or Denver Online Auctions."
+        title="Online Auctions | Estate Sale Bidding"
+        description="Shop JSG Liquidators online auctions for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on LiveAuctioneers or Denver Online Auctions."
+        canonical="/auctions"
+        keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, collectible auctions, LiveAuctioneers Denver, estate sale bidding"
+        image="https://jsgliquidators.com/hero-estate-sale.jpg"
       />
 
       {/* Hero Section */}

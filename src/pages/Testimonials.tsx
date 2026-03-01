@@ -58,8 +58,10 @@ const Testimonials = () => {
   return (
     <Layout>
       <SEOHead
-        title="Testimonials | What Our Clients Say"
-        description="Read reviews from satisfied clients about our estate sale, liquidation, and auction services. See why families trust us during difficult transitions."
+        title="Client Testimonials & Reviews"
+        description="Read reviews from satisfied clients about JSG Liquidators estate sale, liquidation, and auction services in Denver CO. See why Colorado families trust us."
+        canonical="/testimonials"
+        keywords="estate sale reviews Denver, estate liquidation testimonials, JSG Liquidators reviews, estate sale company reviews Colorado, junk removal reviews Denver"
       />
 
       {/* Hero Section */}

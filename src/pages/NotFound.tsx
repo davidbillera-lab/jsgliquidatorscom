@@ -19,6 +19,7 @@ const NotFound = () => {
         title="Page Not Found"
         description="The page you're looking for doesn't exist. Return to JSG Liquidators homepage."
         canonical="/404"
+        noindex={true}
       />
       
       <section className="min-h-[70vh] flex items-center justify-center py-20">
