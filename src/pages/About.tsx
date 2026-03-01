@@ -53,6 +53,7 @@ const About = () => {
         title="About Us"
         description="Learn about JSG Liquidators - Colorado's trusted estate liquidation company serving Denver, Highlands Ranch, Castle Rock, Englewood, and Littleton. Professional, compassionate service."
         canonical="/about"
+        keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado"
       />
 
       {/* Hero */}

@@ -134,6 +134,8 @@ const WhyWorkWithUs = () => {
         title="Why Work With Us | Denver Estate Clean Outs & Junk Removal"
         description="Denver's full-service estate clean outs, junk removal & auctions. Our unique auction-backed model often covers your removal costs and puts money back in your pocket."
         canonical="/why-work-with-us"
+        keywords="estate clean out Denver, junk removal Denver, estate liquidation Colorado, auction-backed clean out, hoarder clean out Denver, estate cleanout cost, junk removal company Colorado"
+        faqSchema={faqs}
       />
 
       {/* Hero Section */}

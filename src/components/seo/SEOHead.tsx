@@ -6,14 +6,18 @@ interface SEOHeadProps {
   canonical?: string;
   type?: "website" | "article";
   keywords?: string;
+  image?: string;
+  noindex?: boolean;
+  faqSchema?: Array<{ question: string; answer: string }>;
 }
 
-export const SEOHead = ({ title, description, canonical, type = "website", keywords }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema }: SEOHeadProps) => {
   const siteTitle = "JSG Liquidators | Estate Sales, Estate Liquidation & Junk Removal Denver Colorado";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators Denver CO`;
   const siteUrl = "https://jsgliquidators.com";
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const defaultKeywords = "estate sales Denver, estate liquidation Colorado, business liquidation Denver, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout Denver, online auctions Colorado";
+  const ogImage = image || `${siteUrl}/logo.png`;
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -93,12 +97,26 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     }
   };
 
+  const faqJsonLd = faqSchema && faqSchema.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqSchema.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords || defaultKeywords} />
       <link rel="canonical" href={canonicalUrl} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       
       {/* Open Graph */}
       <meta property="og:type" content={type} />
@@ -107,11 +125,13 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content="JSG Liquidators - Estate Sales & Liquidation Denver" />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:image" content={ogImage} />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
       
       {/* Geo */}
       <meta name="geo.region" content="US-CO" />
@@ -126,6 +146,13 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       <script type="application/ld+json">
         {JSON.stringify(serviceSchema)}
       </script>
+
+      {/* FAQ Schema */}
+      {faqJsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(faqJsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };
