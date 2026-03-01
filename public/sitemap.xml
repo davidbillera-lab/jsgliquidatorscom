@@ -38,9 +38,33 @@
   </url>
   <url>
     <loc>https://jsgliquidators.com/blog</loc>
-    <lastmod>2026-01-14</lastmod>
+    <lastmod>2026-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jsgliquidators.com/blog/ai-powered-smart-listings-ecommerce-consignment</loc>
+    <lastmod>2026-02-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jsgliquidators.com/blog/ai-driven-pricing-best-price-consigned-items</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jsgliquidators.com/blog/ai-powered-inventory-management-consignment</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://jsgliquidators.com/blog/ai-enhanced-buyer-experience-more-money-consignment</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jsgliquidators.com/contact</loc>
