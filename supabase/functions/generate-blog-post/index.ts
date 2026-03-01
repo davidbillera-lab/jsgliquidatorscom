@@ -1,17 +1,76 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import DOMPurify from "https://esm.sh/isomorphic-dompurify@2.16.0";
+import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.48/deno-dom-wasm.ts";
 
-const ALLOWED_TAGS = ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-  'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'];
-const ALLOWED_ATTR = ['href', 'src', 'alt', 'title', 'target', 'class', 'id', 'style'];
+const ALLOWED_TAGS = new Set(['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+  'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div']);
+const ALLOWED_ATTR: Record<string, Set<string>> = {
+  '*': new Set(['class', 'id', 'style', 'title']),
+  'a': new Set(['href', 'target']),
+  'img': new Set(['src', 'alt']),
+};
+
+function sanitizeNode(node: any): string {
+  if (node.nodeType === 3) return escapeHtml(node.textContent || '');
+  if (node.nodeType !== 1) return '';
+  
+  const tag = node.tagName.toLowerCase();
+  if (!ALLOWED_TAGS.has(tag)) {
+    // Strip tag but keep children
+    return Array.from(node.childNodes).map((c: any) => sanitizeNode(c)).join('');
+  }
+  
+  // Build allowed attributes
+  const attrs: string[] = [];
+  const globalAttrs = ALLOWED_ATTR['*'] || new Set();
+  const tagAttrs = ALLOWED_ATTR[tag] || new Set();
+  
+  for (const attr of Array.from(node.attributes) as any[]) {
+    const name = attr.name.toLowerCase();
+    if (globalAttrs.has(name) || tagAttrs.has(name)) {
+      let value = attr.value;
+      // Validate URLs for href/src
+      if ((name === 'href' || name === 'src') && !/^(?:https?:|mailto:|\/)/i.test(value)) {
+        continue;
+      }
+      // Block javascript: URIs
+      if ((name === 'href' || name === 'src') && /^\s*javascript:/i.test(value)) {
+        continue;
+      }
+      attrs.push(`${name}="${escapeAttr(value)}"`);
+    }
+  }
+  
+  const attrStr = attrs.length ? ' ' + attrs.join(' ') : '';
+  
+  // Self-closing tags
+  if (['br', 'img'].includes(tag)) {
+    return `<${tag}${attrStr} />`;
+  }
+  
+  const children = Array.from(node.childNodes).map((c: any) => sanitizeNode(c)).join('');
+  return `<${tag}${attrStr}>${children}</${tag}>`;
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function escapeAttr(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 function sanitizeHtml(html: string): string {
-  return DOMPurify.sanitize(html, {
-    ALLOWED_TAGS,
-    ALLOWED_ATTR,
-    ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
-  });
+  try {
+    const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
+    if (!doc) return escapeHtml(html);
+    const wrapper = doc.querySelector('div');
+    if (!wrapper) return escapeHtml(html);
+    return Array.from(wrapper.childNodes).map((c: any) => sanitizeNode(c)).join('');
+  } catch (e) {
+    console.error("Sanitization error, returning escaped HTML:", e);
+    return escapeHtml(html);
+  }
 }
 
 const corsHeaders = {
