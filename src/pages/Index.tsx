@@ -60,7 +60,16 @@ const testimonials = [
   },
 ];
 
-const serviceAreas = ["Highlands Ranch", "Denver", "Castle Rock", "Englewood", "Littleton"];
+const serviceAreas = [
+  { name: "Denver", slug: "denver" },
+  { name: "Aurora", slug: "aurora" },
+  { name: "Lakewood", slug: "lakewood" },
+  { name: "Highlands Ranch", slug: "highlands-ranch" },
+  { name: "Castle Rock", slug: "castle-rock" },
+  { name: "Englewood", slug: "englewood" },
+  { name: "Littleton", slug: "littleton" },
+  { name: "Colorado Springs", slug: "colorado-springs" },
+];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
