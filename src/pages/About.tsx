@@ -235,12 +235,12 @@ const About = () => {
           >
             {serviceAreas.map((area) => (
               <motion.div
-                key={area.name}
+                key={area.slug}
                 variants={fadeInUp}
                 transition={{ duration: 0.5 }}
                 className="bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
               >
-                <div className="flex items-start gap-4">
+                <Link to={`/areas/${area.slug}`} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-accent" />
                   </div>
@@ -248,11 +248,9 @@ const About = () => {
                     <h3 className="text-lg font-display font-semibold text-foreground mb-1">
                       {area.name}, CO
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {area.description}
-                    </p>
+                    <span className="text-sm text-primary font-medium">View services →</span>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
             <motion.div
