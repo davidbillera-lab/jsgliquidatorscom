@@ -6,11 +6,20 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 
 const serviceAreas = [
-  { name: "Highlands Ranch", description: "Serving families throughout Highlands Ranch and Douglas County" },
-  { name: "Denver", description: "Complete coverage of Denver metro neighborhoods" },
-  { name: "Castle Rock", description: "Expert service for Castle Rock and surrounding areas" },
-  { name: "Englewood", description: "Trusted partner for Englewood residents and businesses" },
-  { name: "Littleton", description: "Comprehensive service throughout Littleton" },
+  { name: "Denver", slug: "denver" },
+  { name: "Aurora", slug: "aurora" },
+  { name: "Lakewood", slug: "lakewood" },
+  { name: "Highlands Ranch", slug: "highlands-ranch" },
+  { name: "Castle Rock", slug: "castle-rock" },
+  { name: "Englewood", slug: "englewood" },
+  { name: "Littleton", slug: "littleton" },
+  { name: "Thornton", slug: "thornton" },
+  { name: "Westminster", slug: "westminster" },
+  { name: "Arvada", slug: "arvada" },
+  { name: "Centennial", slug: "centennial" },
+  { name: "Boulder", slug: "boulder" },
+  { name: "Fort Collins", slug: "fort-collins" },
+  { name: "Colorado Springs", slug: "colorado-springs" },
 ];
 
 const values = [
