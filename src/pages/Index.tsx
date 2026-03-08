@@ -174,9 +174,9 @@ const Index = () => {
               <MapPin className="w-4 h-4" />
               <span>Serving:</span>
               {serviceAreas.map((area, i) => (
-                <span key={area}>
-                  {area}{i < serviceAreas.length - 1 ? "," : ""}
-                </span>
+                <Link key={area.slug} to={`/areas/${area.slug}`} className="hover:text-accent underline-offset-2 hover:underline transition-colors">
+                  {area.name}{i < serviceAreas.length - 1 ? "," : ""}
+                </Link>
               ))}
               <span>& surrounding areas</span>
             </motion.div>
