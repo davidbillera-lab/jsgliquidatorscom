@@ -6,11 +6,20 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 
 const serviceAreas = [
-  { name: "Highlands Ranch", description: "Serving families throughout Highlands Ranch and Douglas County" },
-  { name: "Denver", description: "Complete coverage of Denver metro neighborhoods" },
-  { name: "Castle Rock", description: "Expert service for Castle Rock and surrounding areas" },
-  { name: "Englewood", description: "Trusted partner for Englewood residents and businesses" },
-  { name: "Littleton", description: "Comprehensive service throughout Littleton" },
+  { name: "Denver", slug: "denver" },
+  { name: "Aurora", slug: "aurora" },
+  { name: "Lakewood", slug: "lakewood" },
+  { name: "Highlands Ranch", slug: "highlands-ranch" },
+  { name: "Castle Rock", slug: "castle-rock" },
+  { name: "Englewood", slug: "englewood" },
+  { name: "Littleton", slug: "littleton" },
+  { name: "Thornton", slug: "thornton" },
+  { name: "Westminster", slug: "westminster" },
+  { name: "Arvada", slug: "arvada" },
+  { name: "Centennial", slug: "centennial" },
+  { name: "Boulder", slug: "boulder" },
+  { name: "Fort Collins", slug: "fort-collins" },
+  { name: "Colorado Springs", slug: "colorado-springs" },
 ];
 
 const values = [
@@ -226,12 +235,12 @@ const About = () => {
           >
             {serviceAreas.map((area) => (
               <motion.div
-                key={area.name}
+                key={area.slug}
                 variants={fadeInUp}
                 transition={{ duration: 0.5 }}
                 className="bg-card rounded-xl p-6 border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
               >
-                <div className="flex items-start gap-4">
+                <Link to={`/areas/${area.slug}`} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-accent" />
                   </div>
@@ -239,11 +248,9 @@ const About = () => {
                     <h3 className="text-lg font-display font-semibold text-foreground mb-1">
                       {area.name}, CO
                     </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {area.description}
-                    </p>
+                    <span className="text-sm text-primary font-medium">View services →</span>
                   </div>
-                </div>
+                </Link>
               </motion.div>
             ))}
             <motion.div

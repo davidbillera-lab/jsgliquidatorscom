@@ -2,7 +2,22 @@ import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 
-const serviceAreas = ["Highlands Ranch", "Denver", "Castle Rock", "Englewood", "Littleton"];
+const serviceAreaLinks = [
+  { name: "Denver", slug: "denver" },
+  { name: "Aurora", slug: "aurora" },
+  { name: "Lakewood", slug: "lakewood" },
+  { name: "Highlands Ranch", slug: "highlands-ranch" },
+  { name: "Castle Rock", slug: "castle-rock" },
+  { name: "Englewood", slug: "englewood" },
+  { name: "Littleton", slug: "littleton" },
+  { name: "Thornton", slug: "thornton" },
+  { name: "Westminster", slug: "westminster" },
+  { name: "Arvada", slug: "arvada" },
+  { name: "Centennial", slug: "centennial" },
+  { name: "Boulder", slug: "boulder" },
+  { name: "Fort Collins", slug: "fort-collins" },
+  { name: "Colorado Springs", slug: "colorado-springs" },
+];
 
 const services = [
   { name: "Estate Sale Auctions", href: "/services#auctions" },
@@ -57,13 +72,18 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             </ul>
           </div>
 
-          {/* Service Areas */}
+          {/* Service Areas - now with links */}
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Service Areas</h4>
-            <ul className="space-y-2">
-              {serviceAreas.map((area) => (
-                <li key={area} className="text-sm text-primary-foreground/80">
-                  {area}, CO
+            <ul className="space-y-1.5">
+              {serviceAreaLinks.map((area) => (
+                <li key={area.slug}>
+                  <Link
+                    to={`/areas/${area.slug}`}
+                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
+                  >
+                    {area.name}, CO
+                  </Link>
                 </li>
               ))}
             </ul>

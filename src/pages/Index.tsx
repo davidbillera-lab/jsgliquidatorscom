@@ -60,7 +60,16 @@ const testimonials = [
   },
 ];
 
-const serviceAreas = ["Highlands Ranch", "Denver", "Castle Rock", "Englewood", "Littleton"];
+const serviceAreas = [
+  { name: "Denver", slug: "denver" },
+  { name: "Aurora", slug: "aurora" },
+  { name: "Lakewood", slug: "lakewood" },
+  { name: "Highlands Ranch", slug: "highlands-ranch" },
+  { name: "Castle Rock", slug: "castle-rock" },
+  { name: "Englewood", slug: "englewood" },
+  { name: "Littleton", slug: "littleton" },
+  { name: "Colorado Springs", slug: "colorado-springs" },
+];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -165,9 +174,9 @@ const Index = () => {
               <MapPin className="w-4 h-4" />
               <span>Serving:</span>
               {serviceAreas.map((area, i) => (
-                <span key={area}>
-                  {area}{i < serviceAreas.length - 1 ? "," : ""}
-                </span>
+                <Link key={area.slug} to={`/areas/${area.slug}`} className="hover:text-accent underline-offset-2 hover:underline transition-colors">
+                  {area.name}{i < serviceAreas.length - 1 ? "," : ""}
+                </Link>
               ))}
               <span>& surrounding areas</span>
             </motion.div>
