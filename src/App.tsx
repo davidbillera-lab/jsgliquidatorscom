@@ -41,6 +41,7 @@ const App = () => (
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
             <Route path="/areas/:slug" element={<ServiceAreaPage />} />
+            <Route path="/areas/:slug/:serviceSlug" element={<ServiceLocationPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
