@@ -1,5 +1,16 @@
 import { Helmet } from "react-helmet-async";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface ReviewSchema {
+  author: string;
+  reviewBody: string;
+  ratingValue: number;
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -9,6 +20,9 @@ interface SEOHeadProps {
   image?: string;
   noindex?: boolean;
   faqSchema?: Array<{ question: string; answer: string }>;
+  breadcrumbs?: BreadcrumbItem[];
+  reviews?: ReviewSchema[];
+  aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
 export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema }: SEOHeadProps) => {
