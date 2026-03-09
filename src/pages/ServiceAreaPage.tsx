@@ -162,7 +162,7 @@ const ServiceAreaPage = () => {
               return (
                 <motion.div key={service.slug} variants={fadeInUp} transition={{ duration: 0.5 }}>
                   <Link
-                    to={`/services#${service.slug === "estate-sales" ? "auctions" : service.slug === "business-liquidation" ? "business" : service.slug === "estate-cleanouts" ? "estate-cleanouts" : service.slug === "junk-removal" ? "junk" : "consignment"}`}
+                    to={`/areas/${area.slug}/${service.slug}`}
                     className="group block h-full p-8 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
