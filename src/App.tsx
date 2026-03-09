@@ -16,6 +16,7 @@ import BlogAdmin from "./pages/BlogAdmin";
 import AdminAuth from "./pages/AdminAuth";
 import WhyWorkWithUs from "./pages/WhyWorkWithUs";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
+import ServiceLocationPage from "./pages/ServiceLocationPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
