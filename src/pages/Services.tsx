@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Gavel, ShoppingCart, Building2, Trash2, Truck, Home, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Phone, Gavel, ShoppingCart, Building2, Trash2, Truck, Home, CheckCircle2, HelpCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
