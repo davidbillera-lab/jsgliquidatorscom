@@ -282,6 +282,39 @@ const Services = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 lg:py-28 bg-muted/30">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <HelpCircle className="w-8 h-8 text-primary" />
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <Accordion type="single" collapsible className="space-y-4">
+              {servicesFaq.map((faq, index) => (
+                <AccordionItem key={index} value={`faq-${index}`} className="bg-background rounded-lg border border-border px-6">
+                  <AccordionTrigger className="text-left font-semibold text-foreground">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 lg:py-28 bg-primary">
         <div className="container mx-auto px-4 lg:px-8">
