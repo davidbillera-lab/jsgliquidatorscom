@@ -25,7 +25,7 @@ interface SEOHeadProps {
   aggregateRating?: { ratingValue: number; reviewCount: number };
 }
 
-export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating }: SEOHeadProps) => {
   const siteTitle = "JSG Liquidators | Estate Sales, Estate Liquidation & Junk Removal Denver Colorado";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators Denver CO`;
   const siteUrl = "https://jsgliquidators.com";
