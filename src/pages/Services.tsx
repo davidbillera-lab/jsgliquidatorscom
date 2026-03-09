@@ -125,6 +125,33 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
+const servicesFaq = [
+  {
+    question: "How much does an estate sale cost in Denver?",
+    answer: "JSG Liquidators typically works on a commission basis, meaning there are no upfront costs to you. We take a percentage of the total sales, so our interests are aligned with getting you the highest returns possible. Contact us for a free consultation and custom quote."
+  },
+  {
+    question: "How long does an estate liquidation take?",
+    answer: "Most estate liquidations take 7-14 days from initial consultation to completion. This includes cataloging, photography, online auction listing, and final cleanout. Larger estates or those with specialty collections may take slightly longer."
+  },
+  {
+    question: "What items sell best at estate sales?",
+    answer: "Antiques, vintage collectibles, fine art, jewelry, mid-century modern furniture, power tools, and specialty items like Western art and Native American pieces consistently bring strong prices at our Denver estate auctions."
+  },
+  {
+    question: "Do you handle junk removal after an estate sale?",
+    answer: "Yes! JSG Liquidators offers complete estate cleanout and junk removal services after every estate sale. We handle donation coordination, recycling, and responsible disposal—and we often find additional valuable items during removal that can be auctioned to offset your costs."
+  },
+  {
+    question: "What areas in Colorado do you serve?",
+    answer: "We serve the entire Denver metro area and beyond, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs."
+  },
+  {
+    question: "Can you sell items online through e-commerce consignment?",
+    answer: "Absolutely. Our e-commerce consignment service lists your valuable items on eBay, Etsy, LiveAuctioneers, and other specialty marketplaces. We handle photography, listing, shipping, and customer service—reaching buyers worldwide for premium prices."
+  },
+];
+
 const Services = () => {
   return (
     <Layout>
@@ -133,6 +160,11 @@ const Services = () => {
         description="Professional estate sales, estate liquidation, business liquidation, junk removal & e-commerce consignment in Denver CO. Online auction platform reaches thousands of buyers. Free consultations available."
         canonical="/services"
         keywords="estate sales Denver, estate liquidation services Colorado, business liquidation Denver, junk removal company Denver, e-commerce consignment Colorado, estate sale auctions, online estate auctions"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+        ]}
+        faqSchema={servicesFaq}
       />
 
       {/* Hero */}

@@ -55,6 +55,12 @@ const fadeInUp = {
 };
 
 const Testimonials = () => {
+  const reviewsSchema = testimonials.map(t => ({
+    author: t.name,
+    reviewBody: t.text,
+    ratingValue: t.rating,
+  }));
+
   return (
     <Layout>
       <SEOHead
@@ -62,6 +68,12 @@ const Testimonials = () => {
         description="Read reviews from satisfied clients about JSG Liquidators estate sale, liquidation, and auction services in Denver CO. See why Colorado families trust us."
         canonical="/testimonials"
         keywords="estate sale reviews Denver, estate liquidation testimonials, JSG Liquidators reviews, estate sale company reviews Colorado, junk removal reviews Denver"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Testimonials", url: "/testimonials" },
+        ]}
+        reviews={reviewsSchema}
+        aggregateRating={{ ratingValue: 5.0, reviewCount: testimonials.length }}
       />
 
       {/* Hero Section */}
