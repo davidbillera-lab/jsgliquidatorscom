@@ -124,6 +124,43 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     }))
   } : null;
 
+  const breadcrumbJsonLd = breadcrumbs && breadcrumbs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": `${siteUrl}${item.url}`
+    }))
+  } : null;
+
+  const reviewJsonLd = reviews && reviews.length > 0 && aggregateRating ? {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "JSG Liquidators",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": aggregateRating.ratingValue,
+      "reviewCount": aggregateRating.reviewCount,
+      "bestRating": 5,
+      "worstRating": 1
+    },
+    "review": reviews.map(review => ({
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": review.author
+      },
+      "reviewBody": review.reviewBody,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": review.ratingValue,
+        "bestRating": 5
+      }
+    }))
+  } : null;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -165,6 +202,20 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       {faqJsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(faqJsonLd)}
+        </script>
+      )}
+
+      {/* Breadcrumb Schema */}
+      {breadcrumbJsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd)}
+        </script>
+      )}
+
+      {/* Review/AggregateRating Schema */}
+      {reviewJsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(reviewJsonLd)}
         </script>
       )}
     </Helmet>
