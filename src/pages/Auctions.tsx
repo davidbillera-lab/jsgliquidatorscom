@@ -30,6 +30,10 @@ const Auctions = () => {
         canonical="/auctions"
         keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, collectible auctions, LiveAuctioneers Denver, estate sale bidding"
         image="https://jsgliquidators.com/hero-estate-sale.jpg"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Auctions", url: "/auctions" },
+        ]}
       />
 
       {/* Hero Section */}

@@ -45,6 +45,10 @@ const Blog = () => {
         description="Estate liquidation tips, auction insights, and helpful guides from JSG Liquidators Denver. Learn about estate sales, antiques, downsizing, and maximizing value in Colorado."
         canonical="/blog"
         keywords="estate sale blog, estate liquidation tips Denver, auction guide Colorado, downsizing tips, antique valuation, estate sale advice, consignment tips"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+        ]}
       />
 
       {/* Hero Section */}

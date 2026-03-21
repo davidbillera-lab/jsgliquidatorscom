@@ -64,10 +64,10 @@ const Testimonials = () => {
   return (
     <Layout>
       <SEOHead
-        title="Client Testimonials & Reviews"
-        description="Read reviews from satisfied clients about JSG Liquidators estate sale, liquidation, and auction services in Denver CO. See why Colorado families trust us."
+        title="Client Testimonials & Reviews Denver"
+        description="Read 5-star reviews from satisfied clients about JSG Liquidators estate sale, liquidation, junk removal, and auction services in Denver CO. See why Colorado families trust us."
         canonical="/testimonials"
-        keywords="estate sale reviews Denver, estate liquidation testimonials, JSG Liquidators reviews, estate sale company reviews Colorado, junk removal reviews Denver"
+        keywords="estate sale reviews Denver, estate liquidation testimonials Colorado, JSG Liquidators reviews, estate sale company reviews Denver CO, junk removal reviews Denver, estate cleanout reviews"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Testimonials", url: "/testimonials" },

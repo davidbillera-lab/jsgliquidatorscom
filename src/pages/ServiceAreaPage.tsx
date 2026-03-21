@@ -4,6 +4,7 @@ import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCa
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { Helmet } from "react-helmet-async";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 
 const fadeInUp = {
