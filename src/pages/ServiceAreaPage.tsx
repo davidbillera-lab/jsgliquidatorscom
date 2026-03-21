@@ -4,6 +4,7 @@ import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCa
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { Helmet } from "react-helmet-async";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 
 const fadeInUp = {
@@ -85,13 +86,17 @@ const ServiceAreaPage = () => {
         canonical={`/areas/${area.slug}`}
         keywords={area.metaKeywords}
         faqSchema={faqSchema}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: area.city, url: `/areas/${area.slug}` },
+        ]}
       />
 
-      {/* Inject local business schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
+        </script>
+      </Helmet>
 
       {/* Hero */}
       <section className="py-20 lg:py-28 bg-gradient-hero">

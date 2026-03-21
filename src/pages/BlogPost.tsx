@@ -68,7 +68,20 @@ const BlogPost = () => {
         "@id": `https://jsgliquidators.com/blog/${post.slug}`
       },
       "articleSection": "Estate Liquidation",
-      "keywords": "estate sale, liquidation, downsizing, consignment, estate planning, California"
+      "keywords": "estate sale Denver, estate liquidation Colorado, downsizing, consignment, auction, junk removal Denver"
+    };
+  };
+
+  const generateBreadcrumbSchema = () => {
+    if (!post) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsgliquidators.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsgliquidators.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://jsgliquidators.com/blog/${post.slug}` }
+      ]
     };
   };
 
@@ -100,6 +113,7 @@ const BlogPost = () => {
   }
 
   const articleSchema = generateArticleSchema();
+  const breadcrumbSchema = generateBreadcrumbSchema();
   const canonicalUrl = `https://jsgliquidators.com/blog/${post.slug}`;
   const metaDescription = post.excerpt || `Read ${post.title} on the JSG Liquidators blog.`;
 
@@ -115,6 +129,8 @@ const BlogPost = () => {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="JSG Liquidators - Estate Sales & Liquidation Denver" />
+        <meta property="og:locale" content="en_US" />
         {post.featured_image_url && <meta property="og:image" content={post.featured_image_url} />}
         <meta property="article:published_time" content={post.published_at || post.created_at} />
         <meta property="article:modified_time" content={post.updated_at} />
@@ -127,10 +143,21 @@ const BlogPost = () => {
         <meta name="twitter:description" content={metaDescription} />
         {post.featured_image_url && <meta name="twitter:image" content={post.featured_image_url} />}
         
+        {/* Geo */}
+        <meta name="geo.region" content="US-CO" />
+        <meta name="geo.placename" content="Denver" />
+        
         {/* Article Structured Data */}
         {articleSchema && (
           <script type="application/ld+json">
             {JSON.stringify(articleSchema)}
+          </script>
+        )}
+        
+        {/* Breadcrumb Schema */}
+        {breadcrumbSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(breadcrumbSchema)}
           </script>
         )}
       </Helmet>

@@ -136,6 +136,10 @@ const WhyWorkWithUs = () => {
         canonical="/why-work-with-us"
         keywords="estate clean out Denver, junk removal Denver, estate liquidation Colorado, auction-backed clean out, hoarder clean out Denver, estate cleanout cost, junk removal company Colorado"
         faqSchema={faqs}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Why Work With Us", url: "/why-work-with-us" },
+        ]}
       />
 
       {/* Hero Section */}
