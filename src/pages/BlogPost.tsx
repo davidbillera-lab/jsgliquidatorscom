@@ -68,7 +68,20 @@ const BlogPost = () => {
         "@id": `https://jsgliquidators.com/blog/${post.slug}`
       },
       "articleSection": "Estate Liquidation",
-      "keywords": "estate sale, liquidation, downsizing, consignment, estate planning, California"
+      "keywords": "estate sale Denver, estate liquidation Colorado, downsizing, consignment, auction, junk removal Denver"
+    };
+  };
+
+  const generateBreadcrumbSchema = () => {
+    if (!post) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jsgliquidators.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://jsgliquidators.com/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": `https://jsgliquidators.com/blog/${post.slug}` }
+      ]
     };
   };
 
