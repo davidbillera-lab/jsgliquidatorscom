@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, Star, CheckCircle2, Gavel, ShoppingCart, Building2, Trash2, Truck, MapPin, Quote, Recycle, Home, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import heroImage from "@/assets/hero-estate-sale.jpg";
@@ -95,6 +96,14 @@ const Index = () => {
         canonical="/"
         keywords="estate sales Denver, estate liquidation Denver CO, business liquidation Colorado, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout services, online auctions Denver, estate sale company Colorado"
         breadcrumbs={[{ name: "Home", url: "/" }]}
+        faqSchema={[
+          { question: "How much does an estate sale or liquidation cost in Denver?", answer: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs." },
+          { question: "How long does the estate liquidation process take?", answer: "Most estate liquidations are completed within 7–14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing." },
+          { question: "What items sell best at estate auctions in Colorado?", answer: "Antiques, vintage collectibles, fine art, jewelry, mid-century modern furniture, power tools, Western art, Native American pieces, and specialty items consistently achieve strong prices at our Denver estate auctions." },
+          { question: "Do you handle the entire estate cleanout after the auction?", answer: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items." },
+          { question: "What areas of Colorado do you serve?", answer: "We serve the entire Denver metro area and Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs." },
+          { question: "How is JSG Liquidators different from a traditional estate sale company?", answer: "JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices than in-person estate sales limited to local foot traffic." },
+        ]}
       />
 
       {/* Hero Section */}
@@ -631,6 +640,95 @@ const Index = () => {
                 </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 lg:py-28 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">Common Questions</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
+              Estate Liquidation FAQs
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to know about working with JSG Liquidators.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl mx-auto"
+          >
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                {
+                  q: "How much does an estate sale or liquidation cost in Denver?",
+                  a: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs. Contact us for a free consultation and custom quote."
+                },
+                {
+                  q: "How long does the estate liquidation process take?",
+                  a: "Most estate liquidations are completed within 7–14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing. Larger estates or specialty collections may take slightly longer, but we always work around your timeline."
+                },
+                {
+                  q: "What items sell best at estate auctions in Colorado?",
+                  a: "Antiques, vintage collectibles, fine art, jewelry, mid-century modern furniture, power tools, Western art, Native American pieces, and specialty items consistently achieve strong prices at our Denver estate auctions. Our AI-assisted cataloging helps identify hidden value in items you might overlook."
+                },
+                {
+                  q: "Do you handle the entire estate cleanout after the auction?",
+                  a: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items. We leave properties broom-clean and ready for sale or transition."
+                },
+                {
+                  q: "What areas of Colorado do you serve?",
+                  a: "We serve the entire Denver metro area and Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs. Don't see your area? Contact us — we likely serve your community too."
+                },
+                {
+                  q: "Can you sell my valuable items online through e-commerce consignment?",
+                  a: "Absolutely. Our e-commerce consignment service lists your antiques, collectibles, and specialty items on eBay, Etsy, LiveAuctioneers, and other specialty marketplaces. We handle professional photography, listing creation, buyer communication, secure packaging, and worldwide shipping — you simply receive the proceeds."
+                },
+                {
+                  q: "How is JSG Liquidators different from a traditional estate sale company?",
+                  a: "Traditional estate sales are held in-person over a weekend, limiting buyers to local foot traffic. JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices. We also offer AI-assisted cataloging, e-commerce consignment for premium items, and a full cleanout service, making us a complete one-stop solution."
+                },
+              ].map((faq, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="bg-card rounded-xl border border-border px-6">
+                  <AccordionTrigger className="text-left font-display font-semibold text-foreground hover:no-underline py-5">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center mt-10"
+          >
+            <Button asChild variant="outline" size="lg">
+              <Link to="/services">
+                View All Services &amp; FAQs
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </section>

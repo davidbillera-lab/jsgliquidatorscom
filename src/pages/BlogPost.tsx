@@ -37,28 +37,60 @@ const BlogPost = () => {
     }
   }, [post, isLoading, error, navigate]);
 
+  // Author bio map for E-E-A-T
+  const authorBios: Record<string, { name: string; title: string; bio: string; phone?: string }> = {
+    "David Billera": {
+      name: "David Billera",
+      title: "Co-Founder & Lead Liquidation Specialist",
+      bio: "David Billera is the co-founder of JSG Liquidators and has personally overseen hundreds of estate liquidations across the Denver metro area. He specializes in antique valuation, online auction strategy, and helping Colorado families navigate estate transitions with no upfront costs.",
+      phone: "(805) 444-4069",
+    },
+    "Penny": {
+      name: "Penny",
+      title: "Estate Liquidation Specialist & Content Writer",
+      bio: "Penny is an estate liquidation specialist at JSG Liquidators with firsthand experience in estate sales, downsizing, and the Colorado auction market. She writes to help families understand their options and make informed decisions during estate transitions.",
+    },
+    "JSG Team": {
+      name: "JSG Liquidators Team",
+      title: "Estate Liquidation Experts",
+      bio: "The JSG Liquidators team brings decades of combined experience in estate sales, antique valuation, e-commerce consignment, and junk removal across the Denver metro area and Colorado Front Range.",
+    },
+  };
+
   // Generate Article structured data for SEO
   const generateArticleSchema = () => {
     if (!post) return null;
     
     const publishDate = post.published_at || post.created_at;
+    const authorName = post.author || "JSG Liquidators";
+    const authorBio = authorBios[authorName] || authorBios["JSG Team"];
     
     return {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": "BlogPosting",
       "headline": post.title,
       "description": post.excerpt || `Read ${post.title} on the JSG Liquidators blog.`,
       "image": post.featured_image_url || "https://jsgliquidators.com/logo.png",
       "author": {
         "@type": "Person",
-        "name": post.author || "JSG Liquidators"
+        "name": authorBio.name,
+        "jobTitle": authorBio.title,
+        "description": authorBio.bio,
+        "worksFor": {
+          "@type": "Organization",
+          "name": "JSG Liquidators",
+          "url": "https://jsgliquidators.com"
+        }
       },
       "publisher": {
         "@type": "Organization",
         "name": "JSG Liquidators",
+        "url": "https://jsgliquidators.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://jsgliquidators.com/logo.png"
+          "url": "https://jsgliquidators.com/logo.png",
+          "width": 240,
+          "height": 72
         }
       },
       "datePublished": publishDate,
@@ -68,6 +100,7 @@ const BlogPost = () => {
         "@id": `https://jsgliquidators.com/blog/${post.slug}`
       },
       "articleSection": "Estate Liquidation",
+      "inLanguage": "en-US",
       "keywords": "estate sale Denver, estate liquidation Colorado, downsizing, consignment, auction, junk removal Denver"
     };
   };
@@ -228,6 +261,31 @@ const BlogPost = () => {
                     dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                   />
                 </>
+              );
+            })()}
+
+            {/* Author Bio Card - E-E-A-T */}
+            {(() => {
+              const authorName = post.author || "JSG Team";
+              const bio = authorBios[authorName] || authorBios["JSG Team"];
+              return (
+                <div className="mt-12 p-6 bg-secondary rounded-2xl border border-border flex gap-5 items-start">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <User className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-accent font-semibold uppercase tracking-wider mb-1">Written by</p>
+                    <p className="text-lg font-display font-bold text-foreground">{bio.name}</p>
+                    <p className="text-sm text-muted-foreground font-medium mb-2">{bio.title}</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{bio.bio}</p>
+                    {bio.phone && (
+                      <a href={`tel:${bio.phone.replace(/[^0-9]/g, "")}`} className="inline-flex items-center gap-2 mt-3 text-sm text-primary font-medium hover:text-accent transition-colors">
+                        <Calendar className="w-4 h-4" />
+                        Call {bio.name.split(" ")[0]}: {bio.phone}
+                      </a>
+                    )}
+                  </div>
+                </div>
               );
             })()}
           </motion.div>

@@ -60,9 +60,9 @@ const About = () => {
     <Layout>
       <SEOHead
         title="About Us"
-        description="Learn about JSG Liquidators - Colorado's trusted estate liquidation company serving Denver, Highlands Ranch, Castle Rock, Englewood, and Littleton. Professional, compassionate service."
+        description="Meet the team behind JSG Liquidators — David Billera and Vincent, Colorado's trusted estate liquidation experts serving Denver and the Front Range. Professional, compassionate service with no upfront fees."
         canonical="/about"
-        keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado"
+        keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado, David Billera estate sales"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "About Us", url: "/about" },
@@ -160,6 +160,90 @@ const About = () => {
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl" />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Team Bios - E-E-A-T */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">Meet the Team</span>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-2 mb-4">
+              The People Behind JSG Liquidators
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              A family-built business driven by expertise, integrity, and a genuine passion for helping Colorado families.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+          >
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="bg-card rounded-2xl p-8 border border-border"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-display font-bold text-foreground mb-1" itemProp="name">David Billera</h3>
+              <p className="text-accent font-medium text-sm mb-4" itemProp="jobTitle">Co-Founder &amp; Lead Liquidation Specialist</p>
+              <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
+                David brings years of hands-on experience in estate sales, antique valuation, and online auction strategy. 
+                He has personally overseen hundreds of estate liquidations across the Denver metro area, developing deep 
+                expertise in identifying hidden value in antiques, collectibles, and household items. David leads client 
+                consultations and auction strategy for every JSG engagement.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Estate Auctions", "Antique Valuation", "Business Liquidation", "Client Relations"].map(tag => (
+                  <span key={tag} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium">{tag}</span>
+                ))}
+              </div>
+              <meta itemProp="telephone" content="+1-805-444-4069" />
+              <meta itemProp="worksFor" content="JSG Liquidators" />
+            </motion.div>
+
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="bg-card rounded-2xl p-8 border border-border"
+              itemScope
+              itemType="https://schema.org/Person"
+            >
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+                <Users className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-xl font-display font-bold text-foreground mb-1" itemProp="name">Vincent</h3>
+              <p className="text-accent font-medium text-sm mb-4" itemProp="jobTitle">Co-Founder &amp; Operations Director</p>
+              <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
+                Vincent oversees the operational side of JSG Liquidators, coordinating estate cleanouts, junk removal 
+                logistics, and the e-commerce consignment program. His background in logistics and customer service 
+                ensures every project runs smoothly from initial consultation through final property clearance. 
+                Vincent is the point of contact for scheduling and day-of-service coordination.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Estate Cleanout", "Junk Removal", "E-Commerce", "Logistics"].map(tag => (
+                  <span key={tag} className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-medium">{tag}</span>
+                ))}
+              </div>
+              <meta itemProp="telephone" content="+1-805-340-4817" />
+              <meta itemProp="worksFor" content="JSG Liquidators" />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 

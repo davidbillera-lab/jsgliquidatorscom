@@ -23,7 +23,6 @@ const services = [
   { name: "Estate Sale Auctions", href: "/services#auctions" },
   { name: "E-Commerce Consignment", href: "/services#consignment" },
   { name: "Business Liquidation", href: "/services#business" },
-  { name: "Estate Clean Outs", href: "/services#estate-cleanouts" },
   { name: "Estate Cleanout", href: "/services#cleanout" },
   { name: "Junk Removal", href: "/services#junk" },
 ];
@@ -52,6 +51,35 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             <div className="flex items-center gap-2 text-accent">
               <MapPin className="w-4 h-4 flex-shrink-0" />
               <span className="text-sm">Serving the Greater Denver Metro Area</span>
+            </div>
+            <div className="flex items-center gap-3 mt-2">
+              <a
+                href="https://www.facebook.com/jsgliquidators"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="JSG Liquidators on Facebook"
+                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+              >
+                Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/jsgliquidators"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="JSG Liquidators on Instagram"
+                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.linkedin.com/company/jsg-liquidators"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="JSG Liquidators on LinkedIn"
+                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
@@ -141,14 +169,12 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
               >
                 View Our Auctions
               </a>
-              <a
-                href="https://blog.jsgliquidators.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/blog"
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >
                 Read Our Blog
-              </a>
+              </Link>
             </div>
           </div>
         </div>
