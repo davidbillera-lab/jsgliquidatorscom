@@ -28,7 +28,7 @@ declare module "react-helmet-async" {
 }
 
 declare module "input-otp" {
-  import type { ComponentType, ReactNode, RefAttributes, InputHTMLAttributes } from "react";
+  import type { Context } from "react";
 
   export interface SlotProps {
     char: string | null;
@@ -43,22 +43,8 @@ declare module "input-otp" {
     isHovering: boolean;
   }
 
-  export const OTPInputContext: React.Context<OTPInputContextType>;
-
-  export interface OTPInputProps
-    extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "children"> {
-    value?: string;
-    onChange?: (value: string) => void;
-    maxLength: number;
-    textAlign?: "left" | "center" | "right";
-    onComplete?: (value: string) => void;
-    pushPasswordManagerStrategy?: "increase-width" | "none";
-    containerClassName?: string;
-    render?: (props: { slots: SlotProps[] }) => ReactNode;
-    children?: ReactNode;
-  }
-
-  export const OTPInput: ComponentType<OTPInputProps & RefAttributes<HTMLInputElement>>;
+  export const OTPInputContext: Context<OTPInputContextType>;
+  export const OTPInput: any;
 }
 
 declare module "recharts" {
