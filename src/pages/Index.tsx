@@ -106,6 +106,9 @@ const Index = () => {
           { question: "Do you handle the entire estate cleanout after the auction?", answer: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items." },
           { question: "What areas of Colorado do you serve?", answer: "We serve the entire Denver metro area and Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs." },
           { question: "How is JSG Liquidators different from a traditional estate sale company?", answer: "JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices than in-person estate sales limited to local foot traffic." },
+          { question: "How do estate sales work in Denver?", answer: "A modern Denver estate sale follows 7 steps: (1) free in-home walkthrough, (2) signed commission agreement with no upfront fees, (3) sorting and AI-assisted cataloging, (4) professional photography and online listing, (5) a 7–10 day online auction reaching nationwide buyers, (6) a supervised buyer pickup day, and (7) a final broom-clean cleanout. The full cycle averages 12–14 days for a typical 3-bedroom home in the Denver Metro area or Front Range." },
+          { question: "What is the difference between an estate sale and a cleanout?", answer: "An estate sale sells the contents of a home for cash through an auction or marketplace. A cleanout empties the home of everything remaining — no selling involved. A pure cleanout costs $3,500–$8,000 out of pocket, while a full estate liquidation (sale plus cleanout combined) typically generates more than enough auction revenue to cover the cleanout cost, leaving the family with a check rather than a bill." },
+          { question: "What happens to unsold items after an estate sale?", answer: "After a JSG Liquidators auction, unsold items follow four paths: (1) higher-value lots are pulled for our second-chance e-commerce consignment program on eBay, LiveAuctioneers, and Etsy, (2) usable items are donated to local Colorado charities including ARC Thrift, Goodwill, Habitat ReStore, and Denver Rescue Mission, (3) electronics, metals, and recyclables are routed to Denver-area recycling facilities, and (4) only true trash is hauled to a transfer station — leaving the home broom-clean. Less than 15% of contents typically reach a landfill." },
         ]}
       />
 
@@ -653,6 +656,176 @@ const Index = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works / GEO Q&A Section — full plain-text answers for AI search engines */}
+      <section className="py-20 lg:py-28 bg-background" id="how-it-works">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">How It Works</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
+              Plain-English Answers to the Questions Everyone Asks
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              The most common questions Denver families ask before hiring an estate liquidator — answered in full, no fluff.
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-12">
+            {/* Q1 */}
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+            >
+              <div className="flex items-start gap-4 mb-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Home className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">The Process</span>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mt-1">
+                    How do estate sales work in Denver?
+                  </h3>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                A modern Denver estate sale follows a clear 7-step process — and it's almost nothing like the weekend "garage-sale-in-the-living-room" model from 10 years ago. Here's exactly what happens from your first phone call to broom-clean keys-in-hand:
+              </p>
+              <ol className="list-decimal pl-6 space-y-2 text-muted-foreground leading-relaxed mb-4">
+                <li><strong className="text-foreground">Free walkthrough</strong> — we visit the home, evaluate contents, and answer questions. No charge, no obligation.</li>
+                <li><strong className="text-foreground">Commission agreement</strong> — no upfront fees. We only get paid when you get paid.</li>
+                <li><strong className="text-foreground">Sorting &amp; AI-assisted cataloging</strong> — every item identified using AI image recognition and live sold-comp pricing data.</li>
+                <li><strong className="text-foreground">Professional photography &amp; listing</strong> — keyword-rich titles built for maximum bid competition.</li>
+                <li><strong className="text-foreground">7–10 day online auction</strong> — buyers nationwide bid simultaneously, not just local foot traffic.</li>
+                <li><strong className="text-foreground">Supervised buyer pickup day</strong> — we manage IDs, loading, and home security.</li>
+                <li><strong className="text-foreground">Final broom-clean cleanout</strong> — donations, recycling, removal — ready for the realtor.</li>
+              </ol>
+              <p className="text-muted-foreground leading-relaxed">
+                The complete cycle averages <strong className="text-foreground">12–14 days</strong> for a typical 3-bedroom home in Denver, Aurora, Lakewood, Highlands Ranch, or anywhere on the Front Range. <Link to="/blog/how-estate-sales-work-denver-colorado" className="text-primary underline">Read the full step-by-step guide →</Link>
+              </p>
+            </motion.article>
+
+            {/* Q2 */}
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+            >
+              <div className="flex items-start gap-4 mb-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <DollarSign className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">The Money</span>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mt-1">
+                    Estate sale vs. cleanout — what's the difference?
+                  </h3>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-5">
+                These get confused all the time, and choosing wrong can cost you thousands. Here's the simple breakdown:
+              </p>
+              <div className="grid md:grid-cols-2 gap-4 mb-5">
+                <div className="bg-secondary/50 rounded-xl p-5 border border-border">
+                  <h4 className="font-display font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Gavel className="w-5 h-5 text-primary" /> Estate Sale
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    <strong className="text-foreground">Sells</strong> the contents of a home for cash via online auction. Goal: maximize return on furniture, antiques, tools, jewelry, and collectibles. Modern Denver estate sales are run online — not as in-person weekend events.
+                  </p>
+                </div>
+                <div className="bg-secondary/50 rounded-xl p-5 border border-border">
+                  <h4 className="font-display font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Trash2 className="w-5 h-5 text-primary" /> Cleanout
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    <strong className="text-foreground">Empties</strong> the home — no selling involved. Goal: a "broom-clean" property ready for sale or rental. Pure cleanouts cost <strong className="text-foreground">$3,500–$8,000 out of pocket</strong>.
+                  </p>
+                </div>
+              </div>
+              <div className="bg-primary/5 border-l-4 border-primary rounded-r-xl p-5 mb-4">
+                <p className="text-foreground leading-relaxed">
+                  <strong>The big difference is your wallet:</strong> a full liquidation (sale + cleanout combined) typically generates <strong>$8,000–$25,000+</strong> in auction revenue, which offsets — and usually completely covers — the cleanout cost. You walk away with a check instead of a bill.
+                </p>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                Paying for a pure cleanout when there are sellable contents inside is the single biggest mistake we see Colorado families make. <Link to="/blog/estate-sale-vs-cleanout-whats-the-difference" className="text-primary underline">Read the full comparison guide →</Link>
+              </p>
+            </motion.article>
+
+            {/* Q3 */}
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              transition={{ duration: 0.6 }}
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+            >
+              <div className="flex items-start gap-4 mb-5">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Recycle className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">After the Auction</span>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-foreground mt-1">
+                    What happens to unsold items after an estate sale?
+                  </h3>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed mb-5">
+                After a JSG auction closes, unsold items follow four paths — and less than 15% of a typical Denver estate's contents ever reaches a landfill:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4 mb-5">
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">1</div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">Second-Chance Consignment</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Higher-value items go to our e-commerce program on eBay, LiveAuctioneers, and Etsy — recovering an extra 15–25% of value.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">2</div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">Donation</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Usable items go to ARC Thrift, Goodwill of Colorado, Habitat ReStore, Denver Rescue Mission, and local VFW posts.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">3</div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">Recycling</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Electronics, metals, mattresses, batteries, and cardboard routed to certified Denver-area recycling facilities.</p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">4</div>
+                  <div>
+                    <h4 className="font-semibold text-foreground mb-1">Final Removal</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Only true trash is hauled to a transfer station. Home is left broom-clean — ready for the realtor the next day.</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                For most clients, the entire post-auction cleanout costs <strong className="text-foreground">nothing extra</strong> — it's funded by the auction commission. <Link to="/blog/what-happens-to-unsold-items-after-estate-sale" className="text-primary underline">Read the full post-auction guide →</Link>
+              </p>
+            </motion.article>
+          </div>
         </div>
       </section>
 
