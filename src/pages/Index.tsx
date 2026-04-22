@@ -209,6 +209,112 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Differentiator Section — "We Do Both" */}
+      <section className="py-20 lg:py-28 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-14"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">The JSG Difference</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-5">
+              We Maximize Value First, Then Clear Everything Else
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Most companies force you to choose between two bad options. We're the only Denver liquidator that does both — under one roof, one timeline, one phone call.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          >
+            {/* Most companies — Sell only */}
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="bg-card border border-border rounded-2xl p-7 opacity-90"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wider mb-4">
+                Most Companies
+              </div>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">Sell the Stuff → Leave the Mess</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Traditional estate sale companies run a weekend sale, take their commission, and hand you back a half-empty house. <strong className="text-foreground">You're left calling junk haulers.</strong>
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Auction or sale only</li>
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> No cleanout included</li>
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Family pays $3,500–$8,000 extra</li>
+              </ul>
+            </motion.div>
+
+            {/* Junk haulers — Junk only */}
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="bg-card border border-border rounded-2xl p-7 opacity-90"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wider mb-4">
+                Or Worse
+              </div>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">Remove the Junk → Throw Away Value</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Junk haulers show up with a truck and load everything into it — antiques, collectibles, and tools end up at the dump alongside the trash. <strong className="text-foreground">You pay them to throw away your money.</strong>
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> No appraisal or auction</li>
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Valuables go to the landfill</li>
+                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Family pays $4,000–$10,000</li>
+              </ul>
+            </motion.div>
+
+            {/* JSG — Both */}
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-7 shadow-2xl md:scale-105 md:-my-2"
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider mb-4">
+                ★ The JSG Way
+              </div>
+              <h3 className="text-xl font-display font-bold text-primary-foreground mb-3">We Do Both</h3>
+              <p className="text-primary-foreground/90 leading-relaxed mb-4">
+                AI-powered auction sells every item with real value at maximum prices. Then our crew handles donations, recycling, and the final cleanout. <strong className="text-accent">Auction proceeds typically cover the entire service.</strong>
+              </p>
+              <ul className="space-y-2 text-sm text-primary-foreground/90">
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> AI-cataloged online auction (nationwide buyers)</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Full broom-clean cleanout included</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Typically $0 out of pocket</li>
+              </ul>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center mt-12"
+          >
+            <Button asChild variant="hero" size="lg">
+              <Link to="/contact">
+                Get Your Free Walkthrough
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
