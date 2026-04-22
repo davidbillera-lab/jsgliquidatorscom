@@ -684,6 +684,18 @@ const Index = () => {
             <Accordion type="single" collapsible className="space-y-3">
               {[
                 {
+                  q: "What do I do with all my parents' stuff?",
+                  a: "Start by taking a breath — you don't have to figure it out alone. Most families in Colorado follow a simple path: keep what's meaningful, sell what has value, donate what helps others, and recycle or remove the rest. JSG Liquidators handles the entire process for you. We sort, catalog with AI-assisted appraisal, photograph, and sell valuable items through our online auction platform that reaches buyers nationwide. Anything that doesn't sell is donated to local Colorado charities, recycled, or removed — leaving the home broom-clean. Because we work on commission, there are typically no upfront costs to you, and auction proceeds often cover the entire service."
+                },
+                {
+                  q: "How do I clear out a house after someone dies?",
+                  a: "Clearing out a house after a loved one passes usually takes 4 steps: (1) secure important documents, photos, and heirlooms first; (2) let family members choose sentimental keepsakes; (3) have the remaining contents professionally appraised and sold through an estate auction; (4) complete a full cleanout of anything left behind. JSG Liquidators manages steps 2–4 for Denver and Front Range families, typically completing the entire process in 7–14 days. Our 'Auction-Backed Cleanout' model uses online auction proceeds to offset — and often completely cover — the cost of the cleanout, so families aren't paying out of pocket during an already difficult time."
+                },
+                {
+                  q: "Who buys estate items and removes the junk?",
+                  a: "JSG Liquidators is a one-stop Denver estate company that does both. We buy nothing directly — instead, we sell your items to the highest bidder through our online auction platform and e-commerce consignment service, which reaches thousands of collectors, dealers, and buyers across the country. This almost always nets more than a cash offer from a single buyer. After the auction closes, our team returns to remove all unsold items, coordinate donations with local Colorado charities, recycle responsibly, and haul away remaining junk. You get one trusted company, one timeline, and one final broom-clean property — no juggling auctioneers, thrift store runs, and junk haulers separately."
+                },
+                {
                   q: "How much does an estate sale or liquidation cost in Denver?",
                   a: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs. Contact us for a free consultation and custom quote."
                 },
