@@ -7,6 +7,10 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import heroImage from "@/assets/hero-estate-sale.jpg";
 
+// Shared CTA style for inline "Read the full guide" links — white text on primary blue
+const guideLinkClass =
+  "inline-flex items-center gap-2 mt-3 bg-primary text-primary-foreground font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200";
+
 const services = [
   {
     icon: Gavel,
