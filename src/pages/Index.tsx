@@ -823,7 +823,10 @@ const Index = () => {
                 <li><strong className="text-foreground">Final broom-clean cleanout</strong> — donations, recycling, removal — ready for the realtor.</li>
               </ol>
               <p className="text-muted-foreground leading-relaxed">
-                The complete cycle averages <strong className="text-foreground">12–14 days</strong> for a typical 3-bedroom home in Denver, Aurora, Lakewood, Highlands Ranch, or anywhere on the Front Range. <Link to="/blog/how-estate-sales-work-denver-colorado" className="inline-block bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md mt-2 hover:bg-primary/90 transition-colors">Read the full step-by-step guide →</Link>
+                The complete cycle averages <strong className="text-foreground">12–14 days</strong> for a typical 3-bedroom home in Denver, Aurora, Lakewood, Highlands Ranch, or anywhere on the Front Range.{" "}
+                <Link to="/blog/how-estate-sales-work-denver-colorado" className={guideLinkClass}>
+                  Read the full step-by-step guide <ArrowRight className="w-4 h-4" />
+                </Link>
               </p>
             </motion.article>
 
@@ -874,7 +877,10 @@ const Index = () => {
                 </p>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                Paying for a pure cleanout when there are sellable contents inside is the single biggest mistake we see Colorado families make. <Link to="/blog/estate-sale-vs-cleanout-whats-the-difference" className="inline-block bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md mt-2 hover:bg-primary/90 transition-colors">Read the full comparison guide →</Link>
+                Paying for a pure cleanout when there are sellable contents inside is the single biggest mistake we see Colorado families make.{" "}
+                <Link to="/blog/estate-sale-vs-cleanout-whats-the-difference" className={guideLinkClass}>
+                  Read the full comparison guide <ArrowRight className="w-4 h-4" />
+                </Link>
               </p>
             </motion.article>
 
@@ -932,7 +938,10 @@ const Index = () => {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                For most clients, the entire post-auction cleanout costs <strong className="text-foreground">nothing extra</strong> — it's funded by the auction commission. <Link to="/blog/what-happens-to-unsold-items-after-estate-sale" className="inline-block bg-primary text-primary-foreground font-semibold px-4 py-2 rounded-md mt-2 hover:bg-primary/90 transition-colors">Read the full post-auction guide →</Link>
+                For most clients, the entire post-auction cleanout costs <strong className="text-foreground">nothing extra</strong> — it's funded by the auction commission.{" "}
+                <Link to="/blog/what-happens-to-unsold-items-after-estate-sale" className={guideLinkClass}>
+                  Read the full post-auction guide <ArrowRight className="w-4 h-4" />
+                </Link>
               </p>
             </motion.article>
           </div>
