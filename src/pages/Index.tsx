@@ -162,7 +162,7 @@ const Index = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-lg md:text-xl font-semibold text-accent mb-6 leading-relaxed"
+              className="text-lg md:text-xl font-semibold text-white mb-6 leading-relaxed"
             >
               We handle everything: estate sales, liquidation, cleanouts, and online resale—so you don't have to.
             </motion.p>
