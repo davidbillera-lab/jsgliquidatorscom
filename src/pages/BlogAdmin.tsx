@@ -350,7 +350,7 @@ const BlogAdmin = () => {
   if (authLoading) {
     return (
       <Layout>
-        <SEOHead title="Blog Admin" description="Manage blog posts" canonical="/blog-admin" />
+        <SEOHead title="Blog Admin" description="Manage blog posts" canonical="/blog-admin" noindex />
         <section className="pt-32 pb-20 bg-background min-h-screen">
           <div className="container mx-auto px-4 lg:px-8 text-center">
             <p className="text-muted-foreground">Loading...</p>
@@ -370,6 +370,7 @@ const BlogAdmin = () => {
         title="Blog Admin"
         description="Manage blog posts"
         canonical="/blog-admin"
+        noindex
       />
 
       <section className="pt-32 pb-20 bg-background min-h-screen">
