@@ -118,6 +118,7 @@ const AdminAuth = () => {
         title="Admin Login"
         description="Admin authentication"
         canonical="/admin-auth"
+        noindex
       />
 
       <section className="pt-32 pb-20 bg-background min-h-screen">

@@ -26,8 +26,8 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating }: SEOHeadProps) => {
-  const siteTitle = "JSG Liquidators | Estate Sales, Estate Liquidation & Junk Removal Denver Colorado";
-  const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators Denver CO`;
+  const siteTitle = "JSG Liquidators | Denver Estate Sales & Liquidation";
+  const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
   const siteUrl = "https://jsgliquidators.com";
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
   const defaultKeywords = "estate sales Denver, estate liquidation Colorado, business liquidation Denver, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout Denver, online auctions Colorado";
