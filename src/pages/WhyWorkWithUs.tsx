@@ -149,8 +149,13 @@ const WhyWorkWithUs = () => {
             src={whyWorkHero} 
             alt="Denver estate clean out and junk removal team sorting antiques and valuables for auction in Colorado home"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            width={1920}
+            height={1080}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" aria-hidden="true" />
+
         </div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -217,7 +222,12 @@ const WhyWorkWithUs = () => {
           src={whyWorkAppraisal} 
           alt="Professional estate liquidation appraisers evaluating antiques jewelry and collectibles during Denver junk removal service"
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          width={1600}
+          height={900}
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
       </section>
 
@@ -334,7 +344,12 @@ const WhyWorkWithUs = () => {
           src={whyWorkAuction} 
           alt="Colorado estate sale online auction platform displaying vintage furniture antiques and collectibles from Denver clean outs"
           className="w-full h-full object-cover"
+          loading="lazy"
+          decoding="async"
+          width={1600}
+          height={900}
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
       </section>
 
@@ -379,7 +394,12 @@ const WhyWorkWithUs = () => {
             src={whyWorkColorado} 
             alt="Estate clean out and junk removal service areas across Denver metro Boulder Fort Collins Colorado Springs and Front Range communities"
             className="w-full h-full object-cover opacity-20"
+            loading="lazy"
+            decoding="async"
+            width={1920}
+            height={1080}
           />
+
         </div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
