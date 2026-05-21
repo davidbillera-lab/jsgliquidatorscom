@@ -6,6 +6,16 @@
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
 
+/* Ensure fonts render with fallback while loading (prevents FOIT, improves LCP) */
+@font-face {
+  font-family: 'Playfair Display';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,7 +41,7 @@
     --secondary-foreground: 220 25% 10%;
 
     --muted: 210 15% 90%;
-    --muted-foreground: 220 15% 45%;
+    --muted-foreground: 220 15% 38%;
 
     /* Navy accent - from logo triangle */
     --accent: 220 60% 35%;
