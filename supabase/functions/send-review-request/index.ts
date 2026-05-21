@@ -1,9 +1,8 @@
-// Sends a Google review request email via Resend connector gateway.
+// Sends a Google review request email via Resend.
 // POST { customerName, customerEmail, jobType?, reviewUrl? }
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3.23.8";
 
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/resend";
 const DEFAULT_REVIEW_URL = "https://g.page/r/JSG-Liquidators/review"; // replace with actual Google review link
 
 const BodySchema = z.object({
@@ -17,10 +16,9 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
   try {
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-    if (!LOVABLE_API_KEY || !RESEND_API_KEY) {
-      return new Response(JSON.stringify({ error: "Resend not configured. Connect the Resend connector." }), {
+    if (!RESEND_API_KEY) {
+      return new Response(JSON.stringify({ error: "RESEND_API_KEY not configured." }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -53,12 +51,11 @@ Deno.serve(async (req) => {
       </div>
     `;
 
-    const resp = await fetch(`${GATEWAY_URL}/emails`, {
+    const resp = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "X-Connection-Api-Key": RESEND_API_KEY,
+        Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
         from: "JSG Liquidators <onboarding@resend.dev>",
