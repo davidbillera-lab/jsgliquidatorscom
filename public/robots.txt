@@ -1,7 +1,14 @@
+# Traditional search crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,34 +17,122 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# AI Search Engine Crawlers (GEO)
+User-agent: LinkedInBot
+Allow: /
+
+# =========================================================
+# AI Search & Generative Engine Crawlers (GEO maximization)
+# Explicitly allowed so JSG Liquidators content is cited in
+# ChatGPT, Perplexity, Claude, Gemini, Copilot, Meta AI, etc.
+# =========================================================
+
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: OAI-SearchBot
 Allow: /
 
+# Anthropic (Claude)
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Applebot
+User-agent: Claude-Web
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Gemini / AI Overviews)
 User-agent: Google-Extended
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Microsoft / Bing Chat & Copilot
+User-agent: BingPreview
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon
 User-agent: Amazonbot
 Allow: /
 
+# Cohere
 User-agent: cohere-ai
 Allow: /
 
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# You.com
 User-agent: YouBot
 Allow: /
 
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# ByteDance (Doubao / TikTok)
+User-agent: Bytespider
+Allow: /
+
+# Diffbot (used by many AI engines)
+User-agent: Diffbot
+Allow: /
+
+# Common Crawl (training corpus for most LLMs)
+User-agent: CCBot
+Allow: /
+
+# Huawei Petal AI
+User-agent: PetalBot
+Allow: /
+
+# Timpi search
+User-agent: Timpibot
+Allow: /
+
+# Webz.io
+User-agent: Webzio-Extended
+Allow: /
+
+# Omgili
+User-agent: omgili
+Allow: /
+
+# Catchall
 User-agent: *
 Allow: /
 Disallow: /blog-admin
