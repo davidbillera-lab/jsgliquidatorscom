@@ -172,6 +172,27 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     }))
   } : null;
 
+  const eventsJsonLd = events && events.length > 0 ? events.map(ev => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": ev.name,
+    "description": ev.description,
+    "startDate": ev.startDate,
+    "endDate": ev.endDate,
+    "eventAttendanceMode": `https://schema.org/${ev.eventAttendanceMode || "OnlineEventAttendanceMode"}`,
+    "eventStatus": "https://schema.org/EventScheduled",
+    "url": ev.url,
+    "location": ev.eventAttendanceMode === "OfflineEventAttendanceMode" ? {
+      "@type": "Place",
+      "name": ev.locationName || "Denver, CO",
+      "address": { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" }
+    } : {
+      "@type": "VirtualLocation",
+      "url": ev.url
+    },
+    "organizer": { "@type": "Organization", "name": "JSG Liquidators", "url": siteUrl }
+  })) : null;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
