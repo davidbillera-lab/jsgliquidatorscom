@@ -1,9 +1,8 @@
-// Sends a Google review request email via Resend connector gateway.
+// Sends a Google review request email via Resend.
 // POST { customerName, customerEmail, jobType?, reviewUrl? }
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3.23.8";
 
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/resend";
 const DEFAULT_REVIEW_URL = "https://g.page/r/JSG-Liquidators/review"; // replace with actual Google review link
 
 const BodySchema = z.object({
