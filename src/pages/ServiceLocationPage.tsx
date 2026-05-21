@@ -153,6 +153,70 @@ const ServiceLocationPage = () => {
         </div>
       </section>
 
+      {/* Local Coverage — neighborhoods, landmarks, zip codes for this city */}
+      <section className="py-16 md:py-20 bg-background border-t">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-3xl font-bold text-center mb-4 font-serif text-foreground">
+            {serviceContent.serviceName} Coverage Across {area.city}
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            We serve every neighborhood, ZIP code, and surrounding community in {area.county}. Local knowledge means faster response, better valuations, and connections with {area.city}-area charities and recyclers.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Landmark className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">{area.city} Landmarks We Serve Near</h3>
+              </div>
+              <ul className="space-y-2">
+                {area.localLandmarks.map((lm) => (
+                  <li key={lm} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{lm}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">Nearby Neighborhoods & Cities</h3>
+              </div>
+              <ul className="space-y-2">
+                {area.nearbyAreas.map((nb) => (
+                  <li key={nb} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{nb}, CO</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Map className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">{area.city} ZIP Codes Served</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {area.zipCodes.join(", ")}
+              </p>
+              <p className="text-xs text-muted-foreground mt-3 italic">
+                Part of {area.county} — population {area.population}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 p-6 bg-primary/5 rounded-xl border border-primary/20">
+            <h3 className="font-bold text-lg text-foreground mb-2">Why local matters for {serviceContent.serviceName.toLowerCase()} in {area.city}</h3>
+            <p className="text-muted-foreground leading-relaxed">{area.whyLocal}</p>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Benefits */}
       <section className="py-16 md:py-20 bg-muted/50">
         <div className="container mx-auto px-4 max-w-5xl">
