@@ -40,5 +40,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /blog-admin
+Disallow: /admin-auth
 
 Sitemap: https://jsgliquidators.com/sitemap.xml

@@ -60,7 +60,7 @@ const About = () => {
     <Layout>
       <SEOHead
         title="About Us"
-        description="Meet the team behind JSG Liquidators — David Billera and Vincent, Colorado's trusted estate liquidation experts serving Denver and the Front Range. Professional, compassionate service with no upfront fees."
+        description="Meet David and Vincent, Denver's trusted estate liquidation experts. Professional, compassionate service with no upfront fees."
         canonical="/about"
         keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado, David Billera estate sales"
         breadcrumbs={[
