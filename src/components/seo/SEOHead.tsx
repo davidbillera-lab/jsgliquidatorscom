@@ -245,11 +245,19 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       )}
 
       {/* Review/AggregateRating Schema */}
+      {/* Review/AggregateRating Schema */}
       {reviewJsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(reviewJsonLd)}
         </script>
       )}
+
+      {/* Event Schema (recurring auctions) */}
+      {eventsJsonLd && eventsJsonLd.map((ev, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(ev)}
+        </script>
+      ))}
     </Helmet>
   );
 };
