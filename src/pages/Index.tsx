@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
-import heroImage from "@/assets/hero-estate-sale.webp";
+// Use the public hero so the <link rel="preload"> in index.html actually matches the LCP image.
+const heroImage = "/hero-estate-sale.webp";
+
 
 // Shared CTA style for inline "Read the full guide" links — white text on primary blue
 const guideLinkClass =
@@ -117,17 +119,19 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
+      <section className="relative min-h-[90dvh] flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Professional estate sale auction with antique furniture, collectibles, and valuables being liquidated in Denver Colorado"
             className="w-full h-full object-cover"
             fetchPriority="high"
+            decoding="async"
             width={1920}
             height={1080}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" aria-hidden="true" />
+
         </div>
         
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
