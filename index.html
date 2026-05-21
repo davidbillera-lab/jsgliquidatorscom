@@ -141,6 +141,106 @@
       ]
     }
     </script>
+
+    <!-- FAQPage schema - high-value for AI citations (ChatGPT, Perplexity, Gemini) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does JSG Liquidators charge upfront fees?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. JSG Liquidators operates on a Revenue Recovery model — proceeds from online auctions of your items cover or offset the service fees. Most clients pay nothing out of pocket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast does JSG Liquidators sell estate items?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Individual items typically sell within 7 to 10 days through online auctions. A full estate cleanout — from consultation to broom-clean — runs about 12 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What areas does JSG Liquidators serve?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The entire Denver metro and Colorado Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Arvada, Boulder, Fort Collins, and Colorado Springs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is JSG Liquidators different from a regular junk removal company?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JSG identifies valuable items before removal and uses online auction proceeds from those items to offset cleanout costs. Most clients pay significantly less than a standard junk hauler would charge."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does JSG Liquidators handle business liquidations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. JSG handles office, retail, restaurant, and light-industrial business liquidations across Colorado. Founder David Billera personally leads business engagements — call (805) 444-4069."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are same-day or emergency estate cleanouts available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Same-day and emergency cleanouts are available throughout the Denver metro. Call (805) 444-4069 to arrange immediate service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens to items that do not sell at auction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usable items are donated to local Denver-area charities and clients receive tax-deductible donation receipts. Remaining items are removed during the final cleanout phase."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Service catalog schema - helps AI engines enumerate offerings -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Estate Liquidation",
+      "provider": { "@id": "https://jsgliquidators.com/#organization" },
+      "areaServed": { "@type": "State", "name": "Colorado" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "JSG Liquidators Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Sales & Online Auctions", "description": "Professional estate liquidation through online auctions reaching thousands of buyers nationwide. Items typically sell in 7-10 days." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Liquidation", "description": "Complete asset recovery for businesses closing, relocating, or downsizing across Colorado." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Cleanouts", "description": "4-step, 12-day Auction-Backed Cleanout that recovers value before clearing the property. No upfront cost." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Junk Removal", "description": "Eco-friendly junk removal with valuable items identified first to offset costs." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-Commerce Consignment", "description": "eBay, LiveAuctioneers, and Denver Online Auctions listings for high-value estate items." } }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Speakable schema - voice assistants and AI read-aloud -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".speakable-summary"]
+      }
+    }
+    </script>
   </head>
 
   <body>
