@@ -48,6 +48,59 @@ const ServiceLocationPage = () => {
     { name: serviceContent.serviceName, url: `/areas/${area.slug}/${serviceContent.serviceSlug}` },
   ];
 
+  const geo = cityGeo[area.slug];
+  const pageUrl = `https://jsgliquidators.com/areas/${area.slug}/${serviceContent.serviceSlug}`;
+
+  // Per-page localized Service schema: ties this specific service to this specific city
+  const localServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `${serviceContent.serviceName} in ${area.city}, CO`,
+    "serviceType": serviceContent.serviceName,
+    "url": pageUrl,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "JSG Liquidators",
+      "telephone": "+1-805-444-4069",
+      "url": "https://jsgliquidators.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "addressCountry": "US",
+      },
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": area.city,
+      "containedInPlace": { "@type": "AdministrativeArea", "name": area.county },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": area.city,
+        "addressRegion": "CO",
+        "postalCode": area.zipCodes[0],
+        "addressCountry": "US",
+      },
+      ...(geo && {
+        "geo": { "@type": "GeoCoordinates", "latitude": geo.lat, "longitude": geo.lng },
+      }),
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${serviceContent.serviceName} — ${area.city} Neighborhoods & Landmarks`,
+      "itemListElement": [
+        ...area.localLandmarks.map((lm) => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": `${serviceContent.serviceName} near ${lm}, ${area.city} CO` },
+        })),
+        ...area.nearbyAreas.map((nb) => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": `${serviceContent.serviceName} in ${nb}, CO` },
+        })),
+      ],
+    },
+  };
+
   return (
     <Layout>
       <SEOHead
@@ -58,6 +111,9 @@ const ServiceLocationPage = () => {
         faqSchema={faqData}
         breadcrumbs={breadcrumbs}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(localServiceSchema)}</script>
+      </Helmet>
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground py-20 md:py-28">
