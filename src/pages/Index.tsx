@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
-import heroImage from "@/assets/hero-estate-sale.jpg";
+import heroImage from "@/assets/hero-estate-sale.webp";
 
 // Shared CTA style for inline "Read the full guide" links — white text on primary blue
 const guideLinkClass =
