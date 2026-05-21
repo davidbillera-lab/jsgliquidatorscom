@@ -11,6 +11,16 @@ interface ReviewSchema {
   ratingValue: number;
 }
 
+interface EventSchema {
+  name: string;
+  description?: string;
+  startDate: string;
+  endDate?: string;
+  url: string;
+  locationName?: string;
+  eventAttendanceMode?: "OnlineEventAttendanceMode" | "OfflineEventAttendanceMode" | "MixedEventAttendanceMode";
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -23,9 +33,10 @@ interface SEOHeadProps {
   breadcrumbs?: BreadcrumbItem[];
   reviews?: ReviewSchema[];
   aggregateRating?: { ratingValue: number; reviewCount: number };
+  events?: EventSchema[];
 }
 
-export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating, events }: SEOHeadProps) => {
   const siteTitle = "JSG Liquidators | Denver Estate Sales & Liquidation";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
   const siteUrl = "https://jsgliquidators.com";
@@ -161,6 +172,27 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     }))
   } : null;
 
+  const eventsJsonLd = events && events.length > 0 ? events.map(ev => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": ev.name,
+    "description": ev.description,
+    "startDate": ev.startDate,
+    "endDate": ev.endDate,
+    "eventAttendanceMode": `https://schema.org/${ev.eventAttendanceMode || "OnlineEventAttendanceMode"}`,
+    "eventStatus": "https://schema.org/EventScheduled",
+    "url": ev.url,
+    "location": ev.eventAttendanceMode === "OfflineEventAttendanceMode" ? {
+      "@type": "Place",
+      "name": ev.locationName || "Denver, CO",
+      "address": { "@type": "PostalAddress", "addressLocality": "Denver", "addressRegion": "CO", "addressCountry": "US" }
+    } : {
+      "@type": "VirtualLocation",
+      "url": ev.url
+    },
+    "organizer": { "@type": "Organization", "name": "JSG Liquidators", "url": siteUrl }
+  })) : null;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -213,11 +245,19 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       )}
 
       {/* Review/AggregateRating Schema */}
+      {/* Review/AggregateRating Schema */}
       {reviewJsonLd && (
         <script type="application/ld+json">
           {JSON.stringify(reviewJsonLd)}
         </script>
       )}
+
+      {/* Event Schema (recurring auctions) */}
+      {eventsJsonLd && eventsJsonLd.map((ev, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(ev)}
+        </script>
+      ))}
     </Helmet>
   );
 };

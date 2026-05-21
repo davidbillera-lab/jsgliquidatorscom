@@ -34,6 +34,27 @@ const Auctions = () => {
           { name: "Home", url: "/" },
           { name: "Auctions", url: "/auctions" },
         ]}
+        events={(() => {
+          // Rolling weekly online auction events (next 4 weeks) for Event schema visibility
+          const evs = [];
+          const now = new Date();
+          for (let i = 0; i < 4; i++) {
+            const start = new Date(now);
+            start.setDate(now.getDate() + (7 - now.getDay()) + i * 7);
+            start.setHours(18, 0, 0, 0);
+            const end = new Date(start);
+            end.setHours(21, 0, 0, 0);
+            evs.push({
+              name: `JSG Liquidators Weekly Online Estate Auction`,
+              description: "Online estate auction featuring antiques, collectibles, furniture, jewelry, and decor from Denver-area estates.",
+              startDate: start.toISOString(),
+              endDate: end.toISOString(),
+              url: "https://jsg-liquidators.liveauctioneers.com/",
+              eventAttendanceMode: "OnlineEventAttendanceMode" as const,
+            });
+          }
+          return evs;
+        })()}
       />
 
       {/* Hero Section */}
