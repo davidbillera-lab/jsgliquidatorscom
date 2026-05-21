@@ -11,6 +11,16 @@ interface ReviewSchema {
   ratingValue: number;
 }
 
+interface EventSchema {
+  name: string;
+  description?: string;
+  startDate: string;
+  endDate?: string;
+  url: string;
+  locationName?: string;
+  eventAttendanceMode?: "OnlineEventAttendanceMode" | "OfflineEventAttendanceMode" | "MixedEventAttendanceMode";
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -23,9 +33,10 @@ interface SEOHeadProps {
   breadcrumbs?: BreadcrumbItem[];
   reviews?: ReviewSchema[];
   aggregateRating?: { ratingValue: number; reviewCount: number };
+  events?: EventSchema[];
 }
 
-export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating, events }: SEOHeadProps) => {
   const siteTitle = "JSG Liquidators | Denver Estate Sales & Liquidation";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
   const siteUrl = "https://jsgliquidators.com";
