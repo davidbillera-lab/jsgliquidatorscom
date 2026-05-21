@@ -123,6 +123,9 @@ const Index = () => {
             src={heroImage}
             alt="Professional estate sale auction with antique furniture, collectibles, and valuables being liquidated in Denver Colorado"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
         </div>
