@@ -1,12 +1,31 @@
 import { useParams, Link, Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, MapPin, CheckCircle2, HelpCircle } from "lucide-react";
+import { ArrowRight, Phone, MapPin, CheckCircle2, HelpCircle, Landmark, Building2, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 import { getServiceLocationContent } from "@/data/serviceLocationContent";
+
+// Geo coordinates per service-area city (lat/lng) for per-page LocalBusiness JSON-LD
+const cityGeo: Record<string, { lat: string; lng: string }> = {
+  denver: { lat: "39.7392", lng: "-104.9903" },
+  aurora: { lat: "39.7294", lng: "-104.8319" },
+  lakewood: { lat: "39.7047", lng: "-105.0814" },
+  "highlands-ranch": { lat: "39.5539", lng: "-104.9689" },
+  "castle-rock": { lat: "39.3722", lng: "-104.8561" },
+  englewood: { lat: "39.6478", lng: "-104.9878" },
+  littleton: { lat: "39.6133", lng: "-105.0166" },
+  thornton: { lat: "39.8681", lng: "-104.9719" },
+  westminster: { lat: "39.8367", lng: "-105.0372" },
+  arvada: { lat: "39.8028", lng: "-105.0875" },
+  centennial: { lat: "39.5807", lng: "-104.8772" },
+  boulder: { lat: "40.0150", lng: "-105.2705" },
+  "fort-collins": { lat: "40.5853", lng: "-105.0844" },
+  "colorado-springs": { lat: "38.8339", lng: "-104.8214" },
+};
 
 const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
@@ -29,6 +48,59 @@ const ServiceLocationPage = () => {
     { name: serviceContent.serviceName, url: `/areas/${area.slug}/${serviceContent.serviceSlug}` },
   ];
 
+  const geo = cityGeo[area.slug];
+  const pageUrl = `https://jsgliquidators.com/areas/${area.slug}/${serviceContent.serviceSlug}`;
+
+  // Per-page localized Service schema: ties this specific service to this specific city
+  const localServiceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `${serviceContent.serviceName} in ${area.city}, CO`,
+    "serviceType": serviceContent.serviceName,
+    "url": pageUrl,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "JSG Liquidators",
+      "telephone": "+1-805-444-4069",
+      "url": "https://jsgliquidators.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Denver",
+        "addressRegion": "CO",
+        "addressCountry": "US",
+      },
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": area.city,
+      "containedInPlace": { "@type": "AdministrativeArea", "name": area.county },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": area.city,
+        "addressRegion": "CO",
+        "postalCode": area.zipCodes[0],
+        "addressCountry": "US",
+      },
+      ...(geo && {
+        "geo": { "@type": "GeoCoordinates", "latitude": geo.lat, "longitude": geo.lng },
+      }),
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": `${serviceContent.serviceName} — ${area.city} Neighborhoods & Landmarks`,
+      "itemListElement": [
+        ...area.localLandmarks.map((lm) => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": `${serviceContent.serviceName} near ${lm}, ${area.city} CO` },
+        })),
+        ...area.nearbyAreas.map((nb) => ({
+          "@type": "Offer",
+          "itemOffered": { "@type": "Service", "name": `${serviceContent.serviceName} in ${nb}, CO` },
+        })),
+      ],
+    },
+  };
+
   return (
     <Layout>
       <SEOHead
@@ -39,6 +111,9 @@ const ServiceLocationPage = () => {
         faqSchema={faqData}
         breadcrumbs={breadcrumbs}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(localServiceSchema)}</script>
+      </Helmet>
 
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground py-20 md:py-28">
@@ -77,6 +152,70 @@ const ServiceLocationPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Local Coverage — neighborhoods, landmarks, zip codes for this city */}
+      <section className="py-16 md:py-20 bg-background border-t">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-3xl font-bold text-center mb-4 font-serif text-foreground">
+            {serviceContent.serviceName} Coverage Across {area.city}
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            We serve every neighborhood, ZIP code, and surrounding community in {area.county}. Local knowledge means faster response, better valuations, and connections with {area.city}-area charities and recyclers.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Landmark className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">{area.city} Landmarks We Serve Near</h3>
+              </div>
+              <ul className="space-y-2">
+                {area.localLandmarks.map((lm) => (
+                  <li key={lm} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{lm}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">Nearby Neighborhoods & Cities</h3>
+              </div>
+              <ul className="space-y-2">
+                {area.nearbyAreas.map((nb) => (
+                  <li key={nb} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <span>{nb}, CO</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="p-6 bg-muted/50 rounded-xl border">
+              <div className="flex items-center gap-3 mb-4">
+                <Map className="w-6 h-6 text-primary" />
+                <h3 className="font-bold text-lg text-foreground">{area.city} ZIP Codes Served</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {area.zipCodes.join(", ")}
+              </p>
+              <p className="text-xs text-muted-foreground mt-3 italic">
+                Part of {area.county} — population {area.population}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 p-6 bg-primary/5 rounded-xl border border-primary/20">
+            <h3 className="font-bold text-lg text-foreground mb-2">Why local matters for {serviceContent.serviceName.toLowerCase()} in {area.city}</h3>
+            <p className="text-muted-foreground leading-relaxed">{area.whyLocal}</p>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* Benefits */}
       <section className="py-16 md:py-20 bg-muted/50">
