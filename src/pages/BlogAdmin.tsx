@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { ReviewRequestDialog } from "@/components/admin/ReviewRequestDialog";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
@@ -390,6 +391,7 @@ const BlogAdmin = () => {
                 </p>
               </div>
               <div className="flex items-center gap-3">
+                <ReviewRequestDialog />
                 <Button 
                   variant="secondary" 
                   onClick={handleGeneratePost}
