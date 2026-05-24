@@ -78,44 +78,55 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Denver metro cities/neighborhoods to rotate through for local relevance
+const DENVER_LOCATIONS = [
+  "Denver", "Aurora", "Lakewood", "Arvada", "Westminster", "Centennial",
+  "Thornton", "Highlands Ranch", "Parker", "Littleton", "Englewood",
+  "Wheat Ridge", "Golden", "Castle Rock", "Cherry Hills Village",
+  "Greenwood Village", "Boulder", "Broomfield", "Commerce City",
+  "Cherry Creek", "Washington Park", "Capitol Hill", "Sloan's Lake",
+  "Stapleton/Central Park", "LoDo", "RiNo", "Wash Park"
+];
+
+// All topics are Denver-metro focused. {{LOCATION}} is replaced at runtime
+// with a randomly selected city/neighborhood from DENVER_LOCATIONS.
 const topics = [
-  // Economy & Financial Topics
-  "How today's economy makes estate liquidation smarter than ever",
-  "Downsizing in a tough economy: Turning belongings into financial freedom",
-  "Why e-commerce consignment is booming in the current market",
-  "Estate auctions vs. traditional sales: Which wins in today's economy?",
-  "How inflation is driving more families to professional liquidation services",
-  "Turning clutter into cash: Smart strategies for uncertain economic times",
-  "The rise of online auctions: How the economy is changing how we sell",
-  "Financial benefits of professional estate cleanouts during economic uncertainty",
-  
-  // Traditional Estate Sale Topics
-  "Tips for preparing your home for an estate sale",
-  "How to price items at an estate sale for maximum value",
-  "The benefits of professional estate liquidation services",
-  "Common mistakes to avoid when organizing an estate sale",
-  "How auction services can help recover costs during estate liquidation",
-  "A guide to downsizing: What to keep, sell, or donate",
-  "Understanding the estate sale process from start to finish",
-  "How to find hidden treasures in estate sales",
-  "Why timing matters for successful estate liquidations",
-  "The emotional side of estate sales: Helpful tips for families",
-  "Antiques and collectibles: Maximizing their value at auction",
-  "Estate sale vs. garage sale: Which is right for you?",
-  "How to handle a loved one's belongings with care and respect",
-  "The role of appraisals in estate liquidation",
-  "Preparing for an auction: What sellers need to know",
-  "How professional liquidators help during difficult transitions",
-  "Tips for buyers: Getting the best deals at estate sales",
-  "Seasonal considerations for estate sales and auctions",
-  "How to work with an estate liquidator: A step-by-step guide",
-  "The value of transparency in estate sale pricing",
-  
-  // Clean Out & Consignment Topics
-  "Complete home cleanouts: What to expect and how to prepare",
-  "E-commerce consignment explained: How your items reach buyers worldwide",
-  "From attic to auction: The journey of your consigned items",
-  "Why more sellers are choosing consignment over DIY selling"
+  // Local estate liquidation
+  "How Denver families are recovering costs through estate liquidation in {{LOCATION}}",
+  "Estate sale trends in {{LOCATION}}: What Denver-metro sellers should know",
+  "Why {{LOCATION}} homeowners are choosing auction-backed cleanouts",
+  "Downsizing in {{LOCATION}}: A Denver-area guide for seniors and families",
+  "Settling a parent's estate in {{LOCATION}}: A Colorado family's roadmap",
+  "Probate and estate liquidation in Colorado: What {{LOCATION}} families need to know",
+  "Moving out of {{LOCATION}}? How to liquidate a Denver home in 7-10 days",
+  "Top mistakes {{LOCATION}} families make during estate cleanouts",
+
+  // Denver economy & market
+  "How Denver's housing market is driving demand for estate liquidation in {{LOCATION}}",
+  "Colorado's economy and estate sales: Why now is the right time to sell in {{LOCATION}}",
+  "Turning clutter into cash in {{LOCATION}}: A Denver-metro guide",
+  "Inflation-proof your move: How {{LOCATION}} families offset costs with auctions",
+
+  // E-commerce consignment (Denver angle)
+  "E-commerce consignment in {{LOCATION}}: Reaching national buyers from Denver",
+  "Why {{LOCATION}} sellers ship through Denver Online Auctions and LiveAuctioneers",
+  "From {{LOCATION}} attic to eBay: How Denver consignment really works",
+  "Selling antiques from {{LOCATION}}: Local pickup vs. e-commerce consignment",
+
+  // Business liquidation (Denver/Colorado)
+  "Closing a business in {{LOCATION}}? A Denver liquidator's step-by-step guide",
+  "Restaurant and retail liquidation in {{LOCATION}}: Maximizing recovery in the Denver metro",
+  "Office and warehouse cleanouts in {{LOCATION}}: What Denver business owners should expect",
+
+  // Cleanouts & hoarding
+  "Same-day and emergency cleanouts in {{LOCATION}}: How Denver crews respond",
+  "Hoarding cleanouts in {{LOCATION}}: Compassionate help for Denver-area families",
+  "Junk removal vs. estate liquidation in {{LOCATION}}: Which saves Denver homeowners more?",
+
+  // Seasonal / hyperlocal
+  "Spring estate sales in {{LOCATION}}: Why Denver's season matters",
+  "Winter downsizing in {{LOCATION}}: Tips for Denver-area homeowners",
+  "Realtor-referred cleanouts in {{LOCATION}}: How Denver agents prep listings fast"
 ];
 
 const generateSlug = (title: string) => {
