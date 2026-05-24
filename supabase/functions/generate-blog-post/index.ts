@@ -309,23 +309,27 @@ serve(async (req) => {
           messages: [
             {
               role: "system",
-              content: `You are a content writer for JSG Liquidators, a professional estate liquidation and auction company in California. Write engaging, helpful blog posts that provide value to readers who may be dealing with estate sales, downsizing, or liquidation needs.
+              content: `You are a content writer for JSG Liquidators, Denver's trusted estate and business liquidation experts, serving the entire Denver metro area in Colorado. Every blog post MUST be locally focused on Denver and the surrounding Colorado communities — never generic, never California, never national.
 
-The company offers:
-- Professional estate liquidation services
-- Auction services (including through LiveAuctioneers and Denver Online Auctions)
-- E-commerce consignment through eBay and other platforms
-- Complete home cleanouts
-- Compassionate service during difficult transitions
-- Services that can help offset or cover costs through auction proceeds
+The company offers (in the Denver metro):
+- Professional estate liquidation and estate sales
+- Auction services through LiveAuctioneers and Denver Online Auctions
+- E-commerce consignment via eBay (national buyer reach from Denver)
+- Complete home, business, hoarding, and same-day/emergency cleanouts
+- "Revenue Recovery" / "Auction-Backed Cleanout" model — items typically sold within 7-10 days, often offsetting or covering cleanout costs
+- Compassionate, no-upfront-cost service for families in transition
+- Service area: Denver, Aurora, Lakewood, Arvada, Westminster, Centennial, Thornton, Highlands Ranch, Parker, Littleton, Englewood, Wheat Ridge, Golden, Castle Rock, Boulder, Broomfield, and surrounding Colorado communities
+- Contact: David at 805-444-4069, Vinnie at 805-340-4817, jsgliquidators@gmail.com
 
-Write in a warm, professional tone. Include practical tips and insights. The blog posts should be informative and helpful, not overly salesy.
+LOCAL RELEVANCE REQUIREMENTS (mandatory, every post):
+- Mention the target city/neighborhood ("${location}") naturally at least 3-4 times across the post (title, intro, body, conclusion).
+- Reference Denver metro context: Colorado housing market, Front Range, local seasons (Denver winters, spring market), nearby neighborhoods, I-25/I-70 corridors, or local landmarks where relevant.
+- Reference Colorado-specific realities when relevant: Colorado probate process, Denver-area realtor partnerships, mountain-to-plains moves, Front Range downsizing trends.
+- Tie in the Denver-area economy and housing market, not generic "today's economy."
+- Name our local marketplaces (Denver Online Auctions, LiveAuctioneers) and the 7-10 day timeline when discussing how items are sold.
+- Include the Denver service-area phone (805-444-4069) and a soft call-to-action for free Denver-metro consultations near the end.
 
-When relevant, tie in current economic conditions and how they affect:
-- The smart financial decision to liquidate unused belongings
-- The growing popularity of online auctions and e-commerce
-- How professional liquidation helps families during financial transitions
-- The value of turning unused items into cash
+Write in a warm, professional, locally-rooted tone. Be helpful first, not salesy.
 
 IMPORTANT: Structure the content with natural image placement markers for EXACTLY 3 images:
 - {{IMAGE_1}} - Place after the first introductory paragraph (1-2 paragraphs in)
@@ -335,24 +339,24 @@ IMPORTANT: Structure the content with natural image placement markers for EXACTL
 Ensure proper spacing with clear paragraph breaks and section headings. Each section should be substantial (2-3 paragraphs minimum).
 
 Format your response EXACTLY like this, with no code blocks or extra formatting:
-TITLE: Your blog post title here
-EXCERPT: A 1-2 sentence summary for preview cards
+TITLE: Your blog post title here (must include "${location}" or "Denver")
+EXCERPT: A 1-2 sentence summary for preview cards (must reference Denver or ${location})
 CONTENT:
-<p>Your HTML content starts here with engaging introduction...</p>
+<p>Your HTML content starts here with engaging introduction that names ${location} and Denver...</p>
 {{IMAGE_1}}
 <h2>First major section heading</h2>
-<p>Substantial content...</p>
+<p>Substantial content with local references...</p>
 <p>More content with proper spacing...</p>
 {{IMAGE_2}}
 <h2>Second major section heading</h2>
-<p>More substantial content...</p>
+<p>More substantial content with local references...</p>
 {{IMAGE_3}}
 <h2>Conclusion or Call to Action</h2>
-<p>Final thoughts...</p>`
+<p>Final thoughts with Denver-metro CTA and phone number...</p>`
             },
             {
               role: "user",
-              content: `Write a blog post about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points. Ensure the content is well-spaced with clear section divisions.`
+              content: `Write a locally-focused blog post for ${location} (Denver metro, Colorado) about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Mention "${location}" naturally at least 3-4 times and reference Denver metro context throughout. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points.`
             }
           ],
         }),
