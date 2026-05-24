@@ -284,10 +284,11 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Pick a random topic
-    const topic = topics[Math.floor(Math.random() * topics.length)];
-    
-    console.log(`Generating blog post about: ${topic}`);
+    // Pick a random topic and inject a random Denver-metro location for local relevance
+    const location = DENVER_LOCATIONS[Math.floor(Math.random() * DENVER_LOCATIONS.length)];
+    const topic = topics[Math.floor(Math.random() * topics.length)].replace(/\{\{LOCATION\}\}/g, location);
+
+    console.log(`Generating blog post about: ${topic} (location: ${location})`);
 
     // Generate 3 images in parallel with the blog content for better visual interest
     const imagePrompts = [
