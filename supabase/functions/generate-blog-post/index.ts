@@ -217,25 +217,33 @@ serve(async (req) => {
       throw new Error("Supabase environment variables not configured");
     }
 
-    // Check if this is a cron job call (no auth required) or admin call (auth required)
-    const authHeader = req.headers.get('Authorization');
-    const isCronCall = authHeader?.includes(Deno.env.get("SUPABASE_ANON_KEY") || '');
-    
-    if (!isCronCall && authHeader) {
-      // Verify admin for manual calls
+    // Authentication: require either a valid CRON_SECRET header (for scheduled jobs)
+    // or an authenticated admin user (for manual calls). The previous logic allowed
+    // anyone with the public anon key to bypass admin checks.
+    const cronSecretHeader = req.headers.get('x-cron-secret');
+    const CRON_SECRET = Deno.env.get('CRON_SECRET');
+    const isCronCall = !!(CRON_SECRET && cronSecretHeader && cronSecretHeader === CRON_SECRET);
+
+    if (!isCronCall) {
+      const authHeader = req.headers.get('Authorization');
+      if (!authHeader?.startsWith('Bearer ')) {
+        return new Response(JSON.stringify({ error: 'Unauthorized: Missing token' }), {
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
       const token = authHeader.replace('Bearer ', '');
       const supabaseAuth = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-      
+
       const { data: { user }, error: userError } = await supabaseAuth.auth.getUser(token);
       if (userError || !user) {
-        console.log("Invalid token or user not found:", userError?.message);
         return new Response(JSON.stringify({ error: 'Unauthorized: Invalid token' }), {
           status: 401,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
 
-      // Check if user has admin role
       const { data: adminRole, error: roleError } = await supabaseAuth
         .from('user_roles')
         .select('role')
@@ -252,7 +260,6 @@ serve(async (req) => {
       }
 
       if (!adminRole) {
-        console.log("User is not an admin:", user.id);
         return new Response(JSON.stringify({ error: 'Forbidden: Admin access required' }), {
           status: 403,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -261,7 +268,7 @@ serve(async (req) => {
 
       console.log("Admin user verified:", user.email);
     } else {
-      console.log("Cron job execution - auto-publishing enabled");
+      console.log("Authenticated cron job execution");
     }
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
