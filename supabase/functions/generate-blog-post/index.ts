@@ -78,44 +78,55 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
+// Denver metro cities/neighborhoods to rotate through for local relevance
+const DENVER_LOCATIONS = [
+  "Denver", "Aurora", "Lakewood", "Arvada", "Westminster", "Centennial",
+  "Thornton", "Highlands Ranch", "Parker", "Littleton", "Englewood",
+  "Wheat Ridge", "Golden", "Castle Rock", "Cherry Hills Village",
+  "Greenwood Village", "Boulder", "Broomfield", "Commerce City",
+  "Cherry Creek", "Washington Park", "Capitol Hill", "Sloan's Lake",
+  "Stapleton/Central Park", "LoDo", "RiNo", "Wash Park"
+];
+
+// All topics are Denver-metro focused. {{LOCATION}} is replaced at runtime
+// with a randomly selected city/neighborhood from DENVER_LOCATIONS.
 const topics = [
-  // Economy & Financial Topics
-  "How today's economy makes estate liquidation smarter than ever",
-  "Downsizing in a tough economy: Turning belongings into financial freedom",
-  "Why e-commerce consignment is booming in the current market",
-  "Estate auctions vs. traditional sales: Which wins in today's economy?",
-  "How inflation is driving more families to professional liquidation services",
-  "Turning clutter into cash: Smart strategies for uncertain economic times",
-  "The rise of online auctions: How the economy is changing how we sell",
-  "Financial benefits of professional estate cleanouts during economic uncertainty",
-  
-  // Traditional Estate Sale Topics
-  "Tips for preparing your home for an estate sale",
-  "How to price items at an estate sale for maximum value",
-  "The benefits of professional estate liquidation services",
-  "Common mistakes to avoid when organizing an estate sale",
-  "How auction services can help recover costs during estate liquidation",
-  "A guide to downsizing: What to keep, sell, or donate",
-  "Understanding the estate sale process from start to finish",
-  "How to find hidden treasures in estate sales",
-  "Why timing matters for successful estate liquidations",
-  "The emotional side of estate sales: Helpful tips for families",
-  "Antiques and collectibles: Maximizing their value at auction",
-  "Estate sale vs. garage sale: Which is right for you?",
-  "How to handle a loved one's belongings with care and respect",
-  "The role of appraisals in estate liquidation",
-  "Preparing for an auction: What sellers need to know",
-  "How professional liquidators help during difficult transitions",
-  "Tips for buyers: Getting the best deals at estate sales",
-  "Seasonal considerations for estate sales and auctions",
-  "How to work with an estate liquidator: A step-by-step guide",
-  "The value of transparency in estate sale pricing",
-  
-  // Clean Out & Consignment Topics
-  "Complete home cleanouts: What to expect and how to prepare",
-  "E-commerce consignment explained: How your items reach buyers worldwide",
-  "From attic to auction: The journey of your consigned items",
-  "Why more sellers are choosing consignment over DIY selling"
+  // Local estate liquidation
+  "How Denver families are recovering costs through estate liquidation in {{LOCATION}}",
+  "Estate sale trends in {{LOCATION}}: What Denver-metro sellers should know",
+  "Why {{LOCATION}} homeowners are choosing auction-backed cleanouts",
+  "Downsizing in {{LOCATION}}: A Denver-area guide for seniors and families",
+  "Settling a parent's estate in {{LOCATION}}: A Colorado family's roadmap",
+  "Probate and estate liquidation in Colorado: What {{LOCATION}} families need to know",
+  "Moving out of {{LOCATION}}? How to liquidate a Denver home in 7-10 days",
+  "Top mistakes {{LOCATION}} families make during estate cleanouts",
+
+  // Denver economy & market
+  "How Denver's housing market is driving demand for estate liquidation in {{LOCATION}}",
+  "Colorado's economy and estate sales: Why now is the right time to sell in {{LOCATION}}",
+  "Turning clutter into cash in {{LOCATION}}: A Denver-metro guide",
+  "Inflation-proof your move: How {{LOCATION}} families offset costs with auctions",
+
+  // E-commerce consignment (Denver angle)
+  "E-commerce consignment in {{LOCATION}}: Reaching national buyers from Denver",
+  "Why {{LOCATION}} sellers ship through Denver Online Auctions and LiveAuctioneers",
+  "From {{LOCATION}} attic to eBay: How Denver consignment really works",
+  "Selling antiques from {{LOCATION}}: Local pickup vs. e-commerce consignment",
+
+  // Business liquidation (Denver/Colorado)
+  "Closing a business in {{LOCATION}}? A Denver liquidator's step-by-step guide",
+  "Restaurant and retail liquidation in {{LOCATION}}: Maximizing recovery in the Denver metro",
+  "Office and warehouse cleanouts in {{LOCATION}}: What Denver business owners should expect",
+
+  // Cleanouts & hoarding
+  "Same-day and emergency cleanouts in {{LOCATION}}: How Denver crews respond",
+  "Hoarding cleanouts in {{LOCATION}}: Compassionate help for Denver-area families",
+  "Junk removal vs. estate liquidation in {{LOCATION}}: Which saves Denver homeowners more?",
+
+  // Seasonal / hyperlocal
+  "Spring estate sales in {{LOCATION}}: Why Denver's season matters",
+  "Winter downsizing in {{LOCATION}}: Tips for Denver-area homeowners",
+  "Realtor-referred cleanouts in {{LOCATION}}: How Denver agents prep listings fast"
 ];
 
 const generateSlug = (title: string) => {
@@ -273,10 +284,11 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Pick a random topic
-    const topic = topics[Math.floor(Math.random() * topics.length)];
-    
-    console.log(`Generating blog post about: ${topic}`);
+    // Pick a random topic and inject a random Denver-metro location for local relevance
+    const location = DENVER_LOCATIONS[Math.floor(Math.random() * DENVER_LOCATIONS.length)];
+    const topic = topics[Math.floor(Math.random() * topics.length)].replace(/\{\{LOCATION\}\}/g, location);
+
+    console.log(`Generating blog post about: ${topic} (location: ${location})`);
 
     // Generate 3 images in parallel with the blog content for better visual interest
     const imagePrompts = [
@@ -297,23 +309,27 @@ serve(async (req) => {
           messages: [
             {
               role: "system",
-              content: `You are a content writer for JSG Liquidators, a professional estate liquidation and auction company in California. Write engaging, helpful blog posts that provide value to readers who may be dealing with estate sales, downsizing, or liquidation needs.
+              content: `You are a content writer for JSG Liquidators, Denver's trusted estate and business liquidation experts, serving the entire Denver metro area in Colorado. Every blog post MUST be locally focused on Denver and the surrounding Colorado communities — never generic, never California, never national.
 
-The company offers:
-- Professional estate liquidation services
-- Auction services (including through LiveAuctioneers and Denver Online Auctions)
-- E-commerce consignment through eBay and other platforms
-- Complete home cleanouts
-- Compassionate service during difficult transitions
-- Services that can help offset or cover costs through auction proceeds
+The company offers (in the Denver metro):
+- Professional estate liquidation and estate sales
+- Auction services through LiveAuctioneers and Denver Online Auctions
+- E-commerce consignment via eBay (national buyer reach from Denver)
+- Complete home, business, hoarding, and same-day/emergency cleanouts
+- "Revenue Recovery" / "Auction-Backed Cleanout" model — items typically sold within 7-10 days, often offsetting or covering cleanout costs
+- Compassionate, no-upfront-cost service for families in transition
+- Service area: Denver, Aurora, Lakewood, Arvada, Westminster, Centennial, Thornton, Highlands Ranch, Parker, Littleton, Englewood, Wheat Ridge, Golden, Castle Rock, Boulder, Broomfield, and surrounding Colorado communities
+- Contact: David at 805-444-4069, Vinnie at 805-340-4817, jsgliquidators@gmail.com
 
-Write in a warm, professional tone. Include practical tips and insights. The blog posts should be informative and helpful, not overly salesy.
+LOCAL RELEVANCE REQUIREMENTS (mandatory, every post):
+- Mention the target city/neighborhood ("${location}") naturally at least 3-4 times across the post (title, intro, body, conclusion).
+- Reference Denver metro context: Colorado housing market, Front Range, local seasons (Denver winters, spring market), nearby neighborhoods, I-25/I-70 corridors, or local landmarks where relevant.
+- Reference Colorado-specific realities when relevant: Colorado probate process, Denver-area realtor partnerships, mountain-to-plains moves, Front Range downsizing trends.
+- Tie in the Denver-area economy and housing market, not generic "today's economy."
+- Name our local marketplaces (Denver Online Auctions, LiveAuctioneers) and the 7-10 day timeline when discussing how items are sold.
+- Include the Denver service-area phone (805-444-4069) and a soft call-to-action for free Denver-metro consultations near the end.
 
-When relevant, tie in current economic conditions and how they affect:
-- The smart financial decision to liquidate unused belongings
-- The growing popularity of online auctions and e-commerce
-- How professional liquidation helps families during financial transitions
-- The value of turning unused items into cash
+Write in a warm, professional, locally-rooted tone. Be helpful first, not salesy.
 
 IMPORTANT: Structure the content with natural image placement markers for EXACTLY 3 images:
 - {{IMAGE_1}} - Place after the first introductory paragraph (1-2 paragraphs in)
@@ -323,24 +339,24 @@ IMPORTANT: Structure the content with natural image placement markers for EXACTL
 Ensure proper spacing with clear paragraph breaks and section headings. Each section should be substantial (2-3 paragraphs minimum).
 
 Format your response EXACTLY like this, with no code blocks or extra formatting:
-TITLE: Your blog post title here
-EXCERPT: A 1-2 sentence summary for preview cards
+TITLE: Your blog post title here (must include "${location}" or "Denver")
+EXCERPT: A 1-2 sentence summary for preview cards (must reference Denver or ${location})
 CONTENT:
-<p>Your HTML content starts here with engaging introduction...</p>
+<p>Your HTML content starts here with engaging introduction that names ${location} and Denver...</p>
 {{IMAGE_1}}
 <h2>First major section heading</h2>
-<p>Substantial content...</p>
+<p>Substantial content with local references...</p>
 <p>More content with proper spacing...</p>
 {{IMAGE_2}}
 <h2>Second major section heading</h2>
-<p>More substantial content...</p>
+<p>More substantial content with local references...</p>
 {{IMAGE_3}}
 <h2>Conclusion or Call to Action</h2>
-<p>Final thoughts...</p>`
+<p>Final thoughts with Denver-metro CTA and phone number...</p>`
             },
             {
               role: "user",
-              content: `Write a blog post about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points. Ensure the content is well-spaced with clear section divisions.`
+              content: `Write a locally-focused blog post for ${location} (Denver metro, Colorado) about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Mention "${location}" naturally at least 3-4 times and reference Denver metro context throughout. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points.`
             }
           ],
         }),
