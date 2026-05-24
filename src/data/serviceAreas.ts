@@ -46,6 +46,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "JSG Liquidators serves Aurora families and businesses with full-service estate liquidation, from the established neighborhoods near Original Aurora to the newer developments in Southlands and Murphy Creek. Whether you're managing an estate in Heather Gardens or downsizing from a home in Saddle Rock, our team provides expert service right in your community.",
     serviceHighlights: [
       "Estate sales for Aurora's large senior communities including Heather Gardens",
+      "E-commerce consignment on eBay, LiveAuctioneers & Denver Online Auctions for Aurora valuables",
       "Business liquidation for Aurora's commercial corridors along Havana and Colfax",
       "Fast junk removal with same-day service available in Aurora",
       "Donation coordination with Aurora Interfaith Community Services",
@@ -54,8 +55,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Aurora Reservoir", "Southlands Mall", "Stanley Marketplace", "Cherry Creek State Park", "Anschutz Medical Campus"],
     whyLocal: "Aurora is Colorado's third-largest city with diverse neighborhoods and a large population of retirees and military families at nearby Buckley Space Force Base. We understand the unique needs of Aurora families—whether it's a military PCS move requiring quick estate clearing, or a retiree transitioning from a Heather Gardens condo to assisted living.",
     testimonialSnippet: { text: "Professional, respectful, and incredibly thorough. They handled my father's estate with the care and attention our family needed during a difficult time.", author: "Robert K., Aurora" },
-    metaDescription: "Estate sales & liquidation services in Aurora CO. Professional estate cleanouts, junk removal & business liquidation serving all Aurora neighborhoods. Free consultations.",
-    metaKeywords: "estate sales Aurora CO, estate liquidation Aurora, junk removal Aurora Colorado, estate cleanout Aurora, business liquidation Aurora",
+    metaDescription: "Estate sales, e-commerce consignment & liquidation in Aurora CO. Estate cleanouts, junk removal, business liquidation & eBay consignment serving all Aurora neighborhoods.",
+    metaKeywords: "estate sales Aurora CO, e-commerce consignment Aurora, eBay consignment Aurora, estate liquidation Aurora, junk removal Aurora Colorado, estate cleanout Aurora, business liquidation Aurora",
   },
   {
     slug: "lakewood",
@@ -67,6 +68,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "Lakewood homeowners trust JSG Liquidators for estate sales, cleanouts, and junk removal. From mid-century homes near Belmar to properties along Green Mountain, we handle estate transitions with the care your family deserves.",
     serviceHighlights: [
       "Estate sales specializing in Lakewood's mid-century modern homes",
+      "E-commerce consignment selling Lakewood mid-century pieces nationwide on eBay & LiveAuctioneers",
       "Complete property clearing for homes near Green Mountain and Bear Creek",
       "Business liquidation along Lakewood's Colfax Avenue commercial strip",
       "Coordination with Jefferson County recycling and donation centers",
@@ -75,8 +77,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Belmar Shopping District", "Green Mountain", "Bear Creek Lake Park", "Colorado Mills", "Heritage Lakewood Belmar Park"],
     whyLocal: "Lakewood's mix of established mid-century neighborhoods and newer developments means estates here often contain valuable vintage furniture, tools, and collectibles that deserve proper valuation—not just hauling to the dump. A recent Lakewood estate cleanout generated $3,200 in auction revenue from items the family considered 'junk.'",
     testimonialSnippet: { text: "JSG turned what we thought would be a $2,000 clean out into a $500 profit. They found valuable antiques in my grandmother's basement that we never knew existed.", author: "Sarah M., Lakewood" },
-    metaDescription: "Lakewood CO estate sales & liquidation experts. Estate cleanouts, junk removal & business liquidation in Lakewood. Auction proceeds offset your costs. Call today.",
-    metaKeywords: "estate sales Lakewood CO, estate liquidation Lakewood, junk removal Lakewood Colorado, estate cleanout Lakewood, business liquidation Lakewood",
+    metaDescription: "Lakewood CO estate sales, e-commerce consignment & liquidation experts. Estate cleanouts, junk removal, eBay consignment & business liquidation in Lakewood.",
+    metaKeywords: "estate sales Lakewood CO, e-commerce consignment Lakewood, eBay consignment Lakewood, estate liquidation Lakewood, junk removal Lakewood Colorado, estate cleanout Lakewood, business liquidation Lakewood",
   },
   {
     slug: "highlands-ranch",
@@ -109,6 +111,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "Castle Rock homeowners and businesses rely on JSG Liquidators for expert estate sales, property cleanouts, and liquidation services. From historic downtown Castle Rock to The Meadows and Crystal Valley, we serve every corner of this growing Douglas County community.",
     serviceHighlights: [
       "Estate sales for Castle Rock's growing community of retirees and families",
+      "E-commerce consignment for Castle Rock Western art, antiques & ranch collectibles on LiveAuctioneers and eBay",
       "Business liquidation for downtown Castle Rock shops and restaurants",
       "Complete property clearing for Castle Rock real estate transactions",
       "Antique and Western art identification from Castle Rock ranching estates",
@@ -117,8 +120,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Castle Rock", "Philip S. Miller Park", "The Outlets at Castle Rock", "Festival Park", "Downtown Castle Rock"],
     whyLocal: "Castle Rock's blend of historic ranching properties and modern master-planned communities means we encounter everything from valuable Western art and ranch equipment to contemporary furnishings. Our expertise in both antique valuation and modern resale markets ensures Castle Rock families get maximum value from every estate.",
     testimonialSnippet: { text: "We used their business liquidation service when closing our store. They handled everything and we received more than we expected. Highly recommend!", author: "Robert & Susan K., Castle Rock" },
-    metaDescription: "Castle Rock CO estate sales & liquidation company. Estate cleanouts, business liquidation & junk removal in Castle Rock. Auction proceeds offset costs. Call today.",
-    metaKeywords: "estate sales Castle Rock CO, estate liquidation Castle Rock, junk removal Castle Rock Colorado, business liquidation Castle Rock, estate cleanout Douglas County",
+    metaDescription: "Castle Rock CO estate sales, e-commerce consignment & liquidation. Estate cleanouts, eBay consignment, business liquidation & junk removal in Castle Rock.",
+    metaKeywords: "estate sales Castle Rock CO, e-commerce consignment Castle Rock, eBay consignment Castle Rock, estate liquidation Castle Rock, junk removal Castle Rock Colorado, business liquidation Castle Rock, estate cleanout Douglas County",
   },
   {
     slug: "englewood",
@@ -130,6 +133,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "JSG Liquidators provides professional estate liquidation services throughout Englewood, from the charming bungalows near downtown to the established neighborhoods along Broadway and South Santa Fe. Our team understands Englewood's tight-knit community and handles every estate with care.",
     serviceHighlights: [
       "Estate sales for Englewood's historic homes and bungalows",
+      "E-commerce consignment on eBay, Etsy & LiveAuctioneers for Englewood antiques and collectibles",
       "Antique Row partnerships for specialty consignment on South Broadway",
       "Business liquidation for Englewood's CityCenter and commercial properties",
       "Fast cleanouts for Englewood properties heading to market",
@@ -138,8 +142,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["CityCenter Englewood", "Pirates Cove Water Park", "Belleview Park", "South Broadway Antique Row", "Broken Tee Golf Course"],
     whyLocal: "Englewood sits at the heart of the Denver metro's antique corridor along South Broadway, making it a hotspot for valuable vintage finds. Our familiarity with the local antique dealer network means we can identify and properly value items that other cleanout companies would overlook—or worse, throw away.",
     testimonialSnippet: { text: "I highly recommend JSG Liquidators. They were professional, honest, easy to work with and I received more than expected.", author: "Harriet I., Englewood" },
-    metaDescription: "Englewood CO estate sales & liquidation. Professional estate cleanouts, junk removal & consignment in Englewood. Free consultations. Call (805) 444-4069.",
-    metaKeywords: "estate sales Englewood CO, estate liquidation Englewood, junk removal Englewood Colorado, estate cleanout Englewood, antique consignment Englewood",
+    metaDescription: "Englewood CO estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts & junk removal in Englewood. Call (805) 444-4069.",
+    metaKeywords: "estate sales Englewood CO, e-commerce consignment Englewood, eBay consignment Englewood, estate liquidation Englewood, junk removal Englewood Colorado, estate cleanout Englewood, antique consignment Englewood",
   },
   {
     slug: "littleton",
@@ -172,6 +176,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "JSG Liquidators provides expert estate sale and liquidation services throughout Thornton. From the original neighborhoods near 84th Avenue to new developments along I-25, we help Thornton families maximize value during estate transitions.",
     serviceHighlights: [
       "Estate sales for Thornton's established and growing neighborhoods",
+      "E-commerce consignment on eBay & LiveAuctioneers for Thornton high-value items",
       "Quick-response cleanouts for North Metro real estate transactions",
       "Business liquidation for Thornton's commercial and industrial properties",
       "Junk removal with auction value recovery for Adams County homes",
@@ -180,8 +185,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Carpenter Park", "Trail Winds Recreation Center", "Margaret W. Carpenter Recreation Center", "Todd Creek Golf Club", "Thornton City Hall"],
     whyLocal: "Thornton is one of the fastest-growing cities in the North Metro area, with a mix of longtime residents and newer arrivals. Our team serves both—helping established Thornton families with estate transitions while assisting newcomers who need to clear properties they've purchased. We know the Adams County market and tailor our approach accordingly.",
     testimonialSnippet: { text: "Fast, professional, and honest. They handled our estate cleanout quickly and found valuable items we would have thrown away.", author: "Karen S., Thornton" },
-    metaDescription: "Thornton CO estate sales & liquidation services. Professional estate cleanouts, junk removal & business liquidation in Thornton. Free consultations.",
-    metaKeywords: "estate sales Thornton CO, estate liquidation Thornton, junk removal Thornton Colorado, estate cleanout Adams County, business liquidation Thornton",
+    metaDescription: "Thornton CO estate sales, e-commerce consignment & liquidation. Estate cleanouts, eBay consignment, junk removal & business liquidation in Thornton.",
+    metaKeywords: "estate sales Thornton CO, e-commerce consignment Thornton, eBay consignment Thornton, estate liquidation Thornton, junk removal Thornton Colorado, estate cleanout Adams County, business liquidation Thornton",
   },
   {
     slug: "westminster",
@@ -193,6 +198,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "Westminster residents choose JSG Liquidators for dependable estate sales, cleanouts, and junk removal. From homes near Standley Lake to the vibrant Westminster City Center, we provide full-service estate liquidation backed by our unique auction model.",
     serviceHighlights: [
       "Estate sales for Westminster homes along the 36 corridor",
+      "E-commerce consignment on eBay & LiveAuctioneers for Westminster mid-century and vintage finds",
       "Cleanout services for properties near Standley Lake and Big Dry Creek",
       "Business liquidation for Westminster Promenade and City Center businesses",
       "Senior downsizing services for Westminster retirement communities",
@@ -201,8 +207,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Westminster City Center", "Standley Lake", "Butterfly Pavilion", "Westminster Promenade", "Big Dry Creek Trail"],
     whyLocal: "Westminster straddles two counties and offers a wonderful mix of suburban living with quick city access. Many Westminster homes built in the 1960s-80s contain mid-century furniture and vintage items that command strong auction prices. Our appraisers know exactly what to look for in Westminster estates.",
     testimonialSnippet: { text: "I called six different junk removal companies. JSG was the only one that offered to auction valuable items instead of throwing everything away. Smart business model.", author: "Linda T., Westminster" },
-    metaDescription: "Westminster CO estate sales & liquidation. Estate cleanouts, junk removal & business liquidation in Westminster. Auction proceeds offset your costs.",
-    metaKeywords: "estate sales Westminster CO, estate liquidation Westminster, junk removal Westminster Colorado, estate cleanout Westminster, business liquidation Westminster",
+    metaDescription: "Westminster CO estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts, junk removal & business liquidation in Westminster.",
+    metaKeywords: "estate sales Westminster CO, e-commerce consignment Westminster, eBay consignment Westminster, estate liquidation Westminster, junk removal Westminster Colorado, estate cleanout Westminster, business liquidation Westminster",
   },
   {
     slug: "arvada",
@@ -214,6 +220,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "Arvada's historic Olde Town charm and thriving neighborhoods make it one of Jefferson County's most desirable communities. JSG Liquidators serves Arvada families with professional estate sales, cleanouts, and liquidation—finding hidden value in your belongings through our online auction platform.",
     serviceHighlights: [
       "Estate sales for Arvada's historic Olde Town homes and newer developments",
+      "E-commerce consignment selling Arvada antiques, mining memorabilia & Western items on eBay and LiveAuctioneers",
       "Antique and collectible identification for Arvada's established estates",
       "Business liquidation for Olde Town Arvada shops and Ralston Road businesses",
       "Complete property clearing for Arvada real estate transactions",
@@ -222,8 +229,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Olde Town Arvada", "Apex Center", "Majestic View Park", "Ralston Creek Trail", "Arvada Center for the Arts"],
     whyLocal: "Arvada's rich history—from gold rush origins to its thriving modern community—means estates here often contain fascinating finds. We've recovered valuable mining memorabilia, vintage Western items, and quality mid-century pieces from Arvada homes that families assumed had little value.",
     testimonialSnippet: { text: "They have an eye for value. The items you think are not worth anything, they find hidden treasures. Professional and driven.", author: "Brandon J., Arvada" },
-    metaDescription: "Arvada CO estate sales & liquidation experts. Estate cleanouts, junk removal & antique auctions in Arvada. Free consultations. Call (805) 444-4069.",
-    metaKeywords: "estate sales Arvada CO, estate liquidation Arvada, junk removal Arvada Colorado, estate cleanout Arvada, antique auctions Arvada",
+    metaDescription: "Arvada CO estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts, junk removal & antique auctions in Arvada.",
+    metaKeywords: "estate sales Arvada CO, e-commerce consignment Arvada, eBay consignment Arvada, estate liquidation Arvada, junk removal Arvada Colorado, estate cleanout Arvada, antique auctions Arvada",
   },
   {
     slug: "centennial",
@@ -277,6 +284,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "JSG Liquidators extends our professional estate liquidation services to Fort Collins and Northern Colorado. From the historic Old Town district to newer developments in Timnath and Windsor, we help Northern Colorado families navigate estate transitions with expert auction services.",
     serviceHighlights: [
       "Estate sales for Fort Collins historic homes and CSU-area properties",
+      "E-commerce consignment on eBay & LiveAuctioneers reaching national buyers for Fort Collins & Northern Colorado items",
       "Farm and ranch equipment auctions for Larimer County properties",
       "Business liquidation for Old Town Fort Collins and Harmony corridor",
       "Complete cleanouts for Northern Colorado real estate transactions",
@@ -285,8 +293,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Old Town Fort Collins", "Horsetooth Reservoir", "CSU Campus", "The Exchange", "Spring Canyon Park"],
     whyLocal: "Fort Collins and Northern Colorado have a unique blend of college-town energy, agricultural heritage, and growing suburbs. Our team handles the full spectrum—from CSU-area rental turnovers to multi-generational ranch estates with valuable Western art, tools, and equipment. We make regular trips to Fort Collins to serve the Northern Colorado community.",
     testimonialSnippet: { text: "They drove up from Denver and handled our entire ranch estate. Found hidden gems we had no idea about. Worth every penny.", author: "Jim & Pat W., Fort Collins" },
-    metaDescription: "Fort Collins CO estate sales & liquidation. Professional estate cleanouts, ranch auctions & junk removal in Fort Collins. Serving Northern Colorado.",
-    metaKeywords: "estate sales Fort Collins CO, estate liquidation Fort Collins, junk removal Fort Collins, ranch auction Northern Colorado, estate cleanout Larimer County",
+    metaDescription: "Fort Collins CO estate sales, e-commerce consignment & liquidation. eBay consignment, ranch auctions, estate cleanouts & junk removal in Northern Colorado.",
+    metaKeywords: "estate sales Fort Collins CO, e-commerce consignment Fort Collins, eBay consignment Fort Collins, estate liquidation Fort Collins, junk removal Fort Collins, ranch auction Northern Colorado, estate cleanout Larimer County",
   },
   {
     slug: "colorado-springs",
@@ -298,6 +306,7 @@ export const serviceAreas: ServiceArea[] = [
     description: "Colorado Springs families and military personnel trust JSG Liquidators for expert estate liquidation, business liquidation, and cleanout services. We serve the Pikes Peak region with the same professional, auction-backed approach that has made us Denver's top choice.",
     serviceHighlights: [
       "Estate sales for Colorado Springs' diverse neighborhoods and military families",
+      "E-commerce consignment on eBay & LiveAuctioneers for Colorado Springs military memorabilia, Western art & collectibles",
       "Military PCS move support with quick-turnaround liquidation",
       "Business liquidation for El Paso County commercial properties",
       "Complete cleanouts for Colorado Springs real estate transactions",
@@ -306,8 +315,8 @@ export const serviceAreas: ServiceArea[] = [
     localLandmarks: ["Garden of the Gods", "Pikes Peak", "United States Air Force Academy", "The Broadmoor", "Old Colorado City"],
     whyLocal: "Colorado Springs' strong military presence at Fort Carson, Peterson Space Force Base, and the Air Force Academy means many families face PCS moves and quick property transitions. Our rapid-response team helps military families liquidate estates quickly while ensuring valuable items—including military collectibles—reach the right buyers at auction.",
     testimonialSnippet: { text: "Quick and professional. They accommodated our tight military timeline and still got excellent prices at auction for our family items.", author: "Sgt. Michael R., Colorado Springs" },
-    metaDescription: "Colorado Springs estate sales & liquidation. Estate cleanouts, business liquidation & junk removal in Colorado Springs CO. Military family specialists.",
-    metaKeywords: "estate sales Colorado Springs, estate liquidation Colorado Springs, junk removal Colorado Springs CO, military PCS estate sale, business liquidation El Paso County",
+    metaDescription: "Colorado Springs estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts, business liquidation & junk removal. Military specialists.",
+    metaKeywords: "estate sales Colorado Springs, e-commerce consignment Colorado Springs, eBay consignment Colorado Springs, estate liquidation Colorado Springs, junk removal Colorado Springs CO, military PCS estate sale, business liquidation El Paso County",
   },
 ];
 
