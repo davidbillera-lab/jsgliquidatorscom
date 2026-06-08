@@ -304,17 +304,27 @@ serve(async (req) => {
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Pick a random topic and inject a random Denver-metro location for local relevance
-    const location = DENVER_LOCATIONS[Math.floor(Math.random() * DENVER_LOCATIONS.length)];
-    const topic = topics[Math.floor(Math.random() * topics.length)].replace(/\{\{LOCATION\}\}/g, location);
+    // Pick a city + a service, then a topic template scoped to that service.
+    const area = pick(SERVICE_AREAS);
+    const service = pick(SERVICES);
+    const neighborhood = pick(area.neighborhoods);
+    const landmark = pick(area.landmarks);
+    const templates = TOPIC_TEMPLATES_BY_SERVICE[service.slug];
+    const topic = pick(templates)
+      .replace(/\{\{LOCATION\}\}/g, area.name)
+      .replace(/\{\{COUNTY\}\}/g, area.county)
+      .replace(/\{\{NEIGHBORHOOD\}\}/g, neighborhood);
 
-    console.log(`Generating blog post about: ${topic} (location: ${location})`);
+    const cityUrl = `https://jsgliquidators.com/service-areas/${area.slug}`;
+    const serviceUrl = `https://jsgliquidators.com/services/${service.slug}`;
+    const cityServiceUrl = `https://jsgliquidators.com/service-areas/${area.slug}/${service.slug}`;
 
-    // Generate 3 images in parallel with the blog content for better visual interest
+    console.log(`Generating blog post: "${topic}" | city=${area.name} service=${service.slug}`);
+
     const imagePrompts = [
-      `Professional photograph of an organized estate sale in a beautiful home, warm natural lighting, antique furniture and collectibles neatly displayed, welcoming atmosphere, high quality editorial style photo, 16:9 aspect ratio`,
-      `Professional photograph of a cozy living room with vintage furniture and family heirlooms, soft lighting, moving boxes in background suggesting downsizing, warm and inviting atmosphere, editorial style, 16:9 aspect ratio`,
-      `Professional photograph of an online auction setup with laptop showing auction listings, beautiful antiques and collectibles arranged for photography, modern e-commerce meets traditional estate items, warm lighting, 16:9 aspect ratio`
+      `Professional editorial photograph of an organized estate sale inside a tasteful ${area.name}, Colorado home, warm natural Front Range light through the windows, antique furniture and collectibles neatly displayed, welcoming atmosphere, no visible text or logos, 16:9 aspect ratio`,
+      `Professional editorial photograph of a cozy ${area.name} Colorado living room with vintage furniture and family heirlooms, soft afternoon light, a few moving boxes in the background suggesting downsizing, warm and inviting, no visible text or logos, 16:9 aspect ratio`,
+      `Professional editorial photograph of an online auction workspace with a laptop showing auction listings, beautiful antiques and collectibles arranged for photography on a clean table, modern e-commerce meets traditional estate items, warm lighting, no visible text or logos, 16:9 aspect ratio`
     ];
 
     const [contentResponse, image1Data, image2Data, image3Data] = await Promise.all([
@@ -329,58 +339,82 @@ serve(async (req) => {
           messages: [
             {
               role: "system",
-              content: `You are a content writer for JSG Liquidators, Denver's trusted estate and business liquidation experts, serving the entire Denver metro area in Colorado. Every blog post MUST be locally focused on Denver and the surrounding Colorado communities — never generic, never California, never national.
+              content: `You are a local content writer for JSG Liquidators — Denver's trusted estate and business liquidation experts serving the Front Range of Colorado. Every post is hyper-local to ONE city and ONE service. Never generic, never California, never national filler.
 
-The company offers (in the Denver metro):
-- Professional estate liquidation and estate sales
-- Auction services through LiveAuctioneers and Denver Online Auctions
-- E-commerce consignment via eBay (national buyer reach from Denver)
-- Complete home, business, hoarding, and same-day/emergency cleanouts
-- "Revenue Recovery" / "Auction-Backed Cleanout" model — items typically sold within 7-10 days, often offsetting or covering cleanout costs
+TARGET CITY: ${area.name} (${area.county}, Colorado)
+NEARBY NEIGHBORHOODS: ${area.neighborhoods.join(", ")}
+LOCAL LANDMARKS / CORRIDORS: ${area.landmarks.join(", ")}
+SERVED ZIP CODES (mention 2-3 naturally): ${area.zips.join(", ")}
+TARGET SERVICE: ${service.name} — ${service.focus}
+
+COMPANY FACTS (use accurately):
+- Revenue Recovery / Auction-Backed Cleanout model — items typically sold in 7-10 days, often offsetting cleanout cost
+- Marketplaces: LiveAuctioneers, Denver Online Auctions, eBay (national reach shipped from Denver)
 - Compassionate, no-upfront-cost service for families in transition
-- Service area: Denver, Aurora, Lakewood, Arvada, Westminster, Centennial, Thornton, Highlands Ranch, Parker, Littleton, Englewood, Wheat Ridge, Golden, Castle Rock, Boulder, Broomfield, and surrounding Colorado communities
-- Contact: David at 805-444-4069, Vinnie at 805-340-4817, jsgliquidators@gmail.com
+- Primary contact: David at 805-444-4069 · Secondary: Vinnie at 805-340-4817 · jsgliquidators@gmail.com
+- Service-area page: ${cityUrl}
+- Service page: ${serviceUrl}
+- City + service landing page: ${cityServiceUrl}
 
-LOCAL RELEVANCE REQUIREMENTS (mandatory, every post):
-- Mention the target city/neighborhood ("${location}") naturally at least 3-4 times across the post (title, intro, body, conclusion).
-- Reference Denver metro context: Colorado housing market, Front Range, local seasons (Denver winters, spring market), nearby neighborhoods, I-25/I-70 corridors, or local landmarks where relevant.
-- Reference Colorado-specific realities when relevant: Colorado probate process, Denver-area realtor partnerships, mountain-to-plains moves, Front Range downsizing trends.
-- Tie in the Denver-area economy and housing market, not generic "today's economy."
-- Name our local marketplaces (Denver Online Auctions, LiveAuctioneers) and the 7-10 day timeline when discussing how items are sold.
-- Include the Denver service-area phone (805-444-4069) and a soft call-to-action for free Denver-metro consultations near the end.
+LOCALIZATION RULES (mandatory):
+- Use "${area.name}" by name at least 5 times across title, intro, body, FAQ, and conclusion.
+- Mention ${area.county} at least once.
+- Reference at least TWO neighborhoods from the list above by name.
+- Reference at least ONE landmark/corridor from the list above by name.
+- Mention 2-3 of the ZIP codes naturally (e.g., "homes near ${area.zips[0]} and ${area.zips[1]}").
+- Reference Colorado-specific realities where relevant: Colorado probate, Front Range housing market, mountain-to-plains moves, Denver-area realtor partnerships.
+- Tie pricing/timeline statements to the 7-10 day local auction cycle — not generic claims.
 
-Write in a warm, professional, locally-rooted tone. Be helpful first, not salesy.
+AEO / GEO / SEO STRUCTURE (mandatory — write content that answer engines can lift):
+1. Open with a 2-3 sentence "TL;DR" answer box wrapped in <div class="tldr"><p><strong>Quick answer:</strong> ...</p></div> that directly answers the topic question for someone in ${area.name}.
+2. Use clear H2/H3 questions phrased the way locals search (e.g., "How much does an estate cleanout cost in ${area.name}?", "Do you serve ${neighborhood}?"). Answer in the first sentence below each heading — answer-first, then expand.
+3. Include at least one <ul> "at-a-glance" list (timeline, what's included, ZIPs served, etc.) — easy for AI overviews to extract.
+4. End the body with a <h2>Frequently asked questions in ${area.name}</h2> section containing 4-5 <h3> questions, each answered in 1-3 sentences. Keep questions natural-language and locally-scoped.
+5. Include 2-3 internal links using exact anchor text and full URLs:
+   - <a href="${cityUrl}">${service.name} in ${area.name}</a>
+   - <a href="${serviceUrl}">${service.name}</a>
+   - <a href="${cityServiceUrl}">${service.name} in ${area.name}, ${area.county}</a>
+6. End with a clear local CTA paragraph naming ${area.name} and the phone 805-444-4069.
 
-IMPORTANT: Structure the content with natural image placement markers for EXACTLY 3 images:
-- {{IMAGE_1}} - Place after the first introductory paragraph (1-2 paragraphs in)
-- {{IMAGE_2}} - Place in the middle section, between major topic transitions
-- {{IMAGE_3}} - Place near the end, before the conclusion/CTA section
+Write in a warm, professional, locally-rooted tone. Be helpful first, not salesy. No fabricated statistics, no fake testimonials, no invented case studies.
 
-Ensure proper spacing with clear paragraph breaks and section headings. Each section should be substantial (2-3 paragraphs minimum).
+IMAGE PLACEHOLDERS (exactly 3, in this order):
+- {{IMAGE_1}} after the TL;DR + first H2 intro paragraph
+- {{IMAGE_2}} in the middle, between two major sections
+- {{IMAGE_3}} just before the FAQ section
 
-Format your response EXACTLY like this, with no code blocks or extra formatting:
-TITLE: Your blog post title here (must include "${location}" or "Denver")
-EXCERPT: A 1-2 sentence summary for preview cards (must reference Denver or ${location})
+Format your response EXACTLY like this, no code blocks, no markdown fences:
+TITLE: Title that includes "${area.name}" and naturally hints at ${service.name}
+EXCERPT: 1-2 sentence preview that names ${area.name} and the service
 CONTENT:
-<p>Your HTML content starts here with engaging introduction that names ${location} and Denver...</p>
+<div class="tldr"><p><strong>Quick answer:</strong> ...</p></div>
+<p>Intro paragraph that names ${area.name} and ${area.county}...</p>
 {{IMAGE_1}}
-<h2>First major section heading</h2>
-<p>Substantial content with local references...</p>
-<p>More content with proper spacing...</p>
+<h2>Question-style heading about ${service.name} in ${area.name}</h2>
+<p>Answer-first paragraph...</p>
+<ul><li>...</li><li>...</li></ul>
+<h2>Second question-style heading</h2>
+<p>...</p>
 {{IMAGE_2}}
-<h2>Second major section heading</h2>
-<p>More substantial content with local references...</p>
+<h2>Third local section (neighborhoods, ZIPs, or process)</h2>
+<p>...</p>
 {{IMAGE_3}}
-<h2>Conclusion or Call to Action</h2>
-<p>Final thoughts with Denver-metro CTA and phone number...</p>`
+<h2>Frequently asked questions in ${area.name}</h2>
+<h3>Question 1?</h3><p>Answer.</p>
+<h3>Question 2?</h3><p>Answer.</p>
+<h3>Question 3?</h3><p>Answer.</p>
+<h3>Question 4?</h3><p>Answer.</p>
+<h2>Talk to a local ${area.name} liquidator</h2>
+<p>CTA paragraph with 805-444-4069 and a link to <a href="${cityServiceUrl}">${service.name} in ${area.name}</a>.</p>`
             },
             {
               role: "user",
-              content: `Write a locally-focused blog post for ${location} (Denver metro, Colorado) about: ${topic}. Make it approximately 800-1000 words with substantial sections. Use HTML formatting with paragraphs (<p>), headings (<h2>, <h3>), and lists (<ul>, <li>) where appropriate. Mention "${location}" naturally at least 3-4 times and reference Denver metro context throughout. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at natural break points.`
+              content: `Write the post described above for the city of ${area.name}, ${area.county}, Colorado about: ${topic}. Service focus: ${service.name}. Target length 900-1100 words. Reference these neighborhoods at least twice between them: ${area.neighborhoods.slice(0,3).join(", ")}. Reference this local landmark/corridor naturally: ${landmark}. Mention these ZIPs naturally: ${area.zips.slice(0,3).join(", ")}. Include exactly 3 image placeholders ({{IMAGE_1}}, {{IMAGE_2}}, {{IMAGE_3}}) at the marked positions.`
             }
           ],
         }),
       }),
+
       generateImage(imagePrompts[0], LOVABLE_API_KEY),
       generateImage(imagePrompts[1], LOVABLE_API_KEY),
       generateImage(imagePrompts[2], LOVABLE_API_KEY)
