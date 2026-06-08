@@ -78,56 +78,76 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-// Denver metro cities/neighborhoods to rotate through for local relevance
-const DENVER_LOCATIONS = [
-  "Denver", "Aurora", "Lakewood", "Arvada", "Westminster", "Centennial",
-  "Thornton", "Highlands Ranch", "Parker", "Littleton", "Englewood",
-  "Wheat Ridge", "Golden", "Castle Rock", "Cherry Hills Village",
-  "Greenwood Village", "Boulder", "Broomfield", "Commerce City",
-  "Cherry Creek", "Washington Park", "Capitol Hill", "Sloan's Lake",
-  "Stapleton/Central Park", "LoDo", "RiNo", "Wash Park"
+// Service-area cities that have dedicated landing pages on jsgliquidators.com.
+// Each slug MUST match src/data/serviceAreas.ts so internal links resolve.
+type ServiceAreaEntry = {
+  name: string;
+  slug: string;
+  county: string;
+  zips: string[];
+  neighborhoods: string[];
+  landmarks: string[];
+};
+
+const SERVICE_AREAS: ServiceAreaEntry[] = [
+  { name: "Denver", slug: "denver", county: "Denver County", zips: ["80202","80203","80205","80206","80209","80211","80218"], neighborhoods: ["Cherry Creek","Washington Park","Capitol Hill","LoDo","RiNo","Sloan's Lake","Stapleton/Central Park","Berkeley","Highland"], landmarks: ["Union Station","City Park","Cherry Creek Mall","I-25 corridor","I-70 corridor"] },
+  { name: "Aurora", slug: "aurora", county: "Arapahoe & Adams County", zips: ["80010","80012","80013","80014","80015","80016"], neighborhoods: ["Saddle Rock","Tallyn's Reach","Heather Gardens","Southlands"], landmarks: ["Anschutz Medical Campus","Cherry Creek State Park","Buckley Space Force Base","E-470"] },
+  { name: "Lakewood", slug: "lakewood", county: "Jefferson County", zips: ["80214","80215","80226","80227","80228","80232"], neighborhoods: ["Belmar","Green Mountain","Applewood","Eiber"], landmarks: ["Belmar shopping district","Bear Creek Lake Park","6th Avenue corridor","US-285"] },
+  { name: "Highlands Ranch", slug: "highlands-ranch", county: "Douglas County", zips: ["80126","80129","80130"], neighborhoods: ["Backcountry","Eastridge","Northridge","Westridge"], landmarks: ["Highlands Ranch Mansion","C-470","Town Center"] },
+  { name: "Castle Rock", slug: "castle-rock", county: "Douglas County", zips: ["80104","80108","80109"], neighborhoods: ["The Meadows","Founders Village","Castle Pines"], landmarks: ["Outlets at Castle Rock","I-25 / Wolfensberger exit","The Rock"] },
+  { name: "Englewood", slug: "englewood", county: "Arapahoe County", zips: ["80110","80111","80112","80113"], neighborhoods: ["Old Englewood","CityCenter"], landmarks: ["Swedish Medical Center","Hampden Avenue","Broadway corridor"] },
+  { name: "Littleton", slug: "littleton", county: "Arapahoe / Jefferson / Douglas", zips: ["80120","80121","80122","80123","80124","80125","80127","80128"], neighborhoods: ["Historic Downtown Littleton","Ken Caryl","Roxborough"], landmarks: ["Aspen Grove","Chatfield Reservoir","Santa Fe Drive"] },
+  { name: "Thornton", slug: "thornton", county: "Adams County", zips: ["80229","80233","80241","80260","80602"], neighborhoods: ["Original Thornton","Eastlake","Trail Winds"], landmarks: ["Denver Premium Outlets","I-25 / 144th","Larkridge"] },
+  { name: "Westminster", slug: "westminster", county: "Adams & Jefferson County", zips: ["80003","80020","80021","80030","80031","80234"], neighborhoods: ["Bradburn Village","Legacy Ridge","Standley Lake"], landmarks: ["Westminster Promenade","Standley Lake","US-36 / 88th"] },
+  { name: "Arvada", slug: "arvada", county: "Jefferson County", zips: ["80002","80003","80004","80005","80007"], neighborhoods: ["Olde Town Arvada","Candelas","Leyden Rock"], landmarks: ["Olde Town Arvada","Apex Center","Wadsworth Boulevard"] },
+  { name: "Centennial", slug: "centennial", county: "Arapahoe County", zips: ["80111","80112","80121","80122"], neighborhoods: ["Willow Creek","Walnut Hills","Piney Creek"], landmarks: ["Streets at SouthGlenn","Centennial Airport","I-25 / Arapahoe"] },
+  { name: "Boulder", slug: "boulder", county: "Boulder County", zips: ["80301","80302","80303","80304","80305"], neighborhoods: ["North Boulder","South Boulder","Mapleton Hill","Table Mesa"], landmarks: ["Pearl Street Mall","CU Boulder","Flatirons","US-36"] },
+  { name: "Fort Collins", slug: "fort-collins", county: "Larimer County", zips: ["80521","80524","80525","80526","80528"], neighborhoods: ["Old Town","Harmony","Fossil Lake"], landmarks: ["Old Town Square","CSU","Horsetooth Reservoir","I-25 / Harmony"] },
+  { name: "Colorado Springs", slug: "colorado-springs", county: "El Paso County", zips: ["80903","80904","80905","80906","80907","80920"], neighborhoods: ["Old North End","Broadmoor","Briargate","Old Colorado City"], landmarks: ["Garden of the Gods","Pikes Peak","Fort Carson","I-25 / Academy"] },
 ];
 
-// All topics are Denver-metro focused. {{LOCATION}} is replaced at runtime
-// with a randomly selected city/neighborhood from DENVER_LOCATIONS.
-const topics = [
-  // Local estate liquidation
-  "How Denver families are recovering costs through estate liquidation in {{LOCATION}}",
-  "Estate sale trends in {{LOCATION}}: What Denver-metro sellers should know",
-  "Why {{LOCATION}} homeowners are choosing auction-backed cleanouts",
-  "Downsizing in {{LOCATION}}: A Denver-area guide for seniors and families",
-  "Settling a parent's estate in {{LOCATION}}: A Colorado family's roadmap",
-  "Probate and estate liquidation in Colorado: What {{LOCATION}} families need to know",
-  "Moving out of {{LOCATION}}? How to liquidate a Denver home in 7-10 days",
-  "Top mistakes {{LOCATION}} families make during estate cleanouts",
-
-  // Denver economy & market
-  "How Denver's housing market is driving demand for estate liquidation in {{LOCATION}}",
-  "Colorado's economy and estate sales: Why now is the right time to sell in {{LOCATION}}",
-  "Turning clutter into cash in {{LOCATION}}: A Denver-metro guide",
-  "Inflation-proof your move: How {{LOCATION}} families offset costs with auctions",
-
-  // E-commerce consignment (Denver angle)
-  "E-commerce consignment in {{LOCATION}}: Reaching national buyers from Denver",
-  "Why {{LOCATION}} sellers ship through Denver Online Auctions and LiveAuctioneers",
-  "From {{LOCATION}} attic to eBay: How Denver consignment really works",
-  "Selling antiques from {{LOCATION}}: Local pickup vs. e-commerce consignment",
-
-  // Business liquidation (Denver/Colorado)
-  "Closing a business in {{LOCATION}}? A Denver liquidator's step-by-step guide",
-  "Restaurant and retail liquidation in {{LOCATION}}: Maximizing recovery in the Denver metro",
-  "Office and warehouse cleanouts in {{LOCATION}}: What Denver business owners should expect",
-
-  // Cleanouts & hoarding
-  "Same-day and emergency cleanouts in {{LOCATION}}: How Denver crews respond",
-  "Hoarding cleanouts in {{LOCATION}}: Compassionate help for Denver-area families",
-  "Junk removal vs. estate liquidation in {{LOCATION}}: Which saves Denver homeowners more?",
-
-  // Seasonal / hyperlocal
-  "Spring estate sales in {{LOCATION}}: Why Denver's season matters",
-  "Winter downsizing in {{LOCATION}}: Tips for Denver-area homeowners",
-  "Realtor-referred cleanouts in {{LOCATION}}: How Denver agents prep listings fast"
+const SERVICES = [
+  { name: "Estate Sales & Online Auctions", slug: "estate-sales", focus: "on-site and hybrid estate sales backed by LiveAuctioneers and Denver Online Auctions" },
+  { name: "E-Commerce Consignment", slug: "consignment", focus: "national-reach consignment via eBay and online auction houses, shipped from Denver" },
+  { name: "Business Liquidation", slug: "business-liquidation", focus: "restaurant, retail, office and warehouse asset recovery across the Front Range" },
+  { name: "Estate Clean Outs", slug: "estate-cleanouts", focus: "the 12-day Auction-Backed Cleanout that offsets cost through Revenue Recovery" },
+  { name: "Junk Removal", slug: "junk-removal", focus: "value-first junk removal that pulls out resellable items before anything hits the dumpster" },
 ];
+
+// Topic templates rotate by SERVICE so each post is naturally about one
+// specific service in one specific city — the strongest local SEO/GEO/AEO signal.
+const TOPIC_TEMPLATES_BY_SERVICE: Record<string, string[]> = {
+  "estate-sales": [
+    "How estate sales work in {{LOCATION}}, {{COUNTY}}: a 7-10 day local guide",
+    "{{LOCATION}} estate sale checklist: what {{COUNTY}} families should expect",
+    "Hybrid estate sales in {{LOCATION}}: pairing in-person buyers with online auction reach",
+  ],
+  "consignment": [
+    "Selling antiques from {{LOCATION}} on eBay and LiveAuctioneers: a Denver-metro guide",
+    "E-commerce consignment for {{LOCATION}} sellers: from {{NEIGHBORHOOD}} attic to national buyer",
+    "Why {{LOCATION}} collectors ship through Denver Online Auctions",
+  ],
+  "business-liquidation": [
+    "Closing a business in {{LOCATION}}? A step-by-step Front Range liquidation playbook",
+    "Restaurant and retail liquidation in {{LOCATION}}, {{COUNTY}}: maximizing recovery",
+    "Office and warehouse cleanouts in {{LOCATION}}: what {{COUNTY}} owners should expect",
+  ],
+  "estate-cleanouts": [
+    "Auction-Backed Cleanouts in {{LOCATION}}: how the 12-day Revenue Recovery model works",
+    "Probate cleanouts in {{LOCATION}}, Colorado: a {{COUNTY}} executor's roadmap",
+    "Same-day and emergency estate cleanouts in {{LOCATION}} and nearby {{NEIGHBORHOOD}}",
+    "Hoarding cleanouts in {{LOCATION}}: compassionate help for {{COUNTY}} families",
+    "Downsizing in {{LOCATION}}: a senior-friendly guide for {{NEIGHBORHOOD}} homeowners",
+  ],
+  "junk-removal": [
+    "Junk removal vs. estate liquidation in {{LOCATION}}: which saves {{COUNTY}} homeowners more?",
+    "Value-first junk removal in {{LOCATION}}: how we offset hauling cost with resale",
+    "Realtor-referred cleanouts in {{LOCATION}}: prepping {{NEIGHBORHOOD}} listings fast",
+  ],
+};
+
+const pick = <T,>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
+
 
 const generateSlug = (title: string) => {
   return title
