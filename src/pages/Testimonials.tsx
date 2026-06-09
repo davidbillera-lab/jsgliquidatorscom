@@ -65,7 +65,7 @@ const Testimonials = () => {
     <Layout>
       <SEOHead
         title="Client Testimonials & Reviews Denver"
-        description="Read 5-star reviews from satisfied clients about JSG Liquidators estate sale, liquidation, junk removal, and auction services in Denver CO. See why Colorado families trust us."
+        description="Read 5-star reviews from JSG Liquidators clients on estate sales, liquidation, junk removal, and auction services across Denver, CO."
         canonical="/testimonials"
         keywords="estate sale reviews Denver, estate liquidation testimonials Colorado, JSG Liquidators reviews, estate sale company reviews Denver CO, junk removal reviews Denver, estate cleanout reviews"
         breadcrumbs={[
@@ -96,8 +96,9 @@ const Testimonials = () => {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-background" aria-labelledby="reviews-heading">
         <div className="container mx-auto px-4">
+          <h2 id="reviews-heading" className="sr-only">Client Reviews</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -128,8 +129,9 @@ const Testimonials = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-muted/30" aria-labelledby="stats-heading">
         <div className="container mx-auto px-4">
+          <h2 id="stats-heading" className="sr-only">By the Numbers</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

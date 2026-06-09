@@ -105,7 +105,7 @@ const Blog = () => {
                   transition={{ duration: 0.5 }}
                   className="group bg-card rounded-xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
-                  <Link to={`/blog/${post.slug}`}>
+                  <Link to={`/blog/${post.slug}`} aria-label={`Read full article: ${post.title}`}>
                     {post.featured_image_url && (
                       <div className="aspect-video overflow-hidden">
                         <img
@@ -139,8 +139,8 @@ const Blog = () => {
                         </p>
                       )}
                       <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors">
-                        Read more
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        Read full article
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                       </span>
                     </div>
                   </Link>

@@ -97,7 +97,7 @@ const Contact = () => {
     <Layout>
       <SEOHead
         title="Contact Us - Free Consultation"
-        description="Contact JSG Liquidators for a free estate liquidation consultation in Denver CO. Call David (805) 444-4069 or Vincent (805) 340-4817. Serving Highlands Ranch, Castle Rock, Englewood, Littleton."
+        description="Free estate liquidation consultation in Denver. Call David (805) 444-4069 or Vincent (805) 340-4817. Serving the entire Denver metro & Front Range."
         canonical="/contact"
         keywords="contact JSG Liquidators, free estate sale consultation Denver, estate liquidation quote Colorado, junk removal quote Denver, estate cleanout contact"
         breadcrumbs={[

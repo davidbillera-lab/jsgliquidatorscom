@@ -163,7 +163,7 @@ const Services = () => {
     <Layout>
       <SEOHead
         title="Estate Sales & Liquidation Services Denver"
-        description="Professional estate sales, estate liquidation, business liquidation, junk removal & e-commerce consignment in Denver CO. Online auction platform reaches thousands of buyers. Free consultations available."
+        description="Denver estate sales, liquidation, business liquidation, junk removal & e-commerce consignment. No upfront cost—auctions offset fees. Free consultations."
         canonical="/services"
         keywords="estate sales Denver, estate liquidation services Colorado, business liquidation Denver, junk removal company Denver, e-commerce consignment Colorado, estate sale auctions, online estate auctions"
         breadcrumbs={[
