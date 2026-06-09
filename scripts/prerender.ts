@@ -334,13 +334,13 @@ async function fetchBlogPosts() {
       content: string | null;
       author: string | null;
       published_at: string | null;
-      hero_image: string | null;
+      featured_image_url: string | null;
     }>;
   }
   const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
   const { data, error } = await sb
     .from("blog_posts")
-    .select("slug, title, excerpt, content, author, published_at, hero_image")
+    .select("slug, title, excerpt, content, author, published_at, featured_image_url")
     .eq("published", true)
     .order("published_at", { ascending: false, nullsFirst: false });
   if (error) {
@@ -390,12 +390,12 @@ async function main() {
       title: `${p.title} | JSG Liquidators Blog`,
       description: excerpt || `Read ${p.title} on the JSG Liquidators blog.`,
       ogType: "article",
-      image: p.hero_image || undefined,
+      image: p.featured_image_url || undefined,
       bodyHtml: `<main style="max-width:900px;margin:0 auto;padding:24px;">
         <article>
           <h1>${escapeHtml(p.title)}</h1>
           ${p.author ? `<p><em>By ${escapeHtml(p.author)}${p.published_at ? ` · ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>` : ""}
-          ${p.hero_image ? `<img src="${escapeHtml(p.hero_image)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
+          ${p.featured_image_url ? `<img src="${escapeHtml(p.featured_image_url)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
           <p>${escapeHtml(bodySnippet)}…</p>
           <p><a href="/blog">← Back to all guides</a></p>
         </article>
@@ -409,7 +409,7 @@ async function main() {
           description: excerpt,
           author: p.author ? { "@type": "Person", name: p.author } : undefined,
           datePublished: p.published_at || undefined,
-          image: p.hero_image || undefined,
+          image: p.featured_image_url || undefined,
           mainEntityOfPage: url,
           publisher: {
             "@type": "Organization",
