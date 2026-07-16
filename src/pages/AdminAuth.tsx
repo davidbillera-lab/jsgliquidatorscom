@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
@@ -12,52 +12,60 @@ import { Lock, Mail } from "lucide-react";
 
 const AdminAuth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const rawNext = searchParams.get("next");
+  const nextPath = rawNext && rawNext.startsWith("/") && !rawNext.startsWith("//") ? rawNext : null;
+  const goNext = () => {
+    if (nextPath) {
+      window.location.href = nextPath;
+    } else {
+      navigate("/blog-admin");
+    }
+  };
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Check if already logged in
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        // Check if user is admin
+      if (!session) return;
+      if (nextPath) {
+        goNext();
+        return;
+      }
+      const { data: roles } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", session.user.id)
+        .eq("role", "admin")
+        .single();
+      if (roles) navigate("/blog-admin");
+    };
+
+    checkSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) return;
+      if (nextPath) {
+        goNext();
+        return;
+      }
+      setTimeout(async () => {
         const { data: roles } = await supabase
           .from("user_roles")
           .select("role")
           .eq("user_id", session.user.id)
           .eq("role", "admin")
           .single();
-
-        if (roles) {
-          navigate("/blog-admin");
-        }
-      }
-    };
-    
-    checkSession();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        // Defer the role check
-        setTimeout(async () => {
-          const { data: roles } = await supabase
-            .from("user_roles")
-            .select("role")
-            .eq("user_id", session.user.id)
-            .eq("role", "admin")
-            .single();
-
-          if (roles) {
-            navigate("/blog-admin");
-          }
-        }, 0);
-      }
+        if (roles) navigate("/blog-admin");
+      }, 0);
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate, nextPath]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,14 +73,15 @@ const AdminAuth = () => {
 
     try {
       if (isLogin) {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
 
-        // Check admin role
+        if (nextPath) {
+          toast.success("Signed in");
+          goNext();
+          return;
+        }
+
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           const { data: roles } = await supabase
@@ -91,17 +100,20 @@ const AdminAuth = () => {
           navigate("/blog-admin");
         }
       } else {
+        const emailRedirect = nextPath
+          ? `${window.location.origin}/admin-auth?next=${encodeURIComponent(nextPath)}`
+          : `${window.location.origin}/admin-auth`;
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/admin-auth`,
-          },
+          options: { emailRedirectTo: emailRedirect },
         });
-
         if (error) throw error;
-
-        toast.success("Account created! Please contact an admin to get admin access.");
+        toast.success(
+          nextPath
+            ? "Account created! Sign in to continue authorizing the app."
+            : "Account created! Please contact an admin to get admin access.",
+        );
         setIsLogin(true);
       }
     } catch (error: unknown) {
