@@ -1,5 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
-import { serviceAreas } from "../../data/serviceAreas";
+import { serviceAreas } from "../../../data/serviceAreas";
 
 export default defineTool({
   name: "list_service_areas",
