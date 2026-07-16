@@ -237,6 +237,28 @@ const Services = () => {
                     ))}
                   </div>
 
+                  {(() => {
+                    const catMap: Record<string, string> = {
+                      auctions: "estate-sales",
+                      consignment: "consignment",
+                      business: "business-liquidation",
+                      "estate-cleanouts": "estate-cleanouts",
+                      "junk-removal": "junk-removal",
+                    };
+                    const catSlug = catMap[service.id];
+                    return catSlug ? (
+                      <div className="mb-6">
+                        <Link
+                          to={`/services/${catSlug}`}
+                          className="inline-flex items-center gap-1 text-accent hover:underline font-medium text-sm"
+                        >
+                          See {service.title} in all 14 Colorado cities
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      </div>
+                    ) : null;
+                  })()}
+
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                     {service.auctionLinks ? (
                       <div className="w-full flex flex-col gap-3">
