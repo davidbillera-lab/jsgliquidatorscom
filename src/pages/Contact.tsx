@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -63,11 +64,14 @@ const Contact = () => {
 
     try {
       const validatedData = contactSchema.parse(formData);
-      
-      // Simulate form submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      
+
+      const { error: fnError } = await supabase.functions.invoke("send-contact-message", {
+        body: validatedData,
+      });
+      if (fnError) throw fnError;
+
       setIsSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       toast({
         title: "Message Sent!",
         description: "Thank you for contacting us. We'll get back to you within 24 hours.",
