@@ -136,10 +136,12 @@ serve(async (req) => {
       throw new Error("Required environment variables not configured");
     }
 
-    // Auth: same pattern as generate-blog-post — cron uses anon key, admin uses JWT
-    const authHeader = req.headers.get('Authorization');
-    const isCronCall = authHeader?.includes(Deno.env.get("SUPABASE_ANON_KEY") || '');
-    if (!isCronCall && authHeader) {
+    // Auth: cron uses X-Cron-Secret header, admin uses JWT
+    const cronSecret = req.headers.get('X-Cron-Secret');
+    const isCronCall = !!cronSecret && cronSecret === Deno.env.get('CRON_SECRET');
+    if (!isCronCall) {
+      const authHeader = req.headers.get('Authorization');
+      if (!authHeader) return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
       const token = authHeader.replace('Bearer ','');
       const sbAuth = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
       const { data: { user }, error: ue } = await sbAuth.auth.getUser(token);

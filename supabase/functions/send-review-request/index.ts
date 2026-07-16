@@ -1,15 +1,17 @@
-// Sends a Google review request email via Resend.
+// Sends a Google review request email via Resend. Admin-only.
 // POST { customerName, customerEmail, jobType?, reviewUrl? }
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { createClient } from "npm:@supabase/supabase-js@2";
 import { z } from "npm:zod@3.23.8";
 
-const DEFAULT_REVIEW_URL = "https://g.page/r/JSG-Liquidators/review"; // replace with actual Google review link
+const DEFAULT_REVIEW_URL = "https://g.page/r/JSG-Liquidators/review";
+const REVIEW_URL_ALLOWLIST = /^https:\/\/(g\.page\/|(?:www\.)?google\.com\/|maps\.google\.com\/|search\.google\.com\/local\/writereview)/i;
 
 const BodySchema = z.object({
   customerName: z.string().min(1).max(120),
   customerEmail: z.string().email(),
   jobType: z.string().max(120).optional(),
-  reviewUrl: z.string().url().optional(),
+  reviewUrl: z.string().url().regex(REVIEW_URL_ALLOWLIST, "reviewUrl must be a Google review URL").optional(),
 });
 
 Deno.serve(async (req) => {
@@ -17,9 +19,41 @@ Deno.serve(async (req) => {
 
   try {
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-    if (!RESEND_API_KEY) {
-      return new Response(JSON.stringify({ error: "RESEND_API_KEY not configured." }), {
+    const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
+    const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    if (!RESEND_API_KEY || !SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
+      return new Response(JSON.stringify({ error: "Server not configured." }), {
         status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Require admin JWT
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const token = authHeader.replace("Bearer ", "");
+    const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+    const { data: userRes, error: userErr } = await sb.auth.getUser(token);
+    if (userErr || !userRes?.user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const { data: role } = await sb
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", userRes.user.id)
+      .eq("role", "admin")
+      .maybeSingle();
+    if (!role) {
+      return new Response(JSON.stringify({ error: "Forbidden" }), {
+        status: 403,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
