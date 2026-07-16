@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 
 const contactSchema = z.object({
