@@ -379,6 +379,10 @@ async function main() {
     writeRoute(route);
     count++;
   }
+  for (const route of categoryPages) {
+    writeRoute(route);
+    count++;
+  }
   for (const route of areaPages) {
     writeRoute(route);
     count++;
