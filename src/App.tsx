@@ -17,6 +17,7 @@ import AdminAuth from "./pages/AdminAuth";
 import WhyWorkWithUs from "./pages/WhyWorkWithUs";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
 import ServiceLocationPage from "./pages/ServiceLocationPage";
+import ServiceCategoryPage from "./pages/ServiceCategoryPage";
 import NotFound from "./pages/NotFound";
 import OAuthConsent from "./pages/OAuthConsent";
 
