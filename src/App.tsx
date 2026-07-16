@@ -17,6 +17,7 @@ import AdminAuth from "./pages/AdminAuth";
 import WhyWorkWithUs from "./pages/WhyWorkWithUs";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
 import ServiceLocationPage from "./pages/ServiceLocationPage";
+import ServiceCategoryPage from "./pages/ServiceCategoryPage";
 import NotFound from "./pages/NotFound";
 import OAuthConsent from "./pages/OAuthConsent";
 
@@ -32,6 +33,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:categorySlug" element={<ServiceCategoryPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/testimonials" element={<Testimonials />} />
