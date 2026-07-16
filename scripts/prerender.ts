@@ -282,6 +282,27 @@ const staticPages: Route[] = [
   },
 ];
 
+// ---------- Category hub pages (Core 30: /services/{category}) ----------
+const categoryPages: Route[] = SERVICES.map((svc) => ({
+  path: `/services/${svc.slug}`,
+  title: `${svc.name} in Denver & Colorado | JSG Liquidators`,
+  description: `${svc.name} throughout Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Boulder, Colorado Springs and the Front Range. No upfront cost, items sold in 7–10 days. Call (805) 444-4069.`,
+  bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
+    <h1>${svc.name} in Denver &amp; the Colorado Front Range</h1>
+    <p class="speakable-summary"><strong>TL;DR:</strong> JSG Liquidators provides ${svc.name.toLowerCase()} across every Denver-metro city. No upfront cost. Items sell in 7–10 days. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+    <h2>${svc.name} — city by city</h2>
+    <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${titleCase(c)}, CO</a></li>`).join("")}</ul>
+    <h2>Related services</h2>
+    <ul>${SERVICES.filter((s) => s.slug !== svc.slug).map((s) => `<li><a href="/services/${s.slug}">${s.name}</a></li>`).join("")}</ul>
+    ${commonFooter()}
+  </main>`,
+  jsonLd: breadcrumb([
+    { name: "Home", item: SITE_URL + "/" },
+    { name: "Services", item: SITE_URL + "/services" },
+    { name: svc.name, item: `${SITE_URL}/services/${svc.slug}` },
+  ]),
+}));
+
 // ---------- City / area pages ----------
 const areaPages: Route[] = [];
 for (const city of CITIES) {
