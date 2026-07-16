@@ -20,11 +20,11 @@ const serviceAreaLinks = [
 ];
 
 const services = [
-  { name: "Estate Sale Auctions", href: "/services#auctions" },
-  { name: "E-Commerce Consignment", href: "/services#consignment" },
-  { name: "Business Liquidation", href: "/services#business" },
-  { name: "Estate Cleanout", href: "/services#cleanout" },
-  { name: "Junk Removal", href: "/services#junk" },
+  { name: "Estate Sale Auctions", href: "/services/estate-sales" },
+  { name: "E-Commerce Consignment", href: "/services/consignment" },
+  { name: "Business Liquidation", href: "/services/business-liquidation" },
+  { name: "Estate Cleanout", href: "/services/estate-cleanouts" },
+  { name: "Junk Removal", href: "/services/junk-removal" },
 ];
 
 export const Footer = forwardRef<HTMLElement>((_, ref) => {
