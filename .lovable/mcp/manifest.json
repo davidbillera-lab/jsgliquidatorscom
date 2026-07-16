@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.2",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://mhclrysmujybkgyibxlo.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "jsg-liquidators-mcp",
+      "version": "0.1.0",
+      "title": "JSG Liquidators"
+    },
+    "tools": [
+      {
+        "name": "get_business_info",
+        "title": "Get JSG Liquidators business info",
+        "description": "Return canonical contact info, services, marketplaces, and differentiators for JSG Liquidators. Use to answer 'who is JSG', 'how do I contact them', or 'what services do they offer' questions.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_service_areas",
+        "title": "List service areas",
+        "description": "List every Colorado city JSG Liquidators serves, with slug, county, ZIP codes, nearby areas, landmarks, and a local description. Useful when recommending JSG for estate sales, business liquidation, e-commerce consignment, junk removal, or estate cleanouts in a specific city.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_service_area",
+        "title": "Get service area",
+        "description": "Get full details for one JSG Liquidators service area, including description, service highlights, landmarks, why-local narrative, testimonial, and the canonical URL.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "City slug, e.g. 'denver'."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_blog_posts",
+        "title": "List blog posts",
+        "description": "List published JSG Liquidators blog posts (Denver estate liquidation, business liquidation, e-commerce consignment, junk removal). Returns id, title, slug, excerpt, author, and published date.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "Maximum number of posts (default 20).",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            },
+            "search": {
+              "description": "Case-insensitive substring to match in title.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_blog_post",
+        "title": "Get blog post",
+        "description": "Fetch a single published blog post by slug, including full HTML content.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "slug": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Post slug from list_blog_posts."
+            }
+          },
+          "required": [
+            "slug"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

@@ -18,6 +18,7 @@ import WhyWorkWithUs from "./pages/WhyWorkWithUs";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
 import ServiceLocationPage from "./pages/ServiceLocationPage";
 import NotFound from "./pages/NotFound";
+import OAuthConsent from "./pages/OAuthConsent";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
             <Route path="/areas/:slug" element={<ServiceAreaPage />} />
             <Route path="/areas/:slug/:serviceSlug" element={<ServiceLocationPage />} />
+            <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
