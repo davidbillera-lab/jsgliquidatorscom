@@ -37,7 +37,7 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating, events }: SEOHeadProps) => {
-  const siteTitle = "JSG Liquidators | Denver Estate Sales & Liquidation";
+  const siteTitle = "Estate Sales Denver | JSG Liquidators | Estate Sale Company";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
   const siteUrl = "https://jsgliquidators.com";
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;

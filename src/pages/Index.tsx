@@ -98,7 +98,7 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="Home"
-        description="Denver's top estate sale & liquidation experts. Estate sales, business liquidation, junk removal & consignment across Colorado. Free consultations."
+        description="Denver estate sale company for online estate sales, business liquidation, cleanouts & e-commerce consignment. No upfront cost — call (805) 444-4069."
         canonical="/"
         keywords="estate sales Denver, estate liquidation Denver CO, business liquidation Colorado, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout services, online auctions Denver, estate sale company Colorado"
         breadcrumbs={[{ name: "Home", url: "/" }]}
@@ -144,7 +144,7 @@ const Index = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-6 shadow-lg">
-                Colorado's Trusted Estate Liquidation Experts
+                Denver's Trusted Estate Sale Company
               </span>
             </motion.div>
             
@@ -154,7 +154,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
             >
-              Denver's Trusted Estate and Business Liquidation Experts
+              Denver's Trusted Estate Sale Company & Liquidation Experts
             </motion.h1>
             
             <motion.p
@@ -163,8 +163,8 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
             >
-              Professional estate liquidation services serving the Denver Metro Area. 
-              From estate sale auctions to complete cleanouts, we handle everything with care and expertise.
+              JSG Liquidators runs the online estate sales Denver families trust — reaching thousands of
+              buyers nationwide, then handling the full cleanout. No upfront cost, free consultation.
             </motion.p>
 
             <motion.p
