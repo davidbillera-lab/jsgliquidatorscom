@@ -24,7 +24,7 @@ export const serviceLocationData: ServiceLocationContent[] = [
     getMetaDescription: (city) => `Professional estate sales in ${city}, Colorado. Online auctions, full-service estate liquidation & maximum returns. Free consultation. Call JSG Liquidators (805) 444-4069.`,
     getMetaKeywords: (city) => `estate sales ${city}, estate sale company ${city} CO, online estate auctions ${city}, estate liquidation ${city} Colorado, estate sale services ${city}`,
     getHeroHeadline: (city) => `${city}'s Trusted Estate Sale Company`,
-    getHeroSubheadline: (city) => `Professional online estate auctions maximizing value for ${city} families since day one.`,
+    getHeroSubheadline: (city) => `Professional online estate auctions & full-service estate liquidation for ${city} families — no upfront costs, most items sold within 7-10 days.`,
     getIntro: (city, county) => `JSG Liquidators is ${city}'s premier estate sale company, serving families and attorneys throughout ${county} with professional online auction services. Unlike traditional tag sales that limit your buyer pool to local foot traffic, our online estate auctions attract bidders from across Colorado and nationwide — consistently achieving 20-40% higher returns than garage sales or in-person-only events. Every ${city} estate sale we manage includes professional photography, detailed item descriptions, strategic pricing, and full marketing to our established bidder network.`,
     benefits: [
       "Online auctions reaching thousands of qualified bidders beyond just local shoppers",
@@ -55,7 +55,7 @@ export const serviceLocationData: ServiceLocationContent[] = [
     getMetaDescription: (city) => `E-commerce consignment in ${city}, CO. We sell your valuables on eBay, Etsy & specialty marketplaces for maximum returns. Free pickup. Call JSG Liquidators.`,
     getMetaKeywords: (city) => `consignment ${city}, e-commerce consignment ${city} CO, sell items online ${city}, eBay consignment ${city}, consignment services ${city} Colorado`,
     getHeroHeadline: (city) => `E-Commerce Consignment in ${city}`,
-    getHeroSubheadline: (city) => `We sell your valuables on eBay, Etsy, and specialty marketplaces — so you don't have to.`,
+    getHeroSubheadline: (city) => `We sell your ${city} valuables on eBay, Etsy & LiveAuctioneers — free local pickup, no upfront fees, worldwide buyers.`,
     getIntro: (city, county) => `Have valuable items but no time to sell them online? JSG Liquidators' e-commerce consignment service in ${city} handles everything for ${county} residents — from professional photography and listing creation to shipping and customer service. We sell on eBay, Etsy, LiveAuctioneers, and specialty collector marketplaces, reaching millions of potential buyers worldwide. Our expertise in pricing, keywords, and marketplace algorithms means your items sell faster and for more than you'd get on your own.`,
     benefits: [
       "Multi-platform exposure on eBay, Etsy, LiveAuctioneers, and specialty marketplaces",
@@ -117,7 +117,7 @@ export const serviceLocationData: ServiceLocationContent[] = [
     getMetaDescription: (city) => `Estate cleanout services in ${city}, CO. Complete property clearout with auction revenue recovery. Broom-clean guarantee. Call JSG Liquidators (805) 444-4069.`,
     getMetaKeywords: (city) => `estate cleanout ${city}, estate cleanout services ${city} CO, property cleanout ${city}, house cleanout ${city} Colorado, estate clearing ${city}`,
     getHeroHeadline: (city) => `Estate Cleanout Services in ${city}`,
-    getHeroSubheadline: (city) => `Complete property cleanouts with built-in revenue recovery — not just removal.`,
+    getHeroSubheadline: (city) => `Complete ${city} property cleanouts with built-in auction revenue recovery — often covering the entire cost.`,
     getIntro: (city, county) => `JSG Liquidators' estate cleanout service in ${city} is different from ordinary junk removal. Before we remove anything, we identify items with auction value — antiques, collectibles, tools, furniture, and more — and sell them through our online auction platform. This "Revenue Recovery" approach means your ${county} estate cleanout can actually generate income instead of just costing money. A recent cleanout near ${city} generated over $3,200 in auction revenue from items the family initially considered worthless, completely covering the removal fee and returning $2,400 in profit.`,
     benefits: [
       "Revenue Recovery model — valuables are auctioned before anything is removed",
@@ -147,8 +147,8 @@ export const serviceLocationData: ServiceLocationContent[] = [
     getTitle: (city) => `Junk Removal ${city} CO`,
     getMetaDescription: (city) => `Junk removal in ${city}, Colorado with auction-backed revenue recovery. Eco-friendly disposal, donation coordination & broom-clean results. Call JSG Liquidators.`,
     getMetaKeywords: (city) => `junk removal ${city}, junk removal services ${city} CO, junk hauling ${city}, trash removal ${city} Colorado, eco friendly junk removal ${city}`,
-    getHeroHeadline: (city) => `Junk Removal in ${city} — With a Twist`,
-    getHeroSubheadline: (city) => `We don't just haul — we recover value from your "junk" through our auction platform first.`,
+    getHeroHeadline: (city) => `Junk Removal in ${city} with Revenue Recovery`,
+    getHeroSubheadline: (city) => `Eco-friendly junk removal for ${city} homes & businesses — we auction valuable items first to shrink or eliminate your bill.`,
     getIntro: (city, county) => `Most junk removal companies in ${city} throw everything in a truck and charge you for it. JSG Liquidators takes a smarter approach: before removing anything from your ${county} property, our team identifies items that still have value — tools, furniture, appliances, collectibles — and sells them through our online auction platform. The result? Your junk removal bill shrinks, and you might even profit. A recent ${city}-area job generated $3,200 in auction revenue from items the homeowner was ready to throw away, turning an $800 removal cost into $2,400 in profit.`,
     benefits: [
       "Auction-backed Revenue Recovery reduces or eliminates your removal costs",

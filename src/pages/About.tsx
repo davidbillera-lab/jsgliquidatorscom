@@ -59,7 +59,7 @@ const About = () => {
   return (
     <Layout>
       <SEOHead
-        title="About Us"
+        title="About Our Denver Estate Sale Company"
         description="Meet David and Vincent, Denver's trusted estate liquidation experts. Professional, compassionate service with no upfront fees."
         canonical="/about"
         keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado, David Billera estate sales"
@@ -82,8 +82,8 @@ const About = () => {
               Colorado's Estate Liquidation Experts
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              Helping families and businesses maximize the value of their estates with 
-              professional, compassionate service since day one.
+              Denver estate sale company founded by David and Vincent — providing estate sales, 
+              business liquidation, estate cleanouts &amp; e-commerce consignment with no upfront costs across Colorado.
             </p>
           </motion.div>
         </div>
