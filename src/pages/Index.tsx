@@ -1049,8 +1049,8 @@ const Index = () => {
             className="text-center mt-10"
           >
             <Button asChild variant="outline" size="lg">
-              <Link to="/services">
-                View All Services &amp; FAQs
+              <Link to="/faq">
+                View All Estate Sale FAQs
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
