@@ -100,7 +100,7 @@ const Contact = () => {
   return (
     <Layout>
       <SEOHead
-        title="Contact Us - Free Consultation"
+        title="Contact Us | Denver Estate Sale Company"
         description="Free estate liquidation consultation in Denver. Call David (805) 444-4069 or Vincent (805) 340-4817. Serving the entire Denver metro & Front Range."
         canonical="/contact"
         keywords="contact JSG Liquidators, free estate sale consultation Denver, estate liquidation quote Colorado, junk removal quote Denver, estate cleanout contact"
@@ -120,11 +120,11 @@ const Contact = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6">
-              Get Your Free Consultation
+              Get Your Free Denver Estate Consultation
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              Ready to maximize the value of your estate? Contact us today for a free, 
-              no-obligation consultation.
+              Contact Denver's trusted estate sale company for estate liquidation, cleanouts, 
+              e-commerce consignment &amp; online auctions — serving the Denver metro &amp; Front Range with no upfront costs.
             </p>
           </motion.div>
         </div>

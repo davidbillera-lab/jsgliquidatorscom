@@ -25,7 +25,7 @@ const Auctions = () => {
   return (
     <Layout>
       <SEOHead
-        title="Online Auctions | Estate Sale Bidding"
+        title="Denver Online Estate Auctions"
         description="Shop JSG Liquidators online auctions for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on LiveAuctioneers or Denver Online Auctions."
         canonical="/auctions"
         keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, collectible auctions, LiveAuctioneers Denver, estate sale bidding"
@@ -67,11 +67,11 @@ const Auctions = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Shop Our Online Auctions
+              Denver Online Estate Auctions
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Discover unique treasures from Colorado estates. From fine antiques to everyday essentials, 
-              find your next great find at our online auction platforms.
+              Bid on estate sales from across Denver and the Front Range — antiques, collectibles, furniture, 
+              jewelry &amp; estate treasures. New online auctions weekly on LiveAuctioneers and Denver Online Auctions.
             </p>
           </motion.div>
         </div>

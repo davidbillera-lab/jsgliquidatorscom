@@ -64,7 +64,7 @@ const Testimonials = () => {
   return (
     <Layout>
       <SEOHead
-        title="Client Testimonials & Reviews Denver"
+        title="Estate Sale Reviews & Testimonials Denver"
         description="Read 5-star reviews from JSG Liquidators clients on estate sales, liquidation, junk removal, and auction services across Denver, CO."
         canonical="/testimonials"
         keywords="estate sale reviews Denver, estate liquidation testimonials Colorado, JSG Liquidators reviews, estate sale company reviews Denver CO, junk removal reviews Denver, estate cleanout reviews"
@@ -83,14 +83,15 @@ const Testimonials = () => {
             className="text-4xl md:text-5xl font-display font-bold text-background mb-6"
             {...fadeInUp}
           >
-            Client Testimonials
+            Denver Estate Sale Reviews &amp; Testimonials
           </motion.h1>
           <motion.p
             className="text-xl text-silver max-w-2xl mx-auto"
             {...fadeInUp}
             transition={{ delay: 0.1 }}
           >
-            Hear from families we've helped through estate sales and liquidations
+            5-star reviews from Denver metro families &amp; businesses for our estate sales, 
+            estate liquidation, cleanouts &amp; e-commerce consignment services
           </motion.p>
         </div>
       </section>
