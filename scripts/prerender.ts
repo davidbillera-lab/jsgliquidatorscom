@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { faqGroups, allFaqs } from "../src/data/faqData";
 
 const SITE_URL = "https://jsgliquidators.com";
 const DIST = resolve("dist");
@@ -279,6 +280,38 @@ const staticPages: Route[] = [
       </ul>
       ${commonFooter()}
     </main>`,
+  },
+  {
+    path: "/faq",
+    title: "Estate Sale & Liquidation FAQs Denver | JSG Liquidators",
+    description: "Answers to Denver estate sale, liquidation, cleanout & consignment questions — costs, timelines, service areas & our no-upfront-fee Revenue Recovery model.",
+    bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
+      <h1>Denver Estate Sale &amp; Liquidation FAQs</h1>
+      <p class="speakable-summary"><strong>TL;DR:</strong> Straight answers about estate sales, online auctions, cleanouts &amp; e-commerce consignment across Denver and the Front Range. No upfront cost — auction proceeds offset fees. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+      ${faqGroups
+        .map(
+          (g) =>
+            `<h2>${escapeHtml(g.heading)}</h2>` +
+            g.items.map((i) => `<h3>${escapeHtml(i.question)}</h3><p>${escapeHtml(i.answer)}</p>`).join(""),
+        )
+        .join("")}
+      ${commonFooter()}
+    </main>`,
+    jsonLd: [
+      breadcrumb([
+        { name: "Home", item: SITE_URL + "/" },
+        { name: "FAQ", item: SITE_URL + "/faq" },
+      ]),
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: allFaqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      },
+    ],
   },
 ];
 
