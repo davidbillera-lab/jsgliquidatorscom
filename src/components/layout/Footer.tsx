@@ -170,6 +170,12 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 View Our Auctions
               </a>
               <Link
+                to="/faq"
+                className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+              >
+                Estate Sale FAQs
+              </Link>
+              <Link
                 to="/blog"
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >

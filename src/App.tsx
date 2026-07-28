@@ -15,6 +15,7 @@ import BlogPost from "./pages/BlogPost";
 import BlogAdmin from "./pages/BlogAdmin";
 import AdminAuth from "./pages/AdminAuth";
 import WhyWorkWithUs from "./pages/WhyWorkWithUs";
+import Faq from "./pages/Faq";
 import ServiceAreaPage from "./pages/ServiceAreaPage";
 import ServiceLocationPage from "./pages/ServiceLocationPage";
 import ServiceCategoryPage from "./pages/ServiceCategoryPage";
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="/blog-admin" element={<BlogAdmin />} />
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
+            <Route path="/faq" element={<Faq />} />
             <Route path="/areas/:slug" element={<ServiceAreaPage />} />
             <Route path="/areas/:slug/:serviceSlug" element={<ServiceLocationPage />} />
             <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
