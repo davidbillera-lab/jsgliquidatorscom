@@ -177,7 +177,7 @@ const ServiceAreaPage = () => {
                       {service.name} in {area.city}
                     </h3>
                     <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors">
-                      Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      See {service.name} in {area.city} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </Link>
                 </motion.div>
