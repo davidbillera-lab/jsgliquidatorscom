@@ -18,31 +18,31 @@ const services = [
     icon: Gavel,
     title: "Estate Sale Auctions",
     description: "Maximize your estate's value with our professional online auction platform reaching thousands of buyers.",
-    href: "/services#auctions",
+    href: "/services/estate-sales",
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce Consignment",
     description: "We handle listing, selling, and shipping your valuable items on major marketplaces.",
-    href: "/services#consignment",
+    href: "/services/consignment",
   },
   {
     icon: Building2,
     title: "Business Liquidation",
     description: "Complete business asset liquidation with expert valuation and maximum returns.",
-    href: "/services#business",
+    href: "/services/business-liquidation",
   },
   {
     icon: Trash2,
     title: "Estate Cleanout",
     description: "Full property cleanout services to prepare homes for sale or transition.",
-    href: "/services#cleanout",
+    href: "/services/estate-cleanouts",
   },
   {
     icon: Truck,
     title: "Junk Removal",
     description: "Efficient, eco-friendly removal of unwanted items with donation coordination.",
-    href: "/services#junk",
+    href: "/services/junk-removal",
   },
 ];
 
@@ -371,7 +371,7 @@ const Index = () => {
                     {service.description}
                   </p>
                   <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors">
-                    Learn more
+                    {service.title} in Denver
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
