@@ -18,7 +18,6 @@ const NotFound = () => {
       <SEOHead
         title="Page Not Found"
         description="The page you're looking for doesn't exist. Return to JSG Liquidators homepage."
-        canonical="/404"
         noindex={true}
       />
       
