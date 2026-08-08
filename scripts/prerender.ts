@@ -442,41 +442,55 @@ async function main() {
   for (const p of posts) {
     const excerpt =
       p.excerpt || (p.content ? stripHtml(p.content).slice(0, 200) : "");
-    const bodySnippet = p.content
-      ? stripHtml(p.content).slice(0, 1500)
-      : excerpt;
+    // Full article body in the initial HTML (scripts/handlers stripped).
+    const articleHtml = p.content
+      ? sanitizeArticleHtml(p.content)
+      : `<p>${escapeHtml(excerpt)}</p>`;
     const url = `${SITE_URL}/blog/${p.slug}`;
+    const image = p.featured_image_url
+      ? absoluteUrl(p.featured_image_url)
+      : `${SITE_URL}/logo.png`;
     writeRoute({
       path: `/blog/${p.slug}`,
       title: `${p.title} | JSG Liquidators Blog`,
       description: excerpt || `Read ${p.title} on the JSG Liquidators blog.`,
       ogType: "article",
-      image: p.featured_image_url || undefined,
+      image,
       bodyHtml: `<main style="max-width:900px;margin:0 auto;padding:24px;">
+        <nav aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog">Blog</a> · <span>${escapeHtml(p.title)}</span></nav>
         <article>
           <h1>${escapeHtml(p.title)}</h1>
-          ${p.author ? `<p><em>By ${escapeHtml(p.author)}${p.published_at ? ` · ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>` : ""}
-          ${p.featured_image_url ? `<img src="${escapeHtml(p.featured_image_url)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
-          <p>${escapeHtml(bodySnippet)}…</p>
-          <p><a href="/blog">← Back to all guides</a></p>
+          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>
+          ${p.featured_image_url ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
+          ${articleHtml}
         </article>
+        <h2>Related services</h2>
+        <ul>
+          <li><a href="/services/estate-sales">Estate sales &amp; online auctions in Denver</a></li>
+          <li><a href="/services/estate-cleanouts">Estate cleanouts</a></li>
+          <li><a href="/services/consignment">E-commerce consignment</a></li>
+        </ul>
+        <p><a href="/contact">Request a free consultation</a> · <a href="/blog">← All guides</a></p>
         ${commonFooter()}
       </main>`,
       jsonLd: [
         {
           "@context": "https://schema.org",
-          "@type": "Article",
+          "@type": "BlogPosting",
+          "@id": `${url}#article`,
           headline: p.title,
           description: excerpt,
-          author: p.author ? { "@type": "Person", name: p.author } : undefined,
-          datePublished: p.published_at || undefined,
-          image: p.featured_image_url || undefined,
-          mainEntityOfPage: url,
-          publisher: {
-            "@type": "Organization",
-            name: "JSG Liquidators",
-            logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+          author: {
+            "@type": p.author && p.author !== "JSG Liquidators" ? "Person" : "Organization",
+            name: p.author || "JSG Liquidators",
           },
+          datePublished: p.published_at || undefined,
+          dateModified: (p as { updated_at?: string }).updated_at || p.published_at || undefined,
+          image,
+          url,
+          mainEntityOfPage: { "@type": "WebPage", "@id": url },
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          publisher: { "@id": `${SITE_URL}/#organization` },
         },
         breadcrumb([
           { name: "Home", item: SITE_URL + "/" },
@@ -487,6 +501,15 @@ async function main() {
     });
     count++;
   }
+
+  // --- Soft-404 shell + legacy redirect stubs ---
+  // Hosting serves 404.html for unknown paths where supported.
+  writeNotFound();
+  writeRedirect("/why-us", "/why-work-with-us");
+  writeRedirect("/current-auctions.html", "/auctions");
+  writeRedirect("/contact.html", "/contact");
+  count += 4;
+
 
   console.log(`[prerender] Wrote ${count} prerendered route files.`);
 }
