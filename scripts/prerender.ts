@@ -73,6 +73,23 @@ function stripHtml(s: string): string {
   return s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Make an image URL absolute so crawlers/social cards resolve it. */
+function absoluteUrl(u: string): string {
+  if (/^https?:\/\//i.test(u)) return u;
+  return `${SITE_URL}${u.startsWith("/") ? "" : "/"}${u}`;
+}
+
+/** Remove scripts, styles, iframes and inline event handlers from stored article HTML. */
+function sanitizeArticleHtml(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, "")
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
+    .replace(/javascript:/gi, "");
+}
+
 function renderHtml(route: Route): string {
   const canonical = `${SITE_URL}${route.path === "/" ? "/" : route.path}`;
   const ogType = route.ogType || "website";
@@ -397,7 +414,7 @@ async function fetchBlogPosts() {
   const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
   const { data, error } = await sb
     .from("blog_posts")
-    .select("slug, title, excerpt, content, author, published_at, featured_image_url")
+    .select("slug, title, excerpt, content, author, published_at, updated_at, featured_image_url")
     .eq("published", true)
     .order("published_at", { ascending: false, nullsFirst: false });
   if (error) {
