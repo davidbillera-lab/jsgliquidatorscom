@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { faqGroups, allFaqs } from "../src/data/faqData";
+import { serviceAreas } from "../src/data/serviceAreas";
 
 const SITE_URL = "https://jsgliquidators.com";
 const DIST = resolve("dist");
@@ -43,11 +44,12 @@ type Route = {
   image?: string;
 };
 
-const CITIES = [
-  "denver", "aurora", "lakewood", "highlands-ranch", "castle-rock",
-  "englewood", "littleton", "centennial", "parker", "arvada",
-  "westminster", "thornton", "boulder", "wheat-ridge",
-];
+// Cities and services come from the same source of truth the app routes use,
+// so every /areas/{city}/{service} route in the sitemap gets a prerendered file.
+const CITIES = serviceAreas.map((a) => a.slug);
+const CITY_NAMES: Record<string, string> = Object.fromEntries(
+  serviceAreas.map((a) => [a.slug, a.city]),
+);
 const SERVICES = [
   { slug: "estate-sales", name: "Estate Sales" },
   { slug: "estate-cleanouts", name: "Estate Cleanouts" },
@@ -56,6 +58,7 @@ const SERVICES = [
   { slug: "junk-removal", name: "Junk Removal" },
 ];
 const titleCase = (s: string) =>
+  CITY_NAMES[s] ||
   s.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
 
 function escapeHtml(s: string) {
