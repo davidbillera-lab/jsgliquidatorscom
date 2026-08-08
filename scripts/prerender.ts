@@ -356,7 +356,7 @@ for (const city of CITIES) {
     </main>`,
     jsonLd: breadcrumb([
       { name: "Home", item: SITE_URL + "/" },
-      { name: "Service Areas", item: SITE_URL + "/service-areas" },
+      { name: "Services", item: SITE_URL + "/services" },
       { name: cityName, item: `${SITE_URL}/areas/${city}` },
     ]),
   });
