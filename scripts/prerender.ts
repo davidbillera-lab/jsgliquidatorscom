@@ -193,6 +193,61 @@ function writeRoute(route: Route) {
   writeFileSync(resolve(outDir, "index.html"), html);
 }
 
+/**
+ * Write dist/404.html — a noindex "not found" document. Hosting that supports
+ * a 404 document will serve it with a real HTTP 404 for unknown paths.
+ */
+function writeNotFound() {
+  let html = renderHtml({
+    path: "/404",
+    title: "Page Not Found | JSG Liquidators",
+    description: "The page you requested could not be found. Browse JSG Liquidators' Denver estate sale, liquidation, cleanout, and consignment services.",
+    bodyHtml: `<main style="max-width:900px;margin:0 auto;padding:24px;">
+      <h1>Page not found</h1>
+      <p>The page you requested does not exist. Try one of these:</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Estate liquidation services</a></li>
+        <li><a href="/auctions">Current auctions</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      ${commonFooter()}
+    </main>`,
+  });
+  html = html
+    .replace(/<link rel="canonical"[^>]*>/, "")
+    .replace(
+      /<meta name="robots"[^>]*>/,
+      '<meta name="robots" content="noindex, follow" />',
+    );
+  writeFileSync(resolve(DIST, "404.html"), html);
+}
+
+/** Write a redirect stub for a legacy path (canonical points at the target). */
+function writeRedirect(from: string, to: string) {
+  const target = `${SITE_URL}${to}`;
+  const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="${target}" />
+    <meta http-equiv="refresh" content="0; url=${to}" />
+    <title>Redirecting to ${target}</title>
+    <script>window.location.replace(${JSON.stringify(to)});</script>
+  </head>
+  <body><p>This page has moved to <a href="${to}">${target}</a>.</p></body>
+</html>`;
+  const segments = from.replace(/^\/+/, "");
+  if (segments.endsWith(".html")) {
+    writeFileSync(resolve(DIST, segments), html);
+  } else {
+    mkdirSync(resolve(DIST, segments), { recursive: true });
+    writeFileSync(resolve(DIST, segments, "index.html"), html);
+  }
+}
+
 const breadcrumb = (items: { name: string; item: string }[]) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
