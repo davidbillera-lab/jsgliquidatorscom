@@ -172,9 +172,11 @@ function renderHtml(route: Route): string {
 
   // Replace #root inner content with the route body (crawler-visible).
   // The React app will re-render on hydration in the browser.
+  // Vite hoists the module script into <head>, so match the #root container
+  // itself (greedy to the final closing tag before </body>).
   html = html.replace(
-    /<div id="root"[^>]*>[\s\S]*?<\/div>\s*<script type="module"/,
-    `<div id="root" aria-hidden="false">\n${route.bodyHtml}\n    </div>\n    <script type="module"`,
+    /<div id="root"[^>]*>[\s\S]*<\/div>/,
+    `<div id="root" aria-hidden="false">\n${route.bodyHtml}\n    </div>`,
   );
 
   return html;
