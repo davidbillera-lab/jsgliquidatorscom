@@ -440,7 +440,7 @@ const Index = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg">
-                  <Link to="/services#cleanout">
+                  <Link to="/services/estate-cleanouts">
                     Learn About Cleanouts
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -540,7 +540,7 @@ const Index = () => {
               </div>
 
               <Button asChild size="lg">
-                <Link to="/services#junk">
+                <Link to="/services/junk-removal">
                   Get Junk Removal Quote
                   <ArrowRight className="w-4 h-4" />
                 </Link>

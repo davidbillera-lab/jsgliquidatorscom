@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
@@ -45,6 +45,10 @@ const App = () => (
             <Route path="/admin-auth" element={<AdminAuth />} />
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
             <Route path="/faq" element={<Faq />} />
+            {/* Legacy URL redirects (one hop, no chains) */}
+            <Route path="/why-us" element={<Navigate to="/why-work-with-us" replace />} />
+            <Route path="/current-auctions.html" element={<Navigate to="/auctions" replace />} />
+            <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
             <Route path="/areas/:slug" element={<ServiceAreaPage />} />
             <Route path="/areas/:slug/:serviceSlug" element={<ServiceLocationPage />} />
             <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />

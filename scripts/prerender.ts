@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { faqGroups, allFaqs } from "../src/data/faqData";
+import { serviceAreas } from "../src/data/serviceAreas";
 
 const SITE_URL = "https://jsgliquidators.com";
 const DIST = resolve("dist");
@@ -43,11 +44,12 @@ type Route = {
   image?: string;
 };
 
-const CITIES = [
-  "denver", "aurora", "lakewood", "highlands-ranch", "castle-rock",
-  "englewood", "littleton", "centennial", "parker", "arvada",
-  "westminster", "thornton", "boulder", "wheat-ridge",
-];
+// Cities and services come from the same source of truth the app routes use,
+// so every /areas/{city}/{service} route in the sitemap gets a prerendered file.
+const CITIES = serviceAreas.map((a) => a.slug);
+const CITY_NAMES: Record<string, string> = Object.fromEntries(
+  serviceAreas.map((a) => [a.slug, a.city]),
+);
 const SERVICES = [
   { slug: "estate-sales", name: "Estate Sales" },
   { slug: "estate-cleanouts", name: "Estate Cleanouts" },
@@ -56,6 +58,7 @@ const SERVICES = [
   { slug: "junk-removal", name: "Junk Removal" },
 ];
 const titleCase = (s: string) =>
+  CITY_NAMES[s] ||
   s.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
 
 function escapeHtml(s: string) {
@@ -68,6 +71,23 @@ function escapeHtml(s: string) {
 
 function stripHtml(s: string): string {
   return s.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/** Make an image URL absolute so crawlers/social cards resolve it. */
+function absoluteUrl(u: string): string {
+  if (/^https?:\/\//i.test(u)) return u;
+  return `${SITE_URL}${u.startsWith("/") ? "" : "/"}${u}`;
+}
+
+/** Remove scripts, styles, iframes and inline event handlers from stored article HTML. */
+function sanitizeArticleHtml(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, "")
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
+    .replace(/javascript:/gi, "");
 }
 
 function renderHtml(route: Route): string {
@@ -152,9 +172,11 @@ function renderHtml(route: Route): string {
 
   // Replace #root inner content with the route body (crawler-visible).
   // The React app will re-render on hydration in the browser.
+  // Vite hoists the module script into <head>, so match the #root container
+  // itself (greedy to the final closing tag before </body>).
   html = html.replace(
-    /<div id="root"[^>]*>[\s\S]*?<\/div>\s*<script type="module"/,
-    `<div id="root" aria-hidden="false">\n${route.bodyHtml}\n    </div>\n    <script type="module"`,
+    /<div id="root"[^>]*>[\s\S]*<\/div>/,
+    `<div id="root" aria-hidden="false">\n${route.bodyHtml}\n    </div>`,
   );
 
   return html;
@@ -171,6 +193,61 @@ function writeRoute(route: Route) {
   if (!segments) return;
   mkdirSync(outDir, { recursive: true });
   writeFileSync(resolve(outDir, "index.html"), html);
+}
+
+/**
+ * Write dist/404.html — a noindex "not found" document. Hosting that supports
+ * a 404 document will serve it with a real HTTP 404 for unknown paths.
+ */
+function writeNotFound() {
+  let html = renderHtml({
+    path: "/404",
+    title: "Page Not Found | JSG Liquidators",
+    description: "The page you requested could not be found. Browse JSG Liquidators' Denver estate sale, liquidation, cleanout, and consignment services.",
+    bodyHtml: `<main style="max-width:900px;margin:0 auto;padding:24px;">
+      <h1>Page not found</h1>
+      <p>The page you requested does not exist. Try one of these:</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/services">Estate liquidation services</a></li>
+        <li><a href="/auctions">Current auctions</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      ${commonFooter()}
+    </main>`,
+  });
+  html = html
+    .replace(/<link rel="canonical"[^>]*>/, "")
+    .replace(
+      /<meta name="robots"[^>]*>/,
+      '<meta name="robots" content="noindex, follow" />',
+    );
+  writeFileSync(resolve(DIST, "404.html"), html);
+}
+
+/** Write a redirect stub for a legacy path (canonical points at the target). */
+function writeRedirect(from: string, to: string) {
+  const target = `${SITE_URL}${to}`;
+  const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="${target}" />
+    <meta http-equiv="refresh" content="0; url=${to}" />
+    <title>Redirecting to ${target}</title>
+    <script>window.location.replace(${JSON.stringify(to)});</script>
+  </head>
+  <body><p>This page has moved to <a href="${to}">${target}</a>.</p></body>
+</html>`;
+  const segments = from.replace(/^\/+/, "");
+  if (segments.endsWith(".html")) {
+    writeFileSync(resolve(DIST, segments), html);
+  } else {
+    mkdirSync(resolve(DIST, segments), { recursive: true });
+    writeFileSync(resolve(DIST, segments, "index.html"), html);
+  }
 }
 
 const breadcrumb = (items: { name: string; item: string }[]) => ({
@@ -353,7 +430,7 @@ for (const city of CITIES) {
     </main>`,
     jsonLd: breadcrumb([
       { name: "Home", item: SITE_URL + "/" },
-      { name: "Service Areas", item: SITE_URL + "/service-areas" },
+      { name: "Services", item: SITE_URL + "/services" },
       { name: cityName, item: `${SITE_URL}/areas/${city}` },
     ]),
   });
@@ -394,7 +471,7 @@ async function fetchBlogPosts() {
   const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
   const { data, error } = await sb
     .from("blog_posts")
-    .select("slug, title, excerpt, content, author, published_at, featured_image_url")
+    .select("slug, title, excerpt, content, author, published_at, updated_at, featured_image_url")
     .eq("published", true)
     .order("published_at", { ascending: false, nullsFirst: false });
   if (error) {
@@ -439,41 +516,55 @@ async function main() {
   for (const p of posts) {
     const excerpt =
       p.excerpt || (p.content ? stripHtml(p.content).slice(0, 200) : "");
-    const bodySnippet = p.content
-      ? stripHtml(p.content).slice(0, 1500)
-      : excerpt;
+    // Full article body in the initial HTML (scripts/handlers stripped).
+    const articleHtml = p.content
+      ? sanitizeArticleHtml(p.content)
+      : `<p>${escapeHtml(excerpt)}</p>`;
     const url = `${SITE_URL}/blog/${p.slug}`;
+    const image = p.featured_image_url
+      ? absoluteUrl(p.featured_image_url)
+      : `${SITE_URL}/logo.png`;
     writeRoute({
       path: `/blog/${p.slug}`,
       title: `${p.title} | JSG Liquidators Blog`,
       description: excerpt || `Read ${p.title} on the JSG Liquidators blog.`,
       ogType: "article",
-      image: p.featured_image_url || undefined,
+      image,
       bodyHtml: `<main style="max-width:900px;margin:0 auto;padding:24px;">
+        <nav aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog">Blog</a> · <span>${escapeHtml(p.title)}</span></nav>
         <article>
           <h1>${escapeHtml(p.title)}</h1>
-          ${p.author ? `<p><em>By ${escapeHtml(p.author)}${p.published_at ? ` · ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>` : ""}
-          ${p.featured_image_url ? `<img src="${escapeHtml(p.featured_image_url)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
-          <p>${escapeHtml(bodySnippet)}…</p>
-          <p><a href="/blog">← Back to all guides</a></p>
+          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>
+          ${p.featured_image_url ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
+          ${articleHtml}
         </article>
+        <h2>Related services</h2>
+        <ul>
+          <li><a href="/services/estate-sales">Estate sales &amp; online auctions in Denver</a></li>
+          <li><a href="/services/estate-cleanouts">Estate cleanouts</a></li>
+          <li><a href="/services/consignment">E-commerce consignment</a></li>
+        </ul>
+        <p><a href="/contact">Request a free consultation</a> · <a href="/blog">← All guides</a></p>
         ${commonFooter()}
       </main>`,
       jsonLd: [
         {
           "@context": "https://schema.org",
-          "@type": "Article",
+          "@type": "BlogPosting",
+          "@id": `${url}#article`,
           headline: p.title,
           description: excerpt,
-          author: p.author ? { "@type": "Person", name: p.author } : undefined,
-          datePublished: p.published_at || undefined,
-          image: p.featured_image_url || undefined,
-          mainEntityOfPage: url,
-          publisher: {
-            "@type": "Organization",
-            name: "JSG Liquidators",
-            logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+          author: {
+            "@type": p.author && p.author !== "JSG Liquidators" ? "Person" : "Organization",
+            name: p.author || "JSG Liquidators",
           },
+          datePublished: p.published_at || undefined,
+          dateModified: (p as { updated_at?: string }).updated_at || p.published_at || undefined,
+          image,
+          url,
+          mainEntityOfPage: { "@type": "WebPage", "@id": url },
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          publisher: { "@id": `${SITE_URL}/#organization` },
         },
         breadcrumb([
           { name: "Home", item: SITE_URL + "/" },
@@ -484,6 +575,15 @@ async function main() {
     });
     count++;
   }
+
+  // --- Soft-404 shell + legacy redirect stubs ---
+  // Hosting serves 404.html for unknown paths where supported.
+  writeNotFound();
+  writeRedirect("/why-us", "/why-work-with-us");
+  writeRedirect("/current-auctions.html", "/auctions");
+  writeRedirect("/contact.html", "/contact");
+  count += 4;
+
 
   console.log(`[prerender] Wrote ${count} prerendered route files.`);
 }
