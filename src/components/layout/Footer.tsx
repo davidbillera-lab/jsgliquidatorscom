@@ -181,6 +181,12 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
               >
                 Read Our Blog
               </Link>
+              <Link
+                to="/privacy"
+                className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+              >
+                Privacy Policy
+              </Link>
             </div>
           </div>
         </div>
