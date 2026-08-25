@@ -3,5 +3,3 @@ project_id = "mhclrysmujybkgyibxlo"
 [functions.generate-blog-post]
 verify_jwt = false
 
-[functions.import-post]
-verify_jwt = false
