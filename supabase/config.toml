@@ -2,3 +2,4 @@ project_id = "mhclrysmujybkgyibxlo"
 
 [functions.generate-blog-post]
 verify_jwt = false
+
