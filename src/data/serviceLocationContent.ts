@@ -172,6 +172,38 @@ export const serviceLocationData: ServiceLocationContent[] = [
     ],
     getCta: (city) => `Ready for junk removal in ${city}? Call (805) 444-4069 for a free estimate.`,
   },
+  {
+    serviceSlug: "hoarder-cleanouts",
+    serviceName: "Hoarder Cleanouts",
+    getTitle: (city) => `Hoarder Cleanout ${city} CO`,
+    getMetaDescription: (city) => `Hoarder cleanout services in ${city}, CO. Discreet, compassionate heavy-content clearing with auction revenue recovery. Free on-site estimate — call (805) 444-4069.`,
+    getMetaKeywords: (city) => `hoarder cleanout ${city}, hoarding cleanup ${city} CO, hoarder house cleanout ${city}, extreme cleanout ${city} Colorado, clutter removal ${city}`,
+    getHeroHeadline: (city) => `Hoarder Cleanout Services in ${city}`,
+    getHeroSubheadline: (city) => `Discreet, compassionate hoarder cleanouts in ${city} — valuables are identified and auctioned first to offset the cost.`,
+    getIntro: (city, county) => `JSG Liquidators handles hoarder cleanouts throughout ${city} and ${county} with discretion and respect. Heavy-content homes take patience: our crews sort room by room, protecting documents, cash, jewelry, firearms, and family keepsakes that are frequently buried in the clutter. Items with resale value — tools, antiques, collectibles, electronics — go into our online auctions, so a ${city} hoarding cleanup often pays for a meaningful share of itself. We work with families, case managers, landlords, realtors, and estate attorneys, and we can meet tight deadlines for closings, inspections, or code-compliance orders.`,
+    benefits: [
+      "Discreet unmarked crews and confidential scheduling — neighbors don't need to know",
+      "Room-by-room sorting to recover cash, documents, jewelry, and heirlooms",
+      "Revenue Recovery — sellable items are auctioned before disposal to reduce your cost",
+      "Trained, insured teams equipped for biohazard-adjacent, pest, and odor conditions",
+      "Coordination with family, case managers, landlords, and property managers",
+      "Broom-clean handover ready for deep cleaning, repairs, or listing",
+    ],
+    process: [
+      { title: "Confidential Walkthrough", description: "We assess the property in person, discuss sensitivities and timelines, and provide a clear written estimate with no obligation." },
+      { title: "Sort & Recover", description: "Crews work room by room, separating keepsakes and important documents from items for auction, donation, recycling, and disposal." },
+      { title: "Auction the Valuables", description: "Anything with resale value is photographed, cataloged, and sold through our online auction platform to offset the cleanout cost." },
+      { title: "Clear & Hand Over", description: "Remaining contents are hauled out and the property is left broom-clean and ready for cleaning, repair, or sale." },
+    ],
+    getFaq: (city) => [
+      { question: `How much does a hoarder cleanout cost in ${city}?`, answer: `Hoarder cleanout pricing in ${city} depends on volume, access, and condition. Because we auction sellable items first, the net cost is usually well below a straight haul-away quote. We provide a free on-site estimate — call (805) 444-4069.` },
+      { question: `Is your ${city} hoarding cleanup discreet?`, answer: `Yes. We use unmarked vehicles where possible, schedule around your privacy needs, and never discuss a job publicly. Confidentiality is standard on every ${city} hoarder cleanout we perform.` },
+      { question: `How long does a hoarder house cleanout take in ${city}?`, answer: `Most ${city} hoarder cleanouts take 2-5 days of on-site work, plus the auction window for recovered items. Urgent, deadline-driven jobs can be expedited.` },
+      { question: `Do you find valuables in hoarder homes in ${city}?`, answer: `Regularly. Cash, coins, jewelry, firearms, tools, and collectibles are commonly buried in heavy-content homes. Anything personal is returned to the family; sellable items go to auction with your approval.` },
+      { question: `Can you handle biohazard conditions during a ${city} hoarder cleanout?`, answer: `Our crews are equipped and trained for pest, odor, and heavy-debris conditions. For situations requiring licensed biohazard remediation, we coordinate with certified ${city}-area specialists before our clearing work begins.` },
+    ],
+    getCta: (city) => `Need a hoarder cleanout in ${city}? Call (805) 444-4069 for a free, confidential on-site estimate.`,
+  },
 ];
 
 export const getServiceLocationContent = (serviceSlug: string): ServiceLocationContent | undefined =>

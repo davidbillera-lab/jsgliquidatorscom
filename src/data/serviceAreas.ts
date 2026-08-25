@@ -329,4 +329,5 @@ export const allServices = [
   { name: "Business Liquidation", slug: "business-liquidation" },
   { name: "Estate Clean Outs", slug: "estate-cleanouts" },
   { name: "Junk Removal", slug: "junk-removal" },
+  { name: "Hoarder Cleanouts", slug: "hoarder-cleanouts" },
 ];

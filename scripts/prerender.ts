@@ -56,6 +56,7 @@ const SERVICES = [
   { slug: "business-liquidation", name: "Business Liquidation" },
   { slug: "consignment", name: "E-Commerce Consignment" },
   { slug: "junk-removal", name: "Junk Removal" },
+  { slug: "hoarder-cleanouts", name: "Hoarder Cleanouts" },
 ];
 const titleCase = (s: string) =>
   CITY_NAMES[s] ||
