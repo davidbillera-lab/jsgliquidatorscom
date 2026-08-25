@@ -259,6 +259,18 @@ const Services = () => {
                     ) : null;
                   })()}
 
+                  {(service.id === "estate-cleanouts" || service.id === "cleanout") && (
+                    <div className="mb-6">
+                      <Link
+                        to="/services/hoarder-cleanouts"
+                        className="inline-flex items-center gap-1 text-accent hover:underline font-medium text-sm"
+                      >
+                        Need a hoarder cleanout in Denver? See our hoarding cleanup service
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  )}
+
                   <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
                     {service.auctionLinks ? (
                       <div className="w-full flex flex-col gap-3">
