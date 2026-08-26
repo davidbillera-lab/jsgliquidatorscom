@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCart, Building2, Trash2, Truck } from "lucide-react";
+import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCart, Building2, Trash2, Truck, House } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
@@ -17,7 +17,7 @@ const staggerContainer = {
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
-const serviceIcons = [Gavel, ShoppingCart, Building2, Trash2, Truck];
+const serviceIcons = [Gavel, ShoppingCart, Building2, Trash2, Truck, House];
 
 const ServiceAreaPage = () => {
   const { slug } = useParams<{ slug: string }>();
