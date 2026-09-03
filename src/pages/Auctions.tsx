@@ -67,11 +67,11 @@ const Auctions = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Denver Online Estate Auctions
+              Denver Estate Sale Auctions &amp; E-Commerce Store
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Bid on estate sales from across Denver and the Front Range — antiques, collectibles, furniture, 
-              jewelry &amp; estate treasures. New online auctions weekly on LiveAuctioneers and Denver Online Auctions.
+              Bid on estate-sale treasures and buy fixed-price items from across Denver and the Front Range —
+              antiques, collectibles, furniture, jewelry, tools &amp; more. New listings weekly on eBay and Denver Online Auctions.
             </p>
           </motion.div>
         </div>
@@ -187,8 +187,8 @@ const Auctions = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="secondary" size="lg">
-                <a href="https://jsg-liquidators.liveauctioneers.com/" target="_blank" rel="noopener noreferrer">
-                  LiveAuctioneers
+                <a href="https://ebay.us/m/tsG4b9" target="_blank" rel="noopener noreferrer">
+                  eBay Store
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </a>
               </Button>
