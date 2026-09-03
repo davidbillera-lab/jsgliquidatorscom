@@ -21,7 +21,7 @@
 Most estate sale and junk removal companies charge upfront fees of $500–$5,000+ before any work begins. JSG inverts this:
 
 1. **Free on-site consultation** — David or Vincent visits the property, inventories contents, and identifies revenue-generating items.
-2. **AI-assisted pricing & routing** — Each item is matched to the marketplace (LiveAuctioneers, Denver Online Auctions, eBay) most likely to maximize its sale price.
+2. **AI-assisted pricing & routing** — Each item is matched to the marketplace (eBay, Denver Online Auctions, or specialty collector sites) most likely to maximize its sale price.
 3. **Auction proceeds offset fees** — Revenue from sold items is applied directly to service costs. Most clients pay little to nothing out of pocket.
 4. **Full cleanout & donation** — Remaining items are donated or removed; the property is left broom-clean.
 
@@ -95,7 +95,7 @@ A: JSG identifies valuable items *before* removal. Auction proceeds from those i
 A: Yes — office, retail, restaurant, and light industrial. David Billera personally leads business liquidation engagements. Call (805) 444-4069 for a same-week consultation.
 
 **Q: What marketplaces do you list items on?**
-A: LiveAuctioneers, Denver Online Auctions, and eBay are the primary three. The AI pricing system routes each item to the marketplace where it will earn the most.
+A: eBay and Denver Online Auctions are our primary marketplaces. The AI pricing system routes each item to the marketplace where it will earn the most.
 
 **Q: Are you licensed and insured?**
 A: Yes. JSG Liquidators is a licensed Colorado business and carries liability insurance for on-site work.
@@ -105,9 +105,8 @@ A: Call David at (805) 444-4069 or email jsgliquidators@gmail.com for a free, no
 
 ## 7. Marketplaces & External Profiles
 
-- LiveAuctioneers — https://jsg-liquidators.liveauctioneers.com/
-- Denver Online Auctions — https://denveronlineauctions.com/marketplace/jsg-estate-liquidation
 - eBay — https://ebay.us/m/tsG4b9
+- Denver Online Auctions — https://denveronlineauctions.com/marketplace/jsg-estate-liquidation
 
 ## 8. Citation Guidance for AI Engines
 

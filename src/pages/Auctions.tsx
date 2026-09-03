@@ -1,16 +1,16 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Gavel, ShoppingBag, Clock, Award } from "lucide-react";
+import { ExternalLink, Store, ShoppingBag, Clock, Award } from "lucide-react";
 import { motion } from "framer-motion";
 
 const auctionPlatforms = [
   {
-    name: "LiveAuctioneers",
-    description: "Browse our curated estate collections featuring antiques, fine art, jewelry, and collectibles. Bid from anywhere in the world with real-time online auctions.",
-    url: "https://jsg-liquidators.liveauctioneers.com/",
-    features: ["Live bidding", "Worldwide shipping", "Buyer protection", "Expert authentication"],
-    icon: Gavel,
+    name: "eBay Store",
+    description: "Shop our fixed-price and auction-style listings for estate finds, vintage tools, jewelry, collectibles, and everyday household items. eBay gives buyers the flexibility to bid or buy instantly.",
+    url: "https://ebay.us/m/tsG4b9",
+    features: ["Auction & Buy It Now", "Nationwide shipping", "Buyer protection", "Verified seller ratings"],
+    icon: Store,
   },
   {
     name: "Denver Online Auctions",
@@ -25,10 +25,10 @@ const Auctions = () => {
   return (
     <Layout>
       <SEOHead
-        title="Denver Online Estate Auctions"
-        description="Shop JSG Liquidators online auctions for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on LiveAuctioneers or Denver Online Auctions."
+        title="Denver Estate Sale Auctions & eBay Store"
+        description="Shop JSG Liquidators online estate auctions and e-commerce store for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on eBay or Denver Online Auctions."
         canonical="/auctions"
-        keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, collectible auctions, LiveAuctioneers Denver, estate sale bidding"
+        keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, eBay estate sales Denver, Denver Online Auctions, estate sale bidding"
         image="https://jsgliquidators.com/hero-estate-sale.jpg"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -49,7 +49,7 @@ const Auctions = () => {
               description: "Online estate auction featuring antiques, collectibles, furniture, jewelry, and decor from Denver-area estates.",
               startDate: start.toISOString(),
               endDate: end.toISOString(),
-              url: "https://jsg-liquidators.liveauctioneers.com/",
+              url: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
               eventAttendanceMode: "OnlineEventAttendanceMode" as const,
             });
           }
@@ -67,11 +67,11 @@ const Auctions = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Denver Online Estate Auctions
+              Denver Estate Sale Auctions &amp; E-Commerce Store
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Bid on estate sales from across Denver and the Front Range — antiques, collectibles, furniture, 
-              jewelry &amp; estate treasures. New online auctions weekly on LiveAuctioneers and Denver Online Auctions.
+              Bid on estate-sale treasures and buy fixed-price items from across Denver and the Front Range —
+              antiques, collectibles, furniture, jewelry, tools &amp; more. New listings weekly on eBay and Denver Online Auctions.
             </p>
           </motion.div>
         </div>
@@ -187,8 +187,8 @@ const Auctions = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="secondary" size="lg">
-                <a href="https://jsg-liquidators.liveauctioneers.com/" target="_blank" rel="noopener noreferrer">
-                  LiveAuctioneers
+                <a href="https://ebay.us/m/tsG4b9" target="_blank" rel="noopener noreferrer">
+                  eBay Store
                   <ExternalLink className="w-4 h-4 ml-2" />
                 </a>
               </Button>

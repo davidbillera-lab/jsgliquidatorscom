@@ -13,7 +13,7 @@ const INFO = {
     "Estate sales",
     "Estate liquidation",
     "Business liquidation",
-    "E-commerce consignment (eBay, LiveAuctioneers, Denver Online Auctions)",
+    "E-commerce consignment (eBay and Denver Online Auctions)",
     "Estate cleanouts",
     "Junk removal with revenue recovery",
     "Online estate auctions",
@@ -27,7 +27,6 @@ const INFO = {
   marketplaces: {
     denverOnlineAuctions: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     ebay: "https://ebay.us/m/tsG4b9",
-    liveAuctioneers: "https://jsg-liquidators.liveauctioneers.com/",
   },
   hours: "Mon-Fri 8:00-18:00 MT",
 };

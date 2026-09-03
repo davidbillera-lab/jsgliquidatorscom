@@ -43,7 +43,7 @@ function handleClick(e: MouseEvent) {
       return;
     }
     // Outbound auction marketplace clicks
-    if (/liveauctioneers|denveronlineauctions|ebay\./i.test(href)) {
+    if (/denveronlineauctions|ebay\./i.test(href)) {
       emit("auction_outbound_click", { url: href, page: location.pathname });
       return;
     }
