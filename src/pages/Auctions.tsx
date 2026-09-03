@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Gavel, ShoppingBag, Clock, Award } from "lucide-react";
+import { ExternalLink, Store, ShoppingBag, Clock, Award } from "lucide-react";
 import { motion } from "framer-motion";
 
 const auctionPlatforms = [
