@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 
 const auctionPlatforms = [
   {
-    name: "LiveAuctioneers",
-    description: "Browse our curated estate collections featuring antiques, fine art, jewelry, and collectibles. Bid from anywhere in the world with real-time online auctions.",
-    url: "https://jsg-liquidators.liveauctioneers.com/",
-    features: ["Live bidding", "Worldwide shipping", "Buyer protection", "Expert authentication"],
-    icon: Gavel,
+    name: "eBay Store",
+    description: "Shop our fixed-price and auction-style listings for estate finds, vintage tools, jewelry, collectibles, and everyday household items. eBay gives buyers the flexibility to bid or buy instantly.",
+    url: "https://ebay.us/m/tsG4b9",
+    features: ["Auction & Buy It Now", "Nationwide shipping", "Buyer protection", "Verified seller ratings"],
+    icon: Store,
   },
   {
     name: "Denver Online Auctions",
@@ -25,10 +25,10 @@ const Auctions = () => {
   return (
     <Layout>
       <SEOHead
-        title="Denver Online Estate Auctions"
-        description="Shop JSG Liquidators online auctions for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on LiveAuctioneers or Denver Online Auctions."
+        title="Denver Estate Sale Auctions & eBay Store"
+        description="Shop JSG Liquidators online estate auctions and e-commerce store for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on eBay or Denver Online Auctions."
         canonical="/auctions"
-        keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, collectible auctions, LiveAuctioneers Denver, estate sale bidding"
+        keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, eBay estate sales Denver, Denver Online Auctions, estate sale bidding"
         image="https://jsgliquidators.com/hero-estate-sale.jpg"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -49,7 +49,7 @@ const Auctions = () => {
               description: "Online estate auction featuring antiques, collectibles, furniture, jewelry, and decor from Denver-area estates.",
               startDate: start.toISOString(),
               endDate: end.toISOString(),
-              url: "https://jsg-liquidators.liveauctioneers.com/",
+              url: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
               eventAttendanceMode: "OnlineEventAttendanceMode" as const,
             });
           }
