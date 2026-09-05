@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { testimonials as realTestimonials } from "@/data/testimonials";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+
 // Use the public hero so the <link rel="preload"> in index.html actually matches the LCP image.
 const heroImage = "/hero-estate-sale.webp";
 
