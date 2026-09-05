@@ -79,7 +79,28 @@ const staggerContainer = {
 };
 
 const Index = () => {
+  const { data: google } = useGoogleReviews();
+
+  const testimonials = (
+    google?.reviews?.length
+      ? google.reviews.slice(0, 3).map((r) => ({
+          name: r.author,
+          location: r.relativeTime || "Google review",
+          text: r.text,
+          rating: r.rating,
+          photo: r.profilePhoto,
+        }))
+      : homeTestimonials.map((t) => ({
+          name: t.name,
+          location: t.location,
+          text: t.text,
+          rating: t.rating,
+          photo: "",
+        }))
+  );
+
   return (
+
     <Layout>
       <SEOHead
         title="Home"
