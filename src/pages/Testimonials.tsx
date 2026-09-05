@@ -44,7 +44,11 @@ const Testimonials = () => {
           { name: "Testimonials", url: "/testimonials" },
         ]}
         reviews={reviewsSchema}
-        aggregateRating={{ ratingValue: 5.0, reviewCount: testimonials.length }}
+        aggregateRating={{
+          ratingValue: google?.rating ?? 5.0,
+          reviewCount: google?.totalReviews ?? items.length,
+        }}
+
       />
 
       {/* Hero Section */}
