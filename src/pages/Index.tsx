@@ -46,26 +46,8 @@ const services = [
   },
 ];
 
-const testimonials = [
-  {
-    name: "Margaret H.",
-    location: "Highlands Ranch, CO",
-    text: "JSG Liquidators made the overwhelming task of handling my mother's estate so much easier. Professional, compassionate, and they got great prices at auction.",
-    rating: 5,
-  },
-  {
-    name: "Robert & Susan K.",
-    location: "Castle Rock, CO",
-    text: "We used their business liquidation service when closing our store. They handled everything and we received more than we expected. Highly recommend!",
-    rating: 5,
-  },
-  {
-    name: "Jennifer M.",
-    location: "Denver, CO",
-    text: "The team was respectful of our family's memories while being incredibly efficient. The online auction brought buyers from across the country.",
-    rating: 5,
-  },
-];
+const homeTestimonials = realTestimonials.slice(0, 3);
+
 
 const serviceAreas = [
   { name: "Denver", slug: "denver" },
