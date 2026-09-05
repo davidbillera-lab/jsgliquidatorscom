@@ -753,7 +753,9 @@ const Index = () => {
               What Our Clients Say
             </h2>
             <p className="text-lg text-muted-foreground">
-              We take pride in treating every estate with the care and respect it deserves.
+              {google?.rating != null
+                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
+                : "We take pride in treating every estate with the care and respect it deserves."}
             </p>
           </motion.div>
 
@@ -778,14 +780,38 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                <div className="flex items-center gap-3">
+                  {testimonial.photo && (
+                    <img
+                      src={testimonial.photo}
+                      alt={`${testimonial.name} Google profile photo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
+
+          {google?.mapsUri && (
+            <div className="text-center mt-10">
+              <a
+                href={google.mapsUri}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary hover:underline"
+              >
+                Read all {google.totalReviews} Google reviews
+              </a>
+            </div>
+          )}
         </div>
+
       </section>
 
       {/* How It Works / GEO Q&A Section — full plain-text answers for AI search engines */}
