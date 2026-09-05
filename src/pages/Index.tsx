@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { testimonials as realTestimonials } from "@/data/testimonials";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
+
 // Use the public hero so the <link rel="preload"> in index.html actually matches the LCP image.
 const heroImage = "/hero-estate-sale.webp";
 
@@ -46,26 +49,8 @@ const services = [
   },
 ];
 
-const testimonials = [
-  {
-    name: "Margaret H.",
-    location: "Highlands Ranch, CO",
-    text: "JSG Liquidators made the overwhelming task of handling my mother's estate so much easier. Professional, compassionate, and they got great prices at auction.",
-    rating: 5,
-  },
-  {
-    name: "Robert & Susan K.",
-    location: "Castle Rock, CO",
-    text: "We used their business liquidation service when closing our store. They handled everything and we received more than we expected. Highly recommend!",
-    rating: 5,
-  },
-  {
-    name: "Jennifer M.",
-    location: "Denver, CO",
-    text: "The team was respectful of our family's memories while being incredibly efficient. The online auction brought buyers from across the country.",
-    rating: 5,
-  },
-];
+const homeTestimonials = realTestimonials.slice(0, 3);
+
 
 const serviceAreas = [
   { name: "Denver", slug: "denver" },
@@ -94,7 +79,28 @@ const staggerContainer = {
 };
 
 const Index = () => {
+  const { data: google } = useGoogleReviews();
+
+  const testimonials = (
+    google?.reviews?.length
+      ? google.reviews.slice(0, 3).map((r) => ({
+          name: r.author,
+          location: r.relativeTime || "Google review",
+          text: r.text,
+          rating: r.rating,
+          photo: r.profilePhoto,
+        }))
+      : homeTestimonials.map((t) => ({
+          name: t.name,
+          location: t.location,
+          text: t.text,
+          rating: t.rating,
+          photo: "",
+        }))
+  );
+
   return (
+
     <Layout>
       <SEOHead
         title="Home"
@@ -103,7 +109,11 @@ const Index = () => {
         keywords="estate sales Denver, estate liquidation Denver CO, business liquidation Colorado, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout services, online auctions Denver, estate sale company Colorado"
         breadcrumbs={[{ name: "Home", url: "/" }]}
         reviews={testimonials.map(t => ({ author: t.name, reviewBody: t.text, ratingValue: t.rating }))}
-        aggregateRating={{ ratingValue: 5, reviewCount: testimonials.length }}
+        aggregateRating={{
+          ratingValue: google?.rating ?? 5,
+          reviewCount: google?.totalReviews ?? testimonials.length,
+        }}
+
         faqSchema={[
           { question: "What do I do with all my parents' stuff?", answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators handles the entire process — sorting, AI-assisted appraisal, online auction sales, donation coordination, and final cleanout — typically with no upfront cost because auction proceeds offset the service." },
           { question: "How do I clear out a house after someone dies?", answer: "Secure important documents and heirlooms, let family choose keepsakes, sell the remaining contents through an estate auction, then complete a full cleanout. JSG Liquidators manages this entire 4-step process for Denver and Front Range families in 7–14 days, using online auction proceeds to offset cleanout costs." },
@@ -743,7 +753,9 @@ const Index = () => {
               What Our Clients Say
             </h2>
             <p className="text-lg text-muted-foreground">
-              We take pride in treating every estate with the care and respect it deserves.
+              {google?.rating != null
+                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
+                : "We take pride in treating every estate with the care and respect it deserves."}
             </p>
           </motion.div>
 
@@ -768,14 +780,38 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
-                <div>
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                <div className="flex items-center gap-3">
+                  {testimonial.photo && (
+                    <img
+                      src={testimonial.photo}
+                      alt={`${testimonial.name} Google profile photo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
+
+          {google?.mapsUri && (
+            <div className="text-center mt-10">
+              <a
+                href={google.mapsUri}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary hover:underline"
+              >
+                Read all {google.totalReviews} Google reviews
+              </a>
+            </div>
+          )}
         </div>
+
       </section>
 
       {/* How It Works / GEO Q&A Section — full plain-text answers for AI search engines */}

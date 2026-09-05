@@ -2,51 +2,8 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Harriet Ivker",
-    location: "Denver, CO",
-    rating: 5,
-    text: "I highly recommend JSG liquidators. They were professional, honest, easy to work with and I received more than expected from the estate sale. You won't be sorry.",
-  },
-  {
-    id: 2,
-    name: "Brandon Johnson",
-    location: "Denver, CO",
-    rating: 5,
-    text: "If you're looking for a good auction to auction off your items, look no further! JSG Estate will take care of you. Fast and easy service, they can get you a return on your investment. The items you think are not worth anything, they have an eye for value. Professional and driven. Easy to work with and down to earth.",
-  },
-  {
-    id: 3,
-    name: "Sarah Booras",
-    location: "Denver, CO",
-    rating: 5,
-    text: "I have known the Billera Brothers for a while now, I have used their help more than once! They are hard working, honest, professional and a great choice to help with estate liquidations, junk removal, whatever you need. They get it done! Highly recommend!",
-  },
-  {
-    id: 4,
-    name: "Mary Brs",
-    location: "Denver, CO",
-    rating: 5,
-    text: "David and Vincent with JSG Liquidators run smooth, well organized auctions. They offer a great mix of new items, vintage finds, and quality antiques. I love shopping their auctions! Pickup is straightforward and well managed, and communication is solid from start to finish. They're dependable, professional, and a welcome part of the Denver Online Auctions community.",
-  },
-  {
-    id: 5,
-    name: "Erin H",
-    location: "Denver, CO",
-    rating: 5,
-    text: "David has been a dream come true. He carries himself with integrity, and the way he has helped me reflects his strong character. My life feels back in order again and I truly appreciate you! I will recommend David any chance I get!",
-  },
-  {
-    id: 6,
-    name: "John Krueger",
-    location: "Denver, CO",
-    rating: 5,
-    text: "Dave and Vince were very professional in going over what could be used for the estate auction and what they have to move to our new residence.",
-  },
-];
+import { testimonials } from "@/data/testimonials";
+import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -55,11 +12,25 @@ const fadeInUp = {
 };
 
 const Testimonials = () => {
-  const reviewsSchema = testimonials.map(t => ({
+  const { data: google } = useGoogleReviews();
+
+  const items = google?.reviews?.length
+    ? google.reviews.map((r, i) => ({
+        id: i + 1,
+        name: r.author,
+        location: r.relativeTime || "Google review",
+        rating: r.rating,
+        text: r.text,
+        photo: r.profilePhoto,
+      }))
+    : testimonials.map((t) => ({ ...t, photo: "" }));
+
+  const reviewsSchema = items.map(t => ({
     author: t.name,
     reviewBody: t.text,
     ratingValue: t.rating,
   }));
+
 
   return (
     <Layout>
@@ -73,7 +44,11 @@ const Testimonials = () => {
           { name: "Testimonials", url: "/testimonials" },
         ]}
         reviews={reviewsSchema}
-        aggregateRating={{ ratingValue: 5.0, reviewCount: testimonials.length }}
+        aggregateRating={{
+          ratingValue: google?.rating ?? 5.0,
+          reviewCount: google?.totalReviews ?? items.length,
+        }}
+
       />
 
       {/* Hero Section */}
@@ -100,8 +75,37 @@ const Testimonials = () => {
       <section className="py-20 bg-background" aria-labelledby="reviews-heading">
         <div className="container mx-auto px-4">
           <h2 id="reviews-heading" className="sr-only">Client Reviews</h2>
+
+          {google?.rating != null && (
+            <div className="flex flex-col items-center gap-2 mb-12">
+              <div className="flex items-center gap-2">
+                <span className="text-3xl font-display font-bold text-foreground">
+                  {google.rating.toFixed(1)}
+                </span>
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Based on {google.totalReviews} Google reviews
+              </p>
+              {google.mapsUri && (
+                <a
+                  href={google.mapsUri}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium text-steel-blue hover:underline"
+                >
+                  See all reviews on Google
+                </a>
+              )}
+            </div>
+          )}
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {items.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
                 className="bg-card rounded-lg p-6 shadow-lg border border-border relative"
@@ -119,14 +123,25 @@ const Testimonials = () => {
                 <p className="text-muted-foreground mb-6 italic">
                   "{testimonial.text}"
                 </p>
-                <div className="border-t border-border pt-4">
-                  <p className="font-semibold text-foreground">{testimonial.name}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                <div className="border-t border-border pt-4 flex items-center gap-3">
+                  {testimonial.photo && (
+                    <img
+                      src={testimonial.photo}
+                      alt={`${testimonial.name} Google profile photo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
+
       </section>
 
       {/* Stats Section */}
