@@ -60,9 +60,18 @@ async function resolvePlaceId(): Promise<{ id: string } | Response> {
   const json = await response.json();
   const id = json?.places?.[0]?.id;
   if (!id) {
+    console.warn(`No Google listing matched "${PLACE_QUERY}" — returning empty payload.`);
     return new Response(
-      JSON.stringify({ error: 'place_not_found', details: `No Google listing matched "${PLACE_QUERY}".` }),
-      { status: 404, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+      JSON.stringify({
+        placeId: '',
+        name: 'JSG Liquidators',
+        rating: null,
+        totalReviews: 0,
+        mapsUri: '',
+        writeReviewUri: '',
+        reviews: [],
+      }),
+      { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
     );
   }
   return { id };
