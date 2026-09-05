@@ -391,7 +391,31 @@ const staticPages: Route[] = [
       },
     ],
   },
+  {
+    path: "/privacy",
+    title: "Privacy Policy | JSG Liquidators Denver Estate Sales",
+    description:
+      "How JSG Liquidators collects, uses, and protects information submitted through jsgliquidators.com. Contact jsgliquidators@gmail.com with privacy questions.",
+    bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
+      <h1>Privacy Policy</h1>
+      <p>JSG Liquidators collects only the information you submit through our contact and estimate forms — name, phone, email, property location, and details about your estate sale, liquidation, consignment, or cleanout request.</p>
+      <h2>How we use your information</h2>
+      <ul>
+        <li>To respond to your request and schedule a free consultation.</li>
+        <li>To provide estate sale, auction, e-commerce consignment, and cleanout services.</li>
+        <li>To send service updates you have asked for. We never sell your information.</li>
+      </ul>
+      <h2>Contact</h2>
+      <p>Email <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a> or call <a href="tel:805-444-4069">(805) 444-4069</a> to review, correct, or delete your information.</p>
+      ${commonFooter()}
+    </main>`,
+    jsonLd: breadcrumb([
+      { name: "Home", item: SITE_URL + "/" },
+      { name: "Privacy Policy", item: SITE_URL + "/privacy" },
+    ]),
+  },
 ];
+
 
 // ---------- Category hub pages (Core 30: /services/{category}) ----------
 const categoryPages: Route[] = SERVICES.map((svc) => ({

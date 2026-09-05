@@ -22,6 +22,8 @@ import ServiceCategoryPage from "./pages/ServiceCategoryPage";
 import NotFound from "./pages/NotFound";
 import OAuthConsent from "./pages/OAuthConsent";
 import Privacy from "./pages/Privacy";
+import Search from "./pages/Search";
+
 
 const queryClient = new QueryClient();
 
@@ -47,6 +49,8 @@ const App = () => (
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/search" element={<Search />} />
+
             <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
             {/* Legacy URL redirects (one hop, no chains) */}
             <Route path="/why-us" element={<Navigate to="/why-work-with-us" replace />} />

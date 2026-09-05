@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import logoLandscape from "@/assets/logo-landscape.png";
@@ -53,10 +53,18 @@ export const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
+            <Link
+              to="/search"
+              aria-label="Search the site"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Search className="w-5 h-5" />
+            </Link>
             <a href="tel:805-444-4069" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
               (805) 444-4069
             </a>
+
             <Button asChild variant="accent" size="lg">
               <Link to="/contact">Get Free Quote</Link>
             </Button>
@@ -97,8 +105,17 @@ export const Header = () => {
                     {link.name}
                   </Link>
                 ))}
+                <Link
+                  to="/search"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 px-4 py-2 text-base font-medium rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                >
+                  <Search className="w-4 h-4" />
+                  Search
+                </Link>
                 <div className="px-4 pt-4 space-y-3">
                   <a href="tel:805-444-4069" className="flex items-center gap-2 text-base font-medium text-foreground">
+
                     <Phone className="w-5 h-5" />
                     (805) 444-4069
                   </a>
