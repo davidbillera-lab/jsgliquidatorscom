@@ -49,6 +49,8 @@ const App = () => (
             <Route path="/why-work-with-us" element={<WhyWorkWithUs />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/search" element={<Search />} />
+
             <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
             {/* Legacy URL redirects (one hop, no chains) */}
             <Route path="/why-us" element={<Navigate to="/why-work-with-us" replace />} />
