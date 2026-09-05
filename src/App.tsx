@@ -22,6 +22,8 @@ import ServiceCategoryPage from "./pages/ServiceCategoryPage";
 import NotFound from "./pages/NotFound";
 import OAuthConsent from "./pages/OAuthConsent";
 import Privacy from "./pages/Privacy";
+import Search from "./pages/Search";
+
 
 const queryClient = new QueryClient();
 
