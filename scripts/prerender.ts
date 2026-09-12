@@ -392,6 +392,38 @@ const staticPages: Route[] = [
     ],
   },
   {
+    path: "/how-much-do-estate-sale-companies-charge",
+    title: "How Much Do Estate Sale Companies Charge in Denver? | JSG Liquidators",
+    description: "Estate sale companies typically charge 30–50% commission. JSG Liquidators builds a custom plan per job — cleanouts, online auctions & e-commerce — so sale proceeds can offset some or all of your costs.",
+    bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
+      <h1>How Much Do Estate Sale Companies Charge in Denver?</h1>
+      <p class="speakable-summary"><strong>TL;DR:</strong> Most estate sale companies charge a 30–50% commission, and every estate is different, so a set price rarely fits. JSG Liquidators builds a custom plan per job: cleanout, online auctions, and e-commerce consignment working together so sale proceeds can offset some — or even all — of your upfront costs. Free consultations: <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+      <h2>Why there's no one-size-fits-all price</h2>
+      <p>Fair pricing depends on the size of the estate, the mix of items, your timeline, the cleanout scope, and which sales channels (online auction, eBay store, e-commerce consignment) fit best. JSG strategizes with each client during a free walkthrough before quoting.</p>
+      <h2>The JSG model: cleanouts with built-in revenue recovery</h2>
+      <ul>
+        <li><strong>Cleanouts at the core</strong> — sorting and clearing the property while identifying items with resale value first.</li>
+        <li><strong>Online auction sales</strong> — auction-worthy items photographed, researched, and sold to competing bidders, typically within 7–10 days.</li>
+        <li><strong>E-commerce &amp; consignment</strong> — higher-value pieces listed on the JSG eBay store for a national buyer pool.</li>
+        <li><strong>Proceeds offset costs</strong> — sale proceeds are applied to cleanout and service costs first; many clients recoup some or all of their upfront costs.</li>
+      </ul>
+      <h2>Frequently asked questions</h2>
+      <h3>How much do estate sale companies charge in Denver?</h3>
+      <p>Across the industry, most charge a 30–50% commission on gross sales, some with setup fees or minimums. JSG builds a custom plan per job so auction and e-commerce proceeds offset service costs.</p>
+      <h3>Why don't you list a set price?</h3>
+      <p>No two estates are alike; a flat rate would overcharge some clients and underserve others. JSG provides a clear, itemized plan after a free property walkthrough.</p>
+      <h3>How can I recoup some or all of my upfront costs?</h3>
+      <p>Valuable items found during the cleanout are sold through online auctions and eBay; proceeds are applied to your account and can cover most or all costs, with surplus returned to you.</p>
+      <h3>Do you charge for the initial consultation?</h3>
+      <p>No — consultations are free and carry no obligation.</p>
+      ${commonFooter()}
+    </main>`,
+    jsonLd: breadcrumb([
+      { name: "Home", item: SITE_URL + "/" },
+      { name: "Estate Sale Costs", item: SITE_URL + "/how-much-do-estate-sale-companies-charge" },
+    ]),
+  },
+  {
     path: "/privacy",
     title: "Privacy Policy | JSG Liquidators Denver Estate Sales",
     description:
