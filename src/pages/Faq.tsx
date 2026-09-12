@@ -125,6 +125,13 @@ const Faq = () => {
                 </Link>
               </Button>
             </div>
+            <p className="mt-6 text-primary-foreground/80">
+              Curious about costs? Read{" "}
+              <Link to="/how-much-do-estate-sale-companies-charge" className="underline underline-offset-4 hover:text-primary-foreground">
+                how much estate sale companies charge in Denver
+              </Link>
+              .
+            </p>
           </motion.div>
         </div>
       </section>
