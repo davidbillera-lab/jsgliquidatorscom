@@ -17,6 +17,10 @@ const LABEL_OVERRIDES: Record<string, string> = {
 
 const HIDDEN_PREFIXES = ["/blog-admin", "/admin-auth", "/oauth"];
 
+// Paths that exist as URL segments but have no standalone listing page,
+// so the breadcrumb should render as plain text instead of a 404 link.
+const NO_LINK_PATHS = ["/areas"];
+
 function labelFor(segment: string) {
   return (
     LABEL_OVERRIDES[segment] ??
@@ -57,8 +61,11 @@ export const Breadcrumbs = () => {
         {crumbs.map((crumb) => (
           <li key={crumb.href} className="flex items-center gap-1.5">
             <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden="true" />
-            {crumb.isLast ? (
-              <span className="font-medium text-foreground" aria-current="page">
+            {crumb.isLast || NO_LINK_PATHS.includes(crumb.href) ? (
+              <span
+                className={`font-medium ${crumb.isLast ? "text-foreground" : "text-muted-foreground"}`}
+                aria-current={crumb.isLast ? "page" : undefined}
+              >
                 {crumb.label}
               </span>
             ) : (
