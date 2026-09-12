@@ -17,6 +17,10 @@ const LABEL_OVERRIDES: Record<string, string> = {
 
 const HIDDEN_PREFIXES = ["/blog-admin", "/admin-auth", "/oauth"];
 
+// Paths that exist as URL segments but have no standalone listing page,
+// so the breadcrumb should render as plain text instead of a 404 link.
+const NO_LINK_PATHS = ["/areas"];
+
 function labelFor(segment: string) {
   return (
     LABEL_OVERRIDES[segment] ??
