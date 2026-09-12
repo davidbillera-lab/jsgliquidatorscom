@@ -345,6 +345,13 @@ const Services = () => {
                 </AccordionItem>
               ))}
             </Accordion>
+            <p className="mt-8 text-muted-foreground">
+              Wondering what estate sale services typically cost? See{" "}
+              <Link to="/how-much-do-estate-sale-companies-charge" className="text-primary underline underline-offset-4 hover:text-primary/80">
+                how much estate sale companies charge in Denver
+              </Link>{" "}
+              and how our revenue-recovery model can offset some or all of your costs.
+            </p>
           </motion.div>
         </div>
       </section>

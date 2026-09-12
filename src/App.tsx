@@ -23,6 +23,7 @@ import NotFound from "./pages/NotFound";
 import OAuthConsent from "./pages/OAuthConsent";
 import Privacy from "./pages/Privacy";
 import Search from "./pages/Search";
+import Pricing from "./pages/Pricing";
 
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
             <Route path="/faq" element={<Faq />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/how-much-do-estate-sale-companies-charge" element={<Pricing />} />
 
             <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
             {/* Legacy URL redirects (one hop, no chains) */}
