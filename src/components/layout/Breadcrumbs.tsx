@@ -61,8 +61,11 @@ export const Breadcrumbs = () => {
         {crumbs.map((crumb) => (
           <li key={crumb.href} className="flex items-center gap-1.5">
             <ChevronRight className="h-3.5 w-3.5 shrink-0 opacity-60" aria-hidden="true" />
-            {crumb.isLast ? (
-              <span className="font-medium text-foreground" aria-current="page">
+            {crumb.isLast || NO_LINK_PATHS.includes(crumb.href) ? (
+              <span
+                className={`font-medium ${crumb.isLast ? "text-foreground" : "text-muted-foreground"}`}
+                aria-current={crumb.isLast ? "page" : undefined}
+              >
                 {crumb.label}
               </span>
             ) : (
