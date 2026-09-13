@@ -126,6 +126,11 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     document
       .querySelectorAll('script[data-prerender-route-schema="true"]')
       .forEach((el) => el.remove());
+    if (canonicalUrl !== `${siteUrl}/`) {
+      document
+        .querySelectorAll('script[data-homepage-schema="true"]')
+        .forEach((el) => el.remove());
+    }
   }, [canonicalUrl]);
 
   return (
@@ -172,7 +177,6 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
         </script>
       )}
 
-      {/* Review/AggregateRating Schema */}
       {/* Review/AggregateRating Schema */}
       {reviewJsonLd && (
         <script type="application/ld+json">

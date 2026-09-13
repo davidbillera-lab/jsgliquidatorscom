@@ -169,10 +169,11 @@ function renderHtml(route: Route): string {
     html = html.replace("</head>", `    ${blocks}\n  </head>`);
   }
 
-  // Non-home routes must not inherit the homepage-specific WebPage entity.
+  // Non-home routes retain sitewide identity schema but not homepage-only
+  // Service/WebPage entities. Their route-specific entities are injected above.
   if (route.path !== "/") {
     html = html.replace(
-      /\s*<script type="application\/ld\+json">[\s\S]*?"@id": "https:\/\/jsgliquidators\.com\/#webpage"[\s\S]*?<\/script>/,
+      /\s*<script type="application\/ld\+json" data-homepage-schema="true">[\s\S]*?<\/script>/g,
       "",
     );
   }
