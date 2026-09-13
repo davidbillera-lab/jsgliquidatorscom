@@ -25,7 +25,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "How long does the estate liquidation process take?",
-        answer: "Most estate liquidations are completed within 7-14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing. For urgent situations like real estate closings or probate deadlines, we offer expedited timelines.",
+        answer: "Timing depends on the property, number and type of items, selected sales channels, buyer demand and any cleanout work. We discuss the schedule during the consultation and include it in the custom plan.",
       },
       {
         question: "What items sell best at estate auctions in Colorado?",
@@ -33,7 +33,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "What happens to unsold items after an estate sale?",
-        answer: "After a JSG Liquidators auction, unsold items follow four paths: (1) higher-value lots are pulled for our second-chance e-commerce consignment program on eBay, LiveAuctioneers, and Etsy, (2) usable items are donated to local Colorado charities including ARC Thrift, Goodwill, Habitat ReStore, and Denver Rescue Mission, (3) electronics, metals, and recyclables are routed to Denver-area recycling facilities, and (4) only true trash is hauled to a transfer station — leaving the home broom-clean. Less than 15% of contents typically reach a landfill.",
+        answer: "The next step depends on the client-approved plan. Suitable items may be considered for e-commerce consignment, while others may be donated, recycled or removed as part of a separately quoted cleanout.",
       },
       {
         question: "How is JSG Liquidators different from a traditional estate sale company?",
@@ -46,7 +46,7 @@ export const faqGroups: FaqGroup[] = [
     items: [
       {
         question: "How do I clear out a house after someone dies?",
-        answer: "Secure important documents and heirlooms, let family choose keepsakes, sell the remaining contents through an estate auction, then complete a full cleanout. JSG Liquidators manages this entire 4-step process for Denver and Front Range families in 7-14 days, using online auction proceeds to offset cleanout costs.",
+        answer: "Secure important documents and heirlooms, let family choose keepsakes, then decide what should be sold, donated or removed. JSG Liquidators can create a custom plan for auction, e-commerce and cleanout services. Cleanout work is quoted and paid upfront; sale results are not guaranteed.",
       },
       {
         question: "What is the difference between an estate sale and a cleanout?",
@@ -96,7 +96,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "Who buys estate items and removes the junk?",
-        answer: "JSG Liquidators sells your items to the highest bidder through our online auction platform and e-commerce consignment, reaching buyers nationwide for higher returns than a single cash offer. After the auction, we remove unsold items, coordinate donations with Colorado charities, recycle, and haul junk — leaving the property broom-clean.",
+        answer: "JSG Liquidators can coordinate online auction or e-commerce sales for approved items and separately quoted cleanout or removal work. The plan explains how remaining items will be handled and what the cleanout includes.",
       },
       {
         question: "What areas of Colorado do you serve?",

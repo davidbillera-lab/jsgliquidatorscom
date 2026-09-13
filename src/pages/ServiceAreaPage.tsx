@@ -48,7 +48,6 @@ const ServiceAreaPage = () => {
       name: area.city,
       containedInPlace: { "@type": "State", name: "Colorado" },
     },
-    priceRange: "$$",
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: `Estate Liquidation Services in ${area.city}`,
@@ -69,8 +68,8 @@ const ServiceAreaPage = () => {
       answer: `Cleanout pricing varies based on the property, volume, access, labor, and disposal needs. After a walkthrough, we provide a clear quote that is paid upfront. Approved items may be sold through auction or e-commerce to help recoup some or all of that cost, but results are not guaranteed.`,
     },
     {
-      question: `Do you offer same-day junk removal in ${area.city}?`,
-      answer: `Yes! We offer same-day and next-day junk removal throughout ${area.city} and nearby areas including ${area.nearbyAreas.join(", ")}. Call us at (805) 444-4069 for emergency service.`,
+      question: `How soon can you schedule junk removal in ${area.city}?`,
+      answer: `Scheduling depends on the project scope and current availability. Call (805) 444-4069 with your preferred timing and we will explain the available options.`,
     },
     {
       question: `What ZIP codes do you serve in ${area.city}?`,

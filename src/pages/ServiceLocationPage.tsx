@@ -9,24 +9,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 import { getServiceLocationContent } from "@/data/serviceLocationContent";
 
-// Geo coordinates per service-area city (lat/lng) for per-page LocalBusiness JSON-LD
-const cityGeo: Record<string, { lat: string; lng: string }> = {
-  denver: { lat: "39.7392", lng: "-104.9903" },
-  aurora: { lat: "39.7294", lng: "-104.8319" },
-  lakewood: { lat: "39.7047", lng: "-105.0814" },
-  "highlands-ranch": { lat: "39.5539", lng: "-104.9689" },
-  "castle-rock": { lat: "39.3722", lng: "-104.8561" },
-  englewood: { lat: "39.6478", lng: "-104.9878" },
-  littleton: { lat: "39.6133", lng: "-105.0166" },
-  thornton: { lat: "39.8681", lng: "-104.9719" },
-  westminster: { lat: "39.8367", lng: "-105.0372" },
-  arvada: { lat: "39.8028", lng: "-105.0875" },
-  centennial: { lat: "39.5807", lng: "-104.8772" },
-  boulder: { lat: "40.0150", lng: "-105.2705" },
-  "fort-collins": { lat: "40.5853", lng: "-105.0844" },
-  "colorado-springs": { lat: "38.8339", lng: "-104.8214" },
-};
-
 const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
 const ServiceLocationPage = () => {
@@ -48,7 +30,6 @@ const ServiceLocationPage = () => {
     { name: serviceContent.serviceName, url: `/areas/${area.slug}/${serviceContent.serviceSlug}` },
   ];
 
-  const geo = cityGeo[area.slug];
   const pageUrl = `https://jsgliquidators.com/areas/${area.slug}/${serviceContent.serviceSlug}`;
 
   // Per-page localized Service schema: ties this specific service to this specific city
@@ -63,12 +44,6 @@ const ServiceLocationPage = () => {
       "name": "JSG Liquidators",
       "telephone": "+1-805-444-4069",
       "url": "https://jsgliquidators.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Denver",
-        "addressRegion": "CO",
-        "addressCountry": "US",
-      },
     },
     "areaServed": {
       "@type": "City",
@@ -81,9 +56,6 @@ const ServiceLocationPage = () => {
         "postalCode": area.zipCodes[0],
         "addressCountry": "US",
       },
-      ...(geo && {
-        "geo": { "@type": "GeoCoordinates", "latitude": geo.lat, "longitude": geo.lng },
-      }),
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

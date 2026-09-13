@@ -17,7 +17,7 @@ const Faq = () => {
     <Layout>
       <SEOHead
         title="Estate Sale & Liquidation FAQs Denver"
-        description="Answers to Denver estate sale, liquidation, cleanout & consignment questions — costs, timelines, service areas & our no-upfront-fee Revenue Recovery model."
+        description="Answers about Denver estate sales, liquidation, cleanouts and e-commerce consignment, including pricing, timing and service areas."
         canonical="/faq"
         faqSchema={allFaqs}
         breadcrumbs={[
@@ -44,8 +44,7 @@ const Faq = () => {
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Straight answers about estate sales, online auctions, business liquidation, estate cleanouts 
-              &amp; e-commerce consignment across Denver and the Front Range — costs, timelines, and how our 
-              no-upfront-cost Revenue Recovery model works.
+               &amp; e-commerce consignment across Denver and the Front Range — including costs, timing, sales options and service areas.
             </p>
             <Button asChild variant="hero" size="xl">
               <Link to="/contact">
