@@ -29,12 +29,19 @@ const ServiceCategoryPage = () => {
   const catalogEntry = allServices.find((s) => s.slug === categorySlug);
   const coreSeo = categorySlug ? getCoreServiceSeo(categorySlug) : undefined;
 
-  if (!category || !catalogEntry || !coreSeo) {
+  if (!category || !catalogEntry) {
     return <Navigate to="/services" replace />;
   }
 
+  const pageSeo = coreSeo ?? {
+    title: `${category.serviceName} Denver`,
+    h1: `${category.serviceName} in Denver`,
+    description: category.getMetaDescription("Denver, Colorado"),
+    summary: category.getHeroSubheadline("Denver"),
+  };
+
   const pageUrl = `https://jsgliquidators.com/services/${category.serviceSlug}`;
-  const heroHeadline = coreSeo.h1;
+  const heroHeadline = pageSeo.h1;
   const introCopy = category.getIntro("Denver", "Denver metro area");
 
   // Statewide FAQ (uses "Colorado" as the geo token)
@@ -81,8 +88,8 @@ const ServiceCategoryPage = () => {
     "@type": "WebPage",
     "@id": `${pageUrl}#webpage`,
     "url": pageUrl,
-    "name": coreSeo.title,
-    "description": coreSeo.description,
+    "name": pageSeo.title,
+    "description": pageSeo.description,
     "isPartOf": { "@id": "https://jsgliquidators.com/#website" },
     "about": { "@id": `${pageUrl}#service` },
   };
@@ -102,8 +109,8 @@ const ServiceCategoryPage = () => {
   return (
     <Layout>
       <SEOHead
-        title={coreSeo.title}
-        description={coreSeo.description}
+        title={pageSeo.title}
+        description={pageSeo.description}
         keywords={category.getMetaKeywords("Denver Colorado")}
         canonical={`/services/${category.serviceSlug}`}
         faqSchema={faqData}
@@ -131,7 +138,7 @@ const ServiceCategoryPage = () => {
             {heroHeadline}
           </motion.h1>
           <p className="speakable-summary text-lg lg:text-xl text-primary-foreground/90 max-w-3xl mb-8">
-            {coreSeo.summary} Cleanout work, when selected, is quoted and paid upfront. Optional sale proceeds may
+            {pageSeo.summary} Cleanout work, when selected, is quoted and paid upfront. Optional sale proceeds may
             help recoup that expense, but results are not guaranteed. Call David at (805) 444-4069.
           </p>
           <div className="flex flex-wrap gap-4">
