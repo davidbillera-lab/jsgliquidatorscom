@@ -181,6 +181,14 @@ const Pricing = () => {
           { name: "Estate Sale Costs", url: "/how-much-do-estate-sale-companies-charge" },
         ]}
       />
+      <Helmet>
+        <meta name="geo.region" content="US-CO" />
+        <meta name="geo.placename" content="Denver" />
+        <meta name="geo.position" content="39.7392;-104.9903" />
+        <meta name="ICBM" content="39.7392, -104.9903" />
+        <script type="application/ld+json">{JSON.stringify(howToJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
+      </Helmet>
 
       {/* Hero */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -305,6 +313,45 @@ const Pricing = () => {
               <Link to="/services/estate-cleanouts">See How Our Cleanouts Work</Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              How It Works: From Walkthrough to Broom-Clean
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Most Denver estates move through these four steps in 7–14 days.
+            </p>
+          </motion.div>
+
+          <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto list-none p-0">
+            {howToSteps.map((step, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-background rounded-xl p-6"
+              >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary font-bold mb-4">
+                  {index + 1}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{step.name}</h3>
+                <p className="text-muted-foreground text-sm">{step.text}</p>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </section>
 
