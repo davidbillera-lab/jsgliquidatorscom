@@ -1082,11 +1082,17 @@ const Index = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.6 }}
-            className="text-center mt-10"
+            className="text-center mt-10 flex flex-wrap justify-center gap-4"
           >
             <Button asChild variant="outline" size="lg">
               <Link to="/faq">
                 View All Estate Sale FAQs
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg">
+              <Link to="/how-much-do-estate-sale-companies-charge">
+                What Do Estate Sale Companies Charge?
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
