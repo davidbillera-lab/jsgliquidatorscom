@@ -407,6 +407,13 @@ const staticPages: Route[] = [
         <li><strong>E-commerce &amp; consignment</strong> — higher-value pieces listed on the JSG eBay store for a national buyer pool.</li>
         <li><strong>Proceeds offset costs</strong> — sale proceeds are applied to cleanout and service costs first; many clients recoup some or all of their upfront costs.</li>
       </ul>
+      <h2>How it works: from walkthrough to broom-clean</h2>
+      <ol>
+        <li><strong>Free walkthrough &amp; consultation</strong> — JSG walks the property, identifies items with resale value, and discusses goals and timeline. Free, no obligation.</li>
+        <li><strong>Custom plan &amp; clear cost structure</strong> — an itemized plan covering auction, eBay store / e-commerce consignment, donation, recycling, and disposal, with expected proceeds offsets.</li>
+        <li><strong>Online auctions &amp; e-commerce sales</strong> — items are photographed, researched, and listed online, typically selling within 7–10 days.</li>
+        <li><strong>Proceeds offset costs, property left broom-clean</strong> — sale proceeds are applied to cleanout and service costs first; many clients recoup some or all of their upfront costs.</li>
+      </ol>
       <h2>Frequently asked questions</h2>
       <h3>How much do estate sale companies charge in Denver?</h3>
       <p>Across the industry, most charge a 30–50% commission on gross sales, some with setup fees or minimums. JSG builds a custom plan per job so auction and e-commerce proceeds offset service costs.</p>
@@ -428,10 +435,36 @@ const staticPages: Route[] = [
       <p>We'll tell you honestly what has value and what doesn't. Even a few good finds can offset cleanout costs, and we'll recommend donation, recycling, or disposal for the rest.</p>
       ${commonFooter()}
     </main>`,
-    jsonLd: breadcrumb([
-      { name: "Home", item: SITE_URL + "/" },
-      { name: "Estate Sale Costs", item: SITE_URL + "/how-much-do-estate-sale-companies-charge" },
-    ]),
+    jsonLd: [
+      breadcrumb([
+        { name: "Home", item: SITE_URL + "/" },
+        { name: "Estate Sale Costs", item: SITE_URL + "/how-much-do-estate-sale-companies-charge" },
+      ]),
+      {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
+        description: "Every job is quoted individually: a free walkthrough, a custom plan combining cleanout, online auctions and e-commerce consignment, and sale proceeds that can offset some or all upfront costs.",
+        totalTime: "P14D",
+        step: [
+          { "@type": "HowToStep", position: 1, name: "Free walkthrough & consultation", text: "JSG walks the property with you, identifies items with resale value, and discusses your goals and timeline — free and with no obligation." },
+          { "@type": "HowToStep", position: 2, name: "Custom plan & clear cost structure", text: "You receive an itemized plan covering online auction, eBay store / e-commerce consignment, donation, recycling, and disposal, with expected proceeds offsets." },
+          { "@type": "HowToStep", position: 3, name: "Online auctions & e-commerce sales", text: "Items are photographed, researched, and listed online — typically selling within 7–10 days — with higher-value pieces reaching national buyers through e-commerce consignment." },
+          { "@type": "HowToStep", position: 4, name: "Proceeds offset costs, property left broom-clean", text: "Sale proceeds are applied to your cleanout and service costs first — many clients recoup some or all of their upfront costs — and the property is left broom-clean." },
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": SITE_URL + "/#organization",
+        name: "JSG Liquidators",
+        url: SITE_URL + "/how-much-do-estate-sale-companies-charge",
+        telephone: "+1-805-444-4069",
+        email: "jsgliquidators@gmail.com",
+        priceRange: "Free consultation — custom quote per job",
+        areaServed: ["Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder", "Thornton", "Centennial", "Highlands Ranch", "Castle Rock", "Englewood", "Littleton", "Fort Collins", "Colorado Springs"].map((city) => ({ "@type": "City", name: `${city}, CO` })),
+      },
+    ],
   },
   {
     path: "/privacy",
