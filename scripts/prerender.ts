@@ -264,7 +264,7 @@ const breadcrumb = (items: { name: string; item: string }[]) => ({
 
 function commonFooter(): string {
   return `<footer style="margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:14px;">
-      <p><strong>JSG Liquidators</strong> · Denver, Colorado · No upfront cost — auction proceeds offset fees · Items sold in 7–10 days.</p>
+      <p><strong>JSG Liquidators</strong> · Denver, Colorado · Cleanout costs are quoted and paid upfront · Optional sale proceeds may help recoup costs.</p>
       <p>Call David: <a href="tel:805-444-4069">(805) 444-4069</a> · Email: <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></p>
       <nav><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/auctions">Auctions</a> · <a href="/blog">Blog</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI: llms.txt</a></nav>
     </footer>`;
@@ -275,10 +275,10 @@ const staticPages: Route[] = [
   {
     path: "/services",
     title: "Estate Liquidation Services in Denver | JSG Liquidators",
-    description: "Estate sales, business liquidation, estate cleanouts, e-commerce consignment, and junk removal across Denver and the Colorado Front Range. No upfront cost.",
+    description: "Estate sales, business liquidation, cleanouts, e-commerce consignment and junk removal across Denver. Custom plans and upfront cleanout pricing.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Estate Liquidation Services in Denver, Colorado</h1>
-      <p>JSG Liquidators provides full-service estate liquidation across the Denver metro area on a no-upfront-cost "Revenue Recovery" model. Online auction proceeds cover or offset our service fees.</p>
+      <p>JSG Liquidators provides custom estate liquidation plans across the Denver metro area. Cleanout work is quoted and paid upfront; optional auction and e-commerce proceeds may help clients recoup costs without any guaranteed result.</p>
       <h2>Our services</h2>
       <ul>
         <li><a href="/services">Estate Sales &amp; Online Auctions</a> — Nationwide buyer reach via LiveAuctioneers, Denver Online Auctions, and eBay.</li>
@@ -293,11 +293,11 @@ const staticPages: Route[] = [
   {
     path: "/about",
     title: "About JSG Liquidators | Denver Estate Sale Company",
-    description: "JSG Liquidators is a Denver, Colorado family-run estate sale and liquidation company founded by David Billera. AI-first inventory, fast 7–10 day turnaround, no upfront fees.",
+    description: "JSG Liquidators is a Denver family-run estate sale and liquidation company offering online sales, e-commerce consignment and upfront-priced cleanouts.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>About JSG Liquidators</h1>
       <p>JSG Liquidators is a Denver-based, family-run estate and business liquidation company founded by David Billera. We've completed hundreds of Colorado liquidations using an AI-first inventory and pricing workflow that routes every item to the highest-paying marketplace.</p>
-      <p>Our "Revenue Recovery" model means clients pay no upfront fees — online auction proceeds cover or offset our service costs. Items typically sell within 7–10 days; full estate cleanouts take about 12 days.</p>
+      <p>Cleanout work is quoted and paid upfront. Approved items may also be sold through online auction or e-commerce, giving clients an opportunity to recoup some or all of the expense without a guaranteed return.</p>
       ${commonFooter()}
     </main>`,
   },
@@ -346,11 +346,12 @@ const staticPages: Route[] = [
   {
     path: "/why-work-with-us",
     title: "Why Work With JSG Liquidators | Denver Estate Experts",
-    description: "Denver's AI-first estate liquidator. No upfront cost, items sold in 7–10 days, full-service appraisal through cleanup, hundreds of completed Colorado liquidations.",
+    description: "Denver estate liquidator offering custom plans, online auctions, e-commerce consignment and clearly quoted upfront cleanout services.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Why work with JSG Liquidators</h1>
       <ul>
-        <li><strong>No upfront cost</strong> — auction proceeds cover or offset fees.</li>
+        <li><strong>Clear cleanout pricing</strong> — cleanout costs are quoted and paid upfront.</li>
+        <li><strong>Optional sales</strong> — auction or e-commerce proceeds may help recoup costs, but returns are not guaranteed.</li>
         <li><strong>AI-first inventory &amp; pricing</strong> — items routed to the highest-paying marketplace.</li>
         <li><strong>Fast turnaround</strong> — items typically sold in 7–10 days; full cleanouts in ~12 days.</li>
         <li><strong>Full-service</strong> — appraisal, photography, listing, sale, payment, and final cleanup.</li>
@@ -362,10 +363,10 @@ const staticPages: Route[] = [
   {
     path: "/faq",
     title: "Estate Sale & Liquidation FAQs Denver | JSG Liquidators",
-    description: "Answers to Denver estate sale, liquidation, cleanout & consignment questions — costs, timelines, service areas & our no-upfront-fee Revenue Recovery model.",
+    description: "Answers to Denver estate sale, liquidation, cleanout and consignment questions, including upfront cleanout pricing, timelines and service areas.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Denver Estate Sale &amp; Liquidation FAQs</h1>
-      <p class="speakable-summary"><strong>TL;DR:</strong> Straight answers about estate sales, online auctions, cleanouts &amp; e-commerce consignment across Denver and the Front Range. No upfront cost — auction proceeds offset fees. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+      <p class="speakable-summary"><strong>TL;DR:</strong> Straight answers about estate sales, online auctions, cleanouts &amp; e-commerce consignment across Denver and the Front Range. Cleanout costs are quoted and paid upfront. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
       ${faqGroups
         .map(
           (g) =>
@@ -394,10 +395,10 @@ const staticPages: Route[] = [
   {
     path: "/how-much-do-estate-sale-companies-charge",
     title: "How Much Do Estate Sale Companies Charge in Denver? | JSG Liquidators",
-    description: "Estate sale companies typically charge 30–50% commission. JSG Liquidators builds a custom plan per job — cleanouts, online auctions & e-commerce — so sale proceeds can offset some or all of your costs.",
+    description: "Denver estate sale pricing varies by job. JSG provides custom plans, clear upfront cleanout pricing, and optional auction or e-commerce sales.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>How Much Do Estate Sale Companies Charge in Denver?</h1>
-      <p class="speakable-summary"><strong>TL;DR:</strong> Most estate sale companies charge a 30–50% commission, and every estate is different, so a set price rarely fits. JSG Liquidators builds a custom plan per job: cleanout, online auctions, and e-commerce consignment working together so sale proceeds can offset some — or even all — of your upfront costs. Free consultations: <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+      <p class="speakable-summary"><strong>TL;DR:</strong> Every estate is different, so JSG Liquidators builds a custom plan. If a cleanout is involved, its quoted cost is paid upfront. Optional auction and e-commerce proceeds may help recoup some or all of that expense, but no result is guaranteed. Free consultations: <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
       <h2>Why there's no one-size-fits-all price</h2>
       <p>Fair pricing depends on the size of the estate, the mix of items, your timeline, the cleanout scope, and which sales channels (online auction, eBay store, e-commerce consignment) fit best. JSG strategizes with each client during a free walkthrough before quoting.</p>
       <h2>The JSG model: cleanouts with built-in revenue recovery</h2>
@@ -405,28 +406,28 @@ const staticPages: Route[] = [
         <li><strong>Cleanouts at the core</strong> — sorting and clearing the property while identifying items with resale value first.</li>
         <li><strong>Online auction sales</strong> — auction-worthy items photographed, researched, and sold to competing bidders, typically within 7–10 days.</li>
         <li><strong>E-commerce &amp; consignment</strong> — higher-value pieces listed on the JSG eBay store for a national buyer pool.</li>
-        <li><strong>Proceeds offset costs</strong> — sale proceeds are applied to cleanout and service costs first; many clients recoup some or all of their upfront costs.</li>
+        <li><strong>Optional cost recovery</strong> — sale proceeds may help recoup some or all of the upfront cleanout cost, but returns are not guaranteed.</li>
       </ul>
       <h2>How it works: from walkthrough to broom-clean</h2>
       <ol>
         <li><strong>Free walkthrough &amp; consultation</strong> — JSG walks the property, identifies items with resale value, and discusses goals and timeline. Free, no obligation.</li>
-        <li><strong>Custom plan &amp; clear cost structure</strong> — an itemized plan covering auction, eBay store / e-commerce consignment, donation, recycling, and disposal, with expected proceeds offsets.</li>
+        <li><strong>Custom plan &amp; clear cost structure</strong> — an itemized plan covering auction, eBay store / e-commerce consignment, donation, recycling, disposal, and the upfront cleanout price.</li>
         <li><strong>Online auctions &amp; e-commerce sales</strong> — items are photographed, researched, and listed online, typically selling within 7–10 days.</li>
-        <li><strong>Proceeds offset costs, property left broom-clean</strong> — sale proceeds are applied to cleanout and service costs first; many clients recoup some or all of their upfront costs.</li>
+        <li><strong>Sales settle separately, property left broom-clean</strong> — sale proceeds are settled under the agreement and may help recoup costs, but no amount is promised.</li>
       </ol>
       <h2>Frequently asked questions</h2>
       <h3>How much do estate sale companies charge in Denver?</h3>
-      <p>Across the industry, most charge a 30–50% commission on gross sales, some with setup fees or minimums. JSG builds a custom plan per job so auction and e-commerce proceeds offset service costs.</p>
+      <p>Many companies charge a commission and some add setup fees or minimums. JSG builds a custom plan per job. If a cleanout is included, its quoted cost is paid upfront; optional sale proceeds may help recoup that expense.</p>
       <h3>Why isn't there a set price for your services?</h3>
       <p>No two estates are alike; a flat rate would overcharge some clients and underserve others. JSG provides a clear, itemized plan after a free property walkthrough.</p>
       <h3>What happens after the free walkthrough?</h3>
-      <p>You'll receive a custom plan covering what's worth selling at auction, what belongs in eBay or e-commerce consignment, what can be donated or recycled, and what needs disposal — including estimated timelines, costs, and expected proceeds offsets.</p>
+      <p>You'll receive a custom plan covering what's worth selling at auction, what belongs in eBay or e-commerce consignment, what can be donated or recycled, what needs disposal, and the upfront cost of any cleanout work.</p>
       <h3>How long does the process take?</h3>
       <p>Most estates move from signed agreement to broom-clean in 7–14 days. Online auctions typically run 7–10 days, with expedited timelines available for urgent situations.</p>
       <h3>What sales options are available?</h3>
       <p>JSG offers online estate auctions, eBay store and e-commerce consignment, and direct business liquidation. Most clients use a combination based on what's in the property.</p>
-      <h3>How can I recoup some or all of my upfront costs?</h3>
-      <p>Valuable items found during the cleanout are sold through online auctions and eBay; proceeds are applied to your account and can cover most or all costs, with surplus returned to you.</p>
+      <h3>Can sale proceeds help me recoup my upfront cleanout cost?</h3>
+      <p>They may. Approved items can be sold through online auctions or eBay, and proceeds are settled according to the agreement. The amount depends on what sells and is not guaranteed.</p>
       <h3>What's the difference between your auction sales and e-commerce consignment?</h3>
       <p>Online auctions move volume quickly, usually within 7–10 days. E-commerce consignment is better for higher-value pieces that benefit from a set asking price and a national buyer pool.</p>
       <h3>Do you charge for the initial consultation?</h3>
@@ -444,13 +445,13 @@ const staticPages: Route[] = [
         "@context": "https://schema.org",
         "@type": "HowTo",
         name: "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
-        description: "Every job is quoted individually: a free walkthrough, a custom plan combining cleanout, online auctions and e-commerce consignment, and sale proceeds that can offset some or all upfront costs.",
+        description: "Every job is quoted individually: a free walkthrough, clear upfront cleanout pricing when removal is included, and optional online auction or e-commerce sales.",
         totalTime: "P14D",
         step: [
           { "@type": "HowToStep", position: 1, name: "Free walkthrough & consultation", text: "JSG walks the property with you, identifies items with resale value, and discusses your goals and timeline — free and with no obligation." },
-          { "@type": "HowToStep", position: 2, name: "Custom plan & clear cost structure", text: "You receive an itemized plan covering online auction, eBay store / e-commerce consignment, donation, recycling, and disposal, with expected proceeds offsets." },
+          { "@type": "HowToStep", position: 2, name: "Custom plan & clear cost structure", text: "You receive an itemized plan covering online auction, eBay store / e-commerce consignment, donation, recycling, disposal, and the upfront price of any cleanout work." },
           { "@type": "HowToStep", position: 3, name: "Online auctions & e-commerce sales", text: "Items are photographed, researched, and listed online — typically selling within 7–10 days — with higher-value pieces reaching national buyers through e-commerce consignment." },
-          { "@type": "HowToStep", position: 4, name: "Proceeds offset costs, property left broom-clean", text: "Sale proceeds are applied to your cleanout and service costs first — many clients recoup some or all of their upfront costs — and the property is left broom-clean." },
+          { "@type": "HowToStep", position: 4, name: "Sales settle separately, property left broom-clean", text: "Sale proceeds are settled according to the agreement and may help recoup the upfront cleanout cost, but no amount is guaranteed." },
         ],
       },
       {
@@ -496,10 +497,10 @@ const staticPages: Route[] = [
 const categoryPages: Route[] = SERVICES.map((svc) => ({
   path: `/services/${svc.slug}`,
   title: `${svc.name} in Denver & Colorado | JSG Liquidators`,
-  description: `${svc.name} throughout Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Boulder, Colorado Springs and the Front Range. No upfront cost, items sold in 7–10 days. Call (805) 444-4069.`,
+  description: `${svc.name} throughout Denver and the Front Range. Custom plans, clear upfront cleanout pricing when applicable, and free consultations.`,
   bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
     <h1>${svc.name} in Denver &amp; the Colorado Front Range</h1>
-    <p class="speakable-summary"><strong>TL;DR:</strong> JSG Liquidators provides ${svc.name.toLowerCase()} across every Denver-metro city. No upfront cost. Items sell in 7–10 days. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+    <p class="speakable-summary"><strong>TL;DR:</strong> JSG Liquidators provides ${svc.name.toLowerCase()} across every Denver-metro city. Cleanout work is quoted and paid upfront; optional sale proceeds may help recoup costs. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
     <h2>${svc.name} — city by city</h2>
     <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${titleCase(c)}, CO</a></li>`).join("")}</ul>
     <h2>Related services</h2>
@@ -520,10 +521,10 @@ for (const city of CITIES) {
   areaPages.push({
     path: `/areas/${city}`,
     title: `${cityName} Estate Sales & Liquidation | JSG Liquidators`,
-    description: `Estate sales, cleanouts, business liquidation, consignment, and junk removal in ${cityName}, Colorado. No upfront cost — auction proceeds cover fees.`,
+    description: `Estate sales, cleanouts, business liquidation, consignment, and junk removal in ${cityName}, Colorado. Custom plans and clear upfront cleanout pricing.`,
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Estate Sales &amp; Liquidation in ${cityName}, Colorado</h1>
-      <p>JSG Liquidators provides full-service estate liquidation in ${cityName} on a no-upfront-cost basis. Online auction proceeds cover or offset our service fees, and items typically sell within 7–10 days.</p>
+      <p>JSG Liquidators provides custom estate liquidation plans in ${cityName}. Cleanout work is quoted and paid upfront; optional auction and e-commerce proceeds may help clients recoup costs without any guarantee.</p>
       <h2>${cityName} services</h2>
       <ul>${SERVICES.map((s) => `<li><a href="/areas/${city}/${s.slug}">${s.name} in ${cityName}</a></li>`).join("")}</ul>
       ${commonFooter()}
@@ -538,11 +539,11 @@ for (const city of CITIES) {
     areaPages.push({
       path: `/areas/${city}/${svc.slug}`,
       title: `${svc.name} in ${cityName}, CO | JSG Liquidators`,
-      description: `Professional ${svc.name.toLowerCase()} services in ${cityName}, Colorado. AI-first pricing, no upfront cost, items sold in 7–10 days.`,
+      description: `Professional ${svc.name.toLowerCase()} services in ${cityName}, Colorado. Custom planning and clear upfront cleanout pricing when applicable.`,
       bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
         <h1>${svc.name} in ${cityName}, Colorado</h1>
         <p>JSG Liquidators offers professional ${svc.name.toLowerCase()} throughout ${cityName} and surrounding Denver-metro communities. Same-day and emergency service available.</p>
-        <p>Our auction-backed model recovers value from items before clearing the property — clients pay no upfront fees and most items sell within 7–10 days.</p>
+        <p>Cleanout work is quoted and paid upfront. Approved items may be sold through auction or e-commerce, and proceeds may help recoup costs without any guaranteed result.</p>
         ${commonFooter()}
       </main>`,
       jsonLd: breadcrumb([

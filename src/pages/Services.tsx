@@ -111,7 +111,7 @@ const services = [
     icon: Truck,
     title: "Junk Removal Company Denver Colorado",
     tagline: "Eco-Friendly Junk Removal with Revenue Recovery",
-    description: "Looking for junk removal in Denver? Unlike typical junk haulers, we identify valuable items during removal and auction them—often covering your junk removal costs entirely. Fast, eco-friendly junk removal with donation coordination and responsible recycling throughout the Denver metro area.",
+    description: "Looking for junk removal in Denver? We provide a clear upfront quote, identify items with resale potential, and can sell approved items through auction or e-commerce. Proceeds may help you recoup costs, but results are not guaranteed.",
     features: [
       "Auction valuable items to offset junk removal costs",
       "Transparent junk removal pricing with no hidden fees",
@@ -134,7 +134,7 @@ const fadeInUp = {
 const servicesFaq = [
   {
     question: "How much does an estate sale cost in Denver?",
-    answer: "JSG Liquidators typically works on a commission basis, meaning there are no upfront costs to you. We take a percentage of the total sales, so our interests are aligned with getting you the highest returns possible. Contact us for a free consultation and custom quote."
+    answer: "Every job is priced individually after a free consultation. Auction and e-commerce services use agreed sales terms. If a cleanout is included, its quoted cost is paid upfront. Sale proceeds may help you recoup some or all of that cost, but results are not guaranteed."
   },
   {
     question: "How long does an estate liquidation take?",
@@ -163,7 +163,7 @@ const Services = () => {
     <Layout>
       <SEOHead
         title="Estate Sales & Liquidation Services Denver"
-        description="Denver estate sales, liquidation, business liquidation, junk removal & e-commerce consignment. No upfront cost—auctions offset fees. Free consultations."
+        description="Denver estate sales, liquidation, cleanouts and e-commerce consignment. Custom plans, upfront cleanout quotes and free consultations."
         canonical="/services"
         keywords="estate sales Denver, estate liquidation services Colorado, business liquidation Denver, junk removal company Denver, e-commerce consignment Colorado, estate sale auctions, online estate auctions"
         breadcrumbs={[
@@ -187,7 +187,7 @@ const Services = () => {
             </h1>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Professional estate sales, estate liquidation, business liquidation, junk removal, and e-commerce consignment 
-              throughout Denver and Colorado. Our online auction platform reaches thousands of buyers—often offsetting or covering your costs entirely.
+               throughout Denver and Colorado. Cleanout work is quoted and paid upfront, while auction and e-commerce proceeds may help you recoup that expense.
             </p>
             <Button asChild variant="hero" size="xl">
               <Link to="/contact">

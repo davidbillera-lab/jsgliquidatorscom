@@ -17,11 +17,11 @@ export const faqGroups: FaqGroup[] = [
     items: [
       {
         question: "How do estate sales work in Denver?",
-        answer: "A modern Denver estate sale follows 7 steps: (1) free in-home walkthrough, (2) signed commission agreement with no upfront fees, (3) sorting and AI-assisted cataloging, (4) professional photography and online listing, (5) a 7-10 day online auction reaching nationwide buyers, (6) a supervised buyer pickup day, and (7) a final broom-clean cleanout. The full cycle averages 12-14 days for a typical 3-bedroom home in the Denver Metro area or Front Range.",
+        answer: "A modern Denver estate sale begins with a free in-home walkthrough and a custom plan. We sort and catalog approved items, photograph and list them through online auction or e-commerce channels, manage buyers and pickup, and coordinate any remaining property work. If a cleanout is included, its quoted cost is paid upfront.",
       },
       {
         question: "How much does an estate sale or liquidation cost in Denver?",
-        answer: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs.",
+        answer: "Every estate is different, so JSG Liquidators provides a custom plan after a free walkthrough. If the plan includes a cleanout, its quoted cost is paid upfront. Auction and e-commerce proceeds may help you recoup some or all of that expense, but results depend on what sells and are not guaranteed.",
       },
       {
         question: "How long does the estate liquidation process take?",
@@ -50,15 +50,15 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "What is the difference between an estate sale and a cleanout?",
-        answer: "An estate sale sells the contents of a home for cash through an auction or marketplace. A cleanout empties the home of everything remaining — no selling involved. A pure cleanout costs $3,500-$8,000 out of pocket, while a full estate liquidation (sale plus cleanout combined) typically generates more than enough auction revenue to cover the cleanout cost, leaving the family with a check rather than a bill.",
+        answer: "An estate sale sells approved items through an auction or marketplace. A cleanout empties the property and has an upfront quoted cost based on the scope of work. When the services are combined, sale proceeds may help you recoup some or all of the cleanout cost, but the amount is not guaranteed.",
       },
       {
         question: "Do you handle the entire estate cleanout after the auction?",
         answer: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items, leaving the property broom-clean and ready for its next chapter.",
       },
       {
-        question: "Is there really no upfront cost for your junk removal service?",
-        answer: "Correct! Unlike traditional junk removal companies that charge flat fees upfront, our revenue-sharing model means you often pay nothing out-of-pocket. We identify valuable items during the clean out, auction them, and apply proceeds to your removal costs. Many clients end up with money back.",
+        question: "Is there an upfront cost for a cleanout or junk removal?",
+        answer: "Yes. If a cleanout or junk removal is part of your plan, we provide a clear quote and collect that cost upfront before work begins. Approved items can also be sold through auction or e-commerce, and those proceeds may help you recoup some or all of the cleanout cost, but no sale result is guaranteed.",
       },
       {
         question: "Do you do hoarder clean outs in Denver?",
@@ -92,7 +92,7 @@ export const faqGroups: FaqGroup[] = [
     items: [
       {
         question: "What do I do with all my parents' stuff?",
-        answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators handles the entire process — sorting, AI-assisted appraisal, online auction sales, donation coordination, and final cleanout — typically with no upfront cost because auction proceeds offset the service.",
+        answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators can coordinate the entire process — sorting, AI-assisted appraisal, online auction and e-commerce sales, donation coordination, and final cleanout. Cleanout work is quoted and paid upfront; later sale proceeds may help you recoup that expense.",
       },
       {
         question: "Who buys estate items and removes the junk?",

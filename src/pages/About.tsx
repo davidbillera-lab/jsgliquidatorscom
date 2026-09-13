@@ -60,7 +60,7 @@ const About = () => {
     <Layout>
       <SEOHead
         title="About Our Denver Estate Sale Company"
-        description="Meet David and Vincent, Denver's trusted estate liquidation experts. Professional, compassionate service with no upfront fees."
+        description="Meet David and Vincent, Denver estate liquidation experts offering auctions, e-commerce consignment and clearly quoted cleanout services."
         canonical="/about"
         keywords="about JSG Liquidators, estate liquidation company Denver, estate sale experts Colorado, Denver estate sale company, trusted liquidators Colorado, David Billera estate sales"
         breadcrumbs={[
@@ -83,7 +83,7 @@ const About = () => {
             </h1>
             <p className="text-xl text-primary-foreground/80">
               Denver estate sale company founded by David and Vincent — providing estate sales, 
-              business liquidation, estate cleanouts &amp; e-commerce consignment with no upfront costs across Colorado.
+              business liquidation, estate cleanouts &amp; e-commerce consignment with clear, custom pricing across Colorado.
             </p>
           </motion.div>
         </div>
@@ -116,14 +116,14 @@ const About = () => {
                   our company around making this process as smooth as possible for our clients.
                 </p>
                 <p>
-                  Our auction services can help offset or even cover your service costs. We're fully 
-                  invested in maximizing value for you — the better your items sell, the more you save.
+                  Cleanout work is quoted and paid upfront. Our auction and e-commerce services may help 
+                  you recoup some or all of that expense, but sale results vary and are not guaranteed.
                 </p>
               </div>
               
               <div className="mt-8 p-6 bg-secondary rounded-xl border-l-4 border-accent">
                 <p className="text-lg font-display font-semibold text-foreground mb-2">
-                  "Our auction services can offset or even cover your service costs."
+                  "Clear upfront cleanout pricing, with an opportunity to recoup costs through sales."
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Our commitment to you

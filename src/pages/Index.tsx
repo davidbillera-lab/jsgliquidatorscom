@@ -104,7 +104,7 @@ const Index = () => {
     <Layout>
       <SEOHead
         title="Home"
-        description="Denver estate sale company for online estate sales, business liquidation, cleanouts & e-commerce consignment. No upfront cost — call (805) 444-4069."
+        description="Denver estate sale company for online auctions, business liquidation, cleanouts and e-commerce consignment. Custom plans and clear upfront cleanout pricing."
         canonical="/"
         keywords="estate sales Denver, estate liquidation Denver CO, business liquidation Colorado, junk removal Denver, e-commerce consignment, estate sale auctions, estate cleanout services, online auctions Denver, estate sale company Colorado"
         breadcrumbs={[{ name: "Home", url: "/" }]}
@@ -115,17 +115,17 @@ const Index = () => {
         }}
 
         faqSchema={[
-          { question: "What do I do with all my parents' stuff?", answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators handles the entire process — sorting, AI-assisted appraisal, online auction sales, donation coordination, and final cleanout — typically with no upfront cost because auction proceeds offset the service." },
+          { question: "What do I do with all my parents' stuff?", answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators can coordinate the entire process — sorting, AI-assisted appraisal, online auction and e-commerce sales, donation coordination, and final cleanout. If a cleanout is included, its quoted cost is paid upfront. Sale proceeds may help you recoup part or all of that cost, but results are not guaranteed." },
           { question: "How do I clear out a house after someone dies?", answer: "Secure important documents and heirlooms, let family choose keepsakes, sell the remaining contents through an estate auction, then complete a full cleanout. JSG Liquidators manages this entire 4-step process for Denver and Front Range families in 7–14 days, using online auction proceeds to offset cleanout costs." },
           { question: "Who buys estate items and removes the junk?", answer: "JSG Liquidators sells your items to the highest bidder through our online auction platform and e-commerce consignment, reaching buyers nationwide for higher returns than a single cash offer. After the auction, we remove unsold items, coordinate donations with Colorado charities, recycle, and haul junk — leaving the property broom-clean." },
-          { question: "How much does an estate sale or liquidation cost in Denver?", answer: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs." },
+          { question: "How much does an estate sale or liquidation cost in Denver?", answer: "Every job is different. After a free walkthrough, JSG Liquidators provides a custom plan based on the property, labor, cleanout scope, and sales channels. If a cleanout is included, its quoted cost is paid upfront. Auction and e-commerce proceeds may help you recoup some or all of that expense, but sale results are not guaranteed." },
           { question: "How long does the estate liquidation process take?", answer: "Most estate liquidations are completed within 7–14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing." },
           { question: "What items sell best at estate auctions in Colorado?", answer: "Antiques, vintage collectibles, fine art, jewelry, mid-century modern furniture, power tools, Western art, Native American pieces, and specialty items consistently achieve strong prices at our Denver estate auctions." },
           { question: "Do you handle the entire estate cleanout after the auction?", answer: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items." },
           { question: "What areas of Colorado do you serve?", answer: "We serve the entire Denver metro area and Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs." },
           { question: "How is JSG Liquidators different from a traditional estate sale company?", answer: "JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices than in-person estate sales limited to local foot traffic." },
-          { question: "How do estate sales work in Denver?", answer: "A modern Denver estate sale follows 7 steps: (1) free in-home walkthrough, (2) signed commission agreement with no upfront fees, (3) sorting and AI-assisted cataloging, (4) professional photography and online listing, (5) a 7–10 day online auction reaching nationwide buyers, (6) a supervised buyer pickup day, and (7) a final broom-clean cleanout. The full cycle averages 12–14 days for a typical 3-bedroom home in the Denver Metro area or Front Range." },
-          { question: "What is the difference between an estate sale and a cleanout?", answer: "An estate sale sells the contents of a home for cash through an auction or marketplace. A cleanout empties the home of everything remaining — no selling involved. A pure cleanout costs $3,500–$8,000 out of pocket, while a full estate liquidation (sale plus cleanout combined) typically generates more than enough auction revenue to cover the cleanout cost, leaving the family with a check rather than a bill." },
+          { question: "How do estate sales work in Denver?", answer: "A modern Denver estate sale starts with a free walkthrough and a custom plan. We sort and catalog approved items, photograph and list them through online auction or e-commerce channels, manage buyers and pickup, and coordinate the remaining property work. If a cleanout is part of the plan, its quoted cost is paid upfront." },
+          { question: "What is the difference between an estate sale and a cleanout?", answer: "An estate sale sells approved items through an auction or marketplace. A cleanout empties the property and involves an upfront quoted cost based on labor, volume, access, donation, recycling, and disposal needs. When the services are combined, sale proceeds may help you recoup some or all of the cleanout cost, but there is no guarantee." },
           { question: "What happens to unsold items after an estate sale?", answer: "After a JSG Liquidators auction, unsold items follow four paths: (1) higher-value lots are pulled for our second-chance e-commerce consignment program on eBay, LiveAuctioneers, and Etsy, (2) usable items are donated to local Colorado charities including ARC Thrift, Goodwill, Habitat ReStore, and Denver Rescue Mission, (3) electronics, metals, and recyclables are routed to Denver-area recycling facilities, and (4) only true trash is hauled to a transfer station — leaving the home broom-clean. Less than 15% of contents typically reach a landfill." },
         ]}
       />
@@ -174,7 +174,7 @@ const Index = () => {
               className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
             >
               JSG Liquidators runs the online estate sales Denver families trust — reaching thousands of
-              buyers nationwide, then handling the full cleanout. No upfront cost, free consultation.
+              buyers nationwide, with cleanout services quoted separately and paid upfront. Free consultation.
             </motion.p>
 
             <motion.p
@@ -232,7 +232,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Differentiator Section — "We Do Both" */}
+      {/* Service plan comparison */}
       <section className="py-20 lg:py-28 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -245,10 +245,10 @@ const Index = () => {
           >
             <span className="text-accent font-medium text-sm uppercase tracking-wider">The JSG Difference</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-5">
-              We Maximize Value First, Then Clear Everything Else
+              Choose the Right Plan for the Property
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Most companies force you to choose between two bad options. We're the only Denver liquidator that does both — under one roof, one timeline, one phone call.
+              We start with a free walkthrough, learn your priorities, and recommend auction, e-commerce consignment, cleanout services, or a combination.
             </p>
           </motion.div>
 
@@ -259,47 +259,47 @@ const Index = () => {
             variants={staggerContainer}
             className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
           >
-            {/* Most companies — Sell only */}
+            {/* Selling plan */}
             <motion.div
               variants={fadeInUp}
               transition={{ duration: 0.5 }}
               className="bg-card border border-border rounded-2xl p-7 opacity-90"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wider mb-4">
-                Most Companies
+                Sell Valuable Items
               </div>
-              <h3 className="text-xl font-display font-bold text-foreground mb-3">Sell the Stuff → Leave the Mess</h3>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">Auction &amp; E-Commerce</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Traditional estate sale companies run a weekend sale, take their commission, and hand you back a half-empty house. <strong className="text-foreground">You're left calling junk haulers.</strong>
+                We identify approved items with resale potential and choose the sales channel that fits each one. This can be a stand-alone service when no property cleanout is needed.
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Auction or sale only</li>
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> No cleanout included</li>
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Family pays $3,500–$8,000 extra</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Online auction for competitive bidding</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> E-commerce for select higher-value items</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Clear commission and sales terms</li>
               </ul>
             </motion.div>
 
-            {/* Junk haulers — Junk only */}
+            {/* Cleanout plan */}
             <motion.div
               variants={fadeInUp}
               transition={{ duration: 0.5 }}
               className="bg-card border border-border rounded-2xl p-7 opacity-90"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wider mb-4">
-                Or Worse
+                Clear the Property
               </div>
-              <h3 className="text-xl font-display font-bold text-foreground mb-3">Remove the Junk → Throw Away Value</h3>
+              <h3 className="text-xl font-display font-bold text-foreground mb-3">Professional Cleanout</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Junk haulers show up with a truck and load everything into it — antiques, collectibles, and tools end up at the dump alongside the trash. <strong className="text-foreground">You pay them to throw away your money.</strong>
+                If a cleanout is involved, we quote the work after evaluating the property. <strong className="text-foreground">The cleanout cost is always paid upfront before work begins.</strong>
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> No appraisal or auction</li>
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Valuables go to the landfill</li>
-                <li className="flex items-start gap-2"><span className="text-destructive mt-1">✕</span> Family pays $4,000–$10,000</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Upfront quote based on the actual scope</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Donation, recycling, and disposal coordinated</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Property left broom-clean</li>
               </ul>
             </motion.div>
 
-            {/* JSG — Both */}
+            {/* Combined plan */}
             <motion.div
               variants={fadeInUp}
               transition={{ duration: 0.5 }}
@@ -308,14 +308,14 @@ const Index = () => {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider mb-4">
                 ★ The JSG Way
               </div>
-              <h3 className="text-xl font-display font-bold text-primary-foreground mb-3">We Do Both</h3>
+              <h3 className="text-xl font-display font-bold text-primary-foreground mb-3">Combine Both Services</h3>
               <p className="text-primary-foreground/90 leading-relaxed mb-4">
-                AI-powered auction sells every item with real value at maximum prices. Then our crew handles donations, recycling, and the final cleanout. <strong className="text-accent">Auction proceeds typically cover the entire service.</strong>
+                When selling and cleanout services make sense together, we coordinate them in one plan. <strong className="text-primary-foreground">Sale proceeds may help you recoup some or all of the upfront cleanout cost, but no result is promised.</strong>
               </p>
               <ul className="space-y-2 text-sm text-primary-foreground/90">
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> AI-cataloged online auction (nationwide buyers)</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Full broom-clean cleanout included</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Typically $0 out of pocket</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Upfront cleanout price stated clearly</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Auction and e-commerce options selected together</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Proceeds vary with what sells and for how much</li>
               </ul>
             </motion.div>
           </motion.div>
@@ -577,8 +577,8 @@ const Index = () => {
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-12 leading-relaxed">
               Most estate sale companies and junk removal services charge flat fees. We do things differently. 
-              By selling valuable items through our online auction platform first, the proceeds can significantly 
-              reduce—or even eliminate—your out-of-pocket costs.
+               Cleanout costs are quoted and paid upfront. With your approval, valuable items can also be sold through 
+               online auction or e-commerce, creating an opportunity to recoup some or all of that expense without a guarantee.
             </p>
           </motion.div>
 
@@ -602,8 +602,8 @@ const Index = () => {
               },
               {
                 step: "3",
-                title: "Cleanout & Offset",
-                description: "Auction proceeds are applied to your cleanout costs. Many clients end up paying little to nothing.",
+                title: "Upfront Cleanout & Sales",
+                description: "Cleanout work is paid upfront. Approved sale proceeds may help recoup that expense, but no amount is guaranteed.",
               },
             ].map((item) => (
               <motion.div
@@ -663,7 +663,7 @@ const Index = () => {
             >
               <span className="text-accent font-medium text-sm uppercase tracking-wider">Why Choose Us</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-6">
-                Zero Risk, Maximum Return
+                 Clear Costs, Multiple Ways to Sell
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 We understand that liquidating an estate can be overwhelming. That's why we've built our 
@@ -672,7 +672,7 @@ const Index = () => {
               
               <div className="space-y-4">
                 {[
-                  "Auction proceeds can offset or cover your costs",
+                   "Auction or e-commerce proceeds may help recoup costs",
                   "Free property evaluation and consultation",
                   "Professional handling of all items",
                   "Transparent pricing and reporting",
@@ -860,7 +860,7 @@ const Index = () => {
               </p>
               <ol className="list-decimal pl-6 space-y-2 text-muted-foreground leading-relaxed mb-4">
                 <li><strong className="text-foreground">Free walkthrough</strong> — we visit the home, evaluate contents, and answer questions. No charge, no obligation.</li>
-                <li><strong className="text-foreground">Commission agreement</strong> — no upfront fees. We only get paid when you get paid.</li>
+                 <li><strong className="text-foreground">Custom agreement</strong> — clear sales terms and an upfront quote for any cleanout work.</li>
                 <li><strong className="text-foreground">Sorting &amp; AI-assisted cataloging</strong> — every item identified using AI image recognition and live sold-comp pricing data.</li>
                 <li><strong className="text-foreground">Professional photography &amp; listing</strong> — keyword-rich titles built for maximum bid competition.</li>
                 <li><strong className="text-foreground">7–10 day online auction</strong> — buyers nationwide bid simultaneously, not just local foot traffic.</li>
@@ -912,13 +912,13 @@ const Index = () => {
                     <Trash2 className="w-5 h-5 text-primary" /> Cleanout
                   </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    <strong className="text-foreground">Empties</strong> the home — no selling involved. Goal: a "broom-clean" property ready for sale or rental. Pure cleanouts cost <strong className="text-foreground">$3,500–$8,000 out of pocket</strong>.
+                    <strong className="text-foreground">Empties</strong> the home and prepares it for sale, rental, or transition. Cleanout pricing depends on the property's contents, access, labor, and disposal needs, and the quoted cost is paid upfront.
                   </p>
                 </div>
               </div>
               <div className="bg-primary/5 border-l-4 border-primary rounded-r-xl p-5 mb-4">
                 <p className="text-foreground leading-relaxed">
-                  <strong>The big difference is your wallet:</strong> a full liquidation (sale + cleanout combined) typically generates <strong>$8,000–$25,000+</strong> in auction revenue, which offsets — and usually completely covers — the cleanout cost. You walk away with a check instead of a bill.
+                  <strong>When both services are combined:</strong> we can apply auction and e-commerce proceeds to your account after items sell. Those proceeds may help you recoup some or all of the upfront cleanout cost, but the amount depends on buyer demand and is never guaranteed.
                 </p>
               </div>
               <p className="text-muted-foreground leading-relaxed">
@@ -1025,11 +1025,11 @@ const Index = () => {
               {[
                 {
                   q: "What do I do with all my parents' stuff?",
-                  a: "Start by taking a breath — you don't have to figure it out alone. Most families in Colorado follow a simple path: keep what's meaningful, sell what has value, donate what helps others, and recycle or remove the rest. JSG Liquidators handles the entire process for you. We sort, catalog with AI-assisted appraisal, photograph, and sell valuable items through our online auction platform that reaches buyers nationwide. Anything that doesn't sell is donated to local Colorado charities, recycled, or removed — leaving the home broom-clean. Because we work on commission, there are typically no upfront costs to you, and auction proceeds often cover the entire service."
+                  a: "Start by taking a breath — you don't have to figure it out alone. Most families in Colorado follow a simple path: keep what's meaningful, sell what has value, donate what helps others, and recycle or remove the rest. JSG Liquidators can coordinate the full process, including auction and e-commerce sales. If a cleanout is included, its quoted cost is paid upfront; later sale proceeds may help you recoup that expense, but results vary."
                 },
                 {
                   q: "How do I clear out a house after someone dies?",
-                  a: "Clearing out a house after a loved one passes usually takes 4 steps: (1) secure important documents, photos, and heirlooms first; (2) let family members choose sentimental keepsakes; (3) have the remaining contents professionally appraised and sold through an estate auction; (4) complete a full cleanout of anything left behind. JSG Liquidators manages steps 2–4 for Denver and Front Range families, typically completing the entire process in 7–14 days. Our 'Auction-Backed Cleanout' model uses online auction proceeds to offset — and often completely cover — the cost of the cleanout, so families aren't paying out of pocket during an already difficult time."
+                  a: "Clearing out a house after a loved one passes usually takes 4 steps: (1) secure important documents, photos, and heirlooms first; (2) let family members choose sentimental keepsakes; (3) have the remaining contents evaluated for auction or e-commerce sale; (4) complete a full cleanout of anything left behind. JSG Liquidators can manage steps 2–4. Cleanout work is quoted and paid upfront, while later sale proceeds may help recoup part or all of that expense without any guarantee."
                 },
                 {
                   q: "Who buys estate items and removes the junk?",
@@ -1037,7 +1037,7 @@ const Index = () => {
                 },
                 {
                   q: "How much does an estate sale or liquidation cost in Denver?",
-                  a: "JSG Liquidators works on a commission basis — there are no upfront fees. We take a percentage of total auction sales, so our interests are fully aligned with maximizing your returns. Many clients find that auction proceeds offset or completely cover their cleanout and service costs. Contact us for a free consultation and custom quote."
+                  a: "Every estate is different, so JSG Liquidators provides a custom plan after a free walkthrough. Auction and e-commerce sales use agreed sales terms. If the plan includes a cleanout, the quoted cleanout cost is paid upfront. Sale proceeds may help recoup some or all of that cost, but the return depends on what sells and is not guaranteed."
                 },
                 {
                   q: "How long does the estate liquidation process take?",
@@ -1116,7 +1116,7 @@ const Index = () => {
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Get a free consultation and discover how we can help you achieve the best possible results. 
-              Our auction services can help offset or even cover your service costs.
+               Optional auction and e-commerce sales may help you recoup some or all of an upfront cleanout cost, but sale results vary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl">

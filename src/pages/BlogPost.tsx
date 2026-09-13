@@ -42,7 +42,7 @@ const BlogPost = () => {
     "David Billera": {
       name: "David Billera",
       title: "Co-Founder & Lead Liquidation Specialist",
-      bio: "David Billera is the co-founder of JSG Liquidators and has personally overseen hundreds of estate liquidations across the Denver metro area. He specializes in antique valuation, online auction strategy, and helping Colorado families navigate estate transitions with no upfront costs.",
+      bio: "David Billera is the co-founder of JSG Liquidators and has personally overseen hundreds of estate liquidations across the Denver metro area. He specializes in antique valuation, online auction strategy, and custom plans that can combine sales with upfront-priced cleanout services.",
       phone: "(805) 444-4069",
     },
     "Penny": {

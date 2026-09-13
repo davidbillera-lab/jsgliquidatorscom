@@ -27,7 +27,7 @@ import whyWorkAppraisal from "@/assets/why-work-appraisal.jpg";
 const Pricing = () => {
   const costFactors = [
     { title: "Size of the estate or property", desc: "A one-bedroom downsizing is a very different job than a full family home with a basement, attic, and garage." },
-    { title: "Mix of items", desc: "Estates with auction-worthy furniture, jewelry, collectibles, or tools generate proceeds that offset — or fully cover — service costs." },
+    { title: "Mix of items", desc: "Auction-worthy furniture, jewelry, collectibles, or tools may generate proceeds that help you recoup part or all of your costs, but sale results vary." },
     { title: "Your timeline", desc: "A real-estate closing or emergency cleanout may need a faster crew schedule than a flexible estate settlement." },
     { title: "Cleanout scope", desc: "Donation, recycling, and disposal needs vary by property, and we plan the most cost-effective route for what remains after valuables are removed." },
     { title: "Which sales channels fit best", desc: "Online auctions, our eBay store, and e-commerce consignment each suit different items — we match every item to its highest-paying marketplace." },
@@ -52,7 +52,7 @@ const Pricing = () => {
     {
       icon: DollarSign,
       title: "Proceeds offset your costs",
-      desc: "Auction and e-commerce proceeds are applied to your cleanout and service costs first. Many clients recoup some — or even all — of their upfront costs.",
+      desc: "Cleanout work is paid upfront. Auction and e-commerce proceeds may later help you recoup some or all of that expense, but the amount is not guaranteed.",
     },
   ];
 
@@ -70,7 +70,7 @@ const Pricing = () => {
     {
       model: "JSG Liquidators",
       approach: "Cleanout, online auctions, and e-commerce consignment in one plan, built around your property and goals.",
-      downside: "Sale proceeds offset your costs, so many clients recoup some or all of their upfront costs.",
+      downside: "Cleanout costs are paid upfront. Optional sale proceeds may help recoup that expense, with no guarantee of a specific return.",
     },
   ];
 
@@ -81,15 +81,15 @@ const Pricing = () => {
     },
     {
       name: "Custom plan & clear cost structure",
-      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and how sale proceeds are expected to offset your costs.",
+      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and the upfront cost of any cleanout work.",
     },
     {
       name: "Online auctions & e-commerce sales",
       text: "Auction-worthy items are photographed, researched, and listed online — typically selling within 7–10 days — while higher-value pieces reach national buyers through e-commerce consignment.",
     },
     {
-      name: "Proceeds offset costs, property left broom-clean",
-      text: "Sale proceeds are applied to your cleanout and service costs first — many clients recoup some or all of their upfront costs — and we finish with donation, recycling, and a broom-clean property.",
+      name: "Sales settle separately, property left broom-clean",
+      text: "After the upfront cleanout is completed, approved sale proceeds are settled according to your agreement. They may help recoup costs, but no amount is promised.",
     },
   ];
 
@@ -97,7 +97,7 @@ const Pricing = () => {
     "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
-    "description": "Every job is quoted individually: a free walkthrough, a custom plan combining cleanout, online auctions and e-commerce consignment, and sale proceeds that can offset some or all upfront costs.",
+    "description": "Every job is quoted individually: a free walkthrough, clear upfront cleanout pricing when removal is included, and optional online auction or e-commerce sales whose proceeds may help recoup costs.",
     "totalTime": "P14D",
     "step": howToSteps.map((step, i) => ({
       "@type": "HowToStep",
@@ -132,7 +132,7 @@ const Pricing = () => {
   const faqs = [
     {
       question: "How much do estate sale companies charge in Denver?",
-      answer: "Across the industry, most estate sale companies work on commission — typically 30% to 50% of gross sales — and some add setup fees or sale minimums. JSG Liquidators works differently: every job starts with a free consultation, and we build a plan around your property. Because our online auction and e-commerce sales generate proceeds that offset service costs, many clients recoup some or all of their upfront costs.",
+      answer: "Across the industry, many estate sale companies work on commission, and some add setup fees or sale minimums. JSG Liquidators starts with a free consultation and builds a plan around your property. If a cleanout is included, its quoted cost is paid upfront. Optional auction and e-commerce proceeds may help you recoup some or all of that expense, but results are not guaranteed.",
     },
     {
       question: "Why isn't there a set price for your services?",
@@ -140,7 +140,7 @@ const Pricing = () => {
     },
     {
       question: "What happens after the free walkthrough?",
-      answer: "After the walkthrough you'll receive a custom plan: what's worth selling at auction, what belongs in our eBay store or e-commerce consignment, what can be donated or recycled, and what needs disposal. The plan includes estimated timelines, a clear cost structure, and how auction and consignment proceeds are expected to offset those costs. You approve it before any work starts.",
+      answer: "After the walkthrough you'll receive a custom plan: what's worth selling at auction, what belongs in our eBay store or e-commerce consignment, what can be donated or recycled, and what needs disposal. The plan includes estimated timelines and the upfront price of any cleanout work. You approve it before work starts.",
     },
     {
       question: "How long does the process take?",
@@ -151,8 +151,8 @@ const Pricing = () => {
       answer: "We match each item to the channel that returns the most: online estate auctions for volume and speed, our eBay store and e-commerce consignment for higher-value collectibles and specialty pieces, and direct liquidation for business equipment. Most clients use a combination, and we strategize with you to decide which channels make sense for your property.",
     },
     {
-      question: "How can I recoup some or all of my upfront costs?",
-      answer: "During the cleanout we identify items with resale value — antiques, furniture, jewelry, collectibles, tools, electronics, and more. Those items are sold through online auctions and our eBay store, and the proceeds are applied to your account. For estates with a good mix of valuables, proceeds can cover most or all of the cleanout and service costs, and any surplus goes back to you.",
+      question: "Can sale proceeds help me recoup my upfront cleanout cost?",
+      answer: "They may. With your approval, items with resale potential can be sold through online auctions or our eBay store. Your proceeds are settled according to the agreement and may help you recoup some or all of the upfront cleanout cost. The amount depends on what sells and for how much, so no result is guaranteed.",
     },
     {
       question: "What's the difference between your auction sales and e-commerce consignment?",
@@ -172,7 +172,7 @@ const Pricing = () => {
     <Layout>
       <SEOHead
         title="How Much Do Estate Sale Companies Charge in Denver?"
-        description="Estate sale companies typically charge 30–50% commission. JSG Liquidators builds a custom plan per job — cleanouts, online auctions & e-commerce — so sale proceeds can offset some or all of your costs. Free consultations."
+        description="Denver estate sale pricing varies by job. JSG provides custom plans, clear upfront cleanout pricing, and optional auction or e-commerce sales."
         canonical="/how-much-do-estate-sale-companies-charge"
         keywords="how much do estate sale companies charge, estate sale cost Denver, estate sale commission, estate liquidation cost, estate cleanout pricing Denver, estate sale company fees"
         faqSchema={faqs}
@@ -216,7 +216,7 @@ const Pricing = () => {
               How Much Do Estate Sale Companies Charge in Denver?
             </h1>
             <p className="speakable-summary text-lg text-foreground/90 mb-8">
-              <strong>The honest answer:</strong> most estate sale companies charge a 30–50% commission — and every estate is different, so a set price rarely fits. At JSG Liquidators, we build a custom plan around your property: cleanout, online auctions, and e-commerce consignment working together so sale proceeds can offset some — or even all — of your upfront costs.
+              <strong>The honest answer:</strong> every estate is different, so a set price rarely fits. We build a custom plan around your property. If a cleanout is involved, its quoted cost is always paid upfront. Auction and e-commerce proceeds may help you recoup some or all of that expense, but no result is guaranteed.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button asChild variant="accent" size="lg">
@@ -287,7 +287,7 @@ const Pricing = () => {
               Our Model: Cleanouts With Built-In Revenue Recovery
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Most cleanout companies charge you to haul everything away. We do the opposite — the cleanout is where we find the value that pays for the job.
+              We quote and collect the cleanout cost upfront, then help you decide whether online auction, e-commerce consignment, or both could recover value from approved items.
             </p>
           </motion.div>
 
@@ -438,7 +438,7 @@ const Pricing = () => {
               Find Out What Your Estate Could Return
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Every plan starts with a free, no-obligation consultation. We'll walk the property, identify what's worth selling, and show you exactly how auction and e-commerce proceeds can offset your costs — before you spend a dollar. Serving Denver, Aurora, Lakewood, Arvada, Westminster, Boulder, and the entire Front Range.
+              Every plan starts with a free, no-obligation consultation. We'll walk the property, explain the upfront cleanout cost when applicable, identify items with resale potential, and recommend the right mix of auction and e-commerce services. Serving Denver, Aurora, Lakewood, Arvada, Westminster, Boulder, and the entire Front Range.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button asChild variant="accent" size="lg">
