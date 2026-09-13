@@ -80,7 +80,7 @@ var serviceAreas = [
     description: "As Denver's leading estate liquidation company, JSG Liquidators provides comprehensive estate sales, junk removal, business liquidation, and e-commerce consignment services throughout every Denver neighborhood\u2014from Capitol Hill and Cherry Creek to Park Hill, Highlands, and Stapleton.",
     serviceHighlights: [
       "Weekly estate auctions featuring Denver metro estates",
-      "Same-day junk removal and emergency cleanouts in Denver",
+      "Junk removal scheduling based on scope and availability",
       "Business liquidation for Denver restaurants, offices, and retail",
       "Local charity donation coordination with Denver Rescue Mission and Goodwill",
       "Free in-home consultations throughout all Denver neighborhoods"
@@ -88,7 +88,7 @@ var serviceAreas = [
     localLandmarks: ["Cherry Creek Shopping District", "Denver Art Museum", "RiNo Arts District", "Washington Park", "City Park"],
     whyLocal: "We live and work in Denver, giving us deep knowledge of local real estate timelines, neighborhood-specific buyer preferences, and connections with Denver-area charities, recycling centers, and moving companies. When a Capitol Hill estate needs clearing before a closing deadline, or a Park Hill family needs compassionate help with a loved one's belongings, we respond quickly because we're right here.",
     testimonialSnippet: { text: "David and Vincent with JSG Liquidators run smooth, well organized auctions. Dependable, professional, and a welcome part of the Denver community.", author: "Mary B., Denver" },
-    metaDescription: "Denver's #1 estate sale company. Professional estate liquidation, junk removal, business liquidation & e-commerce consignment in Denver CO. Free consultations. Call (805) 444-4069.",
+    metaDescription: "Denver estate sales, cleanouts, junk removal, business liquidation and e-commerce consignment. Free consultations. Call (805) 444-4069.",
     metaKeywords: "estate sales Denver, estate liquidation Denver, junk removal Denver, business liquidation Denver, estate cleanout Denver, estate sale company Denver CO"
   },
   {
@@ -103,7 +103,7 @@ var serviceAreas = [
       "Estate sales for Aurora's large senior communities including Heather Gardens",
       "E-commerce consignment on eBay, LiveAuctioneers & Denver Online Auctions for Aurora valuables",
       "Business liquidation for Aurora's commercial corridors along Havana and Colfax",
-      "Fast junk removal with same-day service available in Aurora",
+      "Junk removal planning based on scope and availability",
       "Donation coordination with Aurora Interfaith Community Services",
       "Specialized downsizing help for Aurora's active-adult communities"
     ],
@@ -130,8 +130,8 @@ var serviceAreas = [
       "Quick-turnaround cleanouts for real estate closings in Lakewood"
     ],
     localLandmarks: ["Belmar Shopping District", "Green Mountain", "Bear Creek Lake Park", "Colorado Mills", "Heritage Lakewood Belmar Park"],
-    whyLocal: "Lakewood's mix of established mid-century neighborhoods and newer developments means estates here often contain valuable vintage furniture, tools, and collectibles that deserve proper valuation\u2014not just hauling to the dump. A recent Lakewood estate cleanout generated $3,200 in auction revenue from items the family considered 'junk.'",
-    testimonialSnippet: { text: "JSG turned what we thought would be a $2,000 clean out into a $500 profit. They found valuable antiques in my grandmother's basement that we never knew existed.", author: "Sarah M., Lakewood" },
+    whyLocal: "Lakewood's mix of established mid-century neighborhoods and newer developments means estates here often contain valuable vintage furniture, tools, and collectibles that deserve proper valuation\u2014not just hauling to the dump. We evaluate suitable items before removal so clients can decide whether a separate sale belongs in the property plan.",
+    testimonialSnippet: { text: "JSG explained the property plan clearly and helped us understand the available sale and cleanout options.", author: "Sarah M., Lakewood" },
     metaDescription: "Lakewood CO estate sales, e-commerce consignment & liquidation experts. Estate cleanouts, junk removal, eBay consignment & business liquidation in Lakewood.",
     metaKeywords: "estate sales Lakewood CO, e-commerce consignment Lakewood, eBay consignment Lakewood, estate liquidation Lakewood, junk removal Lakewood Colorado, estate cleanout Lakewood, business liquidation Lakewood"
   },
@@ -261,7 +261,7 @@ var serviceAreas = [
     ],
     localLandmarks: ["Westminster City Center", "Standley Lake", "Butterfly Pavilion", "Westminster Promenade", "Big Dry Creek Trail"],
     whyLocal: "Westminster straddles two counties and offers a wonderful mix of suburban living with quick city access. Many Westminster homes built in the 1960s-80s contain mid-century furniture and vintage items that command strong auction prices. Our appraisers know exactly what to look for in Westminster estates.",
-    testimonialSnippet: { text: "I called six different junk removal companies. JSG was the only one that offered to auction valuable items instead of throwing everything away. Smart business model.", author: "Linda T., Westminster" },
+    testimonialSnippet: { text: "JSG explained which approved items could be evaluated for sale before the cleanout.", author: "Linda T., Westminster" },
     metaDescription: "Westminster CO estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts, junk removal & business liquidation in Westminster.",
     metaKeywords: "estate sales Westminster CO, e-commerce consignment Westminster, eBay consignment Westminster, estate liquidation Westminster, junk removal Westminster Colorado, estate cleanout Westminster, business liquidation Westminster"
   },
