@@ -863,12 +863,12 @@ const Index = () => {
                  <li><strong className="text-foreground">Custom agreement</strong> — clear sales terms and an upfront quote for any cleanout work.</li>
                 <li><strong className="text-foreground">Sorting &amp; AI-assisted cataloging</strong> — every item identified using AI image recognition and live sold-comp pricing data.</li>
                 <li><strong className="text-foreground">Professional photography &amp; listing</strong> — keyword-rich titles built for maximum bid competition.</li>
-                <li><strong className="text-foreground">7–10 day online auction</strong> — buyers nationwide bid simultaneously, not just local foot traffic.</li>
+                 <li><strong className="text-foreground">Online auction</strong> — approved items are listed for competitive bidding.</li>
                 <li><strong className="text-foreground">Supervised buyer pickup day</strong> — we manage IDs, loading, and home security.</li>
                 <li><strong className="text-foreground">Final broom-clean cleanout</strong> — donations, recycling, removal — ready for the realtor.</li>
               </ol>
               <p className="text-muted-foreground leading-relaxed">
-                The complete cycle averages <strong className="text-foreground">12–14 days</strong> for a typical 3-bedroom home in Denver, Aurora, Lakewood, Highlands Ranch, or anywhere on the Front Range.{" "}
+                The complete schedule depends on the property, approved items, selected sales channels, buyer demand and cleanout scope.{" "}
                 <Link to="/blog/how-estate-sales-work-denver-colorado" className={guideLinkClass}>
                   Read the full step-by-step guide <ArrowRight className="w-4 h-4" />
                 </Link>

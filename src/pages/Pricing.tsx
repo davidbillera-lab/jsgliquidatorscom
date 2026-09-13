@@ -106,28 +106,6 @@ const Pricing = () => {
     })),
   };
 
-  const localBusinessJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://jsgliquidators.com/#organization",
-    "name": "JSG Liquidators",
-    "url": "https://jsgliquidators.com/how-much-do-estate-sale-companies-charge",
-    "telephone": "+1-805-444-4069",
-    "email": "jsgliquidators@gmail.com",
-    "priceRange": "Free consultation — custom quote per job",
-    "areaServed": [
-      "Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder",
-      "Thornton", "Centennial", "Highlands Ranch", "Castle Rock",
-      "Englewood", "Littleton", "Fort Collins", "Colorado Springs",
-    ].map((city) => ({ "@type": "City", "name": `${city}, CO` })),
-    "makesOffer": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Sales" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Cleanouts" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Auctions & E-Commerce Consignment" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Liquidation" } },
-    ],
-  };
-
   const faqs = [
     {
       question: "How much do estate sale companies charge in Denver?",
@@ -183,10 +161,7 @@ const Pricing = () => {
       <Helmet>
         <meta name="geo.region" content="US-CO" />
         <meta name="geo.placename" content="Denver" />
-        <meta name="geo.position" content="39.7392;-104.9903" />
-        <meta name="ICBM" content="39.7392, -104.9903" />
         <script type="application/ld+json">{JSON.stringify(howToJsonLd)}</script>
-        <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
       </Helmet>
 
       {/* Hero */}
@@ -329,7 +304,7 @@ const Pricing = () => {
               How It Works: From Walkthrough to Broom-Clean
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Most Denver estates move through these four steps in 7–14 days.
+              The schedule for these four steps depends on the property, selected services and buyer demand.
             </p>
           </motion.div>
 
