@@ -316,8 +316,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Business Hours</h3>
-                    <p className="text-muted-foreground">Monday - Friday: 8am - 6pm</p>
+                    <p className="text-muted-foreground">Monday - Friday: 8am - 6pm Mountain Time</p>
                     <p className="text-muted-foreground">Saturday: By appointment</p>
+                    <p className="text-sm text-muted-foreground mt-2">JSG Liquidators is operated by JSG Liquidators LLC.</p>
                   </div>
                 </div>
               </div>

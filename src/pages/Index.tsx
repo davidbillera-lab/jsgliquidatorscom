@@ -20,7 +20,7 @@ const services = [
   {
     icon: Gavel,
     title: "Estate Sale Auctions",
-    description: "Maximize your estate's value with our professional online auction platform reaching thousands of buyers.",
+    description: "Professional online estate auctions with item research, photography and buyer coordination.",
     href: "/services/estate-sales",
   },
   {
@@ -32,7 +32,7 @@ const services = [
   {
     icon: Building2,
     title: "Business Liquidation",
-    description: "Complete business asset liquidation with expert valuation and maximum returns.",
+    description: "Custom business asset liquidation plans with online sales and buyer coordination.",
     href: "/services/business-liquidation",
   },
   {
@@ -44,7 +44,7 @@ const services = [
   {
     icon: Truck,
     title: "Junk Removal",
-    description: "Efficient, eco-friendly removal of unwanted items with donation coordination.",
+    description: "Quoted removal services with optional evaluation of approved items for resale.",
     href: "/services/junk-removal",
   },
 ];
@@ -116,17 +116,17 @@ const Index = () => {
 
         faqSchema={[
           { question: "What do I do with all my parents' stuff?", answer: "Keep what's meaningful, sell what has value, donate what helps others, and remove the rest. JSG Liquidators can coordinate the entire process — sorting, AI-assisted appraisal, online auction and e-commerce sales, donation coordination, and final cleanout. If a cleanout is included, its quoted cost is paid upfront. Sale proceeds may help you recoup part or all of that cost, but results are not guaranteed." },
-          { question: "How do I clear out a house after someone dies?", answer: "Secure important documents and heirlooms, let family choose keepsakes, sell the remaining contents through an estate auction, then complete a full cleanout. JSG Liquidators manages this entire 4-step process for Denver and Front Range families in 7–14 days, using online auction proceeds to offset cleanout costs." },
+          { question: "How do I clear out a house after someone dies?", answer: "Secure important documents and heirlooms, let family choose keepsakes, then decide what should be sold, donated or removed. JSG Liquidators can create a custom plan for auction, e-commerce and cleanout services. Cleanout work is quoted and paid upfront; sale results are not guaranteed." },
           { question: "Who buys estate items and removes the junk?", answer: "JSG Liquidators sells your items to the highest bidder through our online auction platform and e-commerce consignment, reaching buyers nationwide for higher returns than a single cash offer. After the auction, we remove unsold items, coordinate donations with Colorado charities, recycle, and haul junk — leaving the property broom-clean." },
           { question: "How much does an estate sale or liquidation cost in Denver?", answer: "Every job is different. After a free walkthrough, JSG Liquidators provides a custom plan based on the property, labor, cleanout scope, and sales channels. If a cleanout is included, its quoted cost is paid upfront. Auction and e-commerce proceeds may help you recoup some or all of that expense, but sale results are not guaranteed." },
-          { question: "How long does the estate liquidation process take?", answer: "Most estate liquidations are completed within 7–14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing." },
+          { question: "How long does the estate liquidation process take?", answer: "Timing depends on the property, the number and type of items, the selected sales channels, buyer demand and any cleanout work. We discuss the schedule during the consultation and include it in the custom plan." },
           { question: "What items sell best at estate auctions in Colorado?", answer: "Antiques, vintage collectibles, fine art, jewelry, mid-century modern furniture, power tools, Western art, Native American pieces, and specialty items consistently achieve strong prices at our Denver estate auctions." },
           { question: "Do you handle the entire estate cleanout after the auction?", answer: "Yes — JSG Liquidators offers complete estate cleanout and junk removal after every auction. We handle donation coordination with local Colorado charities, responsible recycling, and proper disposal of remaining items." },
           { question: "What areas of Colorado do you serve?", answer: "We serve the entire Denver metro area and Front Range, including Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs." },
-          { question: "How is JSG Liquidators different from a traditional estate sale company?", answer: "JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices than in-person estate sales limited to local foot traffic." },
+          { question: "How is JSG Liquidators different from a traditional estate sale company?", answer: "JSG Liquidators can combine online estate auctions, e-commerce consignment and separately quoted cleanout services in one custom plan. The recommended sales channel depends on the property and approved items." },
           { question: "How do estate sales work in Denver?", answer: "A modern Denver estate sale starts with a free walkthrough and a custom plan. We sort and catalog approved items, photograph and list them through online auction or e-commerce channels, manage buyers and pickup, and coordinate the remaining property work. If a cleanout is part of the plan, its quoted cost is paid upfront." },
           { question: "What is the difference between an estate sale and a cleanout?", answer: "An estate sale sells approved items through an auction or marketplace. A cleanout empties the property and involves an upfront quoted cost based on labor, volume, access, donation, recycling, and disposal needs. When the services are combined, sale proceeds may help you recoup some or all of the cleanout cost, but there is no guarantee." },
-          { question: "What happens to unsold items after an estate sale?", answer: "After a JSG Liquidators auction, unsold items follow four paths: (1) higher-value lots are pulled for our second-chance e-commerce consignment program on eBay, LiveAuctioneers, and Etsy, (2) usable items are donated to local Colorado charities including ARC Thrift, Goodwill, Habitat ReStore, and Denver Rescue Mission, (3) electronics, metals, and recyclables are routed to Denver-area recycling facilities, and (4) only true trash is hauled to a transfer station — leaving the home broom-clean. Less than 15% of contents typically reach a landfill." },
+          { question: "What happens to unsold items after an estate sale?", answer: "The next step depends on the client-approved plan. Suitable items may be considered for e-commerce consignment, while other items may be donated, recycled or removed as part of a separately quoted cleanout." },
         ]}
       />
 
@@ -164,7 +164,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
             >
-              Denver's Trusted Estate Sale Company & Liquidation Experts
+              JSG Liquidators | Estate Sales &amp; Liquidation in Denver
             </motion.h1>
             
             <motion.p
@@ -173,8 +173,8 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
             >
-              JSG Liquidators runs the online estate sales Denver families trust — reaching thousands of
-              buyers nationwide, with cleanout services quoted separately and paid upfront. Free consultation.
+              JSG Liquidators provides online estate sales, cleanouts, junk removal, e-commerce consignment and
+              business liquidation across the Denver metro area. Every property begins with a free consultation and custom plan.
             </motion.p>
 
             <motion.p
@@ -183,7 +183,7 @@ const Index = () => {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="text-lg md:text-xl font-semibold text-white mb-6 leading-relaxed"
             >
-              We handle everything: estate sales, liquidation, cleanouts, and online resale—so you don't have to.
+              Cleanout work is quoted and paid upfront. Optional auction or e-commerce proceeds may help recoup costs, but results are not guaranteed.
             </motion.p>
 
             
@@ -208,7 +208,7 @@ const Index = () => {
               <Button asChild variant="heroOutline" size="xl">
                 <a href="tel:805-340-4817">
                   <Phone className="w-5 h-5" />
-                  Vinnie (805) 340-4817
+                  Vincent (805) 340-4817
                 </a>
               </Button>
             </motion.div>
@@ -950,14 +950,14 @@ const Index = () => {
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-5">
-                After a JSG auction closes, unsold items follow four paths — and less than 15% of a typical Denver estate's contents ever reaches a landfill:
+                After a JSG auction closes, the next steps follow the client-approved property plan:
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-5">
                 <div className="flex gap-3">
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">1</div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Second-Chance Consignment</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">Higher-value items go to our e-commerce program on eBay, LiveAuctioneers, and Etsy — recovering an extra 15–25% of value.</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Suitable items may be considered for e-commerce consignment on an appropriate marketplace.</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
@@ -978,12 +978,12 @@ const Index = () => {
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">4</div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Final Removal</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">Only true trash is hauled to a transfer station. Home is left broom-clean — ready for the realtor the next day.</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed">Remaining material is removed according to the agreed cleanout scope, with the property left broom-clean.</p>
                   </div>
                 </div>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                For most clients, the entire post-auction cleanout costs <strong className="text-foreground">nothing extra</strong> — it's funded by the auction commission.{" "}
+                Cleanout work is separately quoted and paid upfront. Sale proceeds may help recoup some of that expense, but no result is guaranteed.{" "}
                 <Link to="/blog/what-happens-to-unsold-items-after-estate-sale" className={guideLinkClass}>
                   Read the full post-auction guide <ArrowRight className="w-4 h-4" />
                 </Link>

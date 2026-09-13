@@ -106,7 +106,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  JSG Liquidators was founded with a simple mission: to help Colorado families and 
+                  JSG Liquidators is operated by JSG Liquidators LLC. Our mission is to help Colorado families and 
                   businesses navigate the often overwhelming process of estate liquidation with 
                   professionalism, transparency, and care.
                 </p>
@@ -143,7 +143,7 @@ const About = () => {
                 <h3 className="text-2xl font-display font-bold mb-8">Why Clients Choose Us</h3>
                 <div className="space-y-6">
                   {[
-                    "Auction proceeds can offset your costs",
+                    "Optional sale proceeds may help recoup costs",
                     "Complete transparency throughout the process",
                     "Nationwide buyer network through online auctions",
                     "Expert valuation of antiques and collectibles",
@@ -203,10 +203,9 @@ const About = () => {
               <h3 className="text-xl font-display font-bold text-foreground mb-1" itemProp="name">David Billera</h3>
               <p className="text-accent font-medium text-sm mb-4" itemProp="jobTitle">Co-Founder &amp; Lead Liquidation Specialist</p>
               <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
-                David brings years of hands-on experience in estate sales, antique valuation, and online auction strategy. 
-                He has personally overseen hundreds of estate liquidations across the Denver metro area, developing deep 
-                expertise in identifying hidden value in antiques, collectibles, and household items. David leads client 
-                consultations and auction strategy for every JSG engagement.
+                 David leads client consultations, item research and auction strategy for JSG engagements. He works with
+                 clients to decide which approved items fit online auction or e-commerce sales and how those services fit
+                 into the overall property plan.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Estate Auctions", "Antique Valuation", "Business Liquidation", "Client Relations"].map(tag => (
