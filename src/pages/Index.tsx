@@ -310,12 +310,12 @@ const Index = () => {
               </div>
               <h3 className="text-xl font-display font-bold text-primary-foreground mb-3">Combine Both Services</h3>
               <p className="text-primary-foreground/90 leading-relaxed mb-4">
-                When selling and cleanout services make sense together, we coordinate them in one plan. <strong className="text-accent">Sale proceeds may help you recoup some or all of the upfront cleanout cost, but no result is promised.</strong>
+                When selling and cleanout services make sense together, we coordinate them in one plan. <strong className="text-primary-foreground">Sale proceeds may help you recoup some or all of the upfront cleanout cost, but no result is promised.</strong>
               </p>
               <ul className="space-y-2 text-sm text-primary-foreground/90">
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Upfront cleanout price stated clearly</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Auction and e-commerce options selected together</li>
-                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" /> Proceeds vary with what sells and for how much</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Upfront cleanout price stated clearly</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Auction and e-commerce options selected together</li>
+                <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-primary-foreground mt-0.5 flex-shrink-0" /> Proceeds vary with what sells and for how much</li>
               </ul>
             </motion.div>
           </motion.div>
