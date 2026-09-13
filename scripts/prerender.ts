@@ -452,7 +452,6 @@ const staticPages: Route[] = [
         "@type": "HowTo",
         name: "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
         description: "Every job is quoted individually: a free walkthrough, clear upfront cleanout pricing when removal is included, and optional online auction or e-commerce sales.",
-        totalTime: "P14D",
         step: [
           { "@type": "HowToStep", position: 1, name: "Free walkthrough & consultation", text: "JSG walks the property with you, identifies items with resale value, and discusses your goals and timeline — free and with no obligation." },
           { "@type": "HowToStep", position: 2, name: "Custom plan & clear cost structure", text: "You receive an itemized plan covering online auction, eBay store / e-commerce consignment, donation, recycling, disposal, and the upfront price of any cleanout work." },

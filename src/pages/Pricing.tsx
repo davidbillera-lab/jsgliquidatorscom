@@ -27,10 +27,10 @@ import whyWorkAppraisal from "@/assets/why-work-appraisal.jpg";
 const Pricing = () => {
   const costFactors = [
     { title: "Size of the estate or property", desc: "A one-bedroom downsizing is a very different job than a full family home with a basement, attic, and garage." },
-    { title: "Mix of items", desc: "Auction-worthy furniture, jewelry, collectibles, or tools may generate proceeds that help you recoup part or all of your costs, but sale results vary." },
-    { title: "Your timeline", desc: "A real-estate closing or emergency cleanout may need a faster crew schedule than a flexible estate settlement." },
+     { title: "Mix of items", desc: "Furniture, jewelry, collectibles or tools may fit different sales channels. Proceeds may help recoup costs, but sale results vary." },
+     { title: "Your timeline", desc: "A real-estate closing may create a different schedule than a flexible estate settlement." },
     { title: "Cleanout scope", desc: "Donation, recycling, and disposal needs vary by property, and we plan the most cost-effective route for what remains after valuables are removed." },
-    { title: "Which sales channels fit best", desc: "Online auctions, our eBay store, and e-commerce consignment each suit different items — we match every item to its highest-paying marketplace." },
+     { title: "Which sales channels fit best", desc: "Online auctions, our eBay store and e-commerce consignment suit different items, prices and buyer groups." },
   ];
 
   const modelPillars = [
@@ -42,7 +42,7 @@ const Pricing = () => {
     {
       icon: Gavel,
       title: "Online auction sales",
-      desc: "Auction-worthy items are photographed, researched, and listed online where motivated buyers compete — typically selling within 7–10 days.",
+       desc: "Auction-worthy items are photographed, researched and listed online for competitive bidding. Timing depends on the items and buyer demand.",
     },
     {
       icon: Globe,
@@ -85,7 +85,7 @@ const Pricing = () => {
     },
     {
       name: "Online auctions & e-commerce sales",
-      text: "Auction-worthy items are photographed, researched, and listed online — typically selling within 7–10 days — while higher-value pieces reach national buyers through e-commerce consignment.",
+      text: "Approved items are photographed, researched and listed through an online auction or e-commerce channel selected for the item and client plan.",
     },
     {
       name: "Sales settle separately, property left broom-clean",
@@ -98,7 +98,6 @@ const Pricing = () => {
     "@type": "HowTo",
     "name": "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
     "description": "Every job is quoted individually: a free walkthrough, clear upfront cleanout pricing when removal is included, and optional online auction or e-commerce sales whose proceeds may help recoup costs.",
-    "totalTime": "P14D",
     "step": howToSteps.map((step, i) => ({
       "@type": "HowToStep",
       "position": i + 1,
@@ -144,7 +143,7 @@ const Pricing = () => {
     },
     {
       question: "How long does the process take?",
-      answer: "Most estates move from signed agreement to broom-clean in 7–14 days. Online auctions typically run 7–10 days, and the cleanout is scheduled around the auction close and buyer pickup. Need it faster? We offer expedited timelines for real estate closings, probate deadlines, and other urgent situations.",
+      answer: "Timing depends on the property, approved items, selected sales channels, buyer demand and any cleanout work. We discuss deadlines during the consultation and include the expected schedule in the plan.",
     },
     {
       question: "What sales options are available?",
@@ -156,7 +155,7 @@ const Pricing = () => {
     },
     {
       question: "What's the difference between your auction sales and e-commerce consignment?",
-      answer: "Online auctions move a large volume of items quickly — most sell within 7–10 days to competitive bidders. E-commerce consignment through our eBay store suits higher-value pieces that benefit from a national or global buyer pool and a set asking price. During your consultation we recommend the right channel for each category of items, and many estates use both.",
+      answer: "Online auctions use competitive bidding, while e-commerce consignment may use a set asking price. Selling time depends on the item, price, platform and buyer demand. During the consultation we recommend the appropriate channel for each category of approved items.",
     },
     {
       question: "Do you charge for the initial consultation?",
@@ -164,7 +163,7 @@ const Pricing = () => {
     },
     {
       question: "What if my estate has more junk than valuables?",
-      answer: "That's common, and it's exactly why we start with a walkthrough. We'll tell you honestly what has value and what doesn't. Even a few good finds can meaningfully offset cleanout costs, and we'll recommend the most economical path — donation, recycling, or disposal — for everything that remains.",
+      answer: "That's common, and it's why we start with a walkthrough. We explain which items may be suitable for sale and recommend a practical path for the rest. Any sale proceeds vary and are not guaranteed to offset cleanout costs.",
     },
   ];
 
