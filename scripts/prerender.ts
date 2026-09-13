@@ -14,6 +14,8 @@ import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { faqGroups, allFaqs } from "../src/data/faqData";
 import { serviceAreas } from "../src/data/serviceAreas";
+import { coreServiceSeo } from "../src/data/coreServiceSeo";
+import { serviceLocationData } from "../src/data/serviceLocationContent";
 
 const SITE_URL = "https://jsgliquidators.com";
 const DIST = resolve("dist");
@@ -50,14 +52,10 @@ const CITIES = serviceAreas.map((a) => a.slug);
 const CITY_NAMES: Record<string, string> = Object.fromEntries(
   serviceAreas.map((a) => [a.slug, a.city]),
 );
-const SERVICES = [
-  { slug: "estate-sales", name: "Estate Sales" },
-  { slug: "estate-cleanouts", name: "Estate Cleanouts" },
-  { slug: "business-liquidation", name: "Business Liquidation" },
-  { slug: "consignment", name: "E-Commerce Consignment" },
-  { slug: "junk-removal", name: "Junk Removal" },
-  { slug: "hoarder-cleanouts", name: "Hoarder Cleanouts" },
-];
+const SERVICES = serviceLocationData.map((service) => ({
+  slug: service.serviceSlug,
+  name: service.serviceName,
+}));
 const titleCase = (s: string) =>
   CITY_NAMES[s] ||
   s.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
@@ -165,10 +163,18 @@ function renderHtml(route: Route): string {
     const blocks = jsonLdArr
       .map(
         (o) =>
-          `<script type="application/ld+json">${JSON.stringify(o)}</script>`,
+          `<script type="application/ld+json" data-prerender-route-schema="true">${JSON.stringify(o)}</script>`,
       )
       .join("\n    ");
     html = html.replace("</head>", `    ${blocks}\n  </head>`);
+  }
+
+  // Non-home routes must not inherit the homepage-specific WebPage entity.
+  if (route.path !== "/") {
+    html = html.replace(
+      /\s*<script type="application\/ld\+json">[\s\S]*?"@id": "https:\/\/jsgliquidators\.com\/#webpage"[\s\S]*?<\/script>/,
+      "",
+    );
   }
 
   // Replace #root inner content with the route body (crawler-visible).
@@ -282,10 +288,10 @@ const staticPages: Route[] = [
       <h2>Our services</h2>
       <ul>
         <li><a href="/services">Estate Sales &amp; Online Auctions</a> — Nationwide buyer reach via LiveAuctioneers, Denver Online Auctions, and eBay.</li>
-        <li><a href="/services">Estate Cleanouts</a> — 4-step, ~12-day "Auction-Backed Cleanout" that recovers value before clearing the property.</li>
+        <li><a href="/services/estate-cleanouts">Estate Cleanouts</a> — custom property plans with clear upfront cleanout quotes.</li>
         <li><a href="/services">Business Liquidation</a> — Office equipment, inventory, fixtures, and machinery for closing or relocating businesses.</li>
         <li><a href="/services">E-Commerce Consignment</a> — eBay and marketplace listings for high-value items.</li>
-        <li><a href="/services">Junk Removal</a> — Eco-friendly removal; valuable items identified first to offset costs.</li>
+        <li><a href="/services/junk-removal">Junk Removal</a> — quoted removal with optional evaluation of approved items for resale.</li>
       </ul>
       ${commonFooter()}
     </main>`,
@@ -296,7 +302,7 @@ const staticPages: Route[] = [
     description: "JSG Liquidators is a Denver family-run estate sale and liquidation company offering online sales, e-commerce consignment and upfront-priced cleanouts.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>About JSG Liquidators</h1>
-      <p>JSG Liquidators is a Denver-based, family-run estate and business liquidation company founded by David Billera. We've completed hundreds of Colorado liquidations using an AI-first inventory and pricing workflow that routes every item to the highest-paying marketplace.</p>
+       <p>JSG Liquidators is operated by JSG Liquidators LLC. David and Vincent help Denver-area clients plan estate sales, business liquidation, e-commerce consignment and property cleanouts.</p>
       <p>Cleanout work is quoted and paid upfront. Approved items may also be sold through online auction or e-commerce, giving clients an opportunity to recoup some or all of the expense without a guaranteed return.</p>
       ${commonFooter()}
     </main>`,
@@ -312,7 +318,7 @@ const staticPages: Route[] = [
         <dt>Phone (David, primary)</dt><dd><a href="tel:805-444-4069">(805) 444-4069</a></dd>
         <dt>Phone (Vincent, secondary)</dt><dd><a href="tel:805-340-4817">(805) 340-4817</a></dd>
         <dt>Email</dt><dd><a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></dd>
-        <dt>Hours</dt><dd>Mon–Fri 8:00 AM – 6:00 PM MT · Same-day &amp; emergency cleanouts available</dd>
+        <dt>Hours</dt><dd>Mon–Fri 8:00 AM – 6:00 PM Mountain Time · Saturday by appointment</dd>
         <dt>Service area</dt><dd>Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Centennial, Parker, Arvada, Westminster, Thornton, Boulder, and surrounding Front Range communities</dd>
       </dl>
       ${commonFooter()}
@@ -352,10 +358,10 @@ const staticPages: Route[] = [
       <ul>
         <li><strong>Clear cleanout pricing</strong> — cleanout costs are quoted and paid upfront.</li>
         <li><strong>Optional sales</strong> — auction or e-commerce proceeds may help recoup costs, but returns are not guaranteed.</li>
-        <li><strong>AI-first inventory &amp; pricing</strong> — items routed to the highest-paying marketplace.</li>
-        <li><strong>Fast turnaround</strong> — items typically sold in 7–10 days; full cleanouts in ~12 days.</li>
+       <li><strong>AI-assisted research</strong> — marketplace information helps inform item and channel decisions.</li>
+       <li><strong>Property-specific timing</strong> — schedules depend on the items, sales channel, buyer demand and cleanout scope.</li>
         <li><strong>Full-service</strong> — appraisal, photography, listing, sale, payment, and final cleanup.</li>
-        <li><strong>Local &amp; trusted</strong> — Denver-based, family-run, hundreds of completed Colorado liquidations.</li>
+       <li><strong>Denver-area service</strong> — one team coordinates the approved sales and property plan.</li>
       </ul>
       ${commonFooter()}
     </main>`,
@@ -494,25 +500,37 @@ const staticPages: Route[] = [
 
 
 // ---------- Category hub pages (Core 30: /services/{category}) ----------
-const categoryPages: Route[] = SERVICES.map((svc) => ({
+const categoryPages: Route[] = SERVICES.map((svc) => {
+  const seo = coreServiceSeo.find((entry) => entry.slug === svc.slug);
+  const pageTitle = seo?.title ?? `${svc.name} Denver`;
+  const pageH1 = seo?.h1 ?? `${svc.name} in Denver`;
+  const pageDescription = seo?.description ?? `${svc.name} in Denver with a custom plan and free consultation.`;
+  const pageSummary = seo?.summary ?? `JSG Liquidators provides ${svc.name.toLowerCase()} in the Denver metro area.`;
+  const pageUrl = `${SITE_URL}/services/${svc.slug}`;
+  return {
   path: `/services/${svc.slug}`,
-  title: `${svc.name} in Denver & Colorado | JSG Liquidators`,
-  description: `${svc.name} throughout Denver and the Front Range. Custom plans, clear upfront cleanout pricing when applicable, and free consultations.`,
+  title: `${pageTitle} | JSG Liquidators`,
+  description: pageDescription,
   bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
-    <h1>${svc.name} in Denver &amp; the Colorado Front Range</h1>
-    <p class="speakable-summary"><strong>TL;DR:</strong> JSG Liquidators provides ${svc.name.toLowerCase()} across every Denver-metro city. Cleanout work is quoted and paid upfront; optional sale proceeds may help recoup costs. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+    <h1>${pageH1}</h1>
+    <p class="speakable-summary">${pageSummary} Cleanout work, when selected, is quoted and paid upfront. Optional sale proceeds may help recoup costs but are not guaranteed. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
     <h2>${svc.name} — city by city</h2>
     <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${titleCase(c)}, CO</a></li>`).join("")}</ul>
     <h2>Related services</h2>
     <ul>${SERVICES.filter((s) => s.slug !== svc.slug).map((s) => `<li><a href="/services/${s.slug}">${s.name}</a></li>`).join("")}</ul>
     ${commonFooter()}
   </main>`,
-  jsonLd: breadcrumb([
-    { name: "Home", item: SITE_URL + "/" },
-    { name: "Services", item: SITE_URL + "/services" },
-    { name: svc.name, item: `${SITE_URL}/services/${svc.slug}` },
-  ]),
-}));
+  jsonLd: [
+    breadcrumb([
+      { name: "Home", item: SITE_URL + "/" },
+      { name: "Services", item: SITE_URL + "/services" },
+      { name: svc.name, item: pageUrl },
+    ]),
+    { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: pageTitle, description: pageDescription, isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${pageUrl}#service` } },
+    { "@context": "https://schema.org", "@type": "Service", "@id": `${pageUrl}#service`, name: svc.name, serviceType: svc.name, url: pageUrl, provider: { "@id": `${SITE_URL}/#organization` }, isPartOf: { "@id": `${SITE_URL}/#service` }, areaServed: { "@type": "AdministrativeArea", name: "Denver metro area" } },
+  ],
+};
+});
 
 // ---------- City / area pages ----------
 const areaPages: Route[] = [];
@@ -542,7 +560,7 @@ for (const city of CITIES) {
       description: `Professional ${svc.name.toLowerCase()} services in ${cityName}, Colorado. Custom planning and clear upfront cleanout pricing when applicable.`,
       bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
         <h1>${svc.name} in ${cityName}, Colorado</h1>
-        <p>JSG Liquidators offers professional ${svc.name.toLowerCase()} throughout ${cityName} and surrounding Denver-metro communities. Same-day and emergency service available.</p>
+        <p>JSG Liquidators offers professional ${svc.name.toLowerCase()} throughout ${cityName} and surrounding Denver-metro communities. Scheduling depends on the project scope and current availability.</p>
         <p>Cleanout work is quoted and paid upfront. Approved items may be sold through auction or e-commerce, and proceeds may help recoup costs without any guaranteed result.</p>
         ${commonFooter()}
       </main>`,

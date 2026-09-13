@@ -38,7 +38,7 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating, events }: SEOHeadProps) => {
-  const siteTitle = "Estate Sales Denver | JSG Liquidators | Estate Sale Company";
+  const siteTitle = "Denver Estate Sales & Liquidation | JSG Liquidators";
   const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
   const siteUrl = "https://jsgliquidators.com";
   const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
@@ -72,7 +72,7 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
   const reviewJsonLd = reviews && reviews.length > 0 && aggregateRating ? {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${siteUrl}/#organization`,
+    "@id": `${siteUrl}/#localbusiness`,
     "name": "JSG Liquidators",
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -122,6 +122,9 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
   useEffect(() => {
     document
       .querySelectorAll('link[rel="canonical"]:not([data-rh])')
+      .forEach((el) => el.remove());
+    document
+      .querySelectorAll('script[data-prerender-route-schema="true"]')
       .forEach((el) => el.remove());
   }, [canonicalUrl]);
 

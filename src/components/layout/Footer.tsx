@@ -63,7 +63,7 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 Facebook
               </a>
               <a
-                href="https://www.instagram.com/jsgliquidators"
+                href="https://www.instagram.com/jsgliquidators1/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="JSG Liquidators on Instagram"
