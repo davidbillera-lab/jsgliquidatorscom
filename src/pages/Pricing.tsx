@@ -79,8 +79,20 @@ const Pricing = () => {
       answer: "Across the industry, most estate sale companies work on commission — typically 30% to 50% of gross sales — and some add setup fees or sale minimums. JSG Liquidators works differently: every job starts with a free consultation, and we build a plan around your property. Because our online auction and e-commerce sales generate proceeds that offset service costs, many clients recoup some or all of their upfront costs.",
     },
     {
-      question: "Why don't you list a set price on your website?",
+      question: "Why isn't there a set price for your services?",
       answer: "Because no two estates are alike. A condo downsizing, a full family home, and a commercial liquidation each need a different mix of cleanout labor, auction management, and e-commerce consignment. A flat rate would overcharge some clients and underserve others. Instead, we walk the property with you, discuss your goals and timeline, and give you a clear, itemized plan before any work begins.",
+    },
+    {
+      question: "What happens after the free walkthrough?",
+      answer: "After the walkthrough you'll receive a custom plan: what's worth selling at auction, what belongs in our eBay store or e-commerce consignment, what can be donated or recycled, and what needs disposal. The plan includes estimated timelines, a clear cost structure, and how auction and consignment proceeds are expected to offset those costs. You approve it before any work starts.",
+    },
+    {
+      question: "How long does the process take?",
+      answer: "Most estates move from signed agreement to broom-clean in 7–14 days. Online auctions typically run 7–10 days, and the cleanout is scheduled around the auction close and buyer pickup. Need it faster? We offer expedited timelines for real estate closings, probate deadlines, and other urgent situations.",
+    },
+    {
+      question: "What sales options are available?",
+      answer: "We match each item to the channel that returns the most: online estate auctions for volume and speed, our eBay store and e-commerce consignment for higher-value collectibles and specialty pieces, and direct liquidation for business equipment. Most clients use a combination, and we strategize with you to decide which channels make sense for your property.",
     },
     {
       question: "How can I recoup some or all of my upfront costs?",
