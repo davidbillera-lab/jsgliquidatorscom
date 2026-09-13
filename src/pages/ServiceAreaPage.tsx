@@ -380,7 +380,7 @@ const ServiceAreaPage = () => {
               Ready for Your Free {area.city} Estate Consultation?
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
-              Contact JSG Liquidators today for a free, no-obligation estate evaluation in {area.city}. Our auction services can offset or cover your cleanout costs entirely.
+              Contact JSG Liquidators today for a free, no-obligation estate evaluation in {area.city}. Cleanout work is quoted and paid upfront; optional auction and e-commerce proceeds may help you recoup that expense.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl">

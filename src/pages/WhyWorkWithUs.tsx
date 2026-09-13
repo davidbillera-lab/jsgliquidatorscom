@@ -604,7 +604,7 @@ const WhyWorkWithUs = () => {
               Ready to Transform Your Estate Clean Out?
             </h2>
             <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
-              Don't let estate clean outs overwhelm you or drain your finances. JSG ESTATE LIQUIDATORS combines professional Denver junk removal with revenue-generating auctions, delivering stress-free solutions that often put money back in your pocket.
+              JSG ESTATE LIQUIDATORS combines professional Denver cleanout services with optional auctions and e-commerce sales. You'll know the cleanout cost upfront, and approved sale proceeds may help you recoup some or all of that expense without a guaranteed return.
             </p>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">

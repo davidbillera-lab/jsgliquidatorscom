@@ -116,14 +116,14 @@ const About = () => {
                   our company around making this process as smooth as possible for our clients.
                 </p>
                 <p>
-                  Our auction services can help offset or even cover your service costs. We're fully 
-                  invested in maximizing value for you — the better your items sell, the more you save.
+                  Cleanout work is quoted and paid upfront. Our auction and e-commerce services may help 
+                  you recoup some or all of that expense, but sale results vary and are not guaranteed.
                 </p>
               </div>
               
               <div className="mt-8 p-6 bg-secondary rounded-xl border-l-4 border-accent">
                 <p className="text-lg font-display font-semibold text-foreground mb-2">
-                  "Our auction services can offset or even cover your service costs."
+                  "Clear upfront cleanout pricing, with an opportunity to recoup costs through sales."
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Our commitment to you

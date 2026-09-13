@@ -174,7 +174,7 @@ const Index = () => {
               className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
             >
               JSG Liquidators runs the online estate sales Denver families trust — reaching thousands of
-              buyers nationwide, then handling the full cleanout. No upfront cost, free consultation.
+              buyers nationwide, with cleanout services quoted separately and paid upfront. Free consultation.
             </motion.p>
 
             <motion.p
@@ -577,8 +577,8 @@ const Index = () => {
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-12 leading-relaxed">
               Most estate sale companies and junk removal services charge flat fees. We do things differently. 
-              By selling valuable items through our online auction platform first, the proceeds can significantly 
-              reduce—or even eliminate—your out-of-pocket costs.
+               Cleanout costs are quoted and paid upfront. With your approval, valuable items can also be sold through 
+               online auction or e-commerce, creating an opportunity to recoup some or all of that expense without a guarantee.
             </p>
           </motion.div>
 
@@ -663,7 +663,7 @@ const Index = () => {
             >
               <span className="text-accent font-medium text-sm uppercase tracking-wider">Why Choose Us</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-6">
-                Zero Risk, Maximum Return
+                 Clear Costs, Multiple Ways to Sell
               </h2>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 We understand that liquidating an estate can be overwhelming. That's why we've built our 
@@ -672,7 +672,7 @@ const Index = () => {
               
               <div className="space-y-4">
                 {[
-                  "Auction proceeds can offset or cover your costs",
+                   "Auction or e-commerce proceeds may help recoup costs",
                   "Free property evaluation and consultation",
                   "Professional handling of all items",
                   "Transparent pricing and reporting",
@@ -860,7 +860,7 @@ const Index = () => {
               </p>
               <ol className="list-decimal pl-6 space-y-2 text-muted-foreground leading-relaxed mb-4">
                 <li><strong className="text-foreground">Free walkthrough</strong> — we visit the home, evaluate contents, and answer questions. No charge, no obligation.</li>
-                <li><strong className="text-foreground">Commission agreement</strong> — no upfront fees. We only get paid when you get paid.</li>
+                 <li><strong className="text-foreground">Custom agreement</strong> — clear sales terms and an upfront quote for any cleanout work.</li>
                 <li><strong className="text-foreground">Sorting &amp; AI-assisted cataloging</strong> — every item identified using AI image recognition and live sold-comp pricing data.</li>
                 <li><strong className="text-foreground">Professional photography &amp; listing</strong> — keyword-rich titles built for maximum bid competition.</li>
                 <li><strong className="text-foreground">7–10 day online auction</strong> — buyers nationwide bid simultaneously, not just local foot traffic.</li>
@@ -1116,7 +1116,7 @@ const Index = () => {
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-8">
               Get a free consultation and discover how we can help you achieve the best possible results. 
-              Our auction services can help offset or even cover your service costs.
+               Optional auction and e-commerce sales may help you recoup some or all of an upfront cleanout cost, but sale results vary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl">
