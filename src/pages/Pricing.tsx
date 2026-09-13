@@ -2,6 +2,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import {
   CheckCircle,
@@ -73,6 +74,61 @@ const Pricing = () => {
     },
   ];
 
+  const howToSteps = [
+    {
+      name: "Free walkthrough & consultation",
+      text: "We walk the property with you, identify items with resale value, and discuss your goals and timeline — free and with no obligation.",
+    },
+    {
+      name: "Custom plan & clear cost structure",
+      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and how sale proceeds are expected to offset your costs.",
+    },
+    {
+      name: "Online auctions & e-commerce sales",
+      text: "Auction-worthy items are photographed, researched, and listed online — typically selling within 7–10 days — while higher-value pieces reach national buyers through e-commerce consignment.",
+    },
+    {
+      name: "Proceeds offset costs, property left broom-clean",
+      text: "Sale proceeds are applied to your cleanout and service costs first — many clients recoup some or all of their upfront costs — and we finish with donation, recycling, and a broom-clean property.",
+    },
+  ];
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
+    "description": "Every job is quoted individually: a free walkthrough, a custom plan combining cleanout, online auctions and e-commerce consignment, and sale proceeds that can offset some or all upfront costs.",
+    "totalTime": "P14D",
+    "step": howToSteps.map((step, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": step.name,
+      "text": step.text,
+    })),
+  };
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://jsgliquidators.com/#organization",
+    "name": "JSG Liquidators",
+    "url": "https://jsgliquidators.com/how-much-do-estate-sale-companies-charge",
+    "telephone": "+1-805-444-4069",
+    "email": "jsgliquidators@gmail.com",
+    "priceRange": "Free consultation — custom quote per job",
+    "areaServed": [
+      "Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder",
+      "Thornton", "Centennial", "Highlands Ranch", "Castle Rock",
+      "Englewood", "Littleton", "Fort Collins", "Colorado Springs",
+    ].map((city) => ({ "@type": "City", "name": `${city}, CO` })),
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Sales" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Cleanouts" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Auctions & E-Commerce Consignment" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Liquidation" } },
+    ],
+  };
+
   const faqs = [
     {
       question: "How much do estate sale companies charge in Denver?",
@@ -125,6 +181,14 @@ const Pricing = () => {
           { name: "Estate Sale Costs", url: "/how-much-do-estate-sale-companies-charge" },
         ]}
       />
+      <Helmet>
+        <meta name="geo.region" content="US-CO" />
+        <meta name="geo.placename" content="Denver" />
+        <meta name="geo.position" content="39.7392;-104.9903" />
+        <meta name="ICBM" content="39.7392, -104.9903" />
+        <script type="application/ld+json">{JSON.stringify(howToJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(localBusinessJsonLd)}</script>
+      </Helmet>
 
       {/* Hero */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -249,6 +313,45 @@ const Pricing = () => {
               <Link to="/services/estate-cleanouts">See How Our Cleanouts Work</Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              How It Works: From Walkthrough to Broom-Clean
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Most Denver estates move through these four steps in 7–14 days.
+            </p>
+          </motion.div>
+
+          <ol className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto list-none p-0">
+            {howToSteps.map((step, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-background rounded-xl p-6"
+              >
+                <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary font-bold mb-4">
+                  {index + 1}
+                </span>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{step.name}</h3>
+                <p className="text-muted-foreground text-sm">{step.text}</p>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </section>
 
