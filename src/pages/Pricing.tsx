@@ -74,6 +74,61 @@ const Pricing = () => {
     },
   ];
 
+  const howToSteps = [
+    {
+      name: "Free walkthrough & consultation",
+      text: "We walk the property with you, identify items with resale value, and discuss your goals and timeline — free and with no obligation.",
+    },
+    {
+      name: "Custom plan & clear cost structure",
+      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and how sale proceeds are expected to offset your costs.",
+    },
+    {
+      name: "Online auctions & e-commerce sales",
+      text: "Auction-worthy items are photographed, researched, and listed online — typically selling within 7–10 days — while higher-value pieces reach national buyers through e-commerce consignment.",
+    },
+    {
+      name: "Proceeds offset costs, property left broom-clean",
+      text: "Sale proceeds are applied to your cleanout and service costs first — many clients recoup some or all of their upfront costs — and we finish with donation, recycling, and a broom-clean property.",
+    },
+  ];
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How JSG Liquidators prices an estate sale, cleanout, or liquidation in Denver",
+    "description": "Every job is quoted individually: a free walkthrough, a custom plan combining cleanout, online auctions and e-commerce consignment, and sale proceeds that can offset some or all upfront costs.",
+    "totalTime": "P14D",
+    "step": howToSteps.map((step, i) => ({
+      "@type": "HowToStep",
+      "position": i + 1,
+      "name": step.name,
+      "text": step.text,
+    })),
+  };
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://jsgliquidators.com/#organization",
+    "name": "JSG Liquidators",
+    "url": "https://jsgliquidators.com/how-much-do-estate-sale-companies-charge",
+    "telephone": "+1-805-444-4069",
+    "email": "jsgliquidators@gmail.com",
+    "priceRange": "Free consultation — custom quote per job",
+    "areaServed": [
+      "Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder",
+      "Thornton", "Centennial", "Highlands Ranch", "Castle Rock",
+      "Englewood", "Littleton", "Fort Collins", "Colorado Springs",
+    ].map((city) => ({ "@type": "City", "name": `${city}, CO` })),
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Sales" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Cleanouts" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Auctions & E-Commerce Consignment" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Liquidation" } },
+    ],
+  };
+
   const faqs = [
     {
       question: "How much do estate sale companies charge in Denver?",
