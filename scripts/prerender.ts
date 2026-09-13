@@ -330,7 +330,7 @@ const staticPages: Route[] = [
     description: "Read reviews from Denver estate sale and liquidation clients who used JSG Liquidators for professional, AI-powered estate sales.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>What Denver clients say about JSG Liquidators</h1>
-      <p>Hundreds of completed Colorado estate sales, cleanouts, and business liquidations. Clients consistently cite our professionalism, communication, and ability to find value in items they thought were worthless.</p>
+      <p>Read feedback from customers who worked with JSG Liquidators on estate sales, cleanouts and liquidation planning.</p>
       ${commonFooter()}
     </main>`,
   },
@@ -410,7 +410,7 @@ const staticPages: Route[] = [
       <h2>The JSG model: cleanouts with built-in revenue recovery</h2>
       <ul>
         <li><strong>Cleanouts at the core</strong> — sorting and clearing the property while identifying items with resale value first.</li>
-        <li><strong>Online auction sales</strong> — auction-worthy items photographed, researched, and sold to competing bidders, typically within 7–10 days.</li>
+        <li><strong>Online auction sales</strong> — approved items are photographed, researched and listed for competitive bidding.</li>
         <li><strong>E-commerce &amp; consignment</strong> — higher-value pieces listed on the JSG eBay store for a national buyer pool.</li>
         <li><strong>Optional cost recovery</strong> — sale proceeds may help recoup some or all of the upfront cleanout cost, but returns are not guaranteed.</li>
       </ul>
@@ -418,7 +418,7 @@ const staticPages: Route[] = [
       <ol>
         <li><strong>Free walkthrough &amp; consultation</strong> — JSG walks the property, identifies items with resale value, and discusses goals and timeline. Free, no obligation.</li>
         <li><strong>Custom plan &amp; clear cost structure</strong> — an itemized plan covering auction, eBay store / e-commerce consignment, donation, recycling, disposal, and the upfront cleanout price.</li>
-        <li><strong>Online auctions &amp; e-commerce sales</strong> — items are photographed, researched, and listed online, typically selling within 7–10 days.</li>
+        <li><strong>Online auctions &amp; e-commerce sales</strong> — approved items are photographed, researched and listed through a suitable channel.</li>
         <li><strong>Sales settle separately, property left broom-clean</strong> — sale proceeds are settled under the agreement and may help recoup costs, but no amount is promised.</li>
       </ol>
       <h2>Frequently asked questions</h2>
@@ -429,13 +429,13 @@ const staticPages: Route[] = [
       <h3>What happens after the free walkthrough?</h3>
       <p>You'll receive a custom plan covering what's worth selling at auction, what belongs in eBay or e-commerce consignment, what can be donated or recycled, what needs disposal, and the upfront cost of any cleanout work.</p>
       <h3>How long does the process take?</h3>
-      <p>Most estates move from signed agreement to broom-clean in 7–14 days. Online auctions typically run 7–10 days, with expedited timelines available for urgent situations.</p>
+      <p>Timing depends on the property, approved items, selected sales channels, buyer demand and any cleanout work.</p>
       <h3>What sales options are available?</h3>
       <p>JSG offers online estate auctions, eBay store and e-commerce consignment, and direct business liquidation. Most clients use a combination based on what's in the property.</p>
       <h3>Can sale proceeds help me recoup my upfront cleanout cost?</h3>
       <p>They may. Approved items can be sold through online auctions or eBay, and proceeds are settled according to the agreement. The amount depends on what sells and is not guaranteed.</p>
       <h3>What's the difference between your auction sales and e-commerce consignment?</h3>
-      <p>Online auctions move volume quickly, usually within 7–10 days. E-commerce consignment is better for higher-value pieces that benefit from a set asking price and a national buyer pool.</p>
+      <p>Online auctions use competitive bidding, while e-commerce consignment may use a set asking price. Selling time depends on the item, price, platform and buyer demand.</p>
       <h3>Do you charge for the initial consultation?</h3>
       <p>No — consultations are free and carry no obligation.</p>
       <h3>What if my estate has more junk than valuables?</h3>
@@ -456,7 +456,7 @@ const staticPages: Route[] = [
         step: [
           { "@type": "HowToStep", position: 1, name: "Free walkthrough & consultation", text: "JSG walks the property with you, identifies items with resale value, and discusses your goals and timeline — free and with no obligation." },
           { "@type": "HowToStep", position: 2, name: "Custom plan & clear cost structure", text: "You receive an itemized plan covering online auction, eBay store / e-commerce consignment, donation, recycling, disposal, and the upfront price of any cleanout work." },
-          { "@type": "HowToStep", position: 3, name: "Online auctions & e-commerce sales", text: "Items are photographed, researched, and listed online — typically selling within 7–10 days — with higher-value pieces reaching national buyers through e-commerce consignment." },
+          { "@type": "HowToStep", position: 3, name: "Online auctions & e-commerce sales", text: "Approved items are photographed, researched and listed through the selected online sales channel." },
           { "@type": "HowToStep", position: 4, name: "Sales settle separately, property left broom-clean", text: "Sale proceeds are settled according to the agreement and may help recoup the upfront cleanout cost, but no amount is guaranteed." },
         ],
       },

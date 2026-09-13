@@ -42,8 +42,8 @@ const WhyWorkWithUs = () => {
     "Clear upfront pricing: Cleanout costs are quoted and paid before work begins",
     "Optional resale strategy: Auction or e-commerce proceeds may help you recoup cleanout costs",
     "Environmentally responsible: Items go to new homes instead of landfills",
-    "Licensed and insured: Full protection for your property and peace of mind",
-    "Same-day availability: Emergency clean outs handled quickly and professionally"
+    "Property-specific scope: We explain what is included before work begins",
+    "Scheduling clarity: Timing is based on the property and current availability"
   ];
 
   const valuableFinds = [
@@ -71,7 +71,7 @@ const WhyWorkWithUs = () => {
     { icon: Clock, title: "Stress-free process from start to finish", desc: "Estate clean outs are emotionally challenging enough without worrying about logistics, costs, and disposal. We handle every detail while keeping you informed throughout the entire process." },
     { icon: DollarSign, title: "Transparent pricing with no hidden fees", desc: "You know exactly what the cleanout costs before work begins. Optional sale proceeds may help you recoup that expense, but returns are not guaranteed." },
     { icon: MapPin, title: "Local expertise and community connections", desc: "As a Denver estate liquidation company, we understand Colorado real estate markets, local donation centers, recycling programs, and buyer preferences." },
-    { icon: Shield, title: "Fully licensed and insured", desc: "Your property and belongings receive complete protection throughout the clean out process." },
+    { icon: Shield, title: "Agreed property scope", desc: "We explain the approved work, access needs and client priorities before the cleanout begins." },
     { icon: Leaf, title: "Environmentally conscious approach", desc: "We prioritize donation and resale over disposal, keeping usable items out of landfills and in the hands of people who need them." }
   ];
 
@@ -95,12 +95,6 @@ const WhyWorkWithUs = () => {
     { step: 7, title: "Sales settlement", desc: "Auction and e-commerce proceeds are settled according to your agreement and may help recoup the upfront cleanout cost." }
   ];
 
-  const testimonials = [
-    { quote: "JSG turned what we thought would be a $2,000 clean out into a $500 profit. They found valuable antiques in my grandmother's basement that we never knew existed.", author: "Sarah M.", location: "Denver" },
-    { quote: "Professional, respectful, and incredibly thorough. They handled my father's estate with the care and attention our family needed during a difficult time.", author: "Robert K.", location: "Aurora" },
-    { quote: "I called six different junk removal companies. JSG was the only one that offered to auction valuable items instead of throwing everything away. Smart business model.", author: "Linda T.", location: "Westminster" }
-  ];
-
   const faqs = [
     {
       question: "Do you do hoarder clean outs in Denver?",
@@ -112,7 +106,7 @@ const WhyWorkWithUs = () => {
     },
     {
       question: "How quickly can you schedule a Denver estate clean out?",
-      answer: "We offer same-day consultations and can often begin work within 48-72 hours for urgent situations. Emergency clean outs for real estate closings, evictions, or time-sensitive estates are accommodated whenever possible. Contact us to discuss your timeline."
+      answer: "Scheduling depends on the property's scope, access and current availability. Contact us with your deadline and we will explain the available options."
     },
     {
       question: "Do you serve areas outside of Denver?",
@@ -245,7 +239,7 @@ const WhyWorkWithUs = () => {
                 Expert Junk Removal with Revenue Recovery
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Traditional junk removal Denver companies charge upfront fees and haul everything to landfills. JSG ESTATE LIQUIDATORS takes a different approach: we're Denver's only junk removal company that actively seeks valuable items during clean outs and turns them into auction revenue for our clients.
+                JSG Liquidators starts with the property and your goals. We quote removal work upfront and, with your approval, evaluate suitable items for separate auction or e-commerce sale before removal.
               </p>
               
               <h3 className="text-xl font-semibold text-foreground mb-4">What sets our junk removal service apart:</h3>
@@ -639,7 +633,7 @@ const WhyWorkWithUs = () => {
             </div>
 
             <p className="text-sm opacity-80 mb-6">
-              Same-day consultations available. Emergency clean outs accommodated. Licensed, insured, and trusted throughout Colorado.
+              Monday-Friday, 8 a.m.-6 p.m. Mountain Time. Saturday appointments are available.
             </p>
 
             <Button asChild size="lg" variant="secondary" className="text-lg px-8">

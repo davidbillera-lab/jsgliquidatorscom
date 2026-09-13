@@ -1033,7 +1033,7 @@ const Index = () => {
                 },
                 {
                   q: "Who buys estate items and removes the junk?",
-                  a: "JSG Liquidators is a one-stop Denver estate company that does both. We buy nothing directly — instead, we sell your items to the highest bidder through our online auction platform and e-commerce consignment service, which reaches thousands of collectors, dealers, and buyers across the country. This almost always nets more than a cash offer from a single buyer. After the auction closes, our team returns to remove all unsold items, coordinate donations with local Colorado charities, recycle responsibly, and haul away remaining junk. You get one trusted company, one timeline, and one final broom-clean property — no juggling auctioneers, thrift store runs, and junk haulers separately."
+                   a: "JSG Liquidators can coordinate both online sales and separately quoted property cleanout services. Approved items may be listed through an auction or e-commerce channel, while remaining contents are handled according to the client-approved cleanout plan."
                 },
                 {
                   q: "How much does an estate sale or liquidation cost in Denver?",
@@ -1041,7 +1041,7 @@ const Index = () => {
                 },
                 {
                   q: "How long does the estate liquidation process take?",
-                  a: "Most estate liquidations are completed within 7–14 days from initial consultation to final cleanout. This includes item cataloging, professional photography, online auction listing, and property clearing. Larger estates or specialty collections may take slightly longer, but we always work around your timeline."
+                   a: "Timing depends on the property, number and type of items, selected sales channels, buyer demand and any cleanout work. We discuss the schedule during the consultation and include it in the custom plan."
                 },
                 {
                   q: "What items sell best at estate auctions in Colorado?",
@@ -1061,7 +1061,7 @@ const Index = () => {
                 },
                 {
                   q: "How is JSG Liquidators different from a traditional estate sale company?",
-                  a: "Traditional estate sales are held in-person over a weekend, limiting buyers to local foot traffic. JSG Liquidators uses an online-only auction format that reaches thousands of collectors, dealers, and buyers nationwide — typically achieving higher prices. We also offer AI-assisted cataloging, e-commerce consignment for premium items, and a full cleanout service, making us a complete one-stop solution."
+                   a: "JSG Liquidators can combine online estate auctions, e-commerce consignment and separately quoted cleanout services in one custom plan. The recommended channel depends on the property and approved items."
                 },
               ].map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="bg-card rounded-xl border border-border px-6">

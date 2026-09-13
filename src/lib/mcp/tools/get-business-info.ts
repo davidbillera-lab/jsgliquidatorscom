@@ -6,7 +6,7 @@ const INFO = {
   website: "https://jsgliquidators.com",
   phones: [
     { label: "Primary (David)", number: "805-444-4069" },
-    { label: "Secondary (Vinnie)", number: "805-340-4817" },
+    { label: "Secondary (Vincent)", number: "805-340-4817" },
   ],
   email: "jsgliquidators@gmail.com",
   services: [
@@ -15,20 +15,20 @@ const INFO = {
     "Business liquidation",
     "E-commerce consignment (eBay and Denver Online Auctions)",
     "Estate cleanouts",
-    "Junk removal with revenue recovery",
+    "Junk removal",
     "Online estate auctions",
   ],
   differentiators: [
-    "No-upfront-cost Revenue Recovery model",
-    "Items typically sold within 7-10 days",
-    "AI-first pricing and listing across marketplaces",
+    "Custom plans and clear upfront cleanout pricing",
+    "Optional auction and e-commerce sales",
+    "AI-assisted item and marketplace research",
     "Serves 14 Denver-metro and Front Range cities",
   ],
   marketplaces: {
     denverOnlineAuctions: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     ebay: "https://ebay.us/m/tsG4b9",
   },
-  hours: "Mon-Fri 8:00-18:00 MT",
+  hours: "Monday-Friday 8:00-18:00 Mountain Time; Saturday by appointment",
 };
 
 export default defineTool({
