@@ -66,7 +66,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "How quickly can you schedule a Denver estate clean out?",
-        answer: "We offer same-day consultations and can often begin work within 48-72 hours for urgent situations. Emergency clean outs for real estate closings, evictions, or time-sensitive estates are accommodated whenever possible. Contact us to discuss your timeline.",
+        answer: "Scheduling depends on the property's scope, access and our current availability. Contact us with your deadline and we will explain the available options without promising a fixed turnaround.",
       },
     ],
   },
@@ -79,11 +79,11 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "What items can I consign in Denver?",
-        answer: "We accept antiques, collectibles, art, jewelry, designer items, electronics, vintage clothing, sports memorabilia, coins, and more. If it has value online, we can sell it. We offer free pickup throughout the Denver metro area — schedule a free evaluation to find out what your items are worth.",
+        answer: "Antiques, collectibles, art, jewelry, designer items, electronics and other specialty goods may be considered. Acceptance and pickup arrangements depend on condition, demand, location and project scope.",
       },
       {
         question: "How long does it take to sell consigned items?",
-        answer: "Most consigned items sell within 2-4 weeks, though rare collectibles may be listed longer to attract the right buyer and achieve maximum value. There are no upfront costs — we only earn a commission when your item sells, and we provide regular status updates on all your consigned items.",
+        answer: "Selling time depends on the item, price, platform and buyer demand. We explain the applicable commission and terms before accepting an item; pure consignment does not include an upfront cleanout charge.",
       },
     ],
   },
