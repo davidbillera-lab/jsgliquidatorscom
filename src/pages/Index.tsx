@@ -602,8 +602,8 @@ const Index = () => {
               },
               {
                 step: "3",
-                title: "Cleanout & Offset",
-                description: "Auction proceeds are applied to your cleanout costs. Many clients end up paying little to nothing.",
+                title: "Upfront Cleanout & Sales",
+                description: "Cleanout work is paid upfront. Approved sale proceeds may help recoup that expense, but no amount is guaranteed.",
               },
             ].map((item) => (
               <motion.div

@@ -159,7 +159,7 @@ export const serviceLocationData: ServiceLocationContent[] = [
       "Licensed, insured, and experienced with all property types",
     ],
     process: [
-      { title: "Free Estimate", description: "We assess the job on-site (or via photos for quick quotes) and provide a transparent price — often reduced by Revenue Recovery potential." },
+      { title: "Free Estimate", description: "We assess the job on-site (or via photos for quick quotes), provide a transparent price, and collect the approved cleanout cost upfront." },
       { title: "Value Identification", description: "Our team separates items with auction value from true junk, maximizing recovery and minimizing waste." },
       { title: "Removal Day", description: "Our crew efficiently removes everything, handling all heavy lifting, loading, and transport." },
       { title: "Responsible Disposal", description: "Valuables go to auction, usable items to charity, recyclables to processing — only true waste hits the landfill." },

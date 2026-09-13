@@ -330,9 +330,9 @@ const WhyWorkWithUs = () => {
             className="bg-primary text-primary-foreground rounded-xl p-8 text-center"
           >
             <Star className="w-12 h-12 mx-auto mb-4 opacity-80" />
-            <h3 className="text-2xl font-bold mb-4">Recent Success Story</h3>
+            <h3 className="text-2xl font-bold mb-4">A Plan Built Around Your Property</h3>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
-              A Lakewood estate clean out generated <strong>$3,200 in auction revenue</strong> from items the family considered "junk," completely covering the $800 removal fee and putting <strong>$2,400 back in their pockets</strong>.
+              We clearly quote and collect the cleanout cost upfront, then help you decide whether approved items should be sold through online auction or e-commerce. Any proceeds vary with what sells and are not guaranteed.
             </p>
           </motion.div>
         </div>
