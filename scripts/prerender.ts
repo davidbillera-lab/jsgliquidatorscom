@@ -410,12 +410,22 @@ const staticPages: Route[] = [
       <h2>Frequently asked questions</h2>
       <h3>How much do estate sale companies charge in Denver?</h3>
       <p>Across the industry, most charge a 30–50% commission on gross sales, some with setup fees or minimums. JSG builds a custom plan per job so auction and e-commerce proceeds offset service costs.</p>
-      <h3>Why don't you list a set price?</h3>
+      <h3>Why isn't there a set price for your services?</h3>
       <p>No two estates are alike; a flat rate would overcharge some clients and underserve others. JSG provides a clear, itemized plan after a free property walkthrough.</p>
+      <h3>What happens after the free walkthrough?</h3>
+      <p>You'll receive a custom plan covering what's worth selling at auction, what belongs in eBay or e-commerce consignment, what can be donated or recycled, and what needs disposal — including estimated timelines, costs, and expected proceeds offsets.</p>
+      <h3>How long does the process take?</h3>
+      <p>Most estates move from signed agreement to broom-clean in 7–14 days. Online auctions typically run 7–10 days, with expedited timelines available for urgent situations.</p>
+      <h3>What sales options are available?</h3>
+      <p>JSG offers online estate auctions, eBay store and e-commerce consignment, and direct business liquidation. Most clients use a combination based on what's in the property.</p>
       <h3>How can I recoup some or all of my upfront costs?</h3>
       <p>Valuable items found during the cleanout are sold through online auctions and eBay; proceeds are applied to your account and can cover most or all costs, with surplus returned to you.</p>
+      <h3>What's the difference between your auction sales and e-commerce consignment?</h3>
+      <p>Online auctions move volume quickly, usually within 7–10 days. E-commerce consignment is better for higher-value pieces that benefit from a set asking price and a national buyer pool.</p>
       <h3>Do you charge for the initial consultation?</h3>
       <p>No — consultations are free and carry no obligation.</p>
+      <h3>What if my estate has more junk than valuables?</h3>
+      <p>We'll tell you honestly what has value and what doesn't. Even a few good finds can offset cleanout costs, and we'll recommend donation, recycling, or disposal for the rest.</p>
       ${commonFooter()}
     </main>`,
     jsonLd: breadcrumb([
