@@ -62,11 +62,11 @@ const ServiceAreaPage = () => {
   const faqSchema = [
     {
       question: `What estate liquidation services do you offer in ${area.city}?`,
-      answer: `JSG Liquidators provides estate sales & online auctions, e-commerce consignment, business liquidation, estate clean outs, and junk removal throughout ${area.city} and ${area.county}. Our auction-backed model often offsets or covers your service costs.`,
+      answer: `JSG Liquidators provides estate sales and online auctions, e-commerce consignment, business liquidation, estate cleanouts, and junk removal throughout ${area.city} and ${area.county}. Cleanout work is quoted and paid upfront; optional sale proceeds may help you recoup that expense.`,
     },
     {
       question: `How much does estate cleanout cost in ${area.city}?`,
-      answer: `Our unique auction-backed approach means the cost varies—and often you pay nothing out-of-pocket. We identify valuable items during the cleanout, auction them online, and apply proceeds to your removal costs. Many ${area.city} clients end up with money back.`,
+      answer: `Cleanout pricing varies based on the property, volume, access, labor, and disposal needs. After a walkthrough, we provide a clear quote that is paid upfront. Approved items may be sold through auction or e-commerce to help recoup some or all of that cost, but results are not guaranteed.`,
     },
     {
       question: `Do you offer same-day junk removal in ${area.city}?`,
@@ -151,7 +151,7 @@ const ServiceAreaPage = () => {
               Full-Service Estate Liquidation in {area.city}
             </h2>
             <p className="text-lg text-muted-foreground">
-              Every service we offer is available to {area.city} residents and businesses, backed by our unique auction model that puts money back in your pocket.
+               Every service we offer is available to {area.city} residents and businesses, with custom plans that can combine upfront cleanout work with optional auction and e-commerce sales.
             </p>
           </motion.div>
 

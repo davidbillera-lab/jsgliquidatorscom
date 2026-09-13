@@ -17,7 +17,7 @@ interface Result {
 }
 
 const staticPages: Result[] = [
-  { title: "Why Work With Us", href: "/why-work-with-us", excerpt: "No upfront cost, items sold in 7–10 days, full-service appraisal through cleanup.", group: "Pages" },
+  { title: "Why Work With Us", href: "/why-work-with-us", excerpt: "Custom plans combining auctions, e-commerce consignment, and upfront-priced cleanout services.", group: "Pages" },
   { title: "Services", href: "/services", excerpt: "Estate sales, e-commerce consignment, business liquidation, cleanouts and junk removal.", group: "Pages" },
   { title: "Auctions & E-Commerce", href: "/auctions", excerpt: "Current online estate auctions and our eBay store.", group: "Pages" },
   { title: "Reviews", href: "/testimonials", excerpt: "What Denver families and businesses say about working with JSG Liquidators.", group: "Pages" },

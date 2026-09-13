@@ -39,8 +39,8 @@ const WhyWorkWithUs = () => {
   ];
 
   const junkRemovalFeatures = [
-    "No upfront costs: You pay nothing until valuable items are identified and auctioned",
-    "Revenue sharing model: Auction proceeds offset removal costs, often resulting in net profit",
+    "Clear upfront pricing: Cleanout costs are quoted and paid before work begins",
+    "Optional resale strategy: Auction or e-commerce proceeds may help you recoup cleanout costs",
     "Environmentally responsible: Items go to new homes instead of landfills",
     "Licensed and insured: Full protection for your property and peace of mind",
     "Same-day availability: Emergency clean outs handled quickly and professionally"
@@ -69,7 +69,7 @@ const WhyWorkWithUs = () => {
 
   const whyChooseUs = [
     { icon: Clock, title: "Stress-free process from start to finish", desc: "Estate clean outs are emotionally challenging enough without worrying about logistics, costs, and disposal. We handle every detail while keeping you informed throughout the entire process." },
-    { icon: DollarSign, title: "Transparent pricing with no hidden fees", desc: "You know exactly what you're paying before we begin work. Our revenue-sharing model means you often pay nothing out-of-pocket." },
+    { icon: DollarSign, title: "Transparent pricing with no hidden fees", desc: "You know exactly what the cleanout costs before work begins. Optional sale proceeds may help you recoup that expense, but returns are not guaranteed." },
     { icon: MapPin, title: "Local expertise and community connections", desc: "As a Denver estate liquidation company, we understand Colorado real estate markets, local donation centers, recycling programs, and buyer preferences." },
     { icon: Shield, title: "Fully licensed and insured", desc: "Your property and belongings receive complete protection throughout the clean out process." },
     { icon: Leaf, title: "Environmentally conscious approach", desc: "We prioritize donation and resale over disposal, keeping usable items out of landfills and in the hands of people who need them." }
@@ -92,7 +92,7 @@ const WhyWorkWithUs = () => {
     { step: 4, title: "Systematic removal", desc: "Non-valuable items are removed first, leaving space for careful handling of valuable pieces." },
     { step: 5, title: "Final cleaning coordination", desc: "We arrange deep cleaning services to leave your property ready for sale or new occupants." },
     { step: 6, title: "Auction management", desc: "We handle all aspects of online sales, from listing to buyer communication." },
-    { step: 7, title: "Revenue distribution", desc: "Auction proceeds are applied to your account, often resulting in zero out-of-pocket costs." }
+    { step: 7, title: "Sales settlement", desc: "Auction and e-commerce proceeds are settled according to your agreement and may help recoup the upfront cleanout cost." }
   ];
 
   const testimonials = [
@@ -123,8 +123,8 @@ const WhyWorkWithUs = () => {
       answer: "Items that don't sell or aren't suitable for auction are handled responsibly. We coordinate donations to local charities, arrange recycling for appropriate materials, and only dispose of items that truly have no remaining value. Our goal is to minimize landfill waste."
     },
     {
-      question: "Is there really no upfront cost for your junk removal service?",
-      answer: "Correct! Unlike traditional junk removal companies that charge flat fees upfront, our revenue-sharing model means you often pay nothing out-of-pocket. We identify valuable items during the clean out, auction them, and apply proceeds to your removal costs. Many clients end up with money back."
+      question: "Is there an upfront cost for your cleanout or junk removal service?",
+      answer: "Yes. We provide a clear quote after evaluating the property, and the cleanout or removal cost is paid upfront. With your approval, items with resale potential can be sold through auction or e-commerce, and those proceeds may help you recoup part or all of the expense. No sale result is guaranteed."
     }
   ];
 
@@ -132,7 +132,7 @@ const WhyWorkWithUs = () => {
     <Layout>
       <SEOHead
         title="Why Work With Us | Denver Estate Clean Outs & Junk Removal"
-        description="Denver's full-service estate clean outs, junk removal & auctions. Our unique auction-backed model often covers your removal costs and puts money back in your pocket."
+        description="Denver estate cleanouts, junk removal, auctions and e-commerce sales. Clear upfront cleanout pricing with optional resale services."
         canonical="/why-work-with-us"
         keywords="estate clean out Denver, junk removal Denver, estate liquidation Colorado, auction-backed clean out, hoarder clean out Denver, estate cleanout cost, junk removal company Colorado"
         faqSchema={faqs}
@@ -172,7 +172,7 @@ const WhyWorkWithUs = () => {
               All Under One Roof
             </p>
             <p className="text-lg text-foreground/90 mb-8">
-              JSG ESTATE LIQUIDATORS transforms overwhelming estate clean outs and junk removal projects across Denver and Colorado into stress-free, cost-effective solutions. Unlike traditional junk removal companies that simply haul everything away for a flat fee, we identify valuable items during the clean out process and auction them online—often covering your entire removal costs and putting money back in your pocket.
+               JSG ESTATE LIQUIDATORS provides custom cleanout plans across Denver and Colorado. If a cleanout is involved, its quoted cost is always paid upfront. We can also identify approved items for online auction or e-commerce sale, giving you an opportunity to recoup some or all of that expense without promising a result.
             </p>
             <Button asChild variant="accent" size="lg">
               <Link to="/contact">Get Your Free Consultation</Link>

@@ -118,7 +118,7 @@ const ServiceCategoryPage = () => {
             <strong>TL;DR:</strong> JSG Liquidators provides {category.serviceName.toLowerCase()} across every
             Denver-metro and Front Range city — Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood,
             Littleton, Thornton, Westminster, Arvada, Centennial, Boulder, Fort Collins, and Colorado Springs.
-            No upfront cost. Items typically sell in 7–10 days. Call David at (805) 444-4069.
+             Cleanout work is quoted and paid upfront. Optional sale proceeds may help recoup that expense. Call David at (805) 444-4069.
           </p>
           <div className="flex flex-wrap gap-4">
             <Button size="lg" variant="secondary" asChild>
@@ -192,8 +192,8 @@ const ServiceCategoryPage = () => {
                   {category.serviceName} throughout {a.city}, {a.county} ({a.population} residents).
                   Serving {a.nearbyAreas.slice(0, 3).join(", ")} and neighborhoods near{" "}
                   {a.localLandmarks.slice(0, 2).join(" and ")}. ZIP codes include{" "}
-                  {a.zipCodes.slice(0, 4).join(", ")}. Free on-site consultation, no upfront cost,
-                  and auction proceeds offset every fee.
+                   {a.zipCodes.slice(0, 4).join(", ")}. Free on-site consultation, clear upfront cleanout pricing,
+                   and optional auction or e-commerce sales.
                 </p>
                 <span className="text-accent text-sm font-medium inline-flex items-center gap-1">
                   See {a.city} details <ArrowRight className="w-4 h-4" />

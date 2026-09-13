@@ -124,7 +124,7 @@ const Contact = () => {
             </h1>
             <p className="text-xl text-primary-foreground/80">
               Contact Denver's trusted estate sale company for estate liquidation, cleanouts, 
-              e-commerce consignment &amp; online auctions — serving the Denver metro &amp; Front Range with no upfront costs.
+               e-commerce consignment &amp; online auctions — with free consultations and clear upfront pricing for cleanout work.
             </p>
           </motion.div>
         </div>
