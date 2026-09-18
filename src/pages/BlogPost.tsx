@@ -257,7 +257,7 @@ const BlogPost = () => {
                     </div>
                   )}
                   <div
-                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-headings:tracking-normal prose-h2:mt-14 prose-h2:mb-5 prose-h2:text-3xl prose-h3:mt-9 prose-h3:mb-3 prose-h3:text-xl prose-p:my-5 prose-p:text-muted-foreground prose-p:leading-8 prose-li:my-2 prose-li:text-muted-foreground prose-li:leading-7 prose-ul:my-5 prose-ol:my-5 prose-a:text-primary prose-strong:text-foreground prose-img:rounded-xl prose-img:my-8 prose-img:w-full prose-img:max-w-full prose-img:h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:!h-auto [&_img]:object-cover"
+                    className="max-w-none text-lg text-muted-foreground [&_h2]:mt-16 [&_h2]:mb-6 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:text-foreground [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-snug [&_h3]:text-foreground [&_p]:my-6 [&_p]:leading-8 [&_ul]:my-7 [&_ul]:list-disc [&_ul]:space-y-3 [&_ul]:pl-7 [&_ol]:my-7 [&_ol]:list-decimal [&_ol]:space-y-3 [&_ol]:pl-7 [&_li]:pl-1 [&_li]:leading-7 [&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold [&_strong]:text-foreground [&_img]:my-8 [&_img]:!h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:rounded-xl [&_img]:object-cover"
                     dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                   />
                 </>
