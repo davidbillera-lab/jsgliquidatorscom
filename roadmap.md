@@ -7,3 +7,5 @@
 - [ ] Verify crawler files, sitemap, desktop/mobile pages, and contact form behavior.
 
 - [x] Publish the uploaded fall Denver estate cleanout article with corrected claims and blog formatting.
+
+- [x] Publish the uploaded Broncos sports memorabilia article with consistent blog spacing and verified claims.

@@ -32,6 +32,10 @@ const BlogPost = () => {
   });
 
   useEffect(() => {
+    document
+      .querySelector('link[rel="canonical"]:not([data-rh="true"])')
+      ?.remove();
+
     if (!isLoading && !post && !error) {
       navigate("/blog");
     }
