@@ -52,8 +52,8 @@ const BlogPost = () => {
     },
     "JSG Team": {
       name: "JSG Liquidators Team",
-      title: "Estate Liquidation Experts",
-      bio: "The JSG Liquidators team brings decades of combined experience in estate sales, antique valuation, e-commerce consignment, and junk removal across the Denver metro area and Colorado Front Range.",
+      title: "Estate Sales & Cleanout Team",
+      bio: "The JSG Liquidators team helps Denver-area families and property owners plan estate sales, cleanouts, e-commerce consignment, and related removal services around the needs of each property.",
     },
   };
 
@@ -257,7 +257,7 @@ const BlogPost = () => {
                     </div>
                   )}
                   <div
-                    className="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-img:rounded-xl prose-img:my-8 prose-img:w-full prose-img:max-w-full prose-img:h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:!h-auto [&_img]:object-cover"
+                    className="max-w-none text-lg text-muted-foreground [&_h2]:mt-16 [&_h2]:mb-6 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:text-foreground [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-snug [&_h3]:text-foreground [&_p]:my-6 [&_p]:leading-8 [&_ul]:my-7 [&_ul]:list-disc [&_ul]:space-y-3 [&_ul]:pl-7 [&_ol]:my-7 [&_ol]:list-decimal [&_ol]:space-y-3 [&_ol]:pl-7 [&_li]:pl-1 [&_li]:leading-7 [&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold [&_strong]:text-foreground [&_img]:my-8 [&_img]:!h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:rounded-xl [&_img]:object-cover"
                     dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                   />
                 </>
