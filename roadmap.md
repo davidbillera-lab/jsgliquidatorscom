@@ -8,4 +8,4 @@
 
 - [x] Publish the uploaded fall Denver estate cleanout article with corrected claims and blog formatting.
 
-- [ ] Publish the uploaded Broncos sports memorabilia article with consistent blog spacing and verified claims.
+- [x] Publish the uploaded Broncos sports memorabilia article with consistent blog spacing and verified claims.
