@@ -5,3 +5,5 @@
 - [ ] Remove unsupported claims from shared/current pages and AI-facing content.
 - [ ] Deduplicate and correct route-specific structured data and prerendered content.
 - [ ] Verify crawler files, sitemap, desktop/mobile pages, and contact form behavior.
+
+- [ ] Publish the uploaded fall Denver estate cleanout article with corrected claims and blog formatting.
