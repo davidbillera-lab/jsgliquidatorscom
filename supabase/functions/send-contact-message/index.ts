@@ -1,7 +1,9 @@
 import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const TO_EMAIL = 'jsgliquidators@gmail.com';
+// Temporary: Resend test mode only delivers to the account owner's address.
+// Switch back to jsgliquidators@gmail.com once a sending domain is verified.
+const TO_EMAIL = 'davidbillera@gmail.com';
 const FROM_EMAIL = 'JSG Liquidators <onboarding@resend.dev>';
 
 interface ContactPayload {
