@@ -169,7 +169,7 @@ const Pricing = () => {
         <div className="absolute inset-0">
           <img
             src={whyWorkAppraisal}
-            alt="Estate sale professional appraising antiques and valuables during a free Denver consultation"
+            alt="Two men examining jewelry and small antiques on a desk during an appraisal"
             className="w-full h-full object-cover"
             fetchPriority="high"
             decoding="async"

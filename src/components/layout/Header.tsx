@@ -29,7 +29,7 @@ export const Header = () => {
           <Link to="/" className="flex items-center">
             <img 
               src={logoLandscape} 
-              alt="JSG Estate Liquidation" 
+              alt="JSG Liquidators logo" 
               className="h-16 w-auto"
             />
           </Link>

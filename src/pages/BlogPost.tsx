@@ -265,7 +265,7 @@ const BlogPost = () => {
                     <div className="rounded-xl overflow-hidden mb-8">
                       <img
                         src={post.featured_image_url}
-                        alt={post.title}
+                        alt={`Cover photo for the article “${post.title}”`}
                         className="w-full h-auto max-w-full object-cover"
                         loading="lazy"
                       />

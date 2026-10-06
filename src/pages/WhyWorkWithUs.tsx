@@ -141,7 +141,7 @@ const WhyWorkWithUs = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={whyWorkHero} 
-            alt="Denver estate clean out and junk removal team sorting antiques and valuables for auction in Colorado home"
+            alt="Crew sorting and packing furniture and household items inside a home"
             className="w-full h-full object-cover"
             fetchPriority="high"
             decoding="async"
@@ -214,7 +214,7 @@ const WhyWorkWithUs = () => {
       <section className="relative h-64 md:h-80 lg:h-96">
         <img 
           src={whyWorkAppraisal} 
-          alt="Professional estate liquidation appraisers evaluating antiques jewelry and collectibles during Denver junk removal service"
+          alt="Two men examining jewelry and small antiques on a desk during an appraisal"
           className="w-full h-full object-cover"
           loading="lazy"
           decoding="async"
@@ -336,7 +336,7 @@ const WhyWorkWithUs = () => {
       <section className="relative h-64 md:h-80 lg:h-96">
         <img 
           src={whyWorkAuction} 
-          alt="Colorado estate sale online auction platform displaying vintage furniture antiques and collectibles from Denver clean outs"
+          alt="Laptop showing an online auction page with listings for vintage wooden furniture"
           className="w-full h-full object-cover"
           loading="lazy"
           decoding="async"
@@ -386,7 +386,7 @@ const WhyWorkWithUs = () => {
         <div className="absolute inset-0 z-0">
           <img 
             src={whyWorkColorado} 
-            alt="Estate clean out and junk removal service areas across Denver metro Boulder Fort Collins Colorado Springs and Front Range communities"
+            alt="Aerial view of a Front Range suburban neighborhood with the Rocky Mountains in the distance"
             className="w-full h-full object-cover opacity-20"
             loading="lazy"
             decoding="async"

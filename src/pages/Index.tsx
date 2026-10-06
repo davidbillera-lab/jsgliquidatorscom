@@ -142,7 +142,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
-            alt="Professional estate sale auction with antique furniture, collectibles, and valuables being liquidated in Denver Colorado"
+            alt="Living room filled with antique furniture, glassware and framed art, with a mountain view through the windows"
             className="w-full h-full object-cover"
             fetchPriority="high"
             decoding="async"
@@ -497,7 +497,7 @@ const Index = () => {
             >
               <img
                 src="/blog-images/estate-liquidation-workflow.webp"
-                alt="Professional estate cleanout service sorting items in a Denver Colorado home"
+                alt="Shoppers browsing furniture and household items during an estate sale in a bright home"
                 className="rounded-2xl shadow-xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-6 shadow-lg border border-border max-w-xs">
@@ -523,7 +523,7 @@ const Index = () => {
             >
               <img
                 src="/blog-images/estate-liquidation-sorting.webp"
-                alt="Junk removal and donation sorting services in Colorado - items being organized for recycling and charity"
+                alt="Conference table with estate binders and paperwork laid out for review"
                 className="rounded-2xl shadow-xl w-full"
               />
               <div className="absolute -top-6 -right-6 bg-accent rounded-xl p-6 shadow-lg max-w-xs">

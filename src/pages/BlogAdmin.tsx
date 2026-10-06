@@ -492,7 +492,7 @@ const BlogAdmin = () => {
                           <div className="space-y-3">
                             <img
                               src={URL.createObjectURL(imageFile)}
-                              alt="Preview"
+                              alt="Preview of the selected featured image"
                               className="max-h-48 mx-auto rounded-lg object-cover"
                             />
                             <p className="text-sm text-muted-foreground">{imageFile.name}</p>
@@ -513,7 +513,7 @@ const BlogAdmin = () => {
                           <div className="space-y-3">
                             <img
                               src={editingPost.featured_image_url}
-                              alt="Current"
+                              alt="Current featured image for this post"
                               className="max-h-48 mx-auto rounded-lg object-cover"
                             />
                             <p className="text-sm text-muted-foreground">Current image (drop new image to replace)</p>
