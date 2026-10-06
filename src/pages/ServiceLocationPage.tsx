@@ -1,5 +1,5 @@
-import { useParams, Link, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { useParams, Link, Navigate } from "@/lib/router-compat";
+import { Helmet } from "@/components/seo/Helmet";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, MapPin, CheckCircle2, HelpCircle, Landmark, Building2, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,9 @@ const ServiceLocationPage = () => {
   const baseFaq = serviceContent.getFaq(area.city);
   const rotatedFaq = baseFaq.map((_, i) => baseFaq[(i + cityIndex) % baseFaq.length]).slice(0, 3);
   const copy = cityServiceCopy[`${area.slug}/${serviceContent.serviceSlug}`];
-  const faqData = angle ? [angle.faq, ...(copy ? copy.faqs : rotatedFaq)] : baseFaq;
+  const faqData = (angle ? [angle.faq, ...(copy ? copy.faqs : rotatedFaq)] : baseFaq).filter(
+    (f): f is { question: string; answer: string } => Boolean(f),
+  );
   const introParas = copy ? copy.intro.split(/\n\n+/) : [serviceContent.getIntro(area.city, area.county)];
   const benefits = serviceContent.benefits
     .map((_, i) => serviceContent.benefits[(i + cityIndex) % serviceContent.benefits.length])
@@ -218,7 +220,7 @@ const ServiceLocationPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((benefit, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-sm border">
+                className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-xs border">
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                 <p className="text-foreground">{benefit}</p>
               </motion.div>

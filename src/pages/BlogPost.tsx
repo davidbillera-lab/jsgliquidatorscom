@@ -1,4 +1,6 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { getRouteApi } from "@tanstack/react-router";
+import { fetchPublishedPost } from "@/lib/blogQueries";
+import { Link, useParams, useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -8,43 +10,33 @@ import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
-import DOMPurify from "dompurify";
-import { Helmet } from "react-helmet-async";
+import { sanitizeBlogHtml } from "@/lib/sanitizeBlogHtml";
+import { Helmet } from "@/components/seo/Helmet";
+
+const blogPostRoute = getRouteApi("/blog/$slug");
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
+  const loaded = blogPostRoute.useLoaderData();
+
   const { data: post, isLoading, error } = useQuery({
     queryKey: ["blog-post", slug],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("*")
-        .eq("slug", slug)
-        .eq("published", true)
-        .maybeSingle();
-
-      if (error) throw error;
-      return data;
-    },
+    queryFn: () => fetchPublishedPost(slug as string),
+    initialData: loaded.post === undefined ? undefined : loaded.post,
     enabled: !!slug,
   });
 
   useEffect(() => {
-    document
-      .querySelectorAll(
-        'link[rel="canonical"]:not([data-rh]), meta[name="description"]:not([data-rh]), meta[property^="og:"]:not([data-rh]), meta[name^="twitter:"]:not([data-rh])'
-      )
-      .forEach((el) => el.remove());
-
     if (!isLoading && !post && !error) {
       navigate("/blog");
     }
   }, [post, isLoading, error, navigate]);
 
   // Author bio map for E-E-A-T
-  const authorBios: Record<string, { name: string; title: string; bio: string; phone?: string }> = {
+  type AuthorBio = { name: string; title: string; bio: string; phone?: string };
+  const authorBios: Record<string, AuthorBio> & { "JSG Team": AuthorBio } = {
     "David Billera": {
       name: "David Billera",
       title: "Co-Founder & Lead Liquidation Specialist",
@@ -169,7 +161,7 @@ const BlogPost = () => {
   return (
     <Layout>
       <Helmet>
-        <title>{post.title} | JSG Liquidators Blog</title>
+        <title>{`${post.title} | JSG Liquidators Blog`}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
         
@@ -254,19 +246,14 @@ const BlogPost = () => {
               // Only show standalone featured image if it's not already in content
               const showStandaloneFeaturedImage = post.featured_image_url && !contentHasFeaturedImage;
               
-              const sanitizedContent = DOMPurify.sanitize(post.content, {
-                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
-                               'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'],
-                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'class', 'id', 'style'],
-                ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
-              });
+              const sanitizedContent = sanitizeBlogHtml(post.content);
               
               return (
                 <>
                   {showStandaloneFeaturedImage && (
                     <div className="rounded-xl overflow-hidden mb-8">
                       <img
-                        src={post.featured_image_url}
+                        src={post.featured_image_url ?? undefined}
                         alt={`Cover photo for the article “${post.title}”`}
                         className="w-full h-auto max-w-full object-cover"
                         loading="lazy"

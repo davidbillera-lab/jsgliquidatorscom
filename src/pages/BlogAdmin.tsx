@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
@@ -7,6 +7,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { ReviewRequestDialog } from "@/components/admin/ReviewRequestDialog";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import type { TablesUpdate } from "@/integrations/supabase/types";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -220,7 +221,7 @@ const BlogAdmin = () => {
 
   const updateMutation = useMutation({
     mutationFn: async (data: typeof formData & { id: string; featured_image_url?: string }) => {
-      const updateData: Record<string, unknown> = {
+      const updateData: TablesUpdate<"blog_posts"> = {
         title: data.title,
         slug: data.slug || generateSlug(data.title),
         excerpt: data.excerpt || null,

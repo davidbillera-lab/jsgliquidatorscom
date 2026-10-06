@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { 
   CheckCircle, 
@@ -304,7 +304,7 @@ const WhyWorkWithUs = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-background rounded-lg p-6 shadow-sm"
+                className="bg-background rounded-lg p-6 shadow-xs"
               >
                 <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mb-4">
                   <span className="text-primary font-bold">{index + 1}</span>

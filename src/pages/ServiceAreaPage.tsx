@@ -1,10 +1,10 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCart, Building2, Trash2, Truck, House } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/seo/Helmet";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 import { testimonials } from "@/data/testimonials";
 
@@ -30,7 +30,7 @@ const ServiceAreaPage = () => {
 
   const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 6);
   const areaIndex = serviceAreas.findIndex((a) => a.slug === area.slug);
-  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length];
+  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length]!;
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -165,7 +165,7 @@ const ServiceAreaPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {allServices.map((service, i) => {
-              const Icon = serviceIcons[i];
+              const Icon = serviceIcons[i] ?? serviceIcons[0]!;
               return (
                 <motion.div key={service.slug} variants={fadeInUp} transition={{ duration: 0.5 }}>
                   <Link

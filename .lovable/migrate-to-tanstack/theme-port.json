@@ -1,0 +1,16 @@
+{
+  "customizations": [
+    { "token": "brand palette (--background..--ring, light + dark)", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--steel-blue / --steel-blue-light / --navy / --navy-light / --silver / --silver-dark", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--gradient-hero / --gradient-subtle / --gradient-card", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "--shadow-sm / --shadow-md / --shadow-lg / --shadow-glow", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "font-display / font-body (Playfair Display, Inter)", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "text-gradient", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "bg-gradient-hero", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "bg-gradient-subtle", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "card-elevated", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "shadow-glow", "source": "src/index.css", "reappliedIn": "src/styles.css" },
+    { "token": "animations fade-in / fade-in-left / fade-in-right / scale-in / accordion", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css" },
+    { "token": "container (centered, 2rem padding, 1400px)", "source": "tailwind.config.ts", "reappliedIn": "src/styles.css" }
+  ]
+}

@@ -1,5 +1,5 @@
 // Single source of truth for the consolidated /faq page.
-// Consumed by src/pages/Faq.tsx and scripts/prerender.ts.
+// Consumed by src/pages/Faq.tsx.
 
 export interface FaqItem {
   question: string;
