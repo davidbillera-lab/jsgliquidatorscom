@@ -76,7 +76,7 @@ export const serviceLocalAngles: Record<string, AngleBuilder> = {
     heading: `Discreet heavy-content cleanouts in ${city}`,
     paragraphs: [
       `${p.homes} Heavy-content situations can build up in basements, garages and outbuildings over many years.`,
-      `Neighbors and HOAs do not need to be involved beyond what access requires. We plan truck placement and work hours with privacy in mind, and family members decide what is kept.`,
+      `Whether the home is in ${list(p.neighborhoods.slice(0, 3))} or elsewhere in ${city}, truck placement and work hours are planned with privacy in mind, and family members decide what is kept.`,
     ],
     faq: {
       question: `Can a ${city} heavy-content cleanout be done in stages?`,
