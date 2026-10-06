@@ -42,8 +42,7 @@ export const serviceLocalAngles: Record<string, AngleBuilder> = {
     heading: `Business liquidation across ${city}'s commercial areas`,
     paragraphs: [
       p.commerce,
-      `Commercial liquidations usually run against a lease end or closing date. We confirm building access, loading dock or parking limits and any landlord requirements, then build the sales schedule around them.`,
-      `Office furniture, equipment, fixtures and inventory are matched to the channel most likely to reach suitable buyers. Clearing of unsold contents can be quoted separately and is paid upfront.`,
+      `For ${city} commercial spaces we confirm loading, parking and landlord requirements before scheduling buyer pickups. ${p.access.split(". ").slice(-1)[0]}`,
     ],
     faq: {
       question: `Can you work around a ${city} lease deadline?`,
