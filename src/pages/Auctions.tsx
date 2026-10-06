@@ -26,7 +26,7 @@ const Auctions = () => {
     <Layout>
       <SEOHead
         title="Denver Estate Sale Auctions & eBay Store"
-        description="Shop JSG Liquidators online estate auctions and e-commerce store for antiques, collectibles, furniture, and estate treasures in Denver CO. Bid on eBay or Denver Online Auctions."
+        description="Bid on JSG Liquidators estate auctions and shop our eBay store for antiques, collectibles and furniture from Denver-area estates. Updated with new listings."
         canonical="/auctions"
         keywords="online auctions Denver, estate sale auctions Colorado, antique auctions, eBay estate sales Denver, Denver Online Auctions, estate sale bidding"
         image="https://jsgliquidators.com/hero-estate-sale.jpg"

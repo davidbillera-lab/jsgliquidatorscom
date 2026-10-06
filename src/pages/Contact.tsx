@@ -297,7 +297,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="mailto:jsgliquidators@gmail.com"
+                  href="mailto:jsgliquidators@jsgliquidators.com"
                   className="flex items-start gap-4 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 >
                   <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
@@ -305,7 +305,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-lg text-primary font-medium">jsgliquidators@gmail.com</p>
+                    <p className="text-lg text-primary font-medium">jsgliquidators@jsgliquidators.com</p>
                     <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
                   </div>
                 </a>

@@ -105,7 +105,7 @@ const Search = () => {
     <Layout>
       <SEOHead
         title="Search"
-        description="Search JSG Liquidators for estate sales, e-commerce consignment, business liquidation, cleanouts, service areas, FAQs and blog articles across Denver and Colorado."
+        description="Search JSG Liquidators for estate sales, consignment, business liquidation, cleanouts, service areas, FAQs and blog articles across Denver and Colorado."
         canonical="/search"
         noindex
       />

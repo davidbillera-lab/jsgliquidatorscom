@@ -14,6 +14,9 @@ const serviceAreaLinks = [
   { name: "Westminster", slug: "westminster" },
   { name: "Arvada", slug: "arvada" },
   { name: "Centennial", slug: "centennial" },
+  { name: "Parker", slug: "parker" },
+  { name: "Wheat Ridge", slug: "wheat-ridge" },
+  { name: "Golden", slug: "golden" },
   { name: "Boulder", slug: "boulder" },
   { name: "Fort Collins", slug: "fort-collins" },
   { name: "Colorado Springs", slug: "colorado-springs" },
@@ -136,11 +139,11 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <span className="text-sm">Vincent: (805) 340-4817</span>
               </a>
               <a
-                href="mailto:jsgliquidators@gmail.com"
+                href="mailto:jsgliquidators@jsgliquidators.com"
                 className="flex items-center gap-3 text-primary-foreground/80 hover:text-accent transition-colors"
               >
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span className="text-sm">jsgliquidators@gmail.com</span>
+                <span className="text-sm">jsgliquidators@jsgliquidators.com</span>
               </a>
             </div>
             <div className="mt-6">

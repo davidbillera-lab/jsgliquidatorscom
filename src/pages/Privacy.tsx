@@ -106,8 +106,8 @@ const Privacy = () => {
             <p>
               You may request a copy of the personal information we hold about you, ask us to
               correct it, or ask us to delete it. Email{" "}
-              <a href="mailto:jsgliquidators@gmail.com" className="text-primary hover:underline">
-                jsgliquidators@gmail.com
+              <a href="mailto:jsgliquidators@jsgliquidators.com" className="text-primary hover:underline">
+                jsgliquidators@jsgliquidators.com
               </a>{" "}
               and we will respond within a reasonable time.
             </p>
@@ -145,8 +145,8 @@ const Privacy = () => {
               </a>
               <br />
               Email:{" "}
-              <a href="mailto:jsgliquidators@gmail.com" className="text-primary hover:underline">
-                jsgliquidators@gmail.com
+              <a href="mailto:jsgliquidators@jsgliquidators.com" className="text-primary hover:underline">
+                jsgliquidators@jsgliquidators.com
               </a>
             </p>
           </div>

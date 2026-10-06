@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Helmet } from "react-helmet-async";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
+import { testimonials } from "@/data/testimonials";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -28,6 +29,8 @@ const ServiceAreaPage = () => {
   }
 
   const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 6);
+  const areaIndex = serviceAreas.findIndex((a) => a.slug === area.slug);
+  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length];
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -36,7 +39,7 @@ const ServiceAreaPage = () => {
     description: `Professional estate sales, liquidation, junk removal and cleanout services in ${area.city}, Colorado.`,
     url: `https://jsgliquidators.com/areas/${area.slug}`,
     telephone: ["+1-805-444-4069", "+1-805-340-4817"],
-    email: "jsgliquidators@gmail.com",
+    email: "jsgliquidators@jsgliquidators.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: area.city,
@@ -232,9 +235,10 @@ const ServiceAreaPage = () => {
                   ))}
                 </div>
                 <p className="text-foreground mb-4 leading-relaxed italic">
-                  "{area.testimonialSnippet.text}"
+                  "{review.text}"
                 </p>
-                <p className="font-semibold text-foreground">{area.testimonialSnippet.author}</p>
+                <p className="font-semibold text-foreground">{review.name}, {review.location}</p>
+                <p className="text-xs text-muted-foreground mt-1">Google review</p>
               </div>
 
               {/* Local Info Card */}

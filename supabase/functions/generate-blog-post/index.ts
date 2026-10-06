@@ -351,7 +351,7 @@ COMPANY FACTS (use accurately):
 - Revenue Recovery / Auction-Backed Cleanout model — items typically sold in 7-10 days, often offsetting cleanout cost
 - Marketplaces: LiveAuctioneers, Denver Online Auctions, eBay (national reach shipped from Denver)
 - Compassionate, no-upfront-cost service for families in transition
-- Primary contact: David at 805-444-4069 · Secondary: Vinnie at 805-340-4817 · jsgliquidators@gmail.com
+- Primary contact: David at 805-444-4069 · Secondary: Vinnie at 805-340-4817 · jsgliquidators@jsgliquidators.com
 - Service-area page: ${cityUrl}
 - Service page: ${serviceUrl}
 - City + service landing page: ${cityServiceUrl}

@@ -78,6 +78,13 @@ const staggerContainer = {
   },
 };
 
+const homeOverview = [
+  { heading: "Who we serve", body: "Most of our clients are Denver-area families settling a parent's estate, executors and attorneys working through probate, realtors preparing a house for listing, and people downsizing into a smaller home or senior community. We also help business owners who are closing, relocating or clearing surplus equipment. We work across Denver, Aurora, Lakewood, Littleton, Highlands Ranch, Castle Rock, Parker, Golden, Boulder, Fort Collins, Colorado Springs and the rest of the Front Range." },
+  { heading: "How the process works", body: "Every project starts with a free walkthrough. We listen to what the family needs, note what must stay, and look for items that may be worth selling. Then we recommend a plan: online auction, e-commerce consignment, an estate cleanout, junk removal, or a combination. Approved items are researched, photographed and listed on channels such as Denver Online Auctions and our eBay store, and we coordinate buyer payment and pickup. If the property needs to be cleared, the cleanout is quoted in writing and paid upfront before work begins. Optional sale proceeds may help recoup some or all of that cost, but results depend on what sells and are never guaranteed." },
+  { heading: "What we sell, clear and remove", body: "Denver homes often hold mid-century furniture, Western and Southwestern art, sports memorabilia, tools, jewelry and collectibles. These can draw interest from online buyers across the country when they are described accurately. Everyday household goods may be grouped into auction lots, donated or recycled, and the rest is removed as part of an agreed cleanout. Hazardous materials are referred to qualified providers, and we tell you about any exclusions before the work starts." },
+  { heading: "Why JSG instead of a traditional estate sale", body: "A traditional estate sale opens the house to crowds for a weekend and depends on who happens to walk in. Our online approach keeps strangers out of the home, gives listings time to reach buyers well beyond Denver, and lets us match each item to the platform that suits it. Because we also handle cleanouts and removal, families can work with one team from the first walkthrough to a broom-clean property, instead of coordinating a sale company, a hauler and a donation pickup separately. We explain fees and terms before anything is listed, and you receive clear settlement reporting afterward." },
+];
+
 const Index = () => {
   const { data: google } = useGoogleReviews();
 
@@ -135,7 +142,7 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
-            alt="Professional estate sale auction with antique furniture, collectibles, and valuables being liquidated in Denver Colorado"
+            alt="Living room filled with antique furniture, glassware and framed art, with a mountain view through the windows"
             className="w-full h-full object-cover"
             fetchPriority="high"
             decoding="async"
@@ -228,6 +235,23 @@ const Index = () => {
               ))}
               <span>& surrounding areas</span>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the service: who we serve, process, why JSG */}
+      <section className="py-20 lg:py-24 bg-background" aria-labelledby="home-overview-heading">
+        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+          <h2 id="home-overview-heading" className="text-3xl md:text-4xl font-display font-bold text-foreground mb-10 text-center">
+            How Our Denver Estate Sale &amp; Liquidation Service Works
+          </h2>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
+            {homeOverview.map((block) => (
+              <div key={block.heading}>
+                <h3 className="text-xl font-display font-bold text-foreground mb-3">{block.heading}</h3>
+                <p className="text-muted-foreground leading-relaxed">{block.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -473,7 +497,7 @@ const Index = () => {
             >
               <img
                 src="/blog-images/estate-liquidation-workflow.webp"
-                alt="Professional estate cleanout service sorting items in a Denver Colorado home"
+                alt="Shoppers browsing furniture and household items during an estate sale in a bright home"
                 className="rounded-2xl shadow-xl w-full"
               />
               <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-6 shadow-lg border border-border max-w-xs">
@@ -499,7 +523,7 @@ const Index = () => {
             >
               <img
                 src="/blog-images/estate-liquidation-sorting.webp"
-                alt="Junk removal and donation sorting services in Colorado - items being organized for recycling and charity"
+                alt="Conference table with estate binders and paperwork laid out for review"
                 className="rounded-2xl shadow-xl w-full"
               />
               <div className="absolute -top-6 -right-6 bg-accent rounded-xl p-6 shadow-lg max-w-xs">

@@ -14,6 +14,10 @@ import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { faqGroups, allFaqs } from "../src/data/faqData";
 import { serviceAreas } from "../src/data/serviceAreas";
+import { getCityLocalProfile } from "../src/data/cityLocalProfiles";
+import { serviceLocalAngles } from "../src/data/serviceLocalAngles";
+import { cityServiceCopy } from "../src/data/cityServiceCopy";
+import { getServiceLocationContent } from "../src/data/serviceLocationContent";
 import { coreServiceSeo } from "../src/data/coreServiceSeo";
 import { serviceLocationData } from "../src/data/serviceLocationContent";
 
@@ -272,7 +276,7 @@ const breadcrumb = (items: { name: string; item: string }[]) => ({
 function commonFooter(): string {
   return `<footer style="margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:14px;">
       <p><strong>JSG Liquidators</strong> · Denver, Colorado · Cleanout costs are quoted and paid upfront · Optional sale proceeds may help recoup costs.</p>
-      <p>Call David: <a href="tel:805-444-4069">(805) 444-4069</a> · Email: <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></p>
+      <p>Call David: <a href="tel:805-444-4069">(805) 444-4069</a> · Email: <a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a></p>
       <nav><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/auctions">Auctions</a> · <a href="/blog">Blog</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI: llms.txt</a></nav>
     </footer>`;
 }
@@ -311,14 +315,14 @@ const staticPages: Route[] = [
   {
     path: "/contact",
     title: "Contact JSG Liquidators | Denver Estate Sales",
-    description: "Contact JSG Liquidators for a free Denver estate sale, liquidation, or cleanout consultation. Call (805) 444-4069 or email jsgliquidators@gmail.com.",
+    description: "Contact JSG Liquidators for a free Denver estate sale, liquidation, or cleanout consultation. Call (805) 444-4069 or email jsgliquidators@jsgliquidators.com.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Contact JSG Liquidators</h1>
       <p>Free, no-obligation consultations for estate sales, business liquidation, cleanouts, consignment, and junk removal anywhere in the Denver metro.</p>
       <dl>
         <dt>Phone (David, primary)</dt><dd><a href="tel:805-444-4069">(805) 444-4069</a></dd>
         <dt>Phone (Vincent, secondary)</dt><dd><a href="tel:805-340-4817">(805) 340-4817</a></dd>
-        <dt>Email</dt><dd><a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></dd>
+        <dt>Email</dt><dd><a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a></dd>
         <dt>Hours</dt><dd>Mon–Fri 8:00 AM – 6:00 PM Mountain Time · Saturday by appointment</dd>
         <dt>Service area</dt><dd>Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Centennial, Parker, Arvada, Westminster, Thornton, Boulder, and surrounding Front Range communities</dd>
       </dl>
@@ -467,7 +471,7 @@ const staticPages: Route[] = [
         name: "JSG Liquidators",
         url: SITE_URL + "/how-much-do-estate-sale-companies-charge",
         telephone: "+1-805-444-4069",
-        email: "jsgliquidators@gmail.com",
+        email: "jsgliquidators@jsgliquidators.com",
         priceRange: "Free consultation — custom quote per job",
         areaServed: ["Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder", "Thornton", "Centennial", "Highlands Ranch", "Castle Rock", "Englewood", "Littleton", "Fort Collins", "Colorado Springs"].map((city) => ({ "@type": "City", name: `${city}, CO` })),
       },
@@ -477,7 +481,7 @@ const staticPages: Route[] = [
     path: "/privacy",
     title: "Privacy Policy | JSG Liquidators Denver Estate Sales",
     description:
-      "How JSG Liquidators collects, uses, and protects information submitted through jsgliquidators.com. Contact jsgliquidators@gmail.com with privacy questions.",
+      "How JSG Liquidators collects, uses, and protects information submitted through jsgliquidators.com. Contact jsgliquidators@jsgliquidators.com with privacy questions.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Privacy Policy</h1>
       <p>JSG Liquidators collects only the information you submit through our contact and estimate forms — name, phone, email, property location, and details about your estate sale, liquidation, consignment, or cleanout request.</p>
@@ -488,7 +492,7 @@ const staticPages: Route[] = [
         <li>To send service updates you have asked for. We never sell your information.</li>
       </ul>
       <h2>Contact</h2>
-      <p>Email <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a> or call <a href="tel:805-444-4069">(805) 444-4069</a> to review, correct, or delete your information.</p>
+      <p>Email <a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a> or call <a href="tel:805-444-4069">(805) 444-4069</a> to review, correct, or delete your information.</p>
       ${commonFooter()}
     </main>`,
     jsonLd: breadcrumb([
@@ -514,8 +518,10 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
   bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
     <h1>${pageH1}</h1>
     <p class="speakable-summary">${pageSummary} Cleanout work, when selected, is quoted and paid upfront. Optional sale proceeds may help recoup costs but are not guaranteed. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+    ${(seo?.sections ?? []).map((sec) => `<h2>${escapeHtml(sec.heading)}</h2>${sec.paragraphs.map((t) => `<p>${escapeHtml(t)}</p>`).join("")}`).join("")}
+    ${seo?.faqs?.length ? `<h2>Frequently asked questions</h2>${seo.faqs.map((f) => `<h3>${escapeHtml(f.question)}</h3><p>${escapeHtml(f.answer)}</p>`).join("")}` : ""}
     <h2>${svc.name} — city by city</h2>
-    <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${titleCase(c)}, CO</a></li>`).join("")}</ul>
+    <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${CITY_NAMES[c] ?? titleCase(c)}, CO</a></li>`).join("")}</ul>
     <h2>Related services</h2>
     <ul>${SERVICES.filter((s) => s.slug !== svc.slug).map((s) => `<li><a href="/services/${s.slug}">${s.name}</a></li>`).join("")}</ul>
     ${commonFooter()}
@@ -527,6 +533,7 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
       { name: svc.name, item: pageUrl },
     ]),
     { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: pageTitle, description: pageDescription, isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${pageUrl}#service` } },
+    ...(seo?.faqs?.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: seo.faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) }] : []),
     { "@context": "https://schema.org", "@type": "Service", "@id": `${pageUrl}#service`, name: svc.name, serviceType: svc.name, url: pageUrl, provider: { "@id": `${SITE_URL}/#organization` }, isPartOf: { "@id": `${SITE_URL}/#service` }, areaServed: { "@type": "AdministrativeArea", name: "Denver metro area" } },
   ],
 };
@@ -534,41 +541,54 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
 
 // ---------- City / area pages ----------
 const areaPages: Route[] = [];
-for (const city of CITIES) {
-  const cityName = titleCase(city);
+for (const area of serviceAreas) {
+  const city = area.slug;
+  const cityName = area.city;
+  const profile = getCityLocalProfile(city);
   areaPages.push({
     path: `/areas/${city}`,
     title: `${cityName} Estate Sales & Liquidation | JSG Liquidators`,
-    description: `Estate sales, cleanouts, business liquidation, consignment, and junk removal in ${cityName}, Colorado. Custom plans and clear upfront cleanout pricing.`,
+    description: area.metaDescription,
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
-      <h1>Estate Sales &amp; Liquidation in ${cityName}, Colorado</h1>
-      <p>JSG Liquidators provides custom estate liquidation plans in ${cityName}. Cleanout work is quoted and paid upfront; optional auction and e-commerce proceeds may help clients recoup costs without any guarantee.</p>
-      <h2>${cityName} services</h2>
-      <ul>${SERVICES.map((s) => `<li><a href="/areas/${city}/${s.slug}">${s.name} in ${cityName}</a></li>`).join("")}</ul>
+      <h1>Estate Sales &amp; Liquidation in ${escapeHtml(cityName)}, Colorado</h1>
+      <p>${escapeHtml(area.description)}</p>
+      <p>${escapeHtml(area.whyLocal)}</p>
+      <h2>${escapeHtml(cityName)} services</h2>
+      <ul>${SERVICES.map((s) => `<li><a href="/areas/${city}/${s.slug}">${s.name} in ${escapeHtml(cityName)}</a></li>`).join("")}</ul>
       ${commonFooter()}
     </main>`,
     jsonLd: breadcrumb([
       { name: "Home", item: SITE_URL + "/" },
-      { name: "Services", item: SITE_URL + "/services" },
       { name: cityName, item: `${SITE_URL}/areas/${city}` },
     ]),
   });
   for (const svc of SERVICES) {
+    const content = getServiceLocationContent(svc.slug);
+    const copy = cityServiceCopy[`${city}/${svc.slug}`];
+    const angle = profile ? serviceLocalAngles[svc.slug]?.(cityName, profile) : undefined;
+    const faqs = [...(angle ? [angle.faq] : []), ...(copy?.faqs ?? content?.getFaq(cityName) ?? [])];
+    const pageUrl = `${SITE_URL}/areas/${city}/${svc.slug}`;
     areaPages.push({
       path: `/areas/${city}/${svc.slug}`,
-      title: `${svc.name} in ${cityName}, CO | JSG Liquidators`,
-      description: `Professional ${svc.name.toLowerCase()} services in ${cityName}, Colorado. Custom planning and clear upfront cleanout pricing when applicable.`,
+      title: `${content ? content.getTitle(cityName) : `${svc.name} ${cityName} CO`} | JSG Liquidators`,
+      description: content ? content.getMetaDescription(cityName) : `${svc.name} in ${cityName}, Colorado.`,
       bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
-        <h1>${svc.name} in ${cityName}, Colorado</h1>
-        <p>JSG Liquidators offers professional ${svc.name.toLowerCase()} throughout ${cityName} and surrounding Denver-metro communities. Scheduling depends on the project scope and current availability.</p>
-        <p>Cleanout work is quoted and paid upfront. Approved items may be sold through auction or e-commerce, and proceeds may help recoup costs without any guaranteed result.</p>
+        <h1>${escapeHtml(content ? content.getHeroHeadline(cityName) : `${svc.name} in ${cityName}`)}</h1>
+        ${(copy?.intro ?? content?.getIntro(cityName, area.county) ?? "").split(/\n\n+/).map((t) => `<p>${escapeHtml(t)}</p>`).join("")}
+        ${angle ? `<h2>${escapeHtml(angle.heading)}</h2>${angle.paragraphs.map((t) => `<p>${escapeHtml(t)}</p>`).join("")}` : ""}
+        <h2>${svc.name} FAQ — ${escapeHtml(cityName)}</h2>
+        ${faqs.map((f) => `<h3>${escapeHtml(f.question)}</h3><p>${escapeHtml(f.answer)}</p>`).join("")}
+        <p><a href="/services/${svc.slug}">${svc.name} overview</a> · <a href="/areas/${city}">All ${escapeHtml(cityName)} services</a> · <a href="/contact">Free consultation</a></p>
         ${commonFooter()}
       </main>`,
-      jsonLd: breadcrumb([
-        { name: "Home", item: SITE_URL + "/" },
-        { name: cityName, item: `${SITE_URL}/areas/${city}` },
-        { name: svc.name, item: `${SITE_URL}/areas/${city}/${svc.slug}` },
-      ]),
+      jsonLd: [
+        breadcrumb([
+          { name: "Home", item: SITE_URL + "/" },
+          { name: cityName, item: `${SITE_URL}/areas/${city}` },
+          { name: svc.name, item: pageUrl },
+        ]),
+        { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) },
+      ],
     });
   }
 }
@@ -653,7 +673,7 @@ async function main() {
         <nav aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog">Blog</a> · <span>${escapeHtml(p.title)}</span></nav>
         <article>
           <h1>${escapeHtml(p.title)}</h1>
-          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>
+          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}${(p as { updated_at?: string }).updated_at ? ` · Last updated ${new Date((p as { updated_at?: string }).updated_at!).toLocaleDateString("en-US")}` : ""}</em></p>
           ${p.featured_image_url ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
           ${articleHtml}
         </article>
@@ -669,14 +689,11 @@ async function main() {
       jsonLd: [
         {
           "@context": "https://schema.org",
-          "@type": "BlogPosting",
+          "@type": "Article",
           "@id": `${url}#article`,
           headline: p.title,
           description: excerpt,
-          author: {
-            "@type": p.author && p.author !== "JSG Liquidators" ? "Person" : "Organization",
-            name: p.author || "JSG Liquidators",
-          },
+          author: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "JSG Liquidators", url: SITE_URL },
           datePublished: p.published_at || undefined,
           dateModified: (p as { updated_at?: string }).updated_at || p.published_at || undefined,
           image,

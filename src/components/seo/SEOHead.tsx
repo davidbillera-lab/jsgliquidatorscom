@@ -123,6 +123,13 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     document
       .querySelectorAll('link[rel="canonical"]:not([data-rh])')
       .forEach((el) => el.remove());
+    // Static description/social tags from index.html would otherwise sit next
+    // to the route-specific Helmet versions.
+    document
+      .querySelectorAll(
+        'meta[name="description"]:not([data-rh]), meta[property^="og:"]:not([data-rh]), meta[name^="twitter:"]:not([data-rh])'
+      )
+      .forEach((el) => el.remove());
     document
       .querySelectorAll('script[data-prerender-route-schema="true"]')
       .forEach((el) => el.remove());

@@ -38,6 +38,8 @@ const ServiceCategoryPage = () => {
     h1: `${category.serviceName} in Denver`,
     description: category.getMetaDescription("Denver, Colorado"),
     summary: category.getHeroSubheadline("Denver"),
+    sections: [],
+    faqs: category.getFaq("Denver"),
   };
 
   const pageUrl = `https://jsgliquidators.com/services/${category.serviceSlug}`;
@@ -45,7 +47,7 @@ const ServiceCategoryPage = () => {
   const introCopy = category.getIntro("Denver", "Denver metro area");
 
   // Statewide FAQ (uses "Colorado" as the geo token)
-  const faqData = category.getFaq("Colorado");
+  const faqData = pageSeo.faqs;
 
   const breadcrumbs = [
     { name: "Home", url: "/" },
@@ -157,7 +159,19 @@ const ServiceCategoryPage = () => {
       {/* Intro */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <p className="text-lg text-muted-foreground leading-relaxed">{introCopy}</p>
+          {pageSeo.sections.length === 0 && (
+            <p className="text-lg text-muted-foreground leading-relaxed">{introCopy}</p>
+          )}
+          {pageSeo.sections.map((section) => (
+            <div key={section.heading} className="mb-10">
+              <h2 className="font-display font-bold text-2xl lg:text-3xl text-foreground mb-4">{section.heading}</h2>
+              <div className="space-y-4">
+                {section.paragraphs.map((para, i) => (
+                  <p key={i} className="text-lg text-muted-foreground leading-relaxed">{para}</p>
+                ))}
+              </div>
+            </div>
+          ))}
           <div className="grid md:grid-cols-2 gap-4 mt-8">
             {category.benefits.map((b) => (
               <div key={b} className="flex gap-3 items-start">
@@ -194,7 +208,7 @@ const ServiceCategoryPage = () => {
             {category.serviceName} — City by City
           </h2>
           <p className="text-center text-muted-foreground mb-10">
-            Local pages, local phone number, same crew. Pick your city:
+            Choose your city for local details, neighborhoods and FAQs:
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {serviceAreas.map((a) => (
@@ -213,8 +227,7 @@ const ServiceCategoryPage = () => {
                   {category.serviceName} throughout {a.city}, {a.county} ({a.population} residents).
                   Serving {a.nearbyAreas.slice(0, 3).join(", ")} and neighborhoods near{" "}
                   {a.localLandmarks.slice(0, 2).join(" and ")}. ZIP codes include{" "}
-                   {a.zipCodes.slice(0, 4).join(", ")}. Free on-site consultation, clear upfront cleanout pricing,
-                   and optional auction or e-commerce sales.
+                   {a.zipCodes.slice(0, 4).join(", ")}. Free consultation and a custom plan for each property.
                 </p>
                 <span className="text-accent text-sm font-medium inline-flex items-center gap-1">
                   See {a.city} details <ArrowRight className="w-4 h-4" />

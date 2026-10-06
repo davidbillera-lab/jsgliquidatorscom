@@ -8,7 +8,7 @@ const INFO = {
     { label: "Primary (David)", number: "805-444-4069" },
     { label: "Secondary (Vincent)", number: "805-340-4817" },
   ],
-  email: "jsgliquidators@gmail.com",
+  email: "jsgliquidators@jsgliquidators.com",
   services: [
     "Estate sales",
     "Estate liquidation",

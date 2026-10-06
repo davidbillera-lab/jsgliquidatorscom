@@ -1,3 +1,5 @@
+import { getCityLocalProfile } from "./cityLocalProfiles";
+
 export interface ServiceArea {
   slug: string;
   city: string;
@@ -9,12 +11,12 @@ export interface ServiceArea {
   serviceHighlights: string[];
   localLandmarks: string[];
   whyLocal: string;
-  testimonialSnippet: { text: string; author: string };
+  testimonialSnippet?: { text: string; author: string };
   metaDescription: string;
   metaKeywords: string;
 }
 
-export const serviceAreas: ServiceArea[] = [
+const rawServiceAreas: ServiceArea[] = [
   {
     slug: "denver",
     city: "Denver",
@@ -318,7 +320,59 @@ export const serviceAreas: ServiceArea[] = [
     metaDescription: "Colorado Springs estate sales, e-commerce consignment & liquidation. eBay consignment, estate cleanouts, business liquidation & junk removal. Military specialists.",
     metaKeywords: "estate sales Colorado Springs, e-commerce consignment Colorado Springs, eBay consignment Colorado Springs, estate liquidation Colorado Springs, junk removal Colorado Springs CO, military PCS estate sale, business liquidation El Paso County",
   },
+  {
+    slug: "parker",
+    city: "Parker",
+    county: "Douglas County",
+    population: "60,000+",
+    zipCodes: ["80134", "80138"],
+    nearbyAreas: ["Castle Rock", "Centennial", "Aurora", "Lone Tree", "Franktown"],
+    description: "", serviceHighlights: [], whyLocal: "", metaDescription: "", metaKeywords: "",
+    localLandmarks: ["Parker Mainstreet", "PACE Center", "Cherry Creek Trail", "Salisbury Park", "Rueter-Hess Reservoir"],
+  },
+  {
+    slug: "wheat-ridge",
+    city: "Wheat Ridge",
+    county: "Jefferson County",
+    population: "32,000+",
+    zipCodes: ["80033", "80034"],
+    nearbyAreas: ["Lakewood", "Arvada", "Denver", "Golden", "Edgewater"],
+    description: "", serviceHighlights: [], whyLocal: "", metaDescription: "", metaKeywords: "",
+    localLandmarks: ["Clear Creek Trail", "Prospect Park", "Lutheran Medical Center", "Anderson Park", "38th Avenue"],
+  },
+  {
+    slug: "golden",
+    city: "Golden",
+    county: "Jefferson County",
+    population: "20,000+",
+    zipCodes: ["80401", "80403"],
+    nearbyAreas: ["Lakewood", "Arvada", "Wheat Ridge", "Morrison", "Evergreen"],
+    description: "", serviceHighlights: [], whyLocal: "", metaDescription: "", metaKeywords: "",
+    localLandmarks: ["Washington Avenue", "Colorado School of Mines", "Lookout Mountain", "Clear Creek", "North and South Table Mountain"],
+  },
 ];
+
+// Text fields are derived from verified local profiles so no city page carries
+// unsupported claims, invented testimonials or recycled marketing copy.
+export const serviceAreas: ServiceArea[] = rawServiceAreas.map((area) => {
+  const p = getCityLocalProfile(area.slug);
+  if (!p) return { ...area, testimonialSnippet: undefined };
+  return {
+    ...area,
+    testimonialSnippet: undefined,
+    description: `JSG Liquidators serves ${area.city} and ${area.county} with estate sales, online auctions, e-commerce consignment, estate cleanouts, junk removal and business liquidation in neighborhoods such as ${p.neighborhoods.slice(0, 4).join(", ")}. ${p.homes}`,
+    serviceHighlights: [
+      `Free consultations in ${p.neighborhoods.slice(0, 3).join(", ")} and across ${area.city}`,
+      `Plans built around ${area.city} access, parking and HOA requirements`,
+      `Business liquidation planning for ${area.city} offices, shops and commercial spaces`,
+      "Cleanout and removal work quoted and paid upfront",
+      "Optional auction or e-commerce sales; results are never guaranteed",
+    ],
+    whyLocal: `${p.access} ${p.market}`,
+    metaDescription: `${area.city}, CO estate sales, cleanouts, junk removal, consignment and business liquidation. Custom plans and free consultations. Call (805) 444-4069.`,
+    metaKeywords: `estate sales ${area.city} CO, estate cleanout ${area.city}, junk removal ${area.city}, business liquidation ${area.city}, consignment ${area.city}`,
+  };
+});
 
 export const getServiceAreaBySlug = (slug: string): ServiceArea | undefined =>
   serviceAreas.find((area) => area.slug === slug);

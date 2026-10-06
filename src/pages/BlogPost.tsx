@@ -61,6 +61,21 @@ const BlogPost = () => {
     },
   };
 
+  const getRelatedServices = (text: string) => {
+    const t = text.toLowerCase();
+    const all = [
+      { href: "/services/estate-sales", label: "Estate sales & online auctions in Denver", keys: ["estate sale", "auction", "antique", "collect", "memorabilia"] },
+      { href: "/services/estate-cleanouts", label: "Estate cleanouts in Denver", keys: ["cleanout", "clean out", "clean-out", "downsiz", "probate"] },
+      { href: "/services/junk-removal", label: "Junk removal in Denver", keys: ["junk", "haul", "removal", "garage"] },
+      { href: "/services/consignment", label: "E-commerce consignment in Denver", keys: ["consign", "ebay", "e-commerce", "ecommerce", "online"] },
+      { href: "/services/business-liquidation", label: "Business liquidation in Denver", keys: ["business", "commercial", "office", "inventory", "equipment"] },
+    ];
+    return all
+      .map((s) => ({ ...s, score: s.keys.reduce((n, k) => n + (t.split(k).length - 1), 0) }))
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 3);
+  };
+
   // Generate Article structured data for SEO
   const generateArticleSchema = () => {
     if (!post) return null;
@@ -71,20 +86,15 @@ const BlogPost = () => {
     
     return {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": "Article",
       "headline": post.title,
       "description": post.excerpt || `Read ${post.title} on the JSG Liquidators blog.`,
       "image": post.featured_image_url || "https://jsgliquidators.com/logo.png",
       "author": {
-        "@type": "Person",
-        "name": authorBio.name,
-        "jobTitle": authorBio.title,
-        "description": authorBio.bio,
-        "worksFor": {
-          "@type": "Organization",
-          "name": "JSG Liquidators",
-          "url": "https://jsgliquidators.com"
-        }
+        "@type": "Organization",
+        "@id": "https://jsgliquidators.com/#organization",
+        "name": "JSG Liquidators",
+        "url": "https://jsgliquidators.com"
       },
       "publisher": {
         "@type": "Organization",
@@ -98,7 +108,7 @@ const BlogPost = () => {
         }
       },
       "datePublished": publishDate,
-      "dateModified": post.updated_at,
+      "dateModified": post.updated_at || publishDate,
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": `https://jsgliquidators.com/blog/${post.slug}`
@@ -217,18 +227,19 @@ const BlogPost = () => {
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
                 {post.title}
               </h1>
-              <div className="flex items-center gap-4 text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-muted-foreground">
                 <span className="flex items-center gap-2">
                   <Calendar className="w-5 h-5" />
                   {post.published_at
                     ? format(new Date(post.published_at), "MMMM d, yyyy")
                     : format(new Date(post.created_at), "MMMM d, yyyy")}
                 </span>
-                {post.author && (
-                  <span className="flex items-center gap-2">
-                    <User className="w-5 h-5" />
-                    {post.author}
-                  </span>
+                <span className="flex items-center gap-2">
+                  <User className="w-5 h-5" />
+                  By {(authorBios[post.author || "JSG Team"] || authorBios["JSG Team"]).name}
+                </span>
+                {post.updated_at && (
+                  <span>Last updated {format(new Date(post.updated_at), "MMMM d, yyyy")}</span>
                 )}
               </div>
             </header>
@@ -254,7 +265,7 @@ const BlogPost = () => {
                     <div className="rounded-xl overflow-hidden mb-8">
                       <img
                         src={post.featured_image_url}
-                        alt={post.title}
+                        alt={`Cover photo for the article “${post.title}”`}
                         className="w-full h-auto max-w-full object-cover"
                         loading="lazy"
                       />
@@ -264,6 +275,16 @@ const BlogPost = () => {
                     className="max-w-none text-lg text-muted-foreground [&_h2]:mt-16 [&_h2]:mb-6 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-bold [&_h2]:leading-tight [&_h2]:text-foreground [&_h3]:mt-10 [&_h3]:mb-4 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-bold [&_h3]:leading-snug [&_h3]:text-foreground [&_p]:my-6 [&_p]:leading-8 [&_ul]:my-7 [&_ul]:list-disc [&_ul]:space-y-3 [&_ul]:pl-7 [&_ol]:my-7 [&_ol]:list-decimal [&_ol]:space-y-3 [&_ol]:pl-7 [&_li]:pl-1 [&_li]:leading-7 [&_a]:font-medium [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4 [&_strong]:font-semibold [&_strong]:text-foreground [&_img]:my-8 [&_img]:!h-auto [&_img]:!w-full [&_img]:!max-w-full [&_img]:rounded-xl [&_img]:object-cover"
                     dangerouslySetInnerHTML={{ __html: sanitizedContent }}
                   />
+                  <aside className="mt-12 rounded-xl border border-border bg-muted/40 p-6">
+                    <h2 className="font-display text-xl font-bold text-foreground mb-3">Related services</h2>
+                    <ul className="space-y-2">
+                      {getRelatedServices(`${post.title} ${post.content}`).map((svc) => (
+                        <li key={svc.href}>
+                          <Link to={svc.href} className="font-medium text-primary underline underline-offset-4">{svc.label}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </aside>
                 </>
               );
             })()}
