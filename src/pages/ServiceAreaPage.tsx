@@ -22,7 +22,6 @@ const serviceIcons = [Gavel, ShoppingCart, Building2, Trash2, Truck, House];
 
 const ServiceAreaPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const AREA_PLACEHOLDER = 0;
   const area = slug ? getServiceAreaBySlug(slug) : undefined;
 
   if (!area) {
@@ -30,6 +29,8 @@ const ServiceAreaPage = () => {
   }
 
   const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 6);
+  const areaIndex = serviceAreas.findIndex((a) => a.slug === area.slug);
+  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length];
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
