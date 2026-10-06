@@ -105,6 +105,12 @@ function renderHtml(route: Route): string {
 
   let html = TEMPLATE;
 
+  // The homepage photo preload only helps "/"; on other pages it steals
+  // bandwidth from their own main content.
+  if (route.path !== "/") {
+    html = html.replace(/<link rel="preload" as="image" href="\/hero-estate-sale\.webp"[^>]*>\s*/, "");
+  }
+
   // Replace <title>
   html = html.replace(
     /<title>[\s\S]*?<\/title>/,
