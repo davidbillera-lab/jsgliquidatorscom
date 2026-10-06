@@ -161,7 +161,7 @@ const BlogPost = () => {
   return (
     <Layout>
       <Helmet>
-        <title>{post.title} | JSG Liquidators Blog</title>
+        <title>{`${post.title} | JSG Liquidators Blog`}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
         
