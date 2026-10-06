@@ -577,7 +577,7 @@ const WhyWorkWithUs = () => {
                 <span>(805) 444-4069</span>
               </a>
               <a 
-                href="mailto:jsgliquidators@gmail.com" 
+                href="mailto:jsgliquidators@jsgliquidators.com" 
                 className="flex items-center justify-center gap-2 bg-primary-foreground/20 hover:bg-primary-foreground/30 transition-colors rounded-lg p-4"
               >
                 <Mail className="w-5 h-5" />

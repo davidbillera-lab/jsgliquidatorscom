@@ -177,7 +177,7 @@ CORE RULES:
 - Mention ${city.city} or its neighborhoods (e.g. ${city.neighborhoods.slice(0,3).join(', ')}) and landmarks (e.g. ${landmark}, ${city.landmarks[0]}) naturally throughout. Aim for 8+ explicit local references.
 - Include at least one of these ZIP codes contextually: ${city.zips.join(', ')}.
 - Reference the company's Revenue Recovery model and the "items sold in 7–10 days" promise where relevant.
-- Phone: (805) 444-4069. Email: jsgliquidators@gmail.com.
+- Phone: (805) 444-4069. Email: jsgliquidators@jsgliquidators.com.
 - Cite the relevant service page once with an anchor link to ${pageUrl} using descriptive anchor text.
 - Voice: warm, authoritative, locally-rooted, not salesy.
 

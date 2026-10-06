@@ -94,7 +94,7 @@ Deno.serve(async (req) => {
       body: JSON.stringify({
         from: "JSG Liquidators <onboarding@resend.dev>",
         to: [customerEmail],
-        reply_to: "jsgliquidators@gmail.com",
+        reply_to: "jsgliquidators@jsgliquidators.com",
         subject: `${customerName}, would you share a quick review?`,
         html,
       }),

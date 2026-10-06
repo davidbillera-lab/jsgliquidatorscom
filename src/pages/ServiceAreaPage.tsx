@@ -36,7 +36,7 @@ const ServiceAreaPage = () => {
     description: `Professional estate sales, liquidation, junk removal and cleanout services in ${area.city}, Colorado.`,
     url: `https://jsgliquidators.com/areas/${area.slug}`,
     telephone: ["+1-805-444-4069", "+1-805-340-4817"],
-    email: "jsgliquidators@gmail.com",
+    email: "jsgliquidators@jsgliquidators.com",
     address: {
       "@type": "PostalAddress",
       addressLocality: area.city,

@@ -272,7 +272,7 @@ const breadcrumb = (items: { name: string; item: string }[]) => ({
 function commonFooter(): string {
   return `<footer style="margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:14px;">
       <p><strong>JSG Liquidators</strong> · Denver, Colorado · Cleanout costs are quoted and paid upfront · Optional sale proceeds may help recoup costs.</p>
-      <p>Call David: <a href="tel:805-444-4069">(805) 444-4069</a> · Email: <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></p>
+      <p>Call David: <a href="tel:805-444-4069">(805) 444-4069</a> · Email: <a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a></p>
       <nav><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/auctions">Auctions</a> · <a href="/blog">Blog</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI: llms.txt</a></nav>
     </footer>`;
 }
@@ -311,14 +311,14 @@ const staticPages: Route[] = [
   {
     path: "/contact",
     title: "Contact JSG Liquidators | Denver Estate Sales",
-    description: "Contact JSG Liquidators for a free Denver estate sale, liquidation, or cleanout consultation. Call (805) 444-4069 or email jsgliquidators@gmail.com.",
+    description: "Contact JSG Liquidators for a free Denver estate sale, liquidation, or cleanout consultation. Call (805) 444-4069 or email jsgliquidators@jsgliquidators.com.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Contact JSG Liquidators</h1>
       <p>Free, no-obligation consultations for estate sales, business liquidation, cleanouts, consignment, and junk removal anywhere in the Denver metro.</p>
       <dl>
         <dt>Phone (David, primary)</dt><dd><a href="tel:805-444-4069">(805) 444-4069</a></dd>
         <dt>Phone (Vincent, secondary)</dt><dd><a href="tel:805-340-4817">(805) 340-4817</a></dd>
-        <dt>Email</dt><dd><a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a></dd>
+        <dt>Email</dt><dd><a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a></dd>
         <dt>Hours</dt><dd>Mon–Fri 8:00 AM – 6:00 PM Mountain Time · Saturday by appointment</dd>
         <dt>Service area</dt><dd>Denver, Aurora, Lakewood, Highlands Ranch, Castle Rock, Englewood, Littleton, Centennial, Parker, Arvada, Westminster, Thornton, Boulder, and surrounding Front Range communities</dd>
       </dl>
@@ -467,7 +467,7 @@ const staticPages: Route[] = [
         name: "JSG Liquidators",
         url: SITE_URL + "/how-much-do-estate-sale-companies-charge",
         telephone: "+1-805-444-4069",
-        email: "jsgliquidators@gmail.com",
+        email: "jsgliquidators@jsgliquidators.com",
         priceRange: "Free consultation — custom quote per job",
         areaServed: ["Denver", "Aurora", "Lakewood", "Westminster", "Arvada", "Boulder", "Thornton", "Centennial", "Highlands Ranch", "Castle Rock", "Englewood", "Littleton", "Fort Collins", "Colorado Springs"].map((city) => ({ "@type": "City", name: `${city}, CO` })),
       },
@@ -477,7 +477,7 @@ const staticPages: Route[] = [
     path: "/privacy",
     title: "Privacy Policy | JSG Liquidators Denver Estate Sales",
     description:
-      "How JSG Liquidators collects, uses, and protects information submitted through jsgliquidators.com. Contact jsgliquidators@gmail.com with privacy questions.",
+      "How JSG Liquidators collects, uses, and protects information submitted through jsgliquidators.com. Contact jsgliquidators@jsgliquidators.com with privacy questions.",
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
       <h1>Privacy Policy</h1>
       <p>JSG Liquidators collects only the information you submit through our contact and estimate forms — name, phone, email, property location, and details about your estate sale, liquidation, consignment, or cleanout request.</p>
@@ -488,7 +488,7 @@ const staticPages: Route[] = [
         <li>To send service updates you have asked for. We never sell your information.</li>
       </ul>
       <h2>Contact</h2>
-      <p>Email <a href="mailto:jsgliquidators@gmail.com">jsgliquidators@gmail.com</a> or call <a href="tel:805-444-4069">(805) 444-4069</a> to review, correct, or delete your information.</p>
+      <p>Email <a href="mailto:jsgliquidators@jsgliquidators.com">jsgliquidators@jsgliquidators.com</a> or call <a href="tel:805-444-4069">(805) 444-4069</a> to review, correct, or delete your information.</p>
       ${commonFooter()}
     </main>`,
     jsonLd: breadcrumb([
