@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,25 +6,25 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
-import Services from "./pages/Services";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Testimonials from "./pages/Testimonials";
-import Auctions from "./pages/Auctions";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import BlogAdmin from "./pages/BlogAdmin";
-import AdminAuth from "./pages/AdminAuth";
-import WhyWorkWithUs from "./pages/WhyWorkWithUs";
-import Faq from "./pages/Faq";
-import ServiceAreaPage from "./pages/ServiceAreaPage";
-import ServiceLocationPage from "./pages/ServiceLocationPage";
-import ServiceCategoryPage from "./pages/ServiceCategoryPage";
-import NotFound from "./pages/NotFound";
-import OAuthConsent from "./pages/OAuthConsent";
-import Privacy from "./pages/Privacy";
-import Search from "./pages/Search";
-import Pricing from "./pages/Pricing";
+const Services = lazy(() => import("./pages/Services"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Testimonials = lazy(() => import("./pages/Testimonials"));
+const Auctions = lazy(() => import("./pages/Auctions"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const BlogAdmin = lazy(() => import("./pages/BlogAdmin"));
+const AdminAuth = lazy(() => import("./pages/AdminAuth"));
+const WhyWorkWithUs = lazy(() => import("./pages/WhyWorkWithUs"));
+const Faq = lazy(() => import("./pages/Faq"));
+const ServiceAreaPage = lazy(() => import("./pages/ServiceAreaPage"));
+const ServiceLocationPage = lazy(() => import("./pages/ServiceLocationPage"));
+const ServiceCategoryPage = lazy(() => import("./pages/ServiceCategoryPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const OAuthConsent = lazy(() => import("./pages/OAuthConsent"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Search = lazy(() => import("./pages/Search"));
+const Pricing = lazy(() => import("./pages/Pricing"));
 
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <Suspense fallback={<div className="min-h-screen" />}>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
@@ -64,6 +66,7 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
