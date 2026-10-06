@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
+import { HomepageSchema } from "@/components/seo/HomepageSchema";
 import { testimonials as realTestimonials } from "@/data/testimonials";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
@@ -109,6 +110,7 @@ const Index = () => {
   return (
 
     <Layout>
+      <HomepageSchema />
       <SEOHead
         title="Home"
         description="Denver estate sale company for online auctions, business liquidation, cleanouts and e-commerce consignment. Custom plans and clear upfront cleanout pricing."
