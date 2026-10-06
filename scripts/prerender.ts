@@ -533,6 +533,7 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
       { name: svc.name, item: pageUrl },
     ]),
     { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: pageTitle, description: pageDescription, isPartOf: { "@id": `${SITE_URL}/#website` }, about: { "@id": `${pageUrl}#service` } },
+    ...(seo?.faqs?.length ? [{ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: seo.faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) }] : []),
     { "@context": "https://schema.org", "@type": "Service", "@id": `${pageUrl}#service`, name: svc.name, serviceType: svc.name, url: pageUrl, provider: { "@id": `${SITE_URL}/#organization` }, isPartOf: { "@id": `${SITE_URL}/#service` }, areaServed: { "@type": "AdministrativeArea", name: "Denver metro area" } },
   ],
 };
