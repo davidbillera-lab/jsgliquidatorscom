@@ -46,11 +46,15 @@ export function useGoogleReviews() {
     if (data) return;
 
     const run = async () => {
-      // Loaded on demand so the backend client stays out of the first download.
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { data: result, error } = await supabase.functions.invoke("get-google-reviews");
+      let result: unknown = null;
+      try {
+        const { getGoogleReviews } = await import("@/lib/getGoogleReviews.functions");
+        result = await getGoogleReviews();
+      } catch {
+        result = null;
+      }
       if (!active) return;
-      if (error || !result || (result as { error?: string }).error) {
+      if (!result) {
         setLoading(false);
         return;
       }

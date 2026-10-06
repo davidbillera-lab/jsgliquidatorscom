@@ -13,6 +13,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
+import { sendReviewRequest } from "@/lib/sendReviewRequest.functions";
 import { toast } from "sonner";
 
 export const ReviewRequestDialog = () => {
@@ -39,11 +40,10 @@ export const ReviewRequestDialog = () => {
       if (form.jobType.trim()) payload.jobType = form.jobType.trim();
       if (form.reviewUrl.trim()) payload.reviewUrl = form.reviewUrl.trim();
 
-      const { data, error } = await supabase.functions.invoke("send-review-request", {
-        body: payload,
-      });
-      if (error) throw error;
-      if ((data as { error?: unknown })?.error) throw new Error(JSON.stringify((data as { error: unknown }).error));
+      const { data: sessionRes } = await supabase.auth.getSession();
+      const accessToken = sessionRes.session?.access_token;
+      if (!accessToken) throw new Error("Please sign in again");
+      await sendReviewRequest({ data: { ...payload, accessToken } as never });
 
       toast.success(`Review request sent to ${form.customerName}`);
       setForm({ customerName: "", customerEmail: "", jobType: "", reviewUrl: "" });
