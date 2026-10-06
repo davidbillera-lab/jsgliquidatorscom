@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/seo/Helmet";
 
 interface BreadcrumbItem {
   name: string;
@@ -117,28 +116,6 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     "organizer": { "@type": "Organization", "name": "JSG Liquidators", "url": siteUrl }
   })) : null;
 
-  // The prerendered HTML ships a static canonical. Remove it once React takes
-  // over so hydration never leaves two <link rel="canonical"> tags in the head.
-  useEffect(() => {
-    document
-      .querySelectorAll('link[rel="canonical"]:not([data-rh])')
-      .forEach((el) => el.remove());
-    // Static description/social tags from index.html would otherwise sit next
-    // to the route-specific Helmet versions.
-    document
-      .querySelectorAll(
-        'meta[name="description"]:not([data-rh]), meta[property^="og:"]:not([data-rh]), meta[name^="twitter:"]:not([data-rh])'
-      )
-      .forEach((el) => el.remove());
-    document
-      .querySelectorAll('script[data-prerender-route-schema="true"]')
-      .forEach((el) => el.remove());
-    if (canonicalUrl !== `${siteUrl}/`) {
-      document
-        .querySelectorAll('script[data-homepage-schema="true"]')
-        .forEach((el) => el.remove());
-    }
-  }, [canonicalUrl]);
 
   return (
     <Helmet>
@@ -167,8 +144,7 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
       <meta name="geo.region" content="US-CO" />
       <meta name="geo.placename" content="Denver" />
       
-      {/* Sitewide Organization / LocalBusiness / WebSite @graph lives in index.html
-          so it is present for non-JS crawlers and is never duplicated here. */}
+      {/* Sitewide Organization / LocalBusiness / WebSite @graph lives in the root route head. */}
 
       {/* FAQ Schema */}
       {faqJsonLd && (

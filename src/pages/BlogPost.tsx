@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import DOMPurify from "dompurify";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/seo/Helmet";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();

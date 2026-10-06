@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "@/components/seo/Helmet";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, MapPin, CheckCircle2, HelpCircle, Landmark, Building2, Map } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -4,29 +4,6 @@
  * override the broken JSX component typings without touching runtime.
  */
 
-declare module "react-helmet-async" {
-  import type { ReactNode, FC } from "react";
-
-  export interface HelmetProps {
-    children?: ReactNode;
-    defer?: boolean;
-    encodeSpecialCharacters?: boolean;
-    onChangeClientState?: (newState: any, addedTags: any, removedTags: any) => void;
-    titleTemplate?: string;
-    defaultTitle?: string;
-    title?: string;
-    prioritizeSeoTags?: boolean;
-  }
-
-  export interface HelmetProviderProps {
-    children?: ReactNode;
-    context?: Record<string, unknown>;
-  }
-
-  export const Helmet: FC<HelmetProps>;
-  export const HelmetProvider: FC<HelmetProviderProps>;
-}
-
 declare module "input-otp" {
   import type { Context } from "react";
 
