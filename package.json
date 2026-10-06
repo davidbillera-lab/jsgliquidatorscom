@@ -9,7 +9,6 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "tsx scripts/prerender.ts",
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest"
@@ -69,7 +68,7 @@
     "tw-animate-css": "^1.3.4",
     "vaul": "^1.1.2",
     "vite-tsconfig-paths": "^6.0.2",
-    "zod": "^3.25.76",
+    "zod": "^4.4.3",
     "@fontsource/inter": "^5.2.8",
     "@fontsource/playfair-display": "^5.2.8",
     "@lovable.dev/mcp-js": "^0.22.2",
@@ -79,7 +78,6 @@
     "dompurify": "^3.3.1",
     "framer-motion": "^12.23.26",
     "next-themes": "^0.3.0",
-    "react-helmet-async": "^2.0.5",
     "web-vitals": "^5.2.0"
   },
   "devDependencies": {
