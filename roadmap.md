@@ -1,11 +1,6 @@
 # Roadmap
 
-- [ ] Align verified business identity, contacts, hours, social links, and service-area schema.
-- [ ] Align homepage and five core service titles, H1s, descriptions, and introductions.
-- [ ] Remove unsupported claims from shared/current pages and AI-facing content.
-- [ ] Deduplicate and correct route-specific structured data and prerendered content.
-- [ ] Verify crawler files, sitemap, desktop/mobile pages, and contact form behavior.
-
-- [x] Publish the uploaded fall Denver estate cleanout article with corrected claims and blog formatting.
-
-- [x] Publish the uploaded Broncos sports memorabilia article with consistent blog spacing and verified claims.
+- [x] Full SEO/AEO/GEO pass (Oct 6 brief): schema, six service hubs, 102 distinct city pages, homepage copy, titles/alt text, blog bylines and links, mobile speed fixes.
+- [ ] Live Google reviews feed — blocked: the connected Google Business Profile account isn't the one that manages the JSG listing.
+- [ ] Confirm Facebook/LinkedIn are JSG's own profiles before adding them to Google's business details.
+- [ ] Re-measure mobile speed after publishing (lab score was measured on the old live build).
