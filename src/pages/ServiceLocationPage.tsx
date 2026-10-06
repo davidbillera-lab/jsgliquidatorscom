@@ -218,7 +218,7 @@ const ServiceLocationPage = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((benefit, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-sm border">
+                className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-xs border">
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                 <p className="text-foreground">{benefit}</p>
               </motion.div>

@@ -14,7 +14,7 @@ const heroImage = "/hero-estate-sale.webp";
 
 // Shared CTA style for inline "Read the full guide" links — white text on primary blue
 const guideLinkClass =
-  "inline-flex items-center gap-2 mt-3 bg-primary text-primary-foreground font-semibold px-5 py-2.5 rounded-lg shadow-sm hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200";
+  "inline-flex items-center gap-2 mt-3 bg-primary text-primary-foreground font-semibold px-5 py-2.5 rounded-lg shadow-xs hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200";
 
 const services = [
   {
@@ -868,7 +868,7 @@ const Index = () => {
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
-              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-xs"
             >
               <div className="flex items-start gap-4 mb-5">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -908,7 +908,7 @@ const Index = () => {
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
-              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-xs"
             >
               <div className="flex items-start gap-4 mb-5">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
@@ -962,7 +962,7 @@ const Index = () => {
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.6 }}
-              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-sm"
+              className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-xs"
             >
               <div className="flex items-start gap-4 mb-5">
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
