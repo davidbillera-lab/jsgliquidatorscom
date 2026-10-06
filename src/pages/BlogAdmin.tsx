@@ -7,6 +7,7 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { ReviewRequestDialog } from "@/components/admin/ReviewRequestDialog";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import type { TablesUpdate } from "@/integrations/supabase/types";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
