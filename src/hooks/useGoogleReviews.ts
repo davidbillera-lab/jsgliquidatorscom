@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 
 export interface GoogleReview {
   author: string;
@@ -65,7 +64,11 @@ export function useGoogleReviews() {
         setData(payload);
       }
       setLoading(false);
-    })();
+    };
+    // Wait until the page has painted so this request never slows the first view.
+    const w = window as Window & { requestIdleCallback?: (cb: () => void) => number };
+    const t = w.requestIdleCallback ? w.requestIdleCallback(() => void run()) : window.setTimeout(() => void run(), 2000);
+    void t;
 
     return () => {
       active = false;
