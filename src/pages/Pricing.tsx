@@ -148,7 +148,7 @@ const Pricing = () => {
   return (
     <Layout>
       <SEOHead
-        title="How Much Do Estate Sale Companies Charge in Denver?"
+        title="Denver Estate Sale Company Costs Explained"
         description="Denver estate sale pricing varies by job. JSG provides custom plans, clear upfront cleanout pricing, and optional auction or e-commerce sales."
         canonical="/how-much-do-estate-sale-companies-charge"
         keywords="how much do estate sale companies charge, estate sale cost Denver, estate sale commission, estate liquidation cost, estate cleanout pricing Denver, estate sale company fees"

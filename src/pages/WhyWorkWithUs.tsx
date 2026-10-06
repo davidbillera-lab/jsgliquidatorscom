@@ -125,7 +125,7 @@ const WhyWorkWithUs = () => {
   return (
     <Layout>
       <SEOHead
-        title="Why Work With Us | Denver Estate Clean Outs & Junk Removal"
+        title="Why Choose JSG | Denver Estate Cleanouts"
         description="Denver estate cleanouts, junk removal, auctions and e-commerce sales. Clear upfront cleanout pricing with optional resale services."
         canonical="/why-work-with-us"
         keywords="estate clean out Denver, junk removal Denver, estate liquidation Colorado, auction-backed clean out, hoarder clean out Denver, estate cleanout cost, junk removal company Colorado"

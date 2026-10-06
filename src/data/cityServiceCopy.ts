@@ -1318,17 +1318,14 @@ export const cityServiceCopy: Record<string, CityServiceCopy> = {
    {
     "question": "How are costs determined for estate sale or online auction services in Fort Collins?",
     "answer": "All cleanout or removal work, which is part of preparing for an estate sale or auction, is quoted and paid upfront. Any proceeds from the optional auction or e-commerce sales may then help offset some or all of that initial expense, though no specific outcome is guaranteed.",
-    "keyword_ref": "Fort Collins, quote, upfront"
    },
    {
     "question": "What should I know about scheduling an estate sale or online auction for a Fort Collins property?",
     "answer": "When scheduling, we factor in logistical considerations such as the location within Fort Collins. For properties in areas like Old Town with tight parking or those further out that require longer travel from the Denver metro area, scheduling is adjusted accordingly.",
-    "keyword_ref": "Fort Collins, Old Town, travel"
    },
    {
     "question": "Are there specific considerations for properties like those near CSU Campus or in newer Fort Collins developments?",
     "answer": "Yes, we account for local conditions. For properties near CSU Campus, parking can be limited, and for homes in newer subdivisions like those in the Rigden Farm area, HOA rules might influence our process. These factors are considered when planning our work.",
-    "keyword_ref": "CSU Campus, Rigden Farm, HOA"
    }
   ]
  },
