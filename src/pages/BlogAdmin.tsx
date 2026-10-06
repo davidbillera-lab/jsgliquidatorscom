@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";

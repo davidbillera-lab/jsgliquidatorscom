@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";

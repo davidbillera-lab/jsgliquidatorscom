@@ -1,4 +1,4 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, MapPin, CheckCircle2, Star, Quote, Gavel, ShoppingCart, Building2, Trash2, Truck, House } from "lucide-react";
 import { Button } from "@/components/ui/button";

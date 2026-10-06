@@ -1,4 +1,4 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "@/lib/router-compat";
 import { Helmet } from "@/components/seo/Helmet";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, MapPin, CheckCircle2, HelpCircle, Landmark, Building2, Map } from "lucide-react";

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone, Gavel, ShoppingCart, Building2, Trash2, Truck, Home, CheckCircle2, HelpCircle } from "lucide-react";
 import {

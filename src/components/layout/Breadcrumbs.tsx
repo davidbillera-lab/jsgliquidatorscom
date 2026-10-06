@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "@/lib/router-compat";
 import { ChevronRight, Home } from "lucide-react";
 
 const LABEL_OVERRIDES: Record<string, string> = {
