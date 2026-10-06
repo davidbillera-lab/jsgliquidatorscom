@@ -33,8 +33,10 @@ const BlogPost = () => {
 
   useEffect(() => {
     document
-      .querySelector('link[rel="canonical"]:not([data-rh="true"])')
-      ?.remove();
+      .querySelectorAll(
+        'link[rel="canonical"]:not([data-rh]), meta[name="description"]:not([data-rh]), meta[property^="og:"]:not([data-rh]), meta[name^="twitter:"]:not([data-rh])'
+      )
+      .forEach((el) => el.remove());
 
     if (!isLoading && !post && !error) {
       navigate("/blog");
