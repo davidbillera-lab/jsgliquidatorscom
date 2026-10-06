@@ -133,8 +133,6 @@ const ServiceCategoryPage = () => {
             <span className="text-accent">{category.serviceName}</span>
           </nav>
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
             className="font-display font-bold text-4xl lg:text-6xl mb-6"
           >
             {heroHeadline}

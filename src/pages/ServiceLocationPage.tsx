@@ -104,7 +104,7 @@ const ServiceLocationPage = () => {
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-primary-foreground py-20 md:py-28">
         <div className="container mx-auto px-4 text-center">
-          <motion.div initial="hidden" animate="visible" variants={fadeInUp} transition={{ duration: 0.6 }}>
+          <motion.div initial={false} animate="visible" variants={fadeInUp}>
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">{area.city}, Colorado — {area.county}</span>
