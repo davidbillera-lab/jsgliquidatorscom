@@ -518,8 +518,10 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
   bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
     <h1>${pageH1}</h1>
     <p class="speakable-summary">${pageSummary} Cleanout work, when selected, is quoted and paid upfront. Optional sale proceeds may help recoup costs but are not guaranteed. Call David at <a href="tel:805-444-4069">(805) 444-4069</a>.</p>
+    ${(seo?.sections ?? []).map((sec) => `<h2>${escapeHtml(sec.heading)}</h2>${sec.paragraphs.map((t) => `<p>${escapeHtml(t)}</p>`).join("")}`).join("")}
+    ${seo?.faqs?.length ? `<h2>Frequently asked questions</h2>${seo.faqs.map((f) => `<h3>${escapeHtml(f.question)}</h3><p>${escapeHtml(f.answer)}</p>`).join("")}` : ""}
     <h2>${svc.name} — city by city</h2>
-    <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${titleCase(c)}, CO</a></li>`).join("")}</ul>
+    <ul>${CITIES.map((c) => `<li><a href="/areas/${c}/${svc.slug}">${svc.name} in ${CITY_NAMES[c] ?? titleCase(c)}, CO</a></li>`).join("")}</ul>
     <h2>Related services</h2>
     <ul>${SERVICES.filter((s) => s.slug !== svc.slug).map((s) => `<li><a href="/services/${s.slug}">${s.name}</a></li>`).join("")}</ul>
     ${commonFooter()}
