@@ -6,6 +6,7 @@ import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Helmet } from "react-helmet-async";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
+import { testimonials } from "@/data/testimonials";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,6 +22,7 @@ const serviceIcons = [Gavel, ShoppingCart, Building2, Trash2, Truck, House];
 
 const ServiceAreaPage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const AREA_PLACEHOLDER = 0;
   const area = slug ? getServiceAreaBySlug(slug) : undefined;
 
   if (!area) {
@@ -232,9 +234,10 @@ const ServiceAreaPage = () => {
                   ))}
                 </div>
                 <p className="text-foreground mb-4 leading-relaxed italic">
-                  "{area.testimonialSnippet.text}"
+                  "{review.text}"
                 </p>
-                <p className="font-semibold text-foreground">{area.testimonialSnippet.author}</p>
+                <p className="font-semibold text-foreground">{review.name}, {review.location}</p>
+                <p className="text-xs text-muted-foreground mt-1">Google review</p>
               </div>
 
               {/* Local Info Card */}

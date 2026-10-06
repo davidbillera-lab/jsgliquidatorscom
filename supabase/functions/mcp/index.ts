@@ -563,7 +563,7 @@ var serviceAreas = rawServiceAreas.map((area) => {
   return {
     ...area,
     testimonialSnippet: void 0,
-    description: `JSG Liquidators serves ${area.city} and ${area.county} with estate sales, online auctions, e-commerce consignment, estate cleanouts, junk removal and business liquidation, including ${p.neighborhoods.slice(0, 4).join(", ")}. ${p.homes}`,
+    description: `JSG Liquidators serves ${area.city} and ${area.county} with estate sales, online auctions, e-commerce consignment, estate cleanouts, junk removal and business liquidation in neighborhoods such as ${p.neighborhoods.slice(0, 4).join(", ")}. ${p.homes}`,
     serviceHighlights: [
       `Free consultations in ${p.neighborhoods.slice(0, 3).join(", ")} and across ${area.city}`,
       `Plans built around ${area.city} access, parking and HOA requirements`,
