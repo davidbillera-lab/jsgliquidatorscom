@@ -8,6 +8,8 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 import { getServiceLocationContent } from "@/data/serviceLocationContent";
+import { getCityLocalProfile } from "@/data/cityLocalProfiles";
+import { serviceLocalAngles } from "@/data/serviceLocalAngles";
 
 const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
@@ -20,7 +22,16 @@ const ServiceLocationPage = () => {
     return <Navigate to="/404" replace />;
   }
 
-  const faqData = serviceContent.getFaq(area.city);
+  const cityIndex = Math.max(serviceAreas.findIndex((a) => a.slug === area.slug), 0);
+  const profile = getCityLocalProfile(area.slug);
+  const angle = profile ? serviceLocalAngles[serviceContent.serviceSlug]?.(area.city, profile) : undefined;
+  // Rotate shared answers per city so pages do not repeat the same block of text.
+  const baseFaq = serviceContent.getFaq(area.city);
+  const rotatedFaq = baseFaq.map((_, i) => baseFaq[(i + cityIndex) % baseFaq.length]).slice(0, 3);
+  const faqData = angle ? [angle.faq, ...rotatedFaq] : baseFaq;
+  const benefits = serviceContent.benefits
+    .map((_, i) => serviceContent.benefits[(i + cityIndex) % serviceContent.benefits.length])
+    .slice(0, 4);
   const otherServices = allServices.filter((s) => s.slug !== serviceContent.serviceSlug);
   const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 8);
 
@@ -132,7 +143,7 @@ const ServiceLocationPage = () => {
             {serviceContent.serviceName} Coverage Across {area.city}
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            We serve every neighborhood, ZIP code, and surrounding community in {area.county}. Local knowledge means faster response, better valuations, and connections with {area.city}-area charities and recyclers.
+            Neighborhoods we visit include {profile ? profile.neighborhoods.join(", ") : area.nearbyAreas.join(", ")}.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -180,10 +191,16 @@ const ServiceLocationPage = () => {
             </div>
           </div>
 
-          <div className="mt-10 p-6 bg-primary/5 rounded-xl border border-primary/20">
-            <h3 className="font-bold text-lg text-foreground mb-2">Why local matters for {serviceContent.serviceName.toLowerCase()} in {area.city}</h3>
-            <p className="text-muted-foreground leading-relaxed">{area.whyLocal}</p>
-          </div>
+          {angle && (
+            <div className="mt-10 p-6 bg-primary/5 rounded-xl border border-primary/20">
+              <h3 className="font-bold text-lg text-foreground mb-3">{angle.heading}</h3>
+              <div className="space-y-4">
+                {angle.paragraphs.map((para, i) => (
+                  <p key={i} className="text-muted-foreground leading-relaxed">{para}</p>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -196,7 +213,7 @@ const ServiceLocationPage = () => {
             Why Choose JSG Liquidators for {serviceContent.serviceName} in {area.city}?
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {serviceContent.benefits.map((benefit, i) => (
+            {benefits.map((benefit, i) => (
               <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} transition={{ delay: i * 0.1 }}
                 className="flex items-start gap-4 p-5 bg-background rounded-xl shadow-sm border">
                 <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
