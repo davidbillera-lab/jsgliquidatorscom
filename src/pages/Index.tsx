@@ -142,6 +142,8 @@ const Index = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
+            srcSet="/hero-estate-sale-800.webp 800w, /hero-estate-sale.webp 1600w"
+            sizes="100vw"
             alt="Living room filled with antique furniture, glassware and framed art, with a mountain view through the windows"
             className="w-full h-full object-cover"
             fetchPriority="high"

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X, Phone, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import logoLandscape from "@/assets/logo-landscape.png";
+import logoLandscape from "@/assets/logo-landscape.webp";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -30,7 +30,7 @@ export const Header = () => {
             <img 
               src={logoLandscape} 
               alt="JSG Liquidators logo" 
-              className="h-16 w-auto"
+              className="h-16 w-auto" width={87} height={64} fetchPriority="high"
             />
           </Link>
 
