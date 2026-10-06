@@ -174,7 +174,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "Business Liquidation",
     title: "Business Liquidation Denver | Asset Sales",
     h1: "Business Liquidation in Denver",
-    description: "Denver business liquidation with custom asset plans, online auction sales and buyer pickup handled around your lease. Call (805) 444-4069 for a free consultation.",
+    description: "Denver business liquidation with custom asset plans, auction sales and buyer pickup handled around your lease. Call (805) 444-4069 for a free consultation.",
     summary: "We build a custom plan for approved business assets and coordinate suitable auction or e-commerce sales channels and buyer pickup.",
     sections: [
       {
@@ -211,7 +211,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "Hoarder Cleanouts",
     title: "Hoarder Cleanouts Denver | Discreet Help",
     h1: "Hoarder Cleanouts in Denver",
-    description: "Discreet Denver hoarder and heavy-content cleanouts with a private assessment, clear scope and upfront quote. Call (805) 444-4069 for a confidential consultation.",
+    description: "Discreet Denver hoarder and heavy-content cleanouts with a private assessment, clear scope and upfront quote. Call (805) 444-4069 for a private consultation.",
     summary: "We plan heavy-content cleanouts privately, quote the work upfront and handle belongings according to the family's instructions.",
     sections: [
       {
