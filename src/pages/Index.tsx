@@ -501,7 +501,7 @@ const Index = () => {
                 src="/blog-images/estate-liquidation-workflow.webp"
                 alt="Shoppers browsing furniture and household items during an estate sale in a bright home"
                 className="rounded-2xl shadow-xl w-full"
-              />
+              loading="lazy" decoding="async" />
               <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-6 shadow-lg border border-border max-w-xs">
                 <p className="text-sm text-muted-foreground mb-2">Serving Colorado</p>
                 <p className="font-display font-bold text-foreground">Highlands Ranch • Denver • Castle Rock • Littleton</p>
@@ -527,7 +527,7 @@ const Index = () => {
                 src="/blog-images/estate-liquidation-sorting.webp"
                 alt="Conference table with estate binders and paperwork laid out for review"
                 className="rounded-2xl shadow-xl w-full"
-              />
+              loading="lazy" decoding="async" />
               <div className="absolute -top-6 -right-6 bg-accent rounded-xl p-6 shadow-lg max-w-xs">
                 <p className="font-display font-bold text-accent-foreground text-lg">Eco-Friendly Approach</p>
                 <p className="text-accent-foreground/80 text-sm">We donate usable items and recycle whenever possible</p>
