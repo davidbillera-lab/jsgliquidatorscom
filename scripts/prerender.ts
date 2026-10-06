@@ -14,6 +14,10 @@ import { resolve, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { faqGroups, allFaqs } from "../src/data/faqData";
 import { serviceAreas } from "../src/data/serviceAreas";
+import { getCityLocalProfile } from "../src/data/cityLocalProfiles";
+import { serviceLocalAngles } from "../src/data/serviceLocalAngles";
+import { cityServiceCopy } from "../src/data/cityServiceCopy";
+import { getServiceLocationContent } from "../src/data/serviceLocationContent";
 import { coreServiceSeo } from "../src/data/coreServiceSeo";
 import { serviceLocationData } from "../src/data/serviceLocationContent";
 
@@ -534,41 +538,54 @@ const categoryPages: Route[] = SERVICES.map((svc) => {
 
 // ---------- City / area pages ----------
 const areaPages: Route[] = [];
-for (const city of CITIES) {
-  const cityName = titleCase(city);
+for (const area of serviceAreas) {
+  const city = area.slug;
+  const cityName = area.city;
+  const profile = getCityLocalProfile(city);
   areaPages.push({
     path: `/areas/${city}`,
     title: `${cityName} Estate Sales & Liquidation | JSG Liquidators`,
-    description: `Estate sales, cleanouts, business liquidation, consignment, and junk removal in ${cityName}, Colorado. Custom plans and clear upfront cleanout pricing.`,
+    description: area.metaDescription,
     bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
-      <h1>Estate Sales &amp; Liquidation in ${cityName}, Colorado</h1>
-      <p>JSG Liquidators provides custom estate liquidation plans in ${cityName}. Cleanout work is quoted and paid upfront; optional auction and e-commerce proceeds may help clients recoup costs without any guarantee.</p>
-      <h2>${cityName} services</h2>
-      <ul>${SERVICES.map((s) => `<li><a href="/areas/${city}/${s.slug}">${s.name} in ${cityName}</a></li>`).join("")}</ul>
+      <h1>Estate Sales &amp; Liquidation in ${escapeHtml(cityName)}, Colorado</h1>
+      <p>${escapeHtml(area.description)}</p>
+      <p>${escapeHtml(area.whyLocal)}</p>
+      <h2>${escapeHtml(cityName)} services</h2>
+      <ul>${SERVICES.map((s) => `<li><a href="/areas/${city}/${s.slug}">${s.name} in ${escapeHtml(cityName)}</a></li>`).join("")}</ul>
       ${commonFooter()}
     </main>`,
     jsonLd: breadcrumb([
       { name: "Home", item: SITE_URL + "/" },
-      { name: "Services", item: SITE_URL + "/services" },
       { name: cityName, item: `${SITE_URL}/areas/${city}` },
     ]),
   });
   for (const svc of SERVICES) {
+    const content = getServiceLocationContent(svc.slug);
+    const copy = cityServiceCopy[`${city}/${svc.slug}`];
+    const angle = profile ? serviceLocalAngles[svc.slug]?.(cityName, profile) : undefined;
+    const faqs = [...(angle ? [angle.faq] : []), ...(copy?.faqs ?? content?.getFaq(cityName) ?? [])];
+    const pageUrl = `${SITE_URL}/areas/${city}/${svc.slug}`;
     areaPages.push({
       path: `/areas/${city}/${svc.slug}`,
-      title: `${svc.name} in ${cityName}, CO | JSG Liquidators`,
-      description: `Professional ${svc.name.toLowerCase()} services in ${cityName}, Colorado. Custom planning and clear upfront cleanout pricing when applicable.`,
+      title: `${content ? content.getTitle(cityName) : `${svc.name} ${cityName} CO`} | JSG Liquidators`,
+      description: content ? content.getMetaDescription(cityName) : `${svc.name} in ${cityName}, Colorado.`,
       bodyHtml: `<main style="max-width:1100px;margin:0 auto;padding:24px;">
-        <h1>${svc.name} in ${cityName}, Colorado</h1>
-        <p>JSG Liquidators offers professional ${svc.name.toLowerCase()} throughout ${cityName} and surrounding Denver-metro communities. Scheduling depends on the project scope and current availability.</p>
-        <p>Cleanout work is quoted and paid upfront. Approved items may be sold through auction or e-commerce, and proceeds may help recoup costs without any guaranteed result.</p>
+        <h1>${escapeHtml(content ? content.getHeroHeadline(cityName) : `${svc.name} in ${cityName}`)}</h1>
+        ${(copy?.intro ?? content?.getIntro(cityName, area.county) ?? "").split(/\n\n+/).map((t) => `<p>${escapeHtml(t)}</p>`).join("")}
+        ${angle ? `<h2>${escapeHtml(angle.heading)}</h2>${angle.paragraphs.map((t) => `<p>${escapeHtml(t)}</p>`).join("")}` : ""}
+        <h2>${svc.name} FAQ — ${escapeHtml(cityName)}</h2>
+        ${faqs.map((f) => `<h3>${escapeHtml(f.question)}</h3><p>${escapeHtml(f.answer)}</p>`).join("")}
+        <p><a href="/services/${svc.slug}">${svc.name} overview</a> · <a href="/areas/${city}">All ${escapeHtml(cityName)} services</a> · <a href="/contact">Free consultation</a></p>
         ${commonFooter()}
       </main>`,
-      jsonLd: breadcrumb([
-        { name: "Home", item: SITE_URL + "/" },
-        { name: cityName, item: `${SITE_URL}/areas/${city}` },
-        { name: svc.name, item: `${SITE_URL}/areas/${city}/${svc.slug}` },
-      ]),
+      jsonLd: [
+        breadcrumb([
+          { name: "Home", item: SITE_URL + "/" },
+          { name: cityName, item: `${SITE_URL}/areas/${city}` },
+          { name: svc.name, item: pageUrl },
+        ]),
+        { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })) },
+      ],
     });
   }
 }
@@ -653,7 +670,7 @@ async function main() {
         <nav aria-label="Breadcrumb"><a href="/">Home</a> · <a href="/blog">Blog</a> · <span>${escapeHtml(p.title)}</span></nav>
         <article>
           <h1>${escapeHtml(p.title)}</h1>
-          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}</em></p>
+          <p><em>By ${escapeHtml(p.author || "JSG Liquidators")}${p.published_at ? ` · Published ${new Date(p.published_at).toLocaleDateString("en-US")}` : ""}${(p as { updated_at?: string }).updated_at ? ` · Last updated ${new Date((p as { updated_at?: string }).updated_at!).toLocaleDateString("en-US")}` : ""}</em></p>
           ${p.featured_image_url ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(p.title)}" style="max-width:100%;height:auto;" />` : ""}
           ${articleHtml}
         </article>
@@ -669,14 +686,11 @@ async function main() {
       jsonLd: [
         {
           "@context": "https://schema.org",
-          "@type": "BlogPosting",
+          "@type": "Article",
           "@id": `${url}#article`,
           headline: p.title,
           description: excerpt,
-          author: {
-            "@type": p.author && p.author !== "JSG Liquidators" ? "Person" : "Organization",
-            name: p.author || "JSG Liquidators",
-          },
+          author: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "JSG Liquidators", url: SITE_URL },
           datePublished: p.published_at || undefined,
           dateModified: (p as { updated_at?: string }).updated_at || p.published_at || undefined,
           image,
