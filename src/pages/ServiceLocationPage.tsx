@@ -10,6 +10,7 @@ import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceA
 import { getServiceLocationContent } from "@/data/serviceLocationContent";
 import { getCityLocalProfile } from "@/data/cityLocalProfiles";
 import { serviceLocalAngles } from "@/data/serviceLocalAngles";
+import { cityServiceCopy } from "@/data/cityServiceCopy";
 
 const fadeInUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
@@ -28,7 +29,9 @@ const ServiceLocationPage = () => {
   // Rotate shared answers per city so pages do not repeat the same block of text.
   const baseFaq = serviceContent.getFaq(area.city);
   const rotatedFaq = baseFaq.map((_, i) => baseFaq[(i + cityIndex) % baseFaq.length]).slice(0, 3);
-  const faqData = angle ? [angle.faq, ...rotatedFaq] : baseFaq;
+  const copy = cityServiceCopy[`${area.slug}/${serviceContent.serviceSlug}`];
+  const faqData = angle ? [angle.faq, ...(copy ? copy.faqs : rotatedFaq)] : baseFaq;
+  const introParas = copy ? copy.intro.split(/\n\n+/) : [serviceContent.getIntro(area.city, area.county)];
   const benefits = serviceContent.benefits
     .map((_, i) => serviceContent.benefits[(i + cityIndex) % serviceContent.benefits.length])
     .slice(0, 4);
@@ -131,7 +134,7 @@ const ServiceLocationPage = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-foreground">
               {serviceContent.serviceName} in {area.city}, CO
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">{serviceContent.getIntro(area.city, area.county)}</p>
+            <div className="space-y-4">{introParas.map((para, i) => (<p key={i} className="text-lg text-muted-foreground leading-relaxed">{para}</p>))}</div>
           </motion.div>
         </div>
       </section>
