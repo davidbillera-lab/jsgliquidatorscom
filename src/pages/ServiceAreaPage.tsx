@@ -30,7 +30,7 @@ const ServiceAreaPage = () => {
 
   const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 6);
   const areaIndex = serviceAreas.findIndex((a) => a.slug === area.slug);
-  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length];
+  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length]!;
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -165,7 +165,7 @@ const ServiceAreaPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {allServices.map((service, i) => {
-              const Icon = serviceIcons[i];
+              const Icon = serviceIcons[i] ?? serviceIcons[0]!;
               return (
                 <motion.div key={service.slug} variants={fadeInUp} transition={{ duration: 0.5 }}>
                   <Link

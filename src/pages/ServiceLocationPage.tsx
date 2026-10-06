@@ -30,7 +30,9 @@ const ServiceLocationPage = () => {
   const baseFaq = serviceContent.getFaq(area.city);
   const rotatedFaq = baseFaq.map((_, i) => baseFaq[(i + cityIndex) % baseFaq.length]).slice(0, 3);
   const copy = cityServiceCopy[`${area.slug}/${serviceContent.serviceSlug}`];
-  const faqData = angle ? [angle.faq, ...(copy ? copy.faqs : rotatedFaq)] : baseFaq;
+  const faqData = (angle ? [angle.faq, ...(copy ? copy.faqs : rotatedFaq)] : baseFaq).filter(
+    (f): f is { question: string; answer: string } => Boolean(f),
+  );
   const introParas = copy ? copy.intro.split(/\n\n+/) : [serviceContent.getIntro(area.city, area.county)];
   const benefits = serviceContent.benefits
     .map((_, i) => serviceContent.benefits[(i + cityIndex) % serviceContent.benefits.length])

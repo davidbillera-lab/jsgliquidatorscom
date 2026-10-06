@@ -220,7 +220,7 @@ const BlogAdmin = () => {
 
   const updateMutation = useMutation({
     mutationFn: async (data: typeof formData & { id: string; featured_image_url?: string }) => {
-      const updateData: Record<string, unknown> = {
+      const updateData: TablesUpdate<"blog_posts"> = {
         title: data.title,
         slug: data.slug || generateSlug(data.title),
         excerpt: data.excerpt || null,
