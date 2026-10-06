@@ -1,3 +1,5 @@
+import { getRouteApi } from "@tanstack/react-router";
+import { fetchPublishedPosts } from "@/lib/blogQueries";
 import { Link } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowRight } from "lucide-react";
@@ -23,19 +25,14 @@ const staggerContainer = {
   },
 };
 
+const blogRoute = getRouteApi("/blog/");
+
 const Blog = () => {
+  const loaded = blogRoute.useLoaderData();
   const { data: posts, isLoading } = useQuery({
     queryKey: ["blog-posts"],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("*")
-        .eq("published", true)
-        .order("published_at", { ascending: false });
-
-      if (error) throw error;
-      return data;
-    },
+    queryFn: fetchPublishedPosts,
+    initialData: loaded.posts,
   });
 
   return (

@@ -1,3 +1,5 @@
+import { getRouteApi } from "@tanstack/react-router";
+import { fetchPublishedPost } from "@/lib/blogQueries";
 import { Link, useParams, useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowLeft } from "lucide-react";
@@ -11,33 +13,22 @@ import { useEffect } from "react";
 import DOMPurify from "dompurify";
 import { Helmet } from "@/components/seo/Helmet";
 
+const blogPostRoute = getRouteApi("/blog/$slug");
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
+  const loaded = blogPostRoute.useLoaderData();
+
   const { data: post, isLoading, error } = useQuery({
     queryKey: ["blog-post", slug],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from("blog_posts")
-        .select("*")
-        .eq("slug", slug)
-        .eq("published", true)
-        .maybeSingle();
-
-      if (error) throw error;
-      return data;
-    },
+    queryFn: () => fetchPublishedPost(slug as string),
+    initialData: loaded.post === undefined ? undefined : loaded.post,
     enabled: !!slug,
   });
 
   useEffect(() => {
-    document
-      .querySelectorAll(
-        'link[rel="canonical"]:not([data-rh]), meta[name="description"]:not([data-rh]), meta[property^="og:"]:not([data-rh]), meta[name^="twitter:"]:not([data-rh])'
-      )
-      .forEach((el) => el.remove());
-
     if (!isLoading && !post && !error) {
       navigate("/blog");
     }
