@@ -10,7 +10,7 @@ import { format } from "date-fns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
-import DOMPurify from "dompurify";
+import { sanitizeBlogHtml } from "@/lib/sanitizeBlogHtml";
 import { Helmet } from "@/components/seo/Helmet";
 
 const blogPostRoute = getRouteApi("/blog/$slug");
@@ -246,12 +246,7 @@ const BlogPost = () => {
               // Only show standalone featured image if it's not already in content
               const showStandaloneFeaturedImage = post.featured_image_url && !contentHasFeaturedImage;
               
-              const sanitizedContent = DOMPurify.sanitize(post.content, {
-                ALLOWED_TAGS: ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 
-                               'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'span', 'div'],
-                ALLOWED_ATTR: ['href', 'src', 'alt', 'title', 'target', 'class', 'id', 'style'],
-                ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
-              });
+              const sanitizedContent = sanitizeBlogHtml(post.content);
               
               return (
                 <>
