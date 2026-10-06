@@ -363,8 +363,8 @@ export const serviceAreas: ServiceArea[] = rawServiceAreas.map((area) => {
     description: `JSG Liquidators serves ${area.city} and ${area.county} with estate sales, online auctions, e-commerce consignment, estate cleanouts, junk removal and business liquidation, including ${p.neighborhoods.slice(0, 4).join(", ")}. ${p.homes}`,
     serviceHighlights: [
       `Free consultations in ${p.neighborhoods.slice(0, 3).join(", ")} and across ${area.city}`,
-      `Plans that account for local access: ${p.access.split(".")[0].toLowerCase()}`,
-      `Business liquidation planning for ${p.commerce.split(" include")[0].replace(/'s business areas| businesses.*/i, "").trim() || area.city} businesses`,
+      `Plans built around ${area.city} access, parking and HOA requirements`,
+      `Business liquidation planning for ${area.city} offices, shops and commercial spaces`,
       "Cleanout and removal work quoted and paid upfront",
       "Optional auction or e-commerce sales; results are never guaranteed",
     ],
