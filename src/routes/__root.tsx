@@ -26,6 +26,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
       { name: "google-site-verification", content: "nfbbre69S6UrDxsrsiEJP3z5dEfyJPQjx62hYjEkTLY" },
+      { name: "p:domain_verify", content: "14265d487f8312dedd0951decb6b1252" },
       { name: "author", content: "JSG Liquidators" },
       { name: "robots", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" },
       { name: "bingbot", content: "index, follow" },
