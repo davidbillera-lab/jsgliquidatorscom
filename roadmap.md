@@ -6,5 +6,6 @@
 - [ ] Live Google reviews feed — blocked: the connected Google Business Profile account isn't the one that manages the JSG listing.
 - [ ] Confirm Facebook/LinkedIn are JSG's own profiles before adding them to Google's business details.
 - [x] Oct 15 brief, part 1: 35% commission, walk-through cleanout quotes, Vincent Billera/brothers, fully insured, Lone Tree, /search SearchAction, removed keyword tags, single LocalBusiness entity.
-- [ ] Oct 15 brief, part 2: Hotel/Office/Commercial cleanout pages — waiting on Mint House/Golden Hotel job details from David.
-- [ ] Facebook/LinkedIn links, Denver 303/720 number, true hours, full 8 Google reviews text, photos — waiting on David.
+- [x] Oct 15 brief, part 2: Hotel/Office/Commercial clean-out pages, weekend phone hours.
+- [ ] Embed Google reviews — blocked: connected Google account (Nic Billera) only manages "Skin Care by Nicole"; needs the account that manages JSG.
+- [ ] LinkedIn link, Denver number, photos — optional, waiting on David.
