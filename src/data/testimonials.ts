@@ -51,4 +51,18 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: "Dave and Vince were very professional in going over what could be used for the estate auction and what they have to move to our new residence.",
   },
+  {
+    id: 7,
+    name: "Colette Hohnbaum",
+    location: "Denver, CO",
+    rating: 5,
+    text: "I highly recommend JSG. They are knowledgeable, accessible,and kind. They were compassionate about my situation and went beyond my expectations in assessing my things and formulating a plan to sell them in the most productive and expedient way, even as my situation kept changing. They are fairly priced and honest. Thank you JSG!",
+  },
+  {
+    id: 8,
+    name: "Westley Cornwell",
+    location: "Denver, CO",
+    rating: 5,
+    text: "My family and I had relocated to Sydney, but had two storage units in Denver that needed to be sorted. After getting in touch with David, we had come to an agreement that JSG Liquidators would clear out one of the units in exchange for the items inside the unit. They cleared it out in a couple hours with no issues.",
+  },
 ];

@@ -56,7 +56,7 @@ const services = [
   },
 ];
 
-const homeTestimonials = realTestimonials.slice(0, 3);
+const homeTestimonials = realTestimonials;
 
 
 const serviceAreas = [
