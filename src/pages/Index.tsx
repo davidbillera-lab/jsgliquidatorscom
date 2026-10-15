@@ -216,15 +216,15 @@ const Index = () => {
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="heroOutline" size="xl" className="justify-center text-sm px-3 sm:text-base sm:px-6">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-xs px-2 sm:text-base sm:px-6">
                 <a href="tel:805-444-4069">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   David (805) 444-4069
                 </a>
               </Button>
-              <Button asChild variant="heroOutline" size="xl" className="justify-center text-sm px-3 sm:text-base sm:px-6">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-xs px-2 sm:text-base sm:px-6">
                 <a href="tel:805-340-4817">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   Vincent (805) 340-4817
                 </a>
               </Button>
