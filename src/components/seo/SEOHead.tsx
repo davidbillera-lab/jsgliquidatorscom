@@ -70,9 +70,7 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
 
   const reviewJsonLd = reviews && reviews.length > 0 && aggregateRating ? {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
     "@id": `${siteUrl}/#localbusiness`,
-    "name": "JSG Liquidators",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": aggregateRating.ratingValue,
@@ -121,7 +119,6 @@ export const SEOHead = ({ title, description, canonical, type = "website", keywo
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords || defaultKeywords} />
       <link rel="canonical" href={canonicalUrl} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
       

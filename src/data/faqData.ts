@@ -83,7 +83,7 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: "How long does it take to sell consigned items?",
-        answer: "Selling time depends on the item, price, platform and buyer demand. We explain the applicable commission and terms before accepting an item; pure consignment does not include an upfront cleanout charge.",
+        answer: "Selling time depends on the item, price, platform and buyer demand. Auction consignment carries a 35% commission on items sold, and we confirm terms before accepting an item; pure consignment does not include an upfront cleanout charge.",
       },
     ],
   },

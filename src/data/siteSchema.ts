@@ -83,7 +83,7 @@ export const siteSchemaGraph = {
           "@type": "ContactPoint",
           "telephone": "+1-805-340-4817",
           "contactType": "customer service",
-          "name": "Vincent",
+          "name": "Vincent Billera",
           "areaServed": "CO",
           "availableLanguage": "English"
         }
@@ -265,6 +265,14 @@ export const siteSchemaGraph = {
             "@type": "State",
             "name": "Colorado"
           }
+        },
+        {
+          "@type": "City",
+          "name": "Lone Tree",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Colorado"
+          }
         }
       ],
       "sameAs": [
@@ -288,7 +296,7 @@ export const siteSchemaGraph = {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://jsgliquidators.com/blog?q={search_term_string}"
+          "urlTemplate": "https://jsgliquidators.com/search?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
