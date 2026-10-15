@@ -322,7 +322,19 @@ const Index = () => {
               </a>
             </div>
           )}
+
+          <div className="mt-8 flex flex-wrap items-center gap-2 text-muted-foreground text-sm sm:hidden">
+            <MapPin className="w-4 h-4" />
+            <span>Serving:</span>
+            {serviceAreas.map((area, i) => (
+              <Link key={area.slug} to={`/areas/${area.slug}`} className="hover:text-accent underline-offset-2 hover:underline transition-colors">
+                {area.name}{i < serviceAreas.length - 1 ? "," : ""}
+              </Link>
+            ))}
+            <span>& surrounding areas</span>
+          </div>
         </div>
+
 
       </section>
 
