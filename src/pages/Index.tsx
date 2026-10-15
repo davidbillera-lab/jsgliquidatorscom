@@ -146,7 +146,7 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90dvh] flex items-center">
+      <section className="relative min-h-[78dvh] lg:min-h-[90dvh] flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -208,21 +208,21 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-3 md:gap-4"
+              className="grid grid-cols-2 gap-3 sm:flex sm:flex-row md:gap-4"
             >
-              <Button asChild variant="hero" size="xl">
+              <Button asChild variant="hero" size="xl" className="col-span-2 sm:col-auto">
                 <Link to="/contact">
                   Get Your Free Consultation
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="heroOutline" size="xl">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-sm px-3 sm:text-base sm:px-6">
                 <a href="tel:805-444-4069">
                   <Phone className="w-5 h-5" />
                   David (805) 444-4069
                 </a>
               </Button>
-              <Button asChild variant="heroOutline" size="xl">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-sm px-3 sm:text-base sm:px-6">
                 <a href="tel:805-340-4817">
                   <Phone className="w-5 h-5" />
                   Vincent (805) 340-4817
@@ -250,7 +250,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="-mt-16 pt-14 pb-16 lg:mt-0 lg:pt-14 lg:pb-28 bg-background">
+      <section className="-mt-20 pt-12 pb-16 lg:mt-0 lg:pt-14 lg:pb-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial="hidden"
