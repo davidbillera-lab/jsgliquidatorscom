@@ -28,7 +28,7 @@ const INFO = {
     denverOnlineAuctions: "https://denveronlineauctions.com/marketplace/jsg-estate-liquidation",
     ebay: "https://ebay.us/m/tsG4b9",
   },
-  hours: "Monday-Friday 8:00-18:00 Mountain Time; Saturday by appointment",
+  hours: "Monday-Friday 8:00-18:00 Mountain Time; Saturday-Sunday phone calls taken",
 };
 
 export default defineTool({

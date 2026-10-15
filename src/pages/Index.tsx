@@ -48,6 +48,12 @@ const services = [
     description: "Quoted removal services with optional evaluation of approved items for resale.",
     href: "/services/junk-removal",
   },
+  {
+    icon: Building2,
+    title: "Commercial & Hotel Clean-Outs",
+    description: "Hotel, office and commercial clean-outs with optional auctions of furniture and equipment.",
+    href: "/services/commercial-cleanouts",
+  },
 ];
 
 const homeTestimonials = realTestimonials.slice(0, 3);
