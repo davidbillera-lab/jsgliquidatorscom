@@ -146,7 +146,7 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90dvh] flex items-center">
+      <section className="relative min-h-[78dvh] lg:min-h-[78dvh] flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -170,7 +170,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-4 md:mb-6 shadow-lg">
                 Denver's Trusted Estate Sale Company
               </span>
             </motion.div>
@@ -179,7 +179,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
+            className="text-[1.75rem] md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-4 md:mb-6 leading-tight"
             >
               JSG Liquidators | Estate Sales &amp; Liquidation in Denver
             </motion.h1>
@@ -188,7 +188,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
+              className="text-[15px] md:text-xl text-primary-foreground/90 mb-3 md:mb-4 leading-relaxed"
             >
               JSG Liquidators provides online estate sales, cleanouts, junk removal, e-commerce consignment and
               business liquidation across the Denver metro area. Every property begins with a free consultation and custom plan.
@@ -198,7 +198,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-lg md:text-xl font-semibold text-white mb-6 leading-relaxed"
+              className="text-sm md:text-xl font-semibold text-white mb-4 md:mb-6 leading-relaxed"
             >
               Cleanout work is quoted and paid upfront. Optional auction or e-commerce proceeds may help recoup costs, but results are not guaranteed.
             </motion.p>
@@ -208,23 +208,23 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="grid grid-cols-2 gap-3 sm:flex sm:flex-row md:gap-4"
             >
-              <Button asChild variant="hero" size="xl">
+              <Button asChild variant="hero" size="xl" className="col-span-2 sm:col-auto">
                 <Link to="/contact">
                   Get Your Free Consultation
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="heroOutline" size="xl">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-xs px-2 sm:text-base sm:px-6">
                 <a href="tel:805-444-4069">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   David (805) 444-4069
                 </a>
               </Button>
-              <Button asChild variant="heroOutline" size="xl">
+              <Button asChild variant="heroOutline" size="xl" className="justify-center text-xs px-2 sm:text-base sm:px-6">
                 <a href="tel:805-340-4817">
-                  <Phone className="w-5 h-5" />
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   Vincent (805) 340-4817
                 </a>
               </Button>
@@ -234,7 +234,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-10 flex flex-wrap items-center gap-2 text-primary-foreground/80 text-sm"
+              className="mt-6 hidden sm:flex sm:flex-wrap items-center gap-2 text-primary-foreground/80 text-sm"
             >
               <MapPin className="w-4 h-4" />
               <span>Serving:</span>
@@ -247,6 +247,95 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="-mt-20 pt-12 pb-16 lg:mt-0 lg:pt-14 lg:pb-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-8 lg:mb-14"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {google?.rating != null
+                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
+                : "We take pride in treating every estate with the care and respect it deserves."}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-xl p-8 border border-border"
+              >
+                <Quote className="w-10 h-10 text-accent/30 mb-4" />
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <div className="flex items-center gap-3">
+                  {testimonial.photo && (
+                    <img
+                      src={testimonial.photo}
+                      alt={`${testimonial.name} Google profile photo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {google?.mapsUri && (
+            <div className="text-center mt-10">
+              <a
+                href={google.mapsUri}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary hover:underline"
+              >
+                Read all {google.totalReviews} Google reviews
+              </a>
+            </div>
+          )}
+
+          <div className="mt-8 flex flex-wrap items-center gap-2 text-muted-foreground text-sm sm:hidden">
+            <MapPin className="w-4 h-4" />
+            <span>Serving:</span>
+            {serviceAreas.map((area, i) => (
+              <Link key={area.slug} to={`/areas/${area.slug}`} className="hover:text-accent underline-offset-2 hover:underline transition-colors">
+                {area.name}{i < serviceAreas.length - 1 ? "," : ""}
+              </Link>
+            ))}
+            <span>& surrounding areas</span>
+          </div>
+        </div>
+
+
       </section>
 
       {/* About the service: who we serve, process, why JSG */}
@@ -769,83 +858,6 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-accent font-medium text-sm uppercase tracking-wider">Testimonials</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              {google?.rating != null
-                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
-                : "We take pride in treating every estate with the care and respect it deserves."}
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                transition={{ duration: 0.5 }}
-                className="bg-card rounded-xl p-8 border border-border"
-              >
-                <Quote className="w-10 h-10 text-accent/30 mb-4" />
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  {testimonial.photo && (
-                    <img
-                      src={testimonial.photo}
-                      alt={`${testimonial.name} Google profile photo`}
-                      loading="lazy"
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                  )}
-                  <div>
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {google?.mapsUri && (
-            <div className="text-center mt-10">
-              <a
-                href={google.mapsUri}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-primary hover:underline"
-              >
-                Read all {google.totalReviews} Google reviews
-              </a>
-            </div>
-          )}
-        </div>
-
       </section>
 
       {/* How It Works / GEO Q&A Section — full plain-text answers for AI search engines */}
