@@ -29,6 +29,9 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
 import { Route as ServicesCategorySlugRouteImport } from './routes/services/$categorySlug'
+import { Route as ServicesCommercialCleanoutsRouteImport } from './routes/services/commercial-cleanouts'
+import { Route as ServicesHotelCleanoutsRouteImport } from './routes/services/hotel-cleanouts'
+import { Route as ServicesOfficeCleanoutsRouteImport } from './routes/services/office-cleanouts'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable/oauth/consent'
 import { Route as AreasSlugIndexRouteImport } from './routes/areas/$slug/index'
 import { Route as AreasSlugServiceSlugRouteImport } from './routes/areas/$slug/$serviceSlug'
@@ -134,6 +137,22 @@ const ServicesCategorySlugRoute = ServicesCategorySlugRouteImport.update({
   path: '/services/$categorySlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesCommercialCleanoutsRoute =
+  ServicesCommercialCleanoutsRouteImport.update({
+    id: '/services/commercial-cleanouts',
+    path: '/services/commercial-cleanouts',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesHotelCleanoutsRoute = ServicesHotelCleanoutsRouteImport.update({
+  id: '/services/hotel-cleanouts',
+  path: '/services/hotel-cleanouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesOfficeCleanoutsRoute = ServicesOfficeCleanoutsRouteImport.update({
+  id: '/services/office-cleanouts',
+  path: '/services/office-cleanouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
@@ -169,6 +188,9 @@ export interface FileRoutesByFullPath {
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
+  '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
+  '/services/hotel-cleanouts': typeof ServicesHotelCleanoutsRoute
+  '/services/office-cleanouts': typeof ServicesOfficeCleanoutsRoute
   '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -194,6 +216,9 @@ export interface FileRoutesByTo {
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
+  '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
+  '/services/hotel-cleanouts': typeof ServicesHotelCleanoutsRoute
+  '/services/office-cleanouts': typeof ServicesOfficeCleanoutsRoute
   '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -220,6 +245,9 @@ export interface FileRoutesById {
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
+  '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
+  '/services/hotel-cleanouts': typeof ServicesHotelCleanoutsRoute
+  '/services/office-cleanouts': typeof ServicesOfficeCleanoutsRoute
   '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -247,6 +275,9 @@ export interface FileRouteTypes {
     | '/why-work-with-us'
     | '/blog/$slug'
     | '/services/$categorySlug'
+    | '/services/commercial-cleanouts'
+    | '/services/hotel-cleanouts'
+    | '/services/office-cleanouts'
     | '/blog/'
     | '/services/'
     | '/.lovable/oauth/consent'
@@ -272,6 +303,9 @@ export interface FileRouteTypes {
     | '/why-work-with-us'
     | '/blog/$slug'
     | '/services/$categorySlug'
+    | '/services/commercial-cleanouts'
+    | '/services/hotel-cleanouts'
+    | '/services/office-cleanouts'
     | '/blog'
     | '/services'
     | '/.lovable/oauth/consent'
@@ -297,6 +331,9 @@ export interface FileRouteTypes {
     | '/why-work-with-us'
     | '/blog/$slug'
     | '/services/$categorySlug'
+    | '/services/commercial-cleanouts'
+    | '/services/hotel-cleanouts'
+    | '/services/office-cleanouts'
     | '/blog/'
     | '/services/'
     | '/.lovable/oauth/consent'
@@ -323,6 +360,9 @@ export interface RootRouteChildren {
   WhyWorkWithUsRoute: typeof WhyWorkWithUsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ServicesCategorySlugRoute: typeof ServicesCategorySlugRoute
+  ServicesCommercialCleanoutsRoute: typeof ServicesCommercialCleanoutsRoute
+  ServicesHotelCleanoutsRoute: typeof ServicesHotelCleanoutsRoute
+  ServicesOfficeCleanoutsRoute: typeof ServicesOfficeCleanoutsRoute
   BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
@@ -472,6 +512,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCategorySlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/commercial-cleanouts': {
+      id: '/services/commercial-cleanouts'
+      path: '/services/commercial-cleanouts'
+      fullPath: '/services/commercial-cleanouts'
+      preLoaderRoute: typeof ServicesCommercialCleanoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/hotel-cleanouts': {
+      id: '/services/hotel-cleanouts'
+      path: '/services/hotel-cleanouts'
+      fullPath: '/services/hotel-cleanouts'
+      preLoaderRoute: typeof ServicesHotelCleanoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/office-cleanouts': {
+      id: '/services/office-cleanouts'
+      path: '/services/office-cleanouts'
+      fullPath: '/services/office-cleanouts'
+      preLoaderRoute: typeof ServicesOfficeCleanoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/.lovable/oauth/consent': {
       id: '/.lovable/oauth/consent'
       path: '/.lovable/oauth/consent'
@@ -516,6 +577,9 @@ const rootRouteChildren: RootRouteChildren = {
   WhyWorkWithUsRoute: WhyWorkWithUsRoute,
   BlogSlugRoute: BlogSlugRoute,
   ServicesCategorySlugRoute: ServicesCategorySlugRoute,
+  ServicesCommercialCleanoutsRoute: ServicesCommercialCleanoutsRoute,
+  ServicesHotelCleanoutsRoute: ServicesHotelCleanoutsRoute,
+  ServicesOfficeCleanoutsRoute: ServicesOfficeCleanoutsRoute,
   BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
