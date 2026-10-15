@@ -146,7 +146,7 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[78dvh] lg:min-h-[90dvh] flex items-center">
+      <section className="relative min-h-[78dvh] lg:min-h-[84dvh] flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
