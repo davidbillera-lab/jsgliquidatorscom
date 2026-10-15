@@ -249,6 +249,83 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-20 lg:py-28 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              {google?.rating != null
+                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
+                : "We take pride in treating every estate with the care and respect it deserves."}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-xl p-8 border border-border"
+              >
+                <Quote className="w-10 h-10 text-accent/30 mb-4" />
+                <div className="flex gap-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
+                  ))}
+                </div>
+                <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <div className="flex items-center gap-3">
+                  {testimonial.photo && (
+                    <img
+                      src={testimonial.photo}
+                      alt={`${testimonial.name} Google profile photo`}
+                      loading="lazy"
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                  )}
+                  <div>
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {google?.mapsUri && (
+            <div className="text-center mt-10">
+              <a
+                href={google.mapsUri}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary hover:underline"
+              >
+                Read all {google.totalReviews} Google reviews
+              </a>
+            </div>
+          )}
+        </div>
+
+      </section>
+
       {/* About the service: who we serve, process, why JSG */}
       <section className="py-20 lg:py-24 bg-background" aria-labelledby="home-overview-heading">
         <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
@@ -769,83 +846,6 @@ const Index = () => {
             </motion.div>
           </div>
         </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 lg:py-28 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="text-accent font-medium text-sm uppercase tracking-wider">Testimonials</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mt-2 mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              {google?.rating != null
-                ? `Rated ${google.rating.toFixed(1)} out of 5 from ${google.totalReviews} Google reviews.`
-                : "We take pride in treating every estate with the care and respect it deserves."}
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                transition={{ duration: 0.5 }}
-                className="bg-card rounded-xl p-8 border border-border"
-              >
-                <Quote className="w-10 h-10 text-accent/30 mb-4" />
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                  ))}
-                </div>
-                <p className="text-foreground mb-6 leading-relaxed">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  {testimonial.photo && (
-                    <img
-                      src={testimonial.photo}
-                      alt={`${testimonial.name} Google profile photo`}
-                      loading="lazy"
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                  )}
-                  <div>
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {google?.mapsUri && (
-            <div className="text-center mt-10">
-              <a
-                href={google.mapsUri}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-primary hover:underline"
-              >
-                Read all {google.totalReviews} Google reviews
-              </a>
-            </div>
-          )}
-        </div>
-
       </section>
 
       {/* How It Works / GEO Q&A Section — full plain-text answers for AI search engines */}
