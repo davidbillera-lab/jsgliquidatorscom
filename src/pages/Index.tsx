@@ -170,7 +170,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-6 shadow-lg">
+              <span className="inline-block px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold mb-4 md:mb-6 shadow-lg">
                 Denver's Trusted Estate Sale Company
               </span>
             </motion.div>
@@ -179,7 +179,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight"
+            className="text-[1.75rem] md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-4 md:mb-6 leading-tight"
             >
               JSG Liquidators | Estate Sales &amp; Liquidation in Denver
             </motion.h1>
@@ -188,7 +188,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-xl text-primary-foreground/90 mb-4 leading-relaxed"
+              className="text-[15px] md:text-xl text-primary-foreground/90 mb-3 md:mb-4 leading-relaxed"
             >
               JSG Liquidators provides online estate sales, cleanouts, junk removal, e-commerce consignment and
               business liquidation across the Denver metro area. Every property begins with a free consultation and custom plan.
@@ -198,7 +198,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="text-lg md:text-xl font-semibold text-white mb-6 leading-relaxed"
+              className="text-sm md:text-xl font-semibold text-white mb-4 md:mb-6 leading-relaxed"
             >
               Cleanout work is quoted and paid upfront. Optional auction or e-commerce proceeds may help recoup costs, but results are not guaranteed.
             </motion.p>
@@ -208,7 +208,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4"
             >
               <Button asChild variant="hero" size="xl">
                 <Link to="/contact">
@@ -234,7 +234,7 @@ const Index = () => {
               initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-10 flex flex-wrap items-center gap-2 text-primary-foreground/80 text-sm"
+              className="mt-6 hidden sm:flex sm:flex-wrap items-center gap-2 text-primary-foreground/80 text-sm"
             >
               <MapPin className="w-4 h-4" />
               <span>Serving:</span>
@@ -250,7 +250,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="pt-8 pb-20 lg:pt-14 lg:pb-28 bg-background">
+      <section className="-mt-16 pt-14 pb-16 lg:mt-0 lg:pt-14 lg:pb-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
             initial="hidden"
