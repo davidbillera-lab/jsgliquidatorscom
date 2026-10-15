@@ -600,7 +600,7 @@ const WhyWorkWithUs = () => {
             </div>
 
             <p className="text-sm opacity-80 mb-6">
-              Monday-Friday, 8 a.m.-6 p.m. Mountain Time. Saturday appointments are available.
+              Monday-Friday, 8 a.m.-6 p.m. Mountain Time. Weekend phone calls are taken.
             </p>
 
             <Button asChild size="lg" variant="secondary" className="text-lg px-8">
