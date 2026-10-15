@@ -288,7 +288,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Vincent</h3>
+                    <h3 className="font-semibold text-foreground">Vincent Billera</h3>
                     <p className="text-lg text-primary font-medium">(805) 340-4817</p>
                     <p className="text-sm text-muted-foreground">Call or text anytime</p>
                   </div>

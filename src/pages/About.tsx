@@ -82,7 +82,7 @@ const About = () => {
               Colorado's Estate Liquidation Experts
             </h1>
             <p className="text-xl text-primary-foreground/80">
-              Denver estate sale company founded by David and Vincent — providing estate sales, 
+              Denver estate sale company founded by brothers David and Vincent Billera — fully insured and providing estate sales, 
               business liquidation, estate cleanouts &amp; e-commerce consignment with clear, custom pricing across Colorado.
             </p>
           </motion.div>
@@ -226,13 +226,13 @@ const About = () => {
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
                 <Users className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-xl font-display font-bold text-foreground mb-1" itemProp="name">Vincent</h3>
+              <h3 className="text-xl font-display font-bold text-foreground mb-1" itemProp="name">Vincent Billera</h3>
               <p className="text-accent font-medium text-sm mb-4" itemProp="jobTitle">Co-Founder &amp; Operations Director</p>
               <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
-                Vincent oversees the operational side of JSG Liquidators, coordinating estate cleanouts, junk removal 
+                David's brother Vincent oversees the operational side of JSG Liquidators, coordinating estate cleanouts, junk removal 
                 logistics, and the e-commerce consignment program. His background in logistics and customer service 
                 ensures every project runs smoothly from initial consultation through final property clearance. 
-                Vincent is the point of contact for scheduling and day-of-service coordination.
+                Vincent is the point of contact for scheduling and day-of-service coordination. JSG Liquidators is fully insured.
               </p>
               <div className="flex flex-wrap gap-2">
                 {["Estate Cleanout", "Junk Removal", "E-Commerce", "Logistics"].map(tag => (
