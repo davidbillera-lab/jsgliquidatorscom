@@ -170,6 +170,18 @@ const ServiceCategoryPage = () => {
               </div>
             </div>
           ))}
+          {category.serviceSlug === "business-liquidation" && (
+          <div className="mb-10">
+            <h2 className="font-display font-bold text-2xl text-foreground mb-4">Hotel, office and commercial clean-outs</h2>
+            <div className="flex flex-wrap gap-3">
+              {[["commercial-cleanouts","Commercial Clean-Outs"],["hotel-cleanouts","Hotel Clean-Outs"],["office-cleanouts","Office Clean-Outs"]].map(([slug,label]) => (
+                <Link key={slug} to={`/services/${slug}`} className="inline-flex items-center gap-1 px-4 py-2 rounded-full border border-border bg-card text-foreground hover:text-primary">
+                  {label} <ArrowRight className="w-4 h-4" />
+                </Link>
+              ))}
+            </div>
+          </div>
+          )}
           <div className="grid md:grid-cols-2 gap-4 mt-8">
             {category.benefits.map((b) => (
               <div key={b} className="flex gap-3 items-start">
