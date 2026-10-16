@@ -81,7 +81,7 @@ const Pricing = () => {
     },
     {
       name: "Custom plan & clear cost structure",
-      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and the upfront cost of any cleanout work.",
+      text: "You receive an itemized plan: what goes to online auction, what fits our eBay store or e-commerce consignment, what is donated or recycled, and the upfront cost of any cleanout work. Auction and e-commerce sales carry our 35% commission on items sold, confirmed in writing before anything is listed.",
     },
     {
       name: "Online auctions & e-commerce sales",
@@ -109,7 +109,11 @@ const Pricing = () => {
   const faqs = [
     {
       question: "How much do estate sale companies charge in Denver?",
-      answer: "Across the industry, many estate sale companies work on commission, and some add setup fees or sale minimums. JSG Liquidators starts with a free consultation and builds a plan around your property. If a cleanout is included, its quoted cost is paid upfront. Optional auction and e-commerce proceeds may help you recoup some or all of that expense, but results are not guaranteed.",
+      answer: "Across the industry, many estate sale companies work on commission, and some add setup fees or sale minimums. JSG Liquidators charges a 35% commission on items sold through online auction or e-commerce consignment, with terms confirmed in writing before anything is listed. If a cleanout is included, its quoted cost is paid upfront. Optional auction and e-commerce proceeds may help you recoup some or all of that expense, but results are not guaranteed.",
+    },
+    {
+      question: "What commission do you take on auction and consignment sales?",
+      answer: "Our commission is 35% on items sold through our online auctions, eBay store and e-commerce consignment — you keep 65% of the sale price. We confirm the terms for each item in writing before accepting it. Cleanout and removal work is priced separately and quoted per job after a free walkthrough.",
     },
     {
       question: "Why isn't there a set price for your services?",
