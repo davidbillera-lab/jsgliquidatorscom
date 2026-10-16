@@ -157,30 +157,46 @@ export const getGoogleReviews = createServerFn({ method: "GET" }).handler(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const body = (await reviewsRes.json()) as Record<string, any>;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const liveReviews = ((body["reviews"] ?? []) as Array<Record<string, any>>)
+      .map((r) => {
+        const publishTime: string = r["createTime"] ?? r["updateTime"] ?? "";
+        return {
+          author: r["reviewer"]?.displayName ?? "Google user",
+          profilePhoto: r["reviewer"]?.profilePhotoUrl ?? "",
+          rating: STAR_RATINGS[r["starRating"]] ?? 5,
+          text: r["comment"] ?? "",
+          relativeTime: relativeTime(publishTime),
+          publishTime,
+          uri: r["reviewReplyUrl"]?.startsWith("http")
+            ? r["reviewReplyUrl"]
+            : `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
+        };
+      })
+      .filter((r) => r.text.length > 0);
+
+    // Merge the live feed with the JSG ESTATE LIQUIDATORS listing's reviews,
+    // deduplicating by author name (a reviewer may appear on both listings).
+    const seen = new Set(liveReviews.map((r) => r.author.toLowerCase()));
+    const merged = [
+      ...liveReviews,
+      ...ESTATE_LISTING_REVIEWS.filter((r) => !seen.has(r.author.toLowerCase())).map((r) => ({
+        ...r,
+        profilePhoto: "",
+        publishTime: "",
+        uri: `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
+      })),
+    ];
+    const ratings = merged.map((r) => r.rating);
+
     const data: GoogleReviewsPayload = {
       placeId: (metadata["placeId"] as string) ?? "",
       name: (meta["title"] as string) ?? "JSG Liquidators",
-      rating: typeof body["averageRating"] === "number" ? body["averageRating"] : null,
-      totalReviews: body["totalReviewCount"] ?? 0,
+      rating: ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : null,
+      totalReviews: merged.length,
       mapsUri: (metadata["mapsUri"] as string) ?? "",
       writeReviewUri: (metadata["newReviewUri"] as string) ?? "",
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      reviews: ((body["reviews"] ?? []) as Array<Record<string, any>>)
-        .map((r) => {
-          const publishTime: string = r["createTime"] ?? r["updateTime"] ?? "";
-          return {
-            author: r["reviewer"]?.displayName ?? "Google user",
-            profilePhoto: r["reviewer"]?.profilePhotoUrl ?? "",
-            rating: STAR_RATINGS[r["starRating"]] ?? 5,
-            text: r["comment"] ?? "",
-            relativeTime: relativeTime(publishTime),
-            publishTime,
-            uri: r["reviewReplyUrl"]?.startsWith("http")
-              ? r["reviewReplyUrl"]
-              : `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
-          };
-        })
-        .filter((r) => r.text.length > 0),
+      reviews: merged,
     };
 
     cache = { at: Date.now(), data };
