@@ -21,7 +21,7 @@ export const testimonials: Testimonial[] = [
     name: "Brandon Johnson",
     location: "Denver, CO",
     rating: 5,
-    text: "If you're looking for a good auction to auction off your items, look no further! JSG Estate will take care of you. Fast and easy service, they can get you a return on your investment. The items you think are not worth anything, they have an eye for value. Professional and driven. Easy to work with and down to earth.",
+    text: "If u looking for a good auction to Auction off your Items ! Look no further JSG Estate will take care of you , fast and easy service, they can get u a Return on your investment , the Items you think is not worth, they have a eye for value. Professional and driven they Mato . Easy to work with and down to earth .",
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 4,
-    name: "Mary Brs",
+    name: "Mary K",
     location: "Denver, CO",
     rating: 5,
     text: "David and Vincent with JSG Liquidators run smooth, well organized auctions. They offer a great mix of new items, vintage finds, and quality antiques. I love shopping their auctions! Pickup is straightforward and well managed, and communication is solid from start to finish. They're dependable, professional, and a welcome part of the Denver Online Auctions community.",
