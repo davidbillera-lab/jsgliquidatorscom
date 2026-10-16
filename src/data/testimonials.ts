@@ -65,4 +65,18 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     text: "My family and I had relocated to Sydney, but had two storage units in Denver that needed to be sorted. After getting in touch with David, we had come to an agreement that JSG Liquidators would clear out one of the units in exchange for the items inside the unit. They cleared it out in a couple hours with no issues.",
   },
+  {
+    id: 9,
+    name: "Calder Young",
+    location: "Denver, CO",
+    rating: 5,
+    text: "Great, Experience, Dave and Vinny were professional, Fair, Honest, easy to communicate with, and on top of it.  Dave worked with our needs and got us a great value for items we didn’t even know we could sell, these guys are pros, and I would highly recommend,  make the call today! They got you covered",
+  },
+  {
+    id: 10,
+    name: "Tyler Rubert",
+    location: "Denver, CO",
+    rating: 5,
+    text: "Great customer service, they always go above and beyond to take care of the customer.",
+  },
 ];
