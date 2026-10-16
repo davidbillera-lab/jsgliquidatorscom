@@ -20,7 +20,7 @@ export interface GoogleReviewsData {
   reviews: GoogleReview[];
 }
 
-const CACHE_KEY = "jsg_google_reviews_v1";
+const CACHE_KEY = "jsg_google_reviews_v2";
 const CACHE_TTL = 1000 * 60 * 60 * 6; // 6 hours
 
 function readCache(): GoogleReviewsData | null {
