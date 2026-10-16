@@ -35,7 +35,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
       {
         heading: "How pricing works",
         paragraphs: [
-          "Estate sale services are priced per project after a free consultation, because no two homes hold the same contents. Auction consignment carries a 35% commission on items sold, and the written agreement confirms the terms before anything is listed.",
+          "Estate sale services are priced per project after a free consultation, because no two homes hold the same contents. Both auction and e-commerce consignment carry a 35% commission on items sold, and the written agreement confirms the terms before anything is listed.",
           `If you also want the house cleared, that is a separate cleanout quote. ${PRICING_RULE}`,
         ],
       },
@@ -48,7 +48,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
       },
     ],
     faqs: [
-      { question: "How much does an estate sale cost in Denver?", answer: `Estate sale pricing is set per project after a free walkthrough, and auction consignment carries a 35% commission on items sold, confirmed in writing before anything is listed. ${PRICING_RULE}` },
+      { question: "How much does an estate sale cost in Denver?", answer: `Estate sale pricing is set per project after a free walkthrough, and both auction and e-commerce consignment carry a 35% commission on items sold, confirmed in writing before anything is listed. ${PRICING_RULE}` },
       { question: "Do you run in-person or online estate sales?", answer: "We focus on online estate auctions. Items are listed on platforms like Denver Online Auctions and eBay, and buyers pick up during scheduled windows instead of walking through the home." },
       { question: "How long does an online estate sale take?", answer: "It depends on the number and type of items, the platform and any property deadline. We set the schedule in the plan after the consultation rather than quoting a fixed number of days." },
       { question: "What happens to items that do not sell?", answer: "Unsold items are handled according to the plan you approve. They can be relisted, donated, returned to the family or removed as part of a separately quoted cleanout." },
@@ -156,13 +156,13 @@ export const coreServiceSeo: CoreServiceSeo[] = [
       {
         heading: "Pricing and terms",
         paragraphs: [
-          "Auction consignment carries a 35% commission on items sold. We confirm the terms for each item before accepting it, and pure consignment does not involve an upfront cleanout charge.",
+          "Our commission is 35% on items sold through e-commerce consignment — the same rate as our auction consignment. You keep 65% of the sale price, terms are confirmed for each item before we accept it, and pure consignment does not involve an upfront cleanout charge.",
           `If you later need a property cleared, that is a separate quote. ${PRICING_RULE}`,
         ],
       },
     ],
     faqs: [
-      { question: "How does consignment pricing work?", answer: "Auction consignment carries a 35% commission on items sold, and the terms are confirmed for each item before we accept it. Pure consignment has no upfront cleanout charge." },
+      { question: "How does consignment pricing work?", answer: "E-commerce consignment and auction consignment both carry a 35% commission on items sold, so you keep 65% of each sale. Terms are confirmed for each item before we accept it. Pure consignment has no upfront cleanout charge." },
       { question: "How long does it take to sell a consigned item?", answer: "Selling time depends on the item, price, platform and buyer demand. We set expectations item by item rather than promising a fixed window." },
       { question: "Which marketplaces do you use?", answer: "We list on our eBay store and Denver Online Auctions, and keep a LiveAuctioneers account for suitable auction events. The channel is chosen to fit each item." },
       { question: "Can I consign just one item?", answer: "Yes. We evaluate single items and small groups. If an item does not suit our channels, we will tell you honestly." },
