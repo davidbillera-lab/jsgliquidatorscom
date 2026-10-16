@@ -1,6 +1,12 @@
 import { createServerFn } from "@tanstack/react-start";
 
-const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_maps";
+// Reviews are read from the Google Business Profile API through the Lovable
+// gateway, against the verified "JSG Liquidators LLC" listing. The Places API
+// searchText lookup previously returned no match for the business, so the
+// account/location IDs are pinned here (overridable via env) instead of searched.
+const GATEWAY_URL = "https://connector-gateway.lovable.dev/google_business_profile";
+const GBP_ACCOUNT_ID = process.env["GBP_ACCOUNT_ID"] ?? "accounts/111646186357730567850";
+const GBP_LOCATION_ID = process.env["GBP_LOCATION_ID"] ?? "locations/13496775699988242285";
 
 export interface GoogleReviewsPayload {
   placeId: string;
@@ -33,80 +39,91 @@ const EMPTY: GoogleReviewsPayload = {
 let cache: { at: number; data: GoogleReviewsPayload } | null = null;
 const CACHE_MS = 1000 * 60 * 60 * 6; // 6 hours
 
+const STAR_RATINGS: Record<string, number> = {
+  FIVE: 5,
+  FOUR: 4,
+  THREE: 3,
+  TWO: 2,
+  ONE: 1,
+};
+
+function relativeTime(iso: string): string {
+  const t = Date.parse(iso);
+  if (Number.isNaN(t)) return "Google review";
+  const days = Math.max(0, Math.floor((Date.now() - t) / 86_400_000));
+  if (days === 0) return "Today";
+  if (days === 1) return "Yesterday";
+  if (days < 7) return `${days} days ago`;
+  if (days < 30) return `${Math.floor(days / 7)} week${days < 14 ? "" : "s"} ago`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months} month${months === 1 ? "" : "s"} ago`;
+  const years = Math.floor(days / 365);
+  return `${years} year${years === 1 ? "" : "s"} ago`;
+}
+
 export const getGoogleReviews = createServerFn({ method: "GET" }).handler(
   async (): Promise<GoogleReviewsPayload> => {
     const lovableKey = process.env["LOVABLE_API_KEY"];
-    const mapsKey = process.env["GOOGLE_MAPS_API_KEY"];
-    if (!lovableKey || !mapsKey) throw new Error("Google Maps connection is not configured");
+    const gbpKey = process.env["GOOGLE_BUSINESS_PROFILE_API_KEY"];
+    if (!lovableKey || !gbpKey) throw new Error("Google Business Profile connection is not configured");
 
     if (cache && Date.now() - cache.at < CACHE_MS) return cache.data;
 
     const headers = (extra: Record<string, string> = {}) => ({
       Authorization: `Bearer ${lovableKey}`,
-      "X-Connection-Api-Key": mapsKey,
+      "X-Connection-Api-Key": gbpKey,
       "Content-Type": "application/json",
       ...extra,
     });
 
-    let placeId = process.env["GOOGLE_PLACE_ID"] ?? "";
-    if (!placeId) {
-      const query = process.env["GOOGLE_PLACE_QUERY"] ?? "JSG Liquidators Denver CO";
-      const search = await fetch(`${GATEWAY_URL}/places/v1/places:searchText`, {
-        method: "POST",
-        headers: headers({ "X-Goog-FieldMask": "places.id,places.displayName" }),
-        body: JSON.stringify({ textQuery: query }),
-      });
-      if (!search.ok) {
-        console.error(`Google Maps gateway failed [${search.status}]: ${await search.text()}`);
-        throw new Error("Google reviews request failed");
-      }
-      const json = (await search.json()) as { places?: Array<{ id?: string }> };
-      const id = json.places?.[0]?.id;
-      if (!id) {
-        console.warn(`No Google listing matched "${query}" — returning empty payload.`);
-        return EMPTY;
-      }
-      placeId = id;
+    // Location metadata gives the Place ID, Maps link and "write a review" link.
+    let meta: Record<string, unknown> = {};
+    const metaRes = await fetch(
+      `${GATEWAY_URL}/business_information/v1/${GBP_LOCATION_ID}?readMask=metadata,title`,
+      { headers: headers() },
+    );
+    if (metaRes.ok) {
+      meta = (await metaRes.json()) as Record<string, unknown>;
+    } else {
+      console.error(`GBP metadata request failed [${metaRes.status}]: ${await metaRes.text()}`);
     }
+    const metadata = (meta["metadata"] ?? {}) as Record<string, unknown>;
 
-    const fieldMask = [
-      "id",
-      "displayName",
-      "rating",
-      "userRatingCount",
-      "googleMapsUri",
-      "googleMapsLinks.writeAReviewUri",
-      "reviews",
-    ].join(",");
-
-    const detailsRes = await fetch(`${GATEWAY_URL}/places/v1/places/${placeId}`, {
-      headers: headers({ "X-Goog-FieldMask": fieldMask }),
-    });
-    if (!detailsRes.ok) {
-      console.error(`Google Maps gateway failed [${detailsRes.status}]: ${await detailsRes.text()}`);
+    // Reviews for managed locations come from the My Business v4 API.
+    const reviewsRes = await fetch(
+      `${GATEWAY_URL}/my_business/v4/${GBP_ACCOUNT_ID}/${GBP_LOCATION_ID}/reviews?pageSize=50`,
+      { headers: headers() },
+    );
+    if (!reviewsRes.ok) {
+      console.error(`GBP reviews request failed [${reviewsRes.status}]: ${await reviewsRes.text()}`);
       throw new Error("Google reviews request failed");
     }
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const place = (await detailsRes.json()) as Record<string, any>;
+    const body = (await reviewsRes.json()) as Record<string, any>;
+
     const data: GoogleReviewsPayload = {
-      placeId: place["id"] ?? placeId,
-      name: place["displayName"]?.text ?? "JSG Liquidators",
-      rating: typeof place["rating"] === "number" ? place["rating"] : null,
-      totalReviews: place["userRatingCount"] ?? 0,
-      mapsUri: place["googleMapsUri"] ?? "",
-      writeReviewUri: place["googleMapsLinks"]?.writeAReviewUri ?? "",
+      placeId: (metadata["placeId"] as string) ?? "",
+      name: (meta["title"] as string) ?? "JSG Liquidators",
+      rating: typeof body["averageRating"] === "number" ? body["averageRating"] : null,
+      totalReviews: body["totalReviewCount"] ?? 0,
+      mapsUri: (metadata["mapsUri"] as string) ?? "",
+      writeReviewUri: (metadata["newReviewUri"] as string) ?? "",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      reviews: ((place["reviews"] ?? []) as Array<Record<string, any>>)
-        .map((r) => ({
-          author: r["authorAttribution"]?.displayName ?? "Google user",
-          profilePhoto: r["authorAttribution"]?.photoUri ?? "",
-          rating: r["rating"] ?? 5,
-          text: r["originalText"]?.text ?? r["text"]?.text ?? "",
-          relativeTime: r["relativePublishTimeDescription"] ?? "",
-          publishTime: r["publishTime"] ?? "",
-          uri: r["googleMapsUri"] ?? "",
-        }))
+      reviews: ((body["reviews"] ?? []) as Array<Record<string, any>>)
+        .map((r) => {
+          const publishTime: string = r["createTime"] ?? r["updateTime"] ?? "";
+          return {
+            author: r["reviewer"]?.displayName ?? "Google user",
+            profilePhoto: r["reviewer"]?.profilePhotoUrl ?? "",
+            rating: STAR_RATINGS[r["starRating"]] ?? 5,
+            text: r["comment"] ?? "",
+            relativeTime: relativeTime(publishTime),
+            publishTime,
+            uri: r["reviewReplyUrl"]?.startsWith("http")
+              ? r["reviewReplyUrl"]
+              : `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
+          };
+        })
         .filter((r) => r.text.length > 0),
     };
 
