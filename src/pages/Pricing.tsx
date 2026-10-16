@@ -294,6 +294,59 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* Auction commission split */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              Auction &amp; Consignment Pricing: A Clear 35% Commission
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              When we sell items for you — through our online estate auctions, our eBay store, or e-commerce consignment — our commission is 35% of each sale. Terms are confirmed in writing for every item before anything is listed.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto bg-secondary rounded-xl p-8 md:p-10"
+          >
+            <div className="grid md:grid-cols-2 gap-8 text-center md:text-left">
+              <div>
+                <p className="text-5xl md:text-6xl font-display font-bold text-primary mb-2">35%</p>
+                <p className="text-foreground font-semibold mb-2">Our commission on items sold</p>
+                <p className="text-muted-foreground text-sm">
+                  Covers photography, research, listing, buyer communication, and settlement across our auction, eBay, and consignment channels.
+                </p>
+              </div>
+              <div>
+                <p className="text-5xl md:text-6xl font-display font-bold text-foreground mb-2">65%</p>
+                <p className="text-foreground font-semibold mb-2">Your share of each sale</p>
+                <p className="text-muted-foreground text-sm">
+                  Your proceeds are settled according to your written agreement. What sells and for how much varies, so no amount is guaranteed.
+                </p>
+              </div>
+            </div>
+            <div className="border-t border-border mt-8 pt-6">
+              <p className="text-muted-foreground text-sm flex items-start gap-3">
+                <Handshake className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <span>
+                  Cleanout and removal work is priced separately and quoted per job after a free walkthrough — it is always paid upfront. Sale proceeds may help you recoup some or all of that cost, but no result is promised.
+                </span>
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* How it works */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 lg:px-8">
