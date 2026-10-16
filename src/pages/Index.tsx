@@ -97,7 +97,7 @@ const Index = () => {
 
   const testimonials = (
     google?.reviews?.length
-      ? google.reviews.slice(0, 3).map((r) => ({
+      ? google.reviews.map((r) => ({
           name: r.author,
           location: r.relativeTime || "Google review",
           text: r.text,
