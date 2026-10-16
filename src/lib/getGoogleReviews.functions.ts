@@ -39,6 +39,62 @@ const EMPTY: GoogleReviewsPayload = {
 let cache: { at: number; data: GoogleReviewsPayload } | null = null;
 const CACHE_MS = 1000 * 60 * 60 * 6; // 6 hours
 
+// Verbatim reviews from the public "JSG ESTATE LIQUIDATORS" Google listing
+// (Highlands Ranch, feature /g/11ynlh1v2d). That listing is not managed by the
+// connected Google Business Profile account and Places API search does not
+// index it, so its reviews are merged here as a static list alongside the
+// live feed from the verified "JSG Liquidators LLC" listing.
+const ESTATE_LISTING_REVIEWS = [
+  {
+    author: "Calder Young",
+    rating: 5,
+    text: "Great, Experience, Dave and Vinny were professional, Fair, Honest, easy to communicate with, and on top of it.  Dave worked with our needs and got us a great value for items we didn’t even know we could sell, these guys are pros, and I would highly recommend,  make the call today! They got you covered",
+    relativeTime: "4 months ago",
+  },
+  {
+    author: "Harriet Ivker",
+    rating: 5,
+    text: "I highly recommend JSG liquidators. They were professional, honest, easy to work with and I received more than expected from the estate sale. You won't be sorry.",
+    relativeTime: "10 months ago",
+  },
+  {
+    author: "Tyler Rubert",
+    rating: 5,
+    text: "Great customer service, they always go above and beyond to take care of the customer.",
+    relativeTime: "5 months ago",
+  },
+  {
+    author: "Sarah Booras",
+    rating: 5,
+    text: "I have known the Billera Brothers for a while now, I have used their help more than once! They are hard working, honest, professional and a great choice to help with estate liquidations, junk removal, whatever you need.  They get it done!  Highly recommend!",
+    relativeTime: "10 months ago",
+  },
+  {
+    author: "Erin H",
+    rating: 5,
+    text: "David has been a dream come true. He carries himself with integrity, and the way he has helped me reflects his strong character.\nMy life feels back in order again and I truly appreciate you! I will recommend David any chance I get!",
+    relativeTime: "10 months ago",
+  },
+  {
+    author: "Brandon Johnson",
+    rating: 5,
+    text: "If u looking for a good auction to Auction off your Items ! Look no further JSG Estate will take care of you , fast and easy service, they can get u a Return on your investment , the Items you think is not worth, they have a eye for value. Professional and driven they Mato . Easy to work with and down to earth .",
+    relativeTime: "10 months ago",
+  },
+  {
+    author: "Mary K",
+    rating: 5,
+    text: "David and Vincent with JSG Liquidators run smooth, well organized auctions. They offer a great mix of new items, vintage finds, and quality antiques. I love shopping their auctions! Pickup is straightforward and well managed, and communication is solid from start to finish. They’re dependable, professional, and a welcome part of the Denver Online Auctions community.",
+    relativeTime: "10 months ago",
+  },
+  {
+    author: "John Krueger",
+    rating: 5,
+    text: "Dave and Vince were very professional in going over what could be used for the estate auction and what they have to move to our new residence.",
+    relativeTime: "10 months ago",
+  },
+];
+
 const STAR_RATINGS: Record<string, number> = {
   FIVE: 5,
   FOUR: 4,
@@ -101,30 +157,46 @@ export const getGoogleReviews = createServerFn({ method: "GET" }).handler(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const body = (await reviewsRes.json()) as Record<string, any>;
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const liveReviews = ((body["reviews"] ?? []) as Array<Record<string, any>>)
+      .map((r) => {
+        const publishTime: string = r["createTime"] ?? r["updateTime"] ?? "";
+        return {
+          author: r["reviewer"]?.displayName ?? "Google user",
+          profilePhoto: r["reviewer"]?.profilePhotoUrl ?? "",
+          rating: STAR_RATINGS[r["starRating"]] ?? 5,
+          text: r["comment"] ?? "",
+          relativeTime: relativeTime(publishTime),
+          publishTime,
+          uri: r["reviewReplyUrl"]?.startsWith("http")
+            ? r["reviewReplyUrl"]
+            : `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
+        };
+      })
+      .filter((r) => r.text.length > 0);
+
+    // Merge the live feed with the JSG ESTATE LIQUIDATORS listing's reviews,
+    // deduplicating by author name (a reviewer may appear on both listings).
+    const seen = new Set(liveReviews.map((r) => r.author.toLowerCase()));
+    const merged = [
+      ...liveReviews,
+      ...ESTATE_LISTING_REVIEWS.filter((r) => !seen.has(r.author.toLowerCase())).map((r) => ({
+        ...r,
+        profilePhoto: "",
+        publishTime: "",
+        uri: `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
+      })),
+    ];
+    const ratings = merged.map((r) => r.rating);
+
     const data: GoogleReviewsPayload = {
       placeId: (metadata["placeId"] as string) ?? "",
       name: (meta["title"] as string) ?? "JSG Liquidators",
-      rating: typeof body["averageRating"] === "number" ? body["averageRating"] : null,
-      totalReviews: body["totalReviewCount"] ?? 0,
+      rating: ratings.length ? ratings.reduce((a, b) => a + b, 0) / ratings.length : null,
+      totalReviews: merged.length,
       mapsUri: (metadata["mapsUri"] as string) ?? "",
       writeReviewUri: (metadata["newReviewUri"] as string) ?? "",
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      reviews: ((body["reviews"] ?? []) as Array<Record<string, any>>)
-        .map((r) => {
-          const publishTime: string = r["createTime"] ?? r["updateTime"] ?? "";
-          return {
-            author: r["reviewer"]?.displayName ?? "Google user",
-            profilePhoto: r["reviewer"]?.profilePhotoUrl ?? "",
-            rating: STAR_RATINGS[r["starRating"]] ?? 5,
-            text: r["comment"] ?? "",
-            relativeTime: relativeTime(publishTime),
-            publishTime,
-            uri: r["reviewReplyUrl"]?.startsWith("http")
-              ? r["reviewReplyUrl"]
-              : `https://search.google.com/local/writereview?placeid=${metadata["placeId"] ?? ""}`,
-          };
-        })
-        .filter((r) => r.text.length > 0),
+      reviews: merged,
     };
 
     cache = { at: Date.now(), data };
