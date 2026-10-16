@@ -69,7 +69,7 @@ const Pricing = () => {
     },
     {
       model: "JSG Liquidators",
-      approach: "Cleanout, online auctions, and e-commerce consignment in one plan, built around your property and goals.",
+      approach: "Cleanout, online auctions, and e-commerce consignment in one plan, built around your property and goals. Auction and e-commerce sales carry a 35% commission on items sold.",
       downside: "Cleanout costs are paid upfront. Optional sale proceeds may help recoup that expense, with no guarantee of a specific return.",
     },
   ];
