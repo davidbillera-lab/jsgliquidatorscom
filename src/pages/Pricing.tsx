@@ -23,6 +23,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import whyWorkAppraisal from "@/assets/why-work-appraisal.jpg";
+import PricingCalculator from "@/components/PricingCalculator";
 
 const Pricing = () => {
   const costFactors = [
@@ -454,6 +455,37 @@ const Pricing = () => {
                 </span>
               </p>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Commission estimator */}
+      <section id="commission-calculator" className="py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              Estimate What You Keep After the Commission
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Enter a total sale price for the items you approve and see the 35% commission and the
+              65% you keep. Add your upfront cleanout quote if you have one, to see how the two line
+              up.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <PricingCalculator />
           </motion.div>
         </div>
       </section>
