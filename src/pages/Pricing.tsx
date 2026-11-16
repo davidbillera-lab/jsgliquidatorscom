@@ -116,6 +116,10 @@ const Pricing = () => {
       answer: "Our commission is 35% on items sold through our online auctions, eBay store and e-commerce consignment — you keep 65% of the sale price. We confirm the terms for each item in writing before accepting it. Cleanout and removal work is priced separately and quoted per job after a free walkthrough.",
     },
     {
+      question: "Are the cleanout cost and the commission the same charge?",
+      answer: "No. They are two separate charges and we quote them separately. The cleanout cost is a fixed price for the labor and disposal work, and it is paid upfront. The 35% commission applies only to items that actually sell through our online auctions, eBay store, or e-commerce consignment, and you keep 65% of each sale. Unsold items carry no commission. Sale proceeds are settled separately and may help offset the upfront cleanout cost, but no amount is guaranteed.",
+    },
+    {
       question: "Why isn't there a set price for your services?",
       answer: "Because no two estates are alike. A condo downsizing, a full family home, and a commercial liquidation each need a different mix of cleanout labor, auction management, and e-commerce consignment. A flat rate would overcharge some clients and underserve others. Instead, we walk the property with you, discuss your goals and timeline, and give you a clear, itemized plan before any work begins.",
     },
@@ -208,6 +212,113 @@ const Pricing = () => {
               </Button>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Cleanout vs commission — two separate charges */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
+              Cleanout Costs and Sale Commissions Are Two Separate Charges
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              This is the part most families get wrong, and it's the part we put in writing first. The cost of clearing your property is paid upfront. The commission applies only to items that actually sell. Neither one is folded into the other.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-secondary rounded-xl p-8 border-t-4 border-primary"
+            >
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <Trash2 className="w-10 h-10 text-primary" />
+                <span className="rounded-full bg-primary/15 text-primary text-xs font-semibold uppercase tracking-wide px-3 py-1">
+                  Paid upfront
+                </span>
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">Cleanout Services</h3>
+              <p className="text-muted-foreground mb-5">
+                Every cleanout has a cost, quoted per job after a free walkthrough. It is separate from any commission and is never rolled into a percentage.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "Priced per job after we walk the property — no sight-unseen quotes",
+                  "Covers sorting, packing, hauling, donation, recycling and disposal",
+                  "Property is left broom-clean at the end of the work",
+                  "Payable upfront, whether or not any items go on to sell",
+                ].map((line, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-secondary rounded-xl p-8 border-t-4 border-foreground/25"
+            >
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <Gavel className="w-10 h-10 text-primary" />
+                <span className="rounded-full bg-muted text-muted-foreground text-xs font-semibold uppercase tracking-wide px-3 py-1">
+                  Only on items sold
+                </span>
+              </div>
+              <h3 className="text-xl font-semibold text-foreground mb-3">Auction &amp; Consignment Commission</h3>
+              <p className="text-muted-foreground mb-5">
+                When approved items sell through our online auctions, eBay store, or e-commerce consignment, our commission is 35% of that sale and you keep 65%.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  "35% of each sale price — you keep 65%",
+                  "Applies to online auctions, our eBay store, and e-commerce consignment",
+                  "Nothing sold, nothing owed — unsold items carry no commission",
+                  "Terms confirmed in writing for each item before it is listed",
+                ].map((line, i) => (
+                  <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="max-w-5xl mx-auto mt-8 bg-primary/10 rounded-lg p-6"
+          >
+            <p className="text-foreground font-medium flex items-start gap-3">
+              <Scale className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+              <span>
+                <strong>How the two relate.</strong> Sale proceeds are settled separately from the cleanout invoice. They may help you recoup some or all of the upfront cleanout cost, but that is never guaranteed — if nothing sells, the cleanout cost stands on its own. You approve the written plan, with both numbers spelled out, before any work begins.
+              </span>
+            </p>
+          </motion.div>
+
+          <div className="text-center mt-10">
+            <Button asChild variant="accent" size="lg">
+              <Link to="/contact">Get a Written Quote for Both</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
