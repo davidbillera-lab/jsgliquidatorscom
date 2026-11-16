@@ -69,6 +69,13 @@ const Contact = () => {
       await sendContactMessage({ data: validatedData });
 
       setIsSubmitted(true);
+      let fromChat = false;
+      try {
+        fromChat = window.sessionStorage.getItem("ask_jsg_referred") === "1";
+      } catch {
+        /* blocked */
+      }
+      window.__lovableEvents?.track?.("project.contact_form_submitted", { from_ask_jsg: fromChat });
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });
       toast({
         title: "Message Sent!",

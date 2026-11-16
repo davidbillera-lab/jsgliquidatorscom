@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "events": {
+    "project.ask_jsg_consultation_click": {
+      "event_schema_version": 1,
+      "description": "A visitor clicked a consultation link (contact form or phone) inside Ask JSG.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "link_type"
+        ],
+        "properties": {
+          "link_type": {
+            "type": "string",
+            "enum": [
+              "contact_form",
+              "phone"
+            ]
+          }
+        }
+      }
+    },
+    "project.ask_jsg_conversation_started": {
+      "event_schema_version": 1,
+      "description": "A visitor sent their first question in Ask JSG.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "suggested"
+        ],
+        "properties": {
+          "suggested": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "project.ask_jsg_message_sent": {
+      "event_schema_version": 1,
+      "description": "A visitor sent a follow-up question in Ask JSG.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "suggested"
+        ],
+        "properties": {
+          "suggested": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "project.ask_jsg_opened": {
+      "event_schema_version": 1,
+      "description": "A visitor opened the Ask JSG chat window.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      }
+    },
+    "project.contact_form_submitted": {
+      "event_schema_version": 1,
+      "description": "A consultation request was sent successfully through the contact form.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from_ask_jsg"
+        ],
+        "properties": {
+          "from_ask_jsg": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

@@ -63,6 +63,9 @@ function ChatPanel({ onClose }: { onClose: () => void }) {
   const send = (text: string) => {
     const t = text.trim();
     if (!t || busy) return;
+    window.__lovableEvents?.track?.(messages.length === 0 ? "project.ask_jsg_conversation_started" : "project.ask_jsg_message_sent", {
+      suggested: SUGGESTIONS.includes(t),
+    });
     sendMessage({ text: t });
     setInput("");
   };
@@ -71,6 +74,18 @@ function ChatPanel({ onClose }: { onClose: () => void }) {
     <div
       role="dialog"
       aria-label="Ask JSG chat"
+      onClickCapture={(e) => {
+        const a = (e.target as HTMLElement).closest("a");
+        const href = a?.getAttribute("href") ?? "";
+        const linkType = href.startsWith("tel:") ? "phone" : href.includes("/contact") ? "contact_form" : null;
+        if (!linkType) return;
+        window.__lovableEvents?.track?.("project.ask_jsg_consultation_click", { link_type: linkType });
+        try {
+          window.sessionStorage.setItem("ask_jsg_referred", "1");
+        } catch {
+          /* blocked */
+        }
+      }}
       className="fixed inset-x-2 bottom-2 z-[60] flex h-[min(600px,calc(100dvh-1rem))] flex-col overflow-hidden rounded-2xl border border-border bg-background shadow-2xl sm:inset-x-auto sm:right-5 sm:bottom-5 sm:w-[400px]"
     >
       <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3 text-primary-foreground">
@@ -182,7 +197,10 @@ export default function AskJsgChat() {
     <ChatPanel onClose={() => setOpen(false)} />
   ) : (
     <Button
-      onClick={() => setOpen(true)}
+      onClick={() => {
+        setOpen(true);
+        window.__lovableEvents?.track?.("project.ask_jsg_opened", {});
+      }}
       className="fixed right-4 bottom-4 z-[60] h-12 gap-2 rounded-full px-5 shadow-xl sm:right-5 sm:bottom-5"
       aria-label="Open Ask JSG chat"
     >
