@@ -19,6 +19,7 @@ import { Route as ContactDothtmlRouteImport } from './routes/contact[.]html'
 import { Route as CurrentAuctionsDothtmlRouteImport } from './routes/current-auctions[.]html'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as HowMuchDoEstateSaleCompaniesChargeRouteImport } from './routes/how-much-do-estate-sale-companies-charge'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as SearchRouteImport } from './routes/search'
@@ -88,6 +89,11 @@ const HowMuchDoEstateSaleCompaniesChargeRoute =
     path: '/how-much-do-estate-sale-companies-charge',
     getParentRoute: () => rootRouteImport,
   } as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -186,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/current-auctions.html': typeof CurrentAuctionsDothtmlRoute
   '/faq': typeof FaqRoute
   '/how-much-do-estate-sale-companies-charge': typeof HowMuchDoEstateSaleCompaniesChargeRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
@@ -215,6 +222,7 @@ export interface FileRoutesByTo {
   '/current-auctions.html': typeof CurrentAuctionsDothtmlRoute
   '/faq': typeof FaqRoute
   '/how-much-do-estate-sale-companies-charge': typeof HowMuchDoEstateSaleCompaniesChargeRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
@@ -245,6 +253,7 @@ export interface FileRoutesById {
   '/current-auctions.html': typeof CurrentAuctionsDothtmlRoute
   '/faq': typeof FaqRoute
   '/how-much-do-estate-sale-companies-charge': typeof HowMuchDoEstateSaleCompaniesChargeRoute
+  '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
@@ -276,6 +285,7 @@ export interface FileRouteTypes {
     | '/current-auctions.html'
     | '/faq'
     | '/how-much-do-estate-sale-companies-charge'
+    | '/pricing'
     | '/privacy'
     | '/privacy-policy'
     | '/search'
@@ -305,6 +315,7 @@ export interface FileRouteTypes {
     | '/current-auctions.html'
     | '/faq'
     | '/how-much-do-estate-sale-companies-charge'
+    | '/pricing'
     | '/privacy'
     | '/privacy-policy'
     | '/search'
@@ -334,6 +345,7 @@ export interface FileRouteTypes {
     | '/current-auctions.html'
     | '/faq'
     | '/how-much-do-estate-sale-companies-charge'
+    | '/pricing'
     | '/privacy'
     | '/privacy-policy'
     | '/search'
@@ -364,6 +376,7 @@ export interface RootRouteChildren {
   CurrentAuctionsDothtmlRoute: typeof CurrentAuctionsDothtmlRoute
   FaqRoute: typeof FaqRoute
   HowMuchDoEstateSaleCompaniesChargeRoute: typeof HowMuchDoEstateSaleCompaniesChargeRoute
+  PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SearchRoute: typeof SearchRoute
@@ -453,6 +466,13 @@ declare module '@tanstack/react-router' {
       path: '/how-much-do-estate-sale-companies-charge'
       fullPath: '/how-much-do-estate-sale-companies-charge'
       preLoaderRoute: typeof HowMuchDoEstateSaleCompaniesChargeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -589,6 +609,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   HowMuchDoEstateSaleCompaniesChargeRoute:
     HowMuchDoEstateSaleCompaniesChargeRoute,
+  PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SearchRoute: SearchRoute,
