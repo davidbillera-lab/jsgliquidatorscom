@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
+import { ClientOnly } from "@tanstack/react-router";
+const AskJsgChat = lazy(() => import("@/components/AskJsgChat"));
 import { QueryClientProvider, type QueryClient } from "@tanstack/react-query";
 import {
   HeadContent,
@@ -76,6 +78,11 @@ function RootComponent() {
         <Toaster />
         <Sonner />
         <Outlet />
+        <ClientOnly fallback={null}>
+          <Suspense fallback={null}>
+            <AskJsgChat />
+          </Suspense>
+        </ClientOnly>
       </TooltipProvider>
     </QueryClientProvider>
   );

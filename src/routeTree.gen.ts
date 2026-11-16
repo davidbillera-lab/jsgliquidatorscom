@@ -25,6 +25,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as WhyUsRouteImport } from './routes/why-us'
 import { Route as WhyWorkWithUsRouteImport } from './routes/why-work-with-us'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ServicesIndexRouteImport } from './routes/services/index'
@@ -117,6 +118,11 @@ const WhyWorkWithUsRoute = WhyWorkWithUsRouteImport.update({
   path: '/why-work-with-us',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
@@ -186,6 +192,7 @@ export interface FileRoutesByFullPath {
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
+  '/api/chat': typeof ApiChatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
   '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
@@ -214,6 +221,7 @@ export interface FileRoutesByTo {
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
+  '/api/chat': typeof ApiChatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
   '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
+  '/api/chat': typeof ApiChatRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$categorySlug': typeof ServicesCategorySlugRoute
   '/services/commercial-cleanouts': typeof ServicesCommercialCleanoutsRoute
@@ -273,6 +282,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/why-us'
     | '/why-work-with-us'
+    | '/api/chat'
     | '/blog/$slug'
     | '/services/$categorySlug'
     | '/services/commercial-cleanouts'
@@ -301,6 +311,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/why-us'
     | '/why-work-with-us'
+    | '/api/chat'
     | '/blog/$slug'
     | '/services/$categorySlug'
     | '/services/commercial-cleanouts'
@@ -329,6 +340,7 @@ export interface FileRouteTypes {
     | '/testimonials'
     | '/why-us'
     | '/why-work-with-us'
+    | '/api/chat'
     | '/blog/$slug'
     | '/services/$categorySlug'
     | '/services/commercial-cleanouts'
@@ -358,6 +370,7 @@ export interface RootRouteChildren {
   TestimonialsRoute: typeof TestimonialsRoute
   WhyUsRoute: typeof WhyUsRoute
   WhyWorkWithUsRoute: typeof WhyWorkWithUsRoute
+  ApiChatRoute: typeof ApiChatRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ServicesCategorySlugRoute: typeof ServicesCategorySlugRoute
   ServicesCommercialCleanoutsRoute: typeof ServicesCommercialCleanoutsRoute
@@ -484,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhyWorkWithUsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/': {
       id: '/blog/'
       path: '/blog'
@@ -575,6 +595,7 @@ const rootRouteChildren: RootRouteChildren = {
   TestimonialsRoute: TestimonialsRoute,
   WhyUsRoute: WhyUsRoute,
   WhyWorkWithUsRoute: WhyWorkWithUsRoute,
+  ApiChatRoute: ApiChatRoute,
   BlogSlugRoute: BlogSlugRoute,
   ServicesCategorySlugRoute: ServicesCategorySlugRoute,
   ServicesCommercialCleanoutsRoute: ServicesCommercialCleanoutsRoute,
