@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/lib/router-compat";
+import { Link, useLocation } from "@/lib/router-compat";
 import { Helmet } from "@/components/seo/Helmet";
 import { motion } from "framer-motion";
 import {
@@ -26,6 +26,8 @@ import whyWorkAppraisal from "@/assets/why-work-appraisal.jpg";
 import PricingCalculator from "@/components/PricingCalculator";
 
 const Pricing = () => {
+  const { pathname } = useLocation();
+  const pricingPath = pathname === "/pricing" ? "/pricing" : "/how-much-do-estate-sale-companies-charge";
   const costFactors = [
     { title: "Size of the estate or property", desc: "A one-bedroom downsizing is a very different job than a full family home with a basement, attic, and garage." },
      { title: "Mix of items", desc: "Furniture, jewelry, collectibles or tools may fit different sales channels. Proceeds may help recoup costs, but sale results vary." },
@@ -159,12 +161,12 @@ const Pricing = () => {
       <SEOHead
         title="Denver Estate Sale Company Costs Explained"
         description="Denver estate sale pricing varies by job. JSG provides custom plans, clear upfront cleanout pricing, and optional auction or e-commerce sales."
-        canonical="/how-much-do-estate-sale-companies-charge"
+        canonical={pricingPath}
         keywords="how much do estate sale companies charge, estate sale cost Denver, estate sale commission, estate liquidation cost, estate cleanout pricing Denver, estate sale company fees"
         faqSchema={faqs}
         breadcrumbs={[
           { name: "Home", url: "/" },
-          { name: "Estate Sale Costs", url: "/how-much-do-estate-sale-companies-charge" },
+          { name: "Estate Sale Costs", url: pricingPath },
         ]}
       />
       <Helmet>

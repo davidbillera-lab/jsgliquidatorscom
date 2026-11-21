@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { sanitizeBlogHtml } from "@/lib/sanitizeBlogHtml";
 import { Helmet } from "@/components/seo/Helmet";
+import { pageSearchMetadata } from "@/data/pageSearchMetadata";
 
 const blogPostRoute = getRouteApi("/blog/$slug");
 
@@ -156,18 +157,20 @@ const BlogPost = () => {
   const articleSchema = generateArticleSchema();
   const breadcrumbSchema = generateBreadcrumbSchema();
   const canonicalUrl = `https://jsgliquidators.com/blog/${post.slug}`;
-  const metaDescription = post.excerpt || `Read ${post.title} on the JSG Liquidators blog.`;
+  const searchMetadata = pageSearchMetadata[`/blog/${post.slug}`];
+  const searchTitle = `${searchMetadata?.title ?? post.title} | JSG Liquidators`;
+  const metaDescription = searchMetadata?.description ?? post.excerpt ?? `Read ${post.title} on the JSG Liquidators blog.`;
 
   return (
     <Layout>
       <Helmet>
-        <title>{`${post.title} | JSG Liquidators Blog`}</title>
+        <title>{searchTitle}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={searchTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="JSG Liquidators - Estate Sales & Liquidation Denver" />
@@ -180,7 +183,7 @@ const BlogPost = () => {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:title" content={searchTitle} />
         <meta name="twitter:description" content={metaDescription} />
         {post.featured_image_url && <meta name="twitter:image" content={post.featured_image_url} />}
         
@@ -206,7 +209,7 @@ const BlogPost = () => {
       <article className="pt-32 pb-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >

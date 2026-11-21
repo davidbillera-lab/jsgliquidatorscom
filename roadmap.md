@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Nov 21 audit, in order: unique titles; distinct descriptions; self-referencing canonicals; one H1; useful /search content; server-readable text on the two flagged blog posts — verified across 190 pages.
+- [x] Restore both missing blog addresses with new factual downsizing and estate-liquidation guides, as approved by David — both readable without JavaScript and consultation links tested.
+
 - [x] Full SEO/AEO/GEO pass (Oct 6 brief): schema, six service hubs, 102 distinct city pages, homepage copy, titles/alt text, blog bylines and links, mobile speed fixes.
 - [x] Server-rendering upgrade (TanStack Start): every page, blog post and city page now arrives fully built from the server.
 - [ ] Publish the upgrade and re-measure mobile speed on the live site — waiting on the owner to review the preview and publish.

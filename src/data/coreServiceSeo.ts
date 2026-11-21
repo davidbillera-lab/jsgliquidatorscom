@@ -60,7 +60,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "Estate Cleanouts",
     title: "Estate Cleanouts Denver | Upfront Quote",
     h1: "Estate Cleanouts in Denver",
-    description: "Denver estate cleanouts with a custom plan, written upfront quote and optional resale of approved items. Call (805) 444-4069 to schedule a free walkthrough.",
+    description: "Denver estate cleanouts with a custom plan, upfront quote and optional resale of approved items. Call (805) 444-4069 to schedule a free walkthrough.",
     summary: "We create a property-specific cleanout plan, quote the work upfront and can separately sell approved items through auction or e-commerce.",
     sections: [
       {
@@ -99,7 +99,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "Junk Removal",
     title: "Junk Removal Denver | Clear Upfront Quote",
     h1: "Junk Removal in Denver",
-    description: "Denver junk removal with a clear upfront quote, careful hauling and a check for items worth selling first. Call (805) 444-4069 to book a free estimate today.",
+    description: "Denver junk removal with an upfront quote, careful hauling and a check for items worth selling first. Call (805) 444-4069 for a free consultation.",
     summary: "We quote removal work upfront and can identify approved items that may be better suited for auction or e-commerce sale than disposal.",
     sections: [
       {
@@ -136,7 +136,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "E-Commerce Consignment",
     title: "Consignment Denver | Sell Items Online",
     h1: "E-Commerce Consignment in Denver",
-    description: "Denver e-commerce consignment: we evaluate, photograph, list, sell and ship your approved items online for you. Call (805) 444-4069 for a free item evaluation.",
+    description: "Denver e-commerce consignment: we evaluate, photograph, list and ship your approved items online. Call (805) 444-4069 for a free item evaluation.",
     summary: "We evaluate and list approved items on suitable online marketplaces. Selling time depends on the item, price, platform and buyer demand.",
     sections: [
       {
@@ -211,7 +211,7 @@ export const coreServiceSeo: CoreServiceSeo[] = [
     name: "Hoarder Cleanouts",
     title: "Hoarder Cleanouts Denver | Discreet Help",
     h1: "Hoarder Cleanouts in Denver",
-    description: "Discreet Denver hoarder and heavy-content cleanouts with a private assessment, clear scope and upfront quote. Call (805) 444-4069 for a private consultation.",
+    description: "Discreet Denver hoarder and heavy-content cleanouts with a private assessment and upfront quote. Call (805) 444-4069 for a private consultation.",
     summary: "We plan heavy-content cleanouts privately, quote the work upfront and handle belongings according to the family's instructions.",
     sections: [
       {

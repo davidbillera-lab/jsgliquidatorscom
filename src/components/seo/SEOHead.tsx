@@ -1,4 +1,6 @@
 import { Helmet } from "@/components/seo/Helmet";
+import { useLocation } from "@tanstack/react-router";
+import { pageSearchMetadata } from "@/data/pageSearchMetadata";
 
 interface BreadcrumbItem {
   name: string;
@@ -37,10 +39,13 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({ title, description, canonical, type = "website", keywords, image, noindex, faqSchema, breadcrumbs, reviews, aggregateRating, events }: SEOHeadProps) => {
-  const siteTitle = "Denver Estate Sales & Liquidation | JSG Liquidators";
-  const fullTitle = title === "Home" ? siteTitle : `${title} | JSG Liquidators`;
+  const pathname = useLocation().pathname.replace(/\/$/, "") || "/";
+  const searchMetadata = pageSearchMetadata[pathname];
+  const siteTitle = "Estate Sales Denver | JSG Liquidators | Estate Sale Company";
+  const fullTitle = title === "Home" ? siteTitle : `${searchMetadata?.title ?? title} | JSG Liquidators`;
+  description = searchMetadata?.description ?? description;
   const siteUrl = "https://jsgliquidators.com";
-  const canonicalUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+  const canonicalUrl = `${siteUrl}${pathname === "/pricing" ? pathname : canonical ?? pathname}`;
   const ogImage = image || `${siteUrl}/logo.png`;
 
   const faqJsonLd = faqSchema && faqSchema.length > 0 ? {

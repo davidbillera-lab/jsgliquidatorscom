@@ -8,3 +8,5 @@
 - Contact form, Google reviews and review-request emails run as server functions in `src/lib/*.functions.ts`; the auth email hook, blog generators and MCP server stay as backend functions because external callers or schedules depend on their URLs.
 - The Google reviews feed reads the verified "JSG Liquidators LLC" listing through the google_business_profile connector gateway with pinned account/location IDs in `getGoogleReviews.functions.ts` (env-overridable); never route it through Places searchText, which finds no match for the business.
 - The Ask JSG chat streams from `src/routes/api/chat.ts`; its knowledge is built from the site's data files in `src/server/ai/askJsgContext.ts` — answers stay in sync with page content.
+- Search-only blog copy lives in `src/data/pageSearchMetadata.ts`; page metadata uses this shared map without changing visible article titles or body content, so summaries stay concise and factual.
+- Blog detail loaders throw `notFound()` for absent published articles instead of returning empty data, preventing blank successful responses for missing posts.

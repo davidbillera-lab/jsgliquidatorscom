@@ -23,7 +23,7 @@ export const commercialServices: CommercialService[] = [
     name: "Commercial Clean-Outs",
     title: "Commercial Clean-Outs Denver | Asset Recovery",
     h1: "Commercial Clean-Outs in Denver",
-    description: "Denver commercial clean-outs for hotels, offices, restaurants, retail and warehouses, with optional auctions of usable assets. Call (805) 444-4069 for a walk-through.",
+    description: "Denver commercial clean-outs for hotels, offices, retail and warehouses, with optional asset auctions. Call (805) 444-4069 for a free walk-through.",
     summary: "We clear hotels, offices, restaurants, retail spaces and warehouses across the Denver metro, and can auction usable furniture, fixtures and equipment.",
     sections: [
       {
@@ -68,7 +68,7 @@ export const commercialServices: CommercialService[] = [
     name: "Hotel Clean-Outs",
     title: "Hotel Clean-Outs Denver | FF&E Liquidation",
     h1: "Hotel Clean-Outs & FF&E Liquidation in Denver",
-    description: "Full Denver hotel clean-outs: guest rooms, FF&E, common areas and board rooms, phased around renovation, with optional auctions. Call (805) 444-4069 for a walk-through.",
+    description: "Denver hotel clean-outs for guest rooms, furniture and equipment, with optional auctions and phased clearing. Call (805) 444-4069 for a walk-through.",
     summary: "We clear entire hotels room by room, including guest rooms, FF&E, common areas and board rooms, and can auction the furniture and equipment.",
     sections: [
       {
@@ -108,7 +108,7 @@ export const commercialServices: CommercialService[] = [
     name: "Office Clean-Outs",
     title: "Office Clean-Outs Denver | Furniture & E-Waste",
     h1: "Office Clean-Outs in Denver",
-    description: "Denver office clean-outs: furniture, equipment and inventory cleared around your move-out deadline, with e-waste recycling and optional auctions. Call (805) 444-4069.",
+    description: "Denver office clean-outs for furniture, equipment and inventory, with e-waste recycling and optional auctions. Call (805) 444-4069 for a quote.",
     summary: "We clear office furniture, equipment and inventory around your move-out date, recycle e-waste and can auction usable items.",
     sections: [
       {

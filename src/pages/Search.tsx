@@ -169,6 +169,26 @@ const Search = () => {
             </p>
           </div>
         )}
+        {!query && (
+          <div className="mt-12 space-y-8 text-muted-foreground leading-relaxed">
+            <section>
+              <h2 className="text-xl font-display font-bold text-foreground mb-3">Estate sales, consignment and cleanouts in Denver</h2>
+              <p>JSG Liquidators helps families, executors, property owners and businesses decide what to sell, keep or remove. Our <Link to="/services/estate-sales" className="text-primary underline">online estate sales</Link> include research, photography, listings and buyer coordination for approved items. <Link to="/services/consignment" className="text-primary underline">E-commerce consignment</Link> is an option for individual pieces and smaller collections, with packing and shipping handled under the agreement. Acceptance depends on condition, demand and the marketplace that fits each item.</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-display font-bold text-foreground mb-3">How are the charges separated?</h2>
+              <p>Auction and e-commerce consignment carry a 35% commission on items sold; you keep 65% of the sale price. <Link to="/pricing" className="text-primary underline">Pricing and commission details</Link> include an estimator for comparing a potential sale with a cleanout quote. Cleanout work is quoted case by case after a walkthrough and paid upfront. That charge is separate from any sales commission. Sale proceeds may help recoup some or all of the cleanout cost, but no recovery amount or sale result is guaranteed.</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-display font-bold text-foreground mb-3">Where does JSG work?</h2>
+              <p>Our service areas include {serviceAreas.map((area, i) => <span key={area.slug}>{i > 0 ? ", " : ""}<Link to={`/areas/${area.slug}`} className="text-primary underline">{area.city}</Link></span>)}. A consultation establishes the property scope, access requirements and deadline before we recommend a plan. Commercial projects have included the Mint House hotel, the Marina at Pelican Bay and Hilton Home2 Suites in Highlands Ranch.</p>
+            </section>
+            <section>
+              <h2 className="text-xl font-display font-bold text-foreground mb-3">What happens at the first consultation?</h2>
+              <p>David or Vincent Billera discusses your goals, what needs to stay and which items may suit auction or consignment. For a cleanout, the walkthrough identifies the contents, labor, access and disposal requirements before a written quote is prepared. Scheduling depends on the property and any selected sales channels. Read our <Link to="/faq" className="text-primary underline">frequently asked questions</Link> or <Link to="/contact" className="text-primary underline">request a free consultation</Link> to discuss your own property.</p>
+            </section>
+          </div>
+        )}
       </section>
     </Layout>
   );

@@ -83,7 +83,7 @@ const ServiceAreaPage = () => {
   return (
     <Layout>
       <SEOHead
-        title={`Estate Sales & Liquidation in ${area.city} CO`}
+        title={`Estate Liquidation in ${area.city}`}
         description={area.metaDescription}
         canonical={`/areas/${area.slug}`}
         keywords={area.metaKeywords}
