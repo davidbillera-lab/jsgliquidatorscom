@@ -7,7 +7,7 @@ const serviceCatalog = {
   "@id": "https://jsgliquidators.com/#service",
   name: "Estate Liquidation",
   serviceType: "Estate Liquidation",
-  provider: { "@id": "https://jsgliquidators.com/#organization" },
+  provider: { "@id": "https://jsgliquidators.com/#business" },
   areaServed: { "@type": "State", name: "Colorado" },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -29,7 +29,7 @@ const speakablePage = {
   url: "https://jsgliquidators.com/",
   name: "Denver Estate Sales & Liquidation | JSG Liquidators",
   isPartOf: { "@id": "https://jsgliquidators.com/#website" },
-  about: { "@id": "https://jsgliquidators.com/#organization" },
+  about: { "@id": "https://jsgliquidators.com/#business" },
   primaryImageOfPage: { "@type": "ImageObject", url: "https://jsgliquidators.com/hero-estate-sale.webp" },
   speakable: { "@type": "SpeakableSpecification", cssSelector: ["h1", ".speakable-summary"] },
 };

@@ -85,23 +85,8 @@ const BlogPost = () => {
       "headline": post.title,
       "description": post.excerpt || `Read ${post.title} on the JSG Liquidators blog.`,
       "image": post.featured_image_url || "https://jsgliquidators.com/logo.png",
-      "author": {
-        "@type": "Organization",
-        "@id": "https://jsgliquidators.com/#organization",
-        "name": "JSG Liquidators",
-        "url": "https://jsgliquidators.com"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "JSG Liquidators",
-        "url": "https://jsgliquidators.com",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://jsgliquidators.com/logo.png",
-          "width": 240,
-          "height": 72
-        }
-      },
+      "author": { "@id": "https://jsgliquidators.com/#business" },
+      "publisher": { "@id": "https://jsgliquidators.com/#business" },
       "datePublished": publishDate,
       "dateModified": post.updated_at || publishDate,
       "mainEntityOfPage": {

@@ -34,18 +34,12 @@ const ServiceAreaPage = () => {
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "JSG Liquidators",
+    "@type": "Service",
+    "@id": `https://jsgliquidators.com/areas/${area.slug}#service`,
+    name: `Estate liquidation services in ${area.city}, CO`,
     description: `Professional estate sales, liquidation, junk removal and cleanout services in ${area.city}, Colorado.`,
     url: `https://jsgliquidators.com/areas/${area.slug}`,
-    telephone: ["+1-805-444-4069", "+1-805-340-4817"],
-    email: "jsgliquidators@jsgliquidators.com",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: area.city,
-      addressRegion: "CO",
-      addressCountry: "US",
-    },
+    provider: { "@id": "https://jsgliquidators.com/#business" },
     areaServed: {
       "@type": "City",
       name: area.city,

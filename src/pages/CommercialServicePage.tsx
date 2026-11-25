@@ -4,10 +4,22 @@ import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { getCommercialService } from "@/data/commercialServices";
+import { Helmet } from "@/components/seo/Helmet";
+import { BUSINESS_ID, businessAreaServed } from "@/data/siteSchema";
 
 const CommercialServicePage = ({ slug }: { slug: string }) => {
   const s = getCommercialService(slug)!;
   const url = `/services/${s.slug}`;
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `https://jsgliquidators.com${url}#service`,
+    name: s.name,
+    serviceType: s.name,
+    url: `https://jsgliquidators.com${url}`,
+    provider: { "@id": BUSINESS_ID },
+    areaServed: businessAreaServed,
+  };
   return (
     <Layout>
       <SEOHead
@@ -21,6 +33,9 @@ const CommercialServicePage = ({ slug }: { slug: string }) => {
           { name: s.name, url },
         ]}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+      </Helmet>
       <section className="bg-gradient-hero py-20 md:py-28">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-6">{s.h1}</h1>

@@ -11,6 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { serviceAreas, allServices } from "@/data/serviceAreas";
+import { businessAreaServed } from "@/data/siteSchema";
 import { getServiceLocationContent } from "@/data/serviceLocationContent";
 import { getCoreServiceSeo } from "@/data/coreServiceSeo";
 
@@ -64,13 +65,8 @@ const ServiceCategoryPage = () => {
     "serviceType": category.serviceName,
     "url": pageUrl,
     "isPartOf": { "@id": "https://jsgliquidators.com/#service" },
-    "provider": { "@id": "https://jsgliquidators.com/#organization" },
-    "areaServed": serviceAreas.map((a) => ({
-      "@type": "City",
-      "name": a.city,
-      "containedInPlace": { "@type": "AdministrativeArea", "name": a.county },
-      "address": { "@type": "PostalAddress", "addressLocality": a.city, "addressRegion": "CO", "addressCountry": "US" },
-    })),
+    "provider": { "@id": "https://jsgliquidators.com/#business" },
+    "areaServed": businessAreaServed,
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": `${category.serviceName} across Colorado`,

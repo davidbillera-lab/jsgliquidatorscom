@@ -55,12 +55,7 @@ const ServiceLocationPage = () => {
     "name": `${serviceContent.serviceName} in ${area.city}, CO`,
     "serviceType": serviceContent.serviceName,
     "url": pageUrl,
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "JSG Liquidators",
-      "telephone": "+1-805-444-4069",
-      "url": "https://jsgliquidators.com",
-    },
+    "provider": { "@id": "https://jsgliquidators.com/#business" },
     "areaServed": {
       "@type": "City",
       "name": area.city,
