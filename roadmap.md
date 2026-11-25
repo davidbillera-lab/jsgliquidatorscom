@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] Add a private SEO profile-link report with verified evidence, last-checked dates, and saved manual updates.
+- [x] Add a private SEO profile-link report at /seo-report with six shared profiles, verified evidence, last-checked dates, and saved manual updates; admin-only access and save/reload verified using a temporary test account.
 
 - [x] Strengthen the existing Highlands Ranch, Denver, Castle Rock, Englewood and Littleton landing pages: distinct local content, pricing clarity, internal links and consultation CTAs. All five return readable HTML with unique metadata, one H1, self-referencing canonicals and valid JSON-LD; phone pricing-to-consultation flow verified.
 

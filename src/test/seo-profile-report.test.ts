@@ -2,6 +2,9 @@ import { describe, expect, it } from "vitest";
 import { profileCheckSchema, summarizeChecks } from "@/lib/seo-profile-report";
 
 describe("SEO profile checks", () => {
+  it("accepts the saved database timestamp format", () => {
+    expect(profileCheckSchema.safeParse({ profile_name: "Instagram", status: "confirmed", evidence: "Website link", last_checked_at: "2026-11-25T14:28:00+00:00" }).success).toBe(true);
+  });
   it("tracks the six approved profiles and counts unrecorded checks as unverified", () => {
     expect(summarizeChecks([{ profile_name: "Instagram", status: "confirmed", evidence: "Website link", last_checked_at: "2026-11-25T14:28:00Z" }])).toEqual({ confirmed: 1, unverified: 5, missing: 0 });
   });
