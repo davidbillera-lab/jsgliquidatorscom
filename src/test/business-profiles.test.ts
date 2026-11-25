@@ -3,13 +3,14 @@ import { businessProfiles } from "@/data/businessProfiles";
 import { BUSINESS_ID, siteSchemaGraph } from "@/data/siteSchema";
 
 describe("Owner-approved business profiles", () => {
-  it("uses exactly the five supplied URLs without tracking or pending profiles", () => {
+  it("uses exactly the six supplied URLs without tracking or pending profiles", () => {
     const expected = [
       "https://www.facebook.com/jsgliquidators",
       "https://www.instagram.com/jsgliquidators1",
       "https://nextdoor.com/page/jsg-estate-liquidators-littleton-co/",
       "https://www.estatesales.net/companies/CO/Littleton/80129/166733",
       "https://www.declutt.com/denver/providers/jsg-estate-liquidators",
+      "https://www.yelp.com/biz/jsg-estate-liquidators-littleton",
     ];
     expect(businessProfiles.map((profile) => profile.url)).toEqual(expected);
     const business = siteSchemaGraph["@graph"].find((node) => node["@id"] === BUSINESS_ID);

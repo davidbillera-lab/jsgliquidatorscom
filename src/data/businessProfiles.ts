@@ -5,4 +5,5 @@ export const businessProfiles = [
   { name: "Nextdoor", url: "https://nextdoor.com/page/jsg-estate-liquidators-littleton-co/" },
   { name: "EstateSales.net", url: "https://www.estatesales.net/companies/CO/Littleton/80129/166733" },
   { name: "Declutt", url: "https://www.declutt.com/denver/providers/jsg-estate-liquidators" },
+  { name: "Yelp", url: "https://www.yelp.com/biz/jsg-estate-liquidators-littleton" },
 ] as const;
