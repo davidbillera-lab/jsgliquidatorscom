@@ -3,6 +3,7 @@ import { Star, Quote } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { testimonials } from "@/data/testimonials";
+import { externalReviewSources } from "@/data/externalReviews";
 import { useGoogleReviews } from "@/hooks/useGoogleReviews";
 
 const fadeInUp = {
@@ -143,6 +144,69 @@ const Testimonials = () => {
         </div>
 
       </section>
+
+      {/* Reviews from other sites (Yelp, BBB) — hidden until those profiles go live */}
+      {externalReviewSources.some((s) => s.reviews.length > 0) && (
+        <section className="py-20 bg-muted/30" aria-labelledby="external-reviews-heading">
+          <div className="container mx-auto px-4">
+            <h2
+              id="external-reviews-heading"
+              className="text-3xl md:text-4xl font-display font-bold text-foreground text-center mb-12"
+            >
+              Reviews from Around the Web
+            </h2>
+            <div className="space-y-16">
+              {externalReviewSources
+                .filter((source) => source.reviews.length > 0)
+                .map((source) => (
+                  <div key={source.name}>
+                    <div className="flex items-center justify-center gap-3 mb-8">
+                      <h3 className="text-2xl font-display font-semibold text-foreground">
+                        {source.name} Reviews
+                      </h3>
+                      {source.profileUrl && (
+                        <a
+                          href={source.profileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-medium text-steel-blue hover:underline"
+                        >
+                          See all on {source.name}
+                        </a>
+                      )}
+                    </div>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {source.reviews.map((review, index) => (
+                        <motion.div
+                          key={`${source.name}-${index}`}
+                          className="bg-card rounded-lg p-6 shadow-lg border border-border relative"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: index * 0.1 }}
+                        >
+                          <Quote className="absolute top-4 right-4 w-8 h-8 text-steel-blue/20" />
+                          <div className="flex gap-1 mb-4">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
+                            ))}
+                          </div>
+                          <p className="text-muted-foreground mb-6 italic">"{review.text}"</p>
+                          <div className="border-t border-border pt-4">
+                            <p className="font-semibold text-foreground">{review.author}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {review.date} · {source.name}
+                            </p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Stats Section */}
       <section className="py-16 bg-muted/30" aria-labelledby="stats-heading">

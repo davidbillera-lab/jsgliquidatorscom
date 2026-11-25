@@ -77,6 +77,51 @@ export type Database = {
         }
         Relationships: []
       }
+      walkthrough_requests: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          name: string
+          notes: string
+          phone: string
+          preferred_date: string
+          preferred_time_window: string
+          property_address: string
+          property_city: string
+          service_interest: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          notes?: string
+          phone?: string
+          preferred_date: string
+          preferred_time_window: string
+          property_address?: string
+          property_city?: string
+          service_interest?: string
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          notes?: string
+          phone?: string
+          preferred_date?: string
+          preferred_time_window?: string
+          property_address?: string
+          property_city?: string
+          service_interest?: string
+          status?: string
+        }
+        Relationships: []
+      }
       whatsapp_bookings: {
         Row: {
           address: string | null

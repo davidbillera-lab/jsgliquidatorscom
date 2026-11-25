@@ -97,6 +97,27 @@
           }
         }
       }
+    },
+    "project.walkthrough_requested": {
+      "event_schema_version": 1,
+      "description": "Fires when a visitor successfully submits the free 1-hour on-site walk-through request form on /walkthrough.",
+      "privacy": {
+        "contains_pii": false,
+        "purpose": "product_analytics"
+      },
+      "properties_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "service_interest": {
+            "type": "string",
+            "description": "The service the visitor selected, or 'unspecified'"
+          }
+        },
+        "required": [
+          "service_interest"
+        ]
+      }
     }
   }
 }

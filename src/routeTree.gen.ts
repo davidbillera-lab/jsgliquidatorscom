@@ -24,6 +24,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as WalkthroughRouteImport } from './routes/walkthrough'
 import { Route as WhyUsRouteImport } from './routes/why-us'
 import { Route as WhyWorkWithUsRouteImport } from './routes/why-work-with-us'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
@@ -115,6 +116,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
   path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WalkthroughRoute = WalkthroughRouteImport.update({
+  id: '/walkthrough',
+  path: '/walkthrough',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhyUsRoute = WhyUsRouteImport.update({
   id: '/why-us',
   path: '/why-us',
@@ -204,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
   '/testimonials': typeof TestimonialsRoute
+  '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/api/chat': typeof ApiChatRoute
@@ -235,6 +242,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
   '/testimonials': typeof TestimonialsRoute
+  '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/api/chat': typeof ApiChatRoute
@@ -267,6 +275,7 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
   '/testimonials': typeof TestimonialsRoute
+  '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
   '/why-work-with-us': typeof WhyWorkWithUsRoute
   '/api/chat': typeof ApiChatRoute
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/search'
     | '/testimonials'
+    | '/walkthrough'
     | '/why-us'
     | '/why-work-with-us'
     | '/api/chat'
@@ -331,6 +341,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/search'
     | '/testimonials'
+    | '/walkthrough'
     | '/why-us'
     | '/why-work-with-us'
     | '/api/chat'
@@ -362,6 +373,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/search'
     | '/testimonials'
+    | '/walkthrough'
     | '/why-us'
     | '/why-work-with-us'
     | '/api/chat'
@@ -394,6 +406,7 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SearchRoute: typeof SearchRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  WalkthroughRoute: typeof WalkthroughRoute
   WhyUsRoute: typeof WhyUsRoute
   WhyWorkWithUsRoute: typeof WhyWorkWithUsRoute
   ApiChatRoute: typeof ApiChatRoute
@@ -517,6 +530,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/walkthrough': {
+      id: '/walkthrough'
+      path: '/walkthrough'
+      fullPath: '/walkthrough'
+      preLoaderRoute: typeof WalkthroughRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/why-us': {
       id: '/why-us'
       path: '/why-us'
@@ -635,6 +655,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SearchRoute: SearchRoute,
   TestimonialsRoute: TestimonialsRoute,
+  WalkthroughRoute: WalkthroughRoute,
   WhyUsRoute: WhyUsRoute,
   WhyWorkWithUsRoute: WhyWorkWithUsRoute,
   ApiChatRoute: ApiChatRoute,

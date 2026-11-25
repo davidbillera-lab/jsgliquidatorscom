@@ -187,6 +187,12 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 Pricing & Commission
               </Link>
               <Link
+                to="/walkthrough"
+                className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
+              >
+                Free Walk-Through
+              </Link>
+              <Link
                 to="/blog"
                 className="text-sm text-primary-foreground/60 hover:text-accent transition-colors"
               >

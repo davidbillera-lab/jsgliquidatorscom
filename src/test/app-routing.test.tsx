@@ -15,6 +15,14 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 
+  it("matches a page for /walkthrough instead of falling back to not found", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/walkthrough");
+
+    expect(matches.at(-1)?.routeId).toBe("/walkthrough");
+  });
+
   it.each(["highlands-ranch", "denver", "castle-rock", "englewood", "littleton"])(
     "keeps the established %s city landing page reachable",
     (city) => {
