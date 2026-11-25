@@ -56,6 +56,27 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_profile_checks: {
+        Row: {
+          evidence: string
+          last_checked_at: string
+          profile_name: string
+          status: string
+        }
+        Insert: {
+          evidence?: string
+          last_checked_at: string
+          profile_name: string
+          status: string
+        }
+        Update: {
+          evidence?: string
+          last_checked_at?: string
+          profile_name?: string
+          status?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
-import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X } from "lucide-react";
+import { Plus, Edit2, Trash2, Eye, EyeOff, Upload, Save, LogOut, Sparkles, ImagePlus, X, FileSearch } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Layout } from "@/components/layout/Layout";
 import { SEOHead } from "@/components/seo/SEOHead";
 import { ReviewRequestDialog } from "@/components/admin/ReviewRequestDialog";
@@ -392,6 +393,7 @@ const BlogAdmin = () => {
                 </p>
               </div>
               <div className="flex items-center gap-3">
+                <Button variant="outline" asChild><Link to="/seo-report"><FileSearch />SEO report</Link></Button>
                 <ReviewRequestDialog />
                 <Button 
                   variant="secondary" 

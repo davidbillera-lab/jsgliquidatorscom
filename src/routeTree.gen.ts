@@ -23,6 +23,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SeoReportRouteImport } from './routes/seo-report'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as WalkthroughRouteImport } from './routes/walkthrough'
 import { Route as WhyUsRouteImport } from './routes/why-us'
@@ -109,6 +110,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoReportRoute = SeoReportRouteImport.update({
+  id: '/seo-report',
+  path: '/seo-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
@@ -209,6 +215,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
+  '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
   '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
@@ -241,6 +248,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
+  '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
   '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
@@ -274,6 +282,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/search': typeof SearchRoute
+  '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
   '/walkthrough': typeof WalkthroughRoute
   '/why-us': typeof WhyUsRoute
@@ -308,6 +317,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/privacy-policy'
     | '/search'
+    | '/seo-report'
     | '/testimonials'
     | '/walkthrough'
     | '/why-us'
@@ -340,6 +350,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/privacy-policy'
     | '/search'
+    | '/seo-report'
     | '/testimonials'
     | '/walkthrough'
     | '/why-us'
@@ -372,6 +383,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/privacy-policy'
     | '/search'
+    | '/seo-report'
     | '/testimonials'
     | '/walkthrough'
     | '/why-us'
@@ -405,6 +417,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SearchRoute: typeof SearchRoute
+  SeoReportRoute: typeof SeoReportRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WalkthroughRoute: typeof WalkthroughRoute
   WhyUsRoute: typeof WhyUsRoute
@@ -521,6 +534,13 @@ declare module '@tanstack/react-router' {
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-report': {
+      id: '/seo-report'
+      path: '/seo-report'
+      fullPath: '/seo-report'
+      preLoaderRoute: typeof SeoReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/testimonials': {
@@ -654,6 +674,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SearchRoute: SearchRoute,
+  SeoReportRoute: SeoReportRoute,
   TestimonialsRoute: TestimonialsRoute,
   WalkthroughRoute: WalkthroughRoute,
   WhyUsRoute: WhyUsRoute,

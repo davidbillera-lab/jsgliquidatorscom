@@ -12,3 +12,4 @@
 - Search-only blog copy lives in `src/data/pageSearchMetadata.ts`; page metadata uses this shared map without changing visible article titles or body content, so summaries stay concise and factual.
 - Blog detail loaders throw `notFound()` for absent published articles instead of returning empty data, preventing blank successful responses for missing posts.
 - Public business profile links are shared by the footer and sitewide schema through `src/data/businessProfiles.ts` — keeps both lists and exact URLs in sync.
+- The private SEO report joins shared business profiles with admin-only `seo_profile_checks` records; dates and evidence are saved manually, never inferred from page opens or presented as automated checks.
