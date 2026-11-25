@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { Link } from "@/lib/router-compat";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { businessProfiles } from "@/data/businessProfiles";
 
 const serviceAreaLinks = [
   { name: "Denver", slug: "denver" },
@@ -44,7 +45,7 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <span className="font-display font-bold text-xl">JSG</span>
               </div>
               <div>
-                <p className="font-display font-semibold text-lg leading-tight">JSG Liquidators</p>
+                <p className="font-display font-semibold text-lg leading-tight">JSG ESTATE LIQUIDATORS</p>
                 <p className="text-xs text-primary-foreground/70">Estate Liquidation Experts</p>
               </div>
             </div>
@@ -53,36 +54,37 @@ export const Footer = forwardRef<HTMLElement>((_, ref) => {
             </p>
             <div className="flex items-center gap-2 text-accent">
               <MapPin className="w-4 h-4 flex-shrink-0" />
-              <span className="text-sm">Serving the Greater Denver Metro Area</span>
+              <span className="text-sm">Serving the Denver metro and Colorado Front Range.</span>
             </div>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="space-y-2 text-sm">
               <a
-                href="https://www.facebook.com/jsgliquidators"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="JSG Liquidators on Facebook"
-                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+                href="tel:805-444-4069"
+                className="block text-primary-foreground/80 hover:text-accent transition-colors"
               >
-                Facebook
+                (805) 444-4069
               </a>
               <a
-                href="https://www.instagram.com/jsgliquidators1/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="JSG Liquidators on Instagram"
-                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+                href="https://jsgliquidators.com/"
+                className="block break-words text-primary-foreground/80 hover:text-accent transition-colors"
               >
-                Instagram
+                https://jsgliquidators.com/
               </a>
-              <a
-                href="https://www.linkedin.com/company/jsg-liquidators"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="JSG Liquidators on LinkedIn"
-                className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
-              >
-                LinkedIn
-              </a>
+            </div>
+            <div className="space-y-2">
+              <p className="text-sm text-primary-foreground/80">Find us online</p>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                {businessProfiles.map((profile) => (
+                  <a
+                    key={profile.url}
+                    href={profile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-foreground/60 hover:text-accent transition-colors text-xs"
+                  >
+                    {profile.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

@@ -1,4 +1,6 @@
 // Sitewide single LocalBusiness (#business) + WebSite structured data, rendered in the root route head.
+import { businessProfiles } from "./businessProfiles";
+
 export const BUSINESS_ID = "https://jsgliquidators.com/#business";
 export const businessAreaServed = [
   {
@@ -193,10 +195,7 @@ export const siteSchemaGraph = {
       ],
       "hasMap": "https://www.google.com/maps?cid=11342591244856020758",
       "areaServed": businessAreaServed,
-      "sameAs": [
-        "https://www.instagram.com/jsgliquidators1/",
-        "https://www.google.com/maps?cid=11342591244856020758"
-      ],
+      "sameAs": businessProfiles.map((profile) => profile.url),
       "alternateName": [
         "JSG Estate Liquidation",
         "JSG Liquidators Denver"

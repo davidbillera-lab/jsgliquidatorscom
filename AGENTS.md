@@ -10,3 +10,4 @@
 - The Ask JSG chat streams from `src/routes/api/chat.ts`; its knowledge is built from the site's data files in `src/server/ai/askJsgContext.ts` — answers stay in sync with page content.
 - Search-only blog copy lives in `src/data/pageSearchMetadata.ts`; page metadata uses this shared map without changing visible article titles or body content, so summaries stay concise and factual.
 - Blog detail loaders throw `notFound()` for absent published articles instead of returning empty data, preventing blank successful responses for missing posts.
+- Public business profile links are shared by the footer and sitewide schema through `src/data/businessProfiles.ts` — keeps both lists and exact URLs in sync.
