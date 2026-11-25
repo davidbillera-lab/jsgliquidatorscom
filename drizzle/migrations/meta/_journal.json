@@ -15,6 +15,13 @@
       "when": 1795571424540,
       "tag": "0001_create_walkthrough_requests",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795583379687,
+      "tag": "0002_tighten_walkthrough_insert_policy",
+      "breakpoints": true
     }
   ]
 }
