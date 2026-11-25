@@ -37,6 +37,7 @@ import { Route as ServicesOfficeCleanoutsRouteImport } from './routes/services/o
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable/oauth/consent'
 import { Route as AreasSlugIndexRouteImport } from './routes/areas/$slug/index'
 import { Route as AreasSlugServiceSlugRouteImport } from './routes/areas/$slug/$serviceSlug'
+import { Route as ApiPublicWhatsappWebhookRouteImport } from './routes/api/public/whatsapp/webhook'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -180,6 +181,12 @@ const AreasSlugServiceSlugRoute = AreasSlugServiceSlugRouteImport.update({
   path: '/areas/$slug/$serviceSlug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicWhatsappWebhookRoute =
+  ApiPublicWhatsappWebhookRouteImport.update({
+    id: '/api/public/whatsapp/webhook',
+    path: '/api/public/whatsapp/webhook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -210,6 +217,7 @@ export interface FileRoutesByFullPath {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/areas/$slug/$serviceSlug': typeof AreasSlugServiceSlugRoute
   '/areas/$slug/': typeof AreasSlugIndexRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -240,6 +248,7 @@ export interface FileRoutesByTo {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/areas/$slug/$serviceSlug': typeof AreasSlugServiceSlugRoute
   '/areas/$slug': typeof AreasSlugIndexRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -271,6 +280,7 @@ export interface FileRoutesById {
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/areas/$slug/$serviceSlug': typeof AreasSlugServiceSlugRoute
   '/areas/$slug/': typeof AreasSlugIndexRoute
+  '/api/public/whatsapp/webhook': typeof ApiPublicWhatsappWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/areas/$slug/$serviceSlug'
     | '/areas/$slug/'
+    | '/api/public/whatsapp/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -333,6 +344,7 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/areas/$slug/$serviceSlug'
     | '/areas/$slug'
+    | '/api/public/whatsapp/webhook'
   id:
     | '__root__'
     | '/'
@@ -363,6 +375,7 @@ export interface FileRouteTypes {
     | '/.lovable/oauth/consent'
     | '/areas/$slug/$serviceSlug'
     | '/areas/$slug/'
+    | '/api/public/whatsapp/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -394,6 +407,7 @@ export interface RootRouteChildren {
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   AreasSlugServiceSlugRoute: typeof AreasSlugServiceSlugRoute
   AreasSlugIndexRoute: typeof AreasSlugIndexRoute
+  ApiPublicWhatsappWebhookRoute: typeof ApiPublicWhatsappWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -594,6 +608,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AreasSlugServiceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/whatsapp/webhook': {
+      id: '/api/public/whatsapp/webhook'
+      path: '/api/public/whatsapp/webhook'
+      fullPath: '/api/public/whatsapp/webhook'
+      preLoaderRoute: typeof ApiPublicWhatsappWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -627,6 +648,7 @@ const rootRouteChildren: RootRouteChildren = {
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   AreasSlugServiceSlugRoute: AreasSlugServiceSlugRoute,
   AreasSlugIndexRoute: AreasSlugIndexRoute,
+  ApiPublicWhatsappWebhookRoute: ApiPublicWhatsappWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

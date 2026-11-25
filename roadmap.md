@@ -12,3 +12,4 @@
 - [x] Oct 15 brief, part 2: Hotel/Office/Commercial clean-out pages, weekend phone hours.
 - [x] Embed Google reviews — live feed from the verified JSG Liquidators LLC listing (2 reviews); the 6 extra static reviews may come from an older listing — owner to confirm.
 - [ ] LinkedIn link, Denver number, photos — optional, waiting on David.
+- [ ] WhatsApp assistant (Ask JSG on WhatsApp): 24/7 lead answers, 35% + walk-through quoting, 1-hour walk-through booking (Mon-Fri 8am-6pm Denver), handoff = WhatsApp alert to David (805) 444-4069. BLOCKED: WhatsApp connector declined — code built, activation waits on connection + Incoming messages destination set to this project.

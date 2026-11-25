@@ -77,6 +77,128 @@ export type Database = {
         }
         Relationships: []
       }
+      whatsapp_bookings: {
+        Row: {
+          address: string | null
+          conversation_id: string | null
+          created_at: string
+          customer_name: string | null
+          ends_at: string
+          id: string
+          notes: string | null
+          phone: string
+          service: string
+          starts_at: string
+          status: string
+        }
+        Insert: {
+          address?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          customer_name?: string | null
+          ends_at: string
+          id?: string
+          notes?: string | null
+          phone: string
+          service?: string
+          starts_at: string
+          status?: string
+        }
+        Update: {
+          address?: string | null
+          conversation_id?: string | null
+          created_at?: string
+          customer_name?: string | null
+          ends_at?: string
+          id?: string
+          notes?: string | null
+          phone?: string
+          service?: string
+          starts_at?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "whatsapp_bookings_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "whatsapp_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      whatsapp_conversations: {
+        Row: {
+          created_at: string
+          customer_name: string | null
+          handed_off: boolean
+          handoff_reason: string | null
+          id: string
+          last_inbound_message_id: string | null
+          last_message_at: string | null
+          messages: Json
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          customer_name?: string | null
+          handed_off?: boolean
+          handoff_reason?: string | null
+          id?: string
+          last_inbound_message_id?: string | null
+          last_message_at?: string | null
+          messages?: Json
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          customer_name?: string | null
+          handed_off?: boolean
+          handoff_reason?: string | null
+          id?: string
+          last_inbound_message_id?: string | null
+          last_message_at?: string | null
+          messages?: Json
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      whatsapp_webhook_events: {
+        Row: {
+          attempts: number
+          delivery_id: string
+          event: string
+          id: string
+          payload: Json
+          processed_at: string | null
+          processing_error: string | null
+          received_at: string
+        }
+        Insert: {
+          attempts?: number
+          delivery_id: string
+          event: string
+          id?: string
+          payload: Json
+          processed_at?: string | null
+          processing_error?: string | null
+          received_at?: string
+        }
+        Update: {
+          attempts?: number
+          delivery_id?: string
+          event?: string
+          id?: string
+          payload?: Json
+          processed_at?: string | null
+          processing_error?: string | null
+          received_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
