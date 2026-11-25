@@ -14,4 +14,15 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it.each(["highlands-ranch", "denver", "castle-rock", "englewood", "littleton"])(
+    "keeps the established %s city landing page reachable",
+    (city) => {
+      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+      const match = router.matchRoutes(`/areas/${city}`).at(-1);
+      expect(match?.routeId).toBe("/areas/$slug/");
+      const params = match?.params;
+      expect(params && "slug" in params ? params.slug : undefined).toBe(city);
+    },
+  );
 });

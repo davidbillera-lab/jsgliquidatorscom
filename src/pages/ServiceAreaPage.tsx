@@ -7,6 +7,8 @@ import { SEOHead } from "@/components/seo/SEOHead";
 import { Helmet } from "@/components/seo/Helmet";
 import { getServiceAreaBySlug, serviceAreas, allServices } from "@/data/serviceAreas";
 import { testimonials } from "@/data/testimonials";
+import { cityLandingContent } from "@/data/cityLandingContent";
+import estateSaleImage from "@/assets/hero-estate-sale.webp";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -28,16 +30,19 @@ const ServiceAreaPage = () => {
     return <Navigate to="/404" replace />;
   }
 
-  const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug).slice(0, 6);
+  const landing = cityLandingContent[area.slug];
+  const otherAreas = serviceAreas.filter((a) => a.slug !== area.slug)
+    .sort((a, b) => Number(area.nearbyAreas.includes(b.city)) - Number(area.nearbyAreas.includes(a.city)))
+    .slice(0, 6);
   const areaIndex = serviceAreas.findIndex((a) => a.slug === area.slug);
-  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length]!;
+  const review = testimonials[Math.max(areaIndex, 0) % testimonials.length];
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `https://jsgliquidators.com/areas/${area.slug}#service`,
     name: `Estate liquidation services in ${area.city}, CO`,
-    description: `Professional estate sales, liquidation, junk removal and cleanout services in ${area.city}, Colorado.`,
+    description: landing?.description ?? `Professional estate sales, liquidation, junk removal and cleanout services in ${area.city}, Colorado.`,
     url: `https://jsgliquidators.com/areas/${area.slug}`,
     provider: { "@id": "https://jsgliquidators.com/#business" },
     areaServed: {
@@ -50,7 +55,11 @@ const ServiceAreaPage = () => {
       name: `Estate Liquidation Services in ${area.city}`,
       itemListElement: allServices.map((s) => ({
         "@type": "Offer",
-        itemOffered: { "@type": "Service", name: s.name, areaServed: area.city },
+        itemOffered: {
+          "@type": "Service", name: s.name, areaServed: area.city,
+          url: `https://jsgliquidators.com/areas/${area.slug}/${s.slug}`,
+          provider: { "@id": "https://jsgliquidators.com/#business" },
+        },
       })),
     },
   };
@@ -74,11 +83,28 @@ const ServiceAreaPage = () => {
     },
   ];
 
+  if (landing) {
+    faqSchema.push(
+      {
+        question: `What is the auction and e-commerce consignment commission in ${area.city}?`,
+        answer: "JSG's commission is 35% on items sold through auction or e-commerce consignment; you keep 65% of each sale. Terms are confirmed in writing before listing. Cleanout services are quoted separately after a free walk-through and paid upfront.",
+      },
+      {
+        question: `Do I have to book a cleanout to sell items in ${area.city}?`,
+        answer: "No. Auction and e-commerce consignment can be selected without a cleanout. During your free consultation, we review the items you approve for sale and discuss suitable options. If you also need removal work, that has its own scope and upfront quote.",
+      },
+      {
+        question: `What should I prepare for a free ${area.city} consultation?`,
+        answer: landing.preparation,
+      },
+    );
+  }
+
   return (
     <Layout>
       <SEOHead
-        title={`Estate Liquidation in ${area.city}`}
-        description={area.metaDescription}
+        title={landing?.title ?? `Estate Liquidation in ${area.city}`}
+        description={landing?.description ?? area.metaDescription}
         canonical={`/areas/${area.slug}`}
         keywords={area.metaKeywords}
         faqSchema={faqSchema}
@@ -95,10 +121,14 @@ const ServiceAreaPage = () => {
       </Helmet>
 
       {/* Hero */}
-      <section className="py-20 lg:py-28 bg-gradient-hero">
+      <section className={landing ? "relative isolate overflow-hidden py-8 sm:py-16 lg:py-20 bg-navy" : "py-20 lg:py-28 bg-gradient-hero"}>
+        {landing && <>
+          <img src={estateSaleImage} alt="" aria-hidden="true" fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover" />
+          <div className="absolute inset-0 -z-10 bg-navy/85" />
+        </>}
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
@@ -107,16 +137,16 @@ const ServiceAreaPage = () => {
               <MapPin className="w-4 h-4 inline mr-1" />
               Serving {area.city}, {area.county}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight">
-              Estate Sales &amp; Liquidation Services in {area.city}, Colorado
+            <h1 className={`${landing ? "text-3xl sm:text-4xl" : "text-4xl"} md:text-5xl lg:text-6xl font-display font-bold text-primary-foreground mb-6 leading-tight`}>
+              {landing ? `Estate Sales & Cleanouts in ${area.city}, Colorado` : `Estate Sales & Liquidation Services in ${area.city}, Colorado`}
             </h1>
-            <p className="text-xl text-primary-foreground/80 mb-8 max-w-3xl mx-auto">
-              {area.description}
+            <p className={`${landing ? "text-base sm:text-xl" : "text-xl"} text-primary-foreground/80 mb-8 max-w-3xl mx-auto`}>
+              {landing?.introduction ?? area.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="xl">
                 <Link to="/contact">
-                  Get Your Free {area.city} Consultation
+                  {landing ? "Book a Free Walk-Through" : `Get Your Free ${area.city} Consultation`}
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
@@ -127,6 +157,7 @@ const ServiceAreaPage = () => {
                 </a>
               </Button>
             </div>
+            {landing && <p className="mt-6 text-sm text-primary-foreground/80">Fully insured · 35% auction &amp; e-commerce commission · Cleanouts quoted separately</p>}
           </motion.div>
         </div>
       </section>
@@ -135,7 +166,7 @@ const ServiceAreaPage = () => {
       <section className="py-20 lg:py-28 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
-            initial="hidden"
+            initial={landing ? false : "hidden"}
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
@@ -152,14 +183,14 @@ const ServiceAreaPage = () => {
           </motion.div>
 
           <motion.div
-            initial="hidden"
+            initial={landing ? false : "hidden"}
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {allServices.map((service, i) => {
-              const Icon = serviceIcons[i] ?? serviceIcons[0]!;
+              const Icon = serviceIcons[i] ?? Gavel;
               return (
                 <motion.div key={service.slug} variants={fadeInUp} transition={{ duration: 0.5 }}>
                   <Link
@@ -172,6 +203,14 @@ const ServiceAreaPage = () => {
                     <h3 className="text-xl font-display font-semibold text-foreground mb-3">
                       {service.name} in {area.city}
                     </h3>
+                    {landing && <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                      {service.slug === "estate-sales" && "Review approved belongings for an online estate auction, with sale terms confirmed before listing."}
+                      {service.slug === "consignment" && "Sell suitable individual items through e-commerce consignment at the same 35% commission as auctions."}
+                      {service.slug === "business-liquidation" && "Plan the sale of owned office furniture, equipment and approved business assets around your property needs."}
+                      {service.slug === "estate-cleanouts" && "Agree on the rooms, sorting and removal work in a written quote after a free walk-through. Paid upfront."}
+                      {service.slug === "junk-removal" && "Discuss unwanted furniture and contents, with any potential sale items reviewed separately from removal."}
+                      {service.slug === "hoarder-cleanouts" && "Discuss a respectful, property-specific clearing plan with access, volume and priorities reviewed before work."}
+                    </p>}
                     <span className="inline-flex items-center gap-2 text-primary font-medium text-sm group-hover:text-accent transition-colors">
                       See {service.name} in {area.city} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -182,6 +221,39 @@ const ServiceAreaPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {landing && <>
+        <section className="py-16 lg:py-20 bg-secondary">
+          <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-8">{area.city} Pricing: Sales and Cleanouts Are Separate</h2>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+              <div>
+                <h3 className="text-xl font-display font-semibold text-foreground mb-3">35% commission on items sold</h3>
+                <p className="text-muted-foreground leading-relaxed">Auction and e-commerce consignment carry a 35% commission. You keep 65% of each sale, with terms confirmed in writing before listing. Selling suitable items does not require booking a cleanout.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-display font-semibold text-foreground mb-3">Cleanouts quoted and paid upfront</h3>
+                <p className="text-muted-foreground leading-relaxed">Cleanout pricing is case by case after a free walk-through. The quote reflects contents, access, labor and disposal needs. This upfront charge is separate from sale commissions and is payable regardless of whether items sell.</p>
+              </div>
+            </div>
+            <p className="text-muted-foreground leading-relaxed mt-8">Optional sale proceeds may help you recoup some or all of a cleanout expense, but results are never guaranteed. Your sale settlement and cleanout invoice remain separate.</p>
+            <Button asChild variant="outline" className="mt-6"><Link to="/pricing">Review Pricing &amp; Commission <ArrowRight className="w-4 h-4" /></Link></Button>
+          </div>
+        </section>
+        <section className="py-16 lg:py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8 max-w-5xl space-y-12">
+            {landing.sections.map((section) => <div key={section.heading}>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-foreground mb-5">{section.heading}</h2>
+              <div className="space-y-4">{section.paragraphs.map((paragraph) => <p key={paragraph} className="text-muted-foreground leading-relaxed">{paragraph}</p>)}</div>
+            </div>)}
+            <div className="border-t border-border pt-8">
+              <h2 className="text-2xl font-display font-bold text-foreground mb-4">Arrange Your Free {area.city} Walk-Through</h2>
+              <p className="text-muted-foreground leading-relaxed mb-4">{landing.preparation} David and Vincent Billera can discuss your priorities and explain the next steps. Office hours are Monday–Friday, 8am–6pm Mountain; phone calls are also taken on weekends.</p>
+              <Button asChild><Link to="/contact">Book a Free Consultation <ArrowRight className="w-4 h-4" /></Link></Button>
+            </div>
+          </div>
+        </section>
+      </>}
 
       {/* Why Local / Service Highlights */}
       <section className="py-20 lg:py-28 bg-muted">
@@ -221,7 +293,7 @@ const ServiceAreaPage = () => {
               className="space-y-6"
             >
               {/* Testimonial */}
-              <div className="bg-card rounded-xl p-8 border border-border">
+              {review && <div className="bg-card rounded-xl p-8 border border-border">
                 <Quote className="w-10 h-10 text-accent/30 mb-4" />
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -233,7 +305,7 @@ const ServiceAreaPage = () => {
                 </p>
                 <p className="font-semibold text-foreground">{review.name}, {review.location}</p>
                 <p className="text-xs text-muted-foreground mt-1">Google review</p>
-              </div>
+              </div>}
 
               {/* Local Info Card */}
               <div className="bg-primary rounded-xl p-8 text-primary-foreground">

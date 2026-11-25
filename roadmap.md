@@ -1,5 +1,7 @@
 # Roadmap
 
+- [x] Strengthen the existing Highlands Ranch, Denver, Castle Rock, Englewood and Littleton landing pages: distinct local content, pricing clarity, internal links and consultation CTAs. All five return readable HTML with unique metadata, one H1, self-referencing canonicals and valid JSON-LD; phone pricing-to-consultation flow verified.
+
 - [x] Apply the approved backlinks brief: five exact profiles in schema and footer, exact footer contact details; rendered JSON-LD and phone/desktop footer verified. All URLs respond successfully; Facebook redirects to login, so its public profile content remains unverified. Yelp/BBB excluded.
 
 - [x] Nov 21 audit, in order: unique titles; distinct descriptions; self-referencing canonicals; one H1; useful /search content; server-readable text on the two flagged blog posts — verified across 190 pages.
