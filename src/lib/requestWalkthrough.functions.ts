@@ -1,10 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { FORM_NOTIFICATION_FROM, FORM_NOTIFICATION_TO } from "@/lib/formNotificationEmail";
 
-// Resend test mode only delivers to the account owner's address.
-// Switch back to jsgliquidators@gmail.com once a sending domain is verified.
-const TO_EMAIL = "davidbillera@gmail.com";
-const FROM_EMAIL = "JSG Liquidators <onboarding@resend.dev>";
+const TO_EMAIL = FORM_NOTIFICATION_TO;
+const FROM_EMAIL = FORM_NOTIFICATION_FROM;
 
 export const TIME_WINDOWS = [
   "8:00 AM - 10:00 AM",
