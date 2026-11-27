@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
-import logo from "@/assets/logo-square.png";
 import { Button } from "@/components/ui/button";
 import { REVIEW_SHORT_URL } from "@/data/reviewLink";
 
@@ -44,7 +43,7 @@ export default function ReviewCard({ variant = "thanks" }: { variant?: "thanks" 
         }
       `}</style>
       <section className={`review-card bg-background text-foreground max-w-full rounded-lg border shadow-lg flex flex-col items-center justify-center text-center ${letter ? "w-[8.5in] h-[11in] gap-8 p-[0.75in]" : "w-[4in] h-[6in] gap-4 p-[0.35in]"}`}>
-        <img src={logo} alt="JSG Liquidators" className={letter ? "h-[1.6in] w-auto" : "h-[0.9in] w-auto"} />
+        <img src="/logo.png" alt="JSG Liquidators" className={letter ? "h-[1.6in] w-auto" : "h-[0.9in] w-auto"} />
         <h1 className={`${letter ? "text-5xl" : "text-2xl"} font-bold leading-tight`}>{pickup ? "Enjoy your finds" : "Thank you for trusting us"}</h1>
         <p className={`${letter ? "text-2xl" : "text-sm"} leading-snug`}>{pickup ? "Thanks for bidding with us. A quick Google review helps more people find our auctions." : "If we did right by you, a quick Google review helps other families find us."}</p>
         <div className={`${letter ? "w-[4.5in] h-[4.5in]" : "w-[2.3in] h-[2.3in]"} [&_svg]:w-full [&_svg]:h-full`} aria-label="QR code to leave a Google review" dangerouslySetInnerHTML={{ __html: svg }} />
