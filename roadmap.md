@@ -22,3 +22,6 @@
 - [x] Reviews now come only from the live GBP feed (static merge removed); Yelp/BBB section added to /testimonials, hidden until those profiles go live (add entries in src/data/externalReviews.ts).
 - [ ] Live GBP feed returns 404: the JSG Liquidators listing is no longer in David's Google account (only Rodan Heating and Air and Skin Care by Nicole remain). Site falls back to saved review copies. Waiting on David to check business.google.com; re-pin the location ID once the listing is back.
 - [ ] WhatsApp assistant (Ask JSG on WhatsApp): 24/7 lead answers, 35% + walk-through quoting, 1-hour walk-through booking (Mon-Fri 8am-6pm Denver), handoff = WhatsApp alert to David (805) 444-4069. BLOCKED: WhatsApp connector declined — code built, activation waits on connection + Incoming messages destination set to this project.
+
+- [x] Pickup review card (?for=pickup), letter-size sign
+- [ ] Swap in real Google review link (waiting on David)

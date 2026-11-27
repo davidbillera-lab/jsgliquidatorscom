@@ -22,6 +22,8 @@ import { Route as HowMuchDoEstateSaleCompaniesChargeRouteImport } from './routes
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ReviewRouteImport } from './routes/review'
+import { Route as ReviewCardRouteImport } from './routes/review-card'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SeoReportRouteImport } from './routes/seo-report'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
@@ -105,6 +107,16 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewRoute = ReviewRouteImport.update({
+  id: '/review',
+  path: '/review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewCardRoute = ReviewCardRouteImport.update({
+  id: '/review-card',
+  path: '/review-card',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SearchRoute = SearchRouteImport.update({
@@ -214,6 +226,8 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/review': typeof ReviewRoute
+  '/review-card': typeof ReviewCardRoute
   '/search': typeof SearchRoute
   '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
@@ -247,6 +261,8 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/review': typeof ReviewRoute
+  '/review-card': typeof ReviewCardRoute
   '/search': typeof SearchRoute
   '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
@@ -281,6 +297,8 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/review': typeof ReviewRoute
+  '/review-card': typeof ReviewCardRoute
   '/search': typeof SearchRoute
   '/seo-report': typeof SeoReportRoute
   '/testimonials': typeof TestimonialsRoute
@@ -316,6 +334,8 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/privacy-policy'
+    | '/review'
+    | '/review-card'
     | '/search'
     | '/seo-report'
     | '/testimonials'
@@ -349,6 +369,8 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/privacy-policy'
+    | '/review'
+    | '/review-card'
     | '/search'
     | '/seo-report'
     | '/testimonials'
@@ -382,6 +404,8 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/privacy-policy'
+    | '/review'
+    | '/review-card'
     | '/search'
     | '/seo-report'
     | '/testimonials'
@@ -416,6 +440,8 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ReviewRoute: typeof ReviewRoute
+  ReviewCardRoute: typeof ReviewCardRoute
   SearchRoute: typeof SearchRoute
   SeoReportRoute: typeof SeoReportRoute
   TestimonialsRoute: typeof TestimonialsRoute
@@ -527,6 +553,20 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review': {
+      id: '/review'
+      path: '/review'
+      fullPath: '/review'
+      preLoaderRoute: typeof ReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/review-card': {
+      id: '/review-card'
+      path: '/review-card'
+      fullPath: '/review-card'
+      preLoaderRoute: typeof ReviewCardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/search': {
@@ -673,6 +713,8 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ReviewRoute: ReviewRoute,
+  ReviewCardRoute: ReviewCardRoute,
   SearchRoute: SearchRoute,
   SeoReportRoute: SeoReportRoute,
   TestimonialsRoute: TestimonialsRoute,
